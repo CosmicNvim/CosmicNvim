@@ -1,0 +1,5 @@
+pack/**
+sessions/**
+.netrwhist
+plugin/
+lua/cosmic/compiled.lua
