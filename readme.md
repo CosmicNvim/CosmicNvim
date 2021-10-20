@@ -33,6 +33,8 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 
 ### How to install
 
+_Requires Neovim (0.6.0+)_
+
 Using [stow](https://www.gnu.org/software/stow/)
 
 ```
@@ -54,6 +56,14 @@ Just clone it
   $ cd ~/.config
   $ git clone git@github.com:mattleong/CosmicNvim.git nvim
 ```
+
+#### First run
+
+You will need to set up Packers compiled file via the steps below:
+
+1. Start NVIM
+2. Run `PackerUpdate` & `PackerCompile`
+3. Restart NVIM
 
 _Install script coming soon..._
 
