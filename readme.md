@@ -26,6 +26,7 @@ Full featured native LSP functionality!
 - Easy LSP installation with [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
 - Autocompletion provided by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - Session management with [auto-session](https://github.com/rmagatti/auto-session)
+- Additional custom highlighting
 - Floating windows for references, renaming, diagnostics, code actions and more!
 
 _While CosmicNvim is geared specifically toward TypeScript/JavaScript development, it should be able to provide a great experience with any LSP supported language._
