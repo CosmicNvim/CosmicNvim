@@ -65,7 +65,7 @@ _Install script coming soon..._
 ![replace](https://user-images.githubusercontent.com/3721204/137990347-b59428d6-b5fe-4edb-8ceb-ab37b69b7e76.png)
 
 ### Autocomplete
-![autocomplete](https://user-images.githubusercontent.com/3721204/138015211-540c80d5-d109-4063-a5a1-d937de08da01.png)
+<img width="2532" alt="autocomplete" src="https://user-images.githubusercontent.com/3721204/138015498-3b18495e-9011-4ac2-9f3f-f020feb85caf.png">
 
 ### Rename
 ![rename](https://user-images.githubusercontent.com/3721204/138015221-0e55c63a-b640-46e0-9353-7e891f804d67.png)
