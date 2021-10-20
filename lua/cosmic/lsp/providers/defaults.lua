@@ -8,19 +8,16 @@ function M.on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  require('cosmic.lsp.mappings')
-
-  -- So that the only client with format capabilities is efm
-  if client.name ~= 'efm' then
+  local formatting_servers = { 'efm', 'eslint' }
+  if vim.tbl_contains(formatting_servers, client.name) then
+    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.document_range_formatting = true
+  else
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
   end
 
-  -- need to set eslint formatting manually
-  if client.name == 'eslint' then
-    client.resolved_capabilities.document_formatting = true
-    client.resolved_capabilities.document_range_formatting = true
-  end
+  require('cosmic.lsp.mappings')
 
   require('lsp_signature').on_attach({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
