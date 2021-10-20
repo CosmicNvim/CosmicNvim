@@ -65,19 +65,22 @@ _Install script coming soon..._
 ![replace](https://user-images.githubusercontent.com/3721204/137990347-b59428d6-b5fe-4edb-8ceb-ab37b69b7e76.png)
 
 ### Autocomplete
-![autocomplete](https://user-images.githubusercontent.com/3721204/137990341-39251a51-7fb8-47cc-a92e-b3893ef6cb34.png)
+![autocomplete](https://user-images.githubusercontent.com/3721204/138015211-540c80d5-d109-4063-a5a1-d937de08da01.png)
 
 ### Rename
-![rename](https://user-images.githubusercontent.com/3721204/137995308-b8260fe6-a2e8-427d-aa21-5df0bfecf72f.png)
+![rename](https://user-images.githubusercontent.com/3721204/138015221-0e55c63a-b640-46e0-9353-7e891f804d67.png)
 
 ### Hover
-![lsp hover3](https://user-images.githubusercontent.com/3721204/137989460-91b094d5-e47e-4775-a252-39442cf398d9.png)
+![hover](https://user-images.githubusercontent.com/3721204/138015245-a530e565-d1cb-4d2a-bcbc-7a8109befcda.png)
 
 ### Find Reference
-![lsp ref](https://user-images.githubusercontent.com/3721204/137989929-12036575-4b63-471e-ab44-ac6ad31bb478.png)
+![reference](https://user-images.githubusercontent.com/3721204/138015259-d59fbafb-86cc-471e-bfe8-46f723da359c.png)
+
+### Code Action
+![code_action](https://user-images.githubusercontent.com/3721204/138015273-770404ea-9cf7-48cf-8a31-62d865e6fa2a.png)
 
 ### File Navigation
-![telescope](https://user-images.githubusercontent.com/3721204/137989935-30f3bf57-435e-4e5c-8817-2d8c6c6dd9b1.png)
+![find_files](https://user-images.githubusercontent.com/3721204/138015288-9d592ebd-cfe0-4dc4-9cf0-2f2940487576.png)
 
 ### Floating Terminal
-![terminal](https://user-images.githubusercontent.com/3721204/137989938-70a72dca-c6e6-4bb2-91fe-89ed94614824.png)
+![terminal](https://user-images.githubusercontent.com/3721204/138015301-97d95ac5-49f3-4d31-9f1e-db15d4e6e9e2.png)
