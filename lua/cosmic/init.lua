@@ -1,5 +1,5 @@
-require('cosmic.compiled')
 require('cosmic.disabled')
 require('cosmic.pluginsInit')
+require('cosmic.compiled')
 require('cosmic.mappings')
 require('cosmic.editor')
