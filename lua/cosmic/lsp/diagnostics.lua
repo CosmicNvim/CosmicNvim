@@ -2,18 +2,20 @@ local icons = require('cosmic.core.theme.icons')
 local M = {}
 
 function M.init()
-  vim.diagnostic.config({
-    underline = true,
-    update_in_insert = false,
-    virtual_text = {
-      spacing = 4,
-      source = 'always',
-      -- severity = 'error'
-      -- prefix = '👾',
-    },
-    signs = true,
-    severity_sort = true,
-  })
+  if vim.diagnostic ~= nil then
+    vim.diagnostic.config({
+      underline = true,
+      update_in_insert = false,
+      virtual_text = {
+        spacing = 4,
+        source = 'always',
+        -- severity = 'error'
+        -- prefix = '👾',
+      },
+      signs = true,
+      severity_sort = true,
+    })
+  end
 
   local function do_diagnostic_signs()
     local signs = {
