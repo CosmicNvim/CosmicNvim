@@ -32,10 +32,6 @@ local check_width_and_git_and_buffer = function()
   return condition.check_git_workspace() and condition.buffer_not_empty()
 end
 
-local check_git_and_width = function()
-  return condition.buffer_not_empty() and condition.hide_in_width()
-end
-
 local check_buffer_and_width = function()
   return condition.buffer_not_empty() and condition.hide_in_width()
 end
@@ -332,14 +328,14 @@ gls.right = {
   {
     GitBranchRightBracket = {
       provider = BracketProvider(icons.arrow_left_filled, true),
-      condition = check_git_and_width,
+      condition = check_buffer_and_width,
       highlight = 'GalaxyViModeNestedInv',
     },
   },
   {
     GitRoot = {
       provider = utils.get_git_root,
-      condition = check_git_and_width,
+      condition = check_buffer_and_width,
       icon = '  ' .. icons.file .. ' ',
       highlight = 'GalaxyViModeInv',
     },
