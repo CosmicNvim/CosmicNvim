@@ -43,9 +43,18 @@ Using [stow](https://www.gnu.org/software/stow/)
 Symlinking (don't use relative pathing)
 
 ```
+  $ cd ~/
   $ git clone git@github.com:mattleong/CosmicNvim.git
   $ ln -s ~/.config/nvim ~/CosmicNvim
 ```
+
+Just clone it
+```
+  $ cd ~/.config
+  $ git clone git@github.com:mattleong/CosmicNvim.git nvim
+```
+
+_Install script coming soon..._
 
 ## 📷 Screenshots
 
