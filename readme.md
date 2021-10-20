@@ -1,6 +1,6 @@
 # ✨ CosmicNvim ✨
 
-A lightweight and opinionated Neovim configuration for web development specifically designed to provide a COSMIC programming experience!
+Welcome! CosmicNvim is a lightweight and opinionated Neovim config for web development, specifically designed to provide a  ✨ COSMIC  ✨ programming experience!
 
 ## 🚀 Stellar Features
 
@@ -22,7 +22,7 @@ Full featured native LSP functionality!
 - Hand-built statusline with [galaxyline](https://github.com/NTBBloodbath/galaxyline.nvim)
 - Explore files with [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
 - Fuzzy finder and some LSP actions with [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-- Floating terminal with [vim-floatterm](https://github.com/voldikss/vim-floaterm)
+- Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)
 - Easy LSP installation with [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
 - Autocompletion provided by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - Session management with [auto-session](https://github.com/rmagatti/auto-session)
@@ -59,10 +59,10 @@ _Install script coming soon..._
 ## 📷 Screenshots
 
 ### Statusline
-![insert](https://user-images.githubusercontent.com/3721204/137990345-d036c2d1-0f9e-4d4e-bd6c-13e051609f61.png)
 ![normal](https://user-images.githubusercontent.com/3721204/137990346-8f614b6b-63da-471a-b5be-635b587f10a1.png)
-![replace](https://user-images.githubusercontent.com/3721204/137990347-b59428d6-b5fe-4edb-8ceb-ab37b69b7e76.png)
+![insert](https://user-images.githubusercontent.com/3721204/137990345-d036c2d1-0f9e-4d4e-bd6c-13e051609f61.png)
 ![visual](https://user-images.githubusercontent.com/3721204/137990348-6eb29e9b-e912-4d6e-8a5e-e763816613d7.png)
+![replace](https://user-images.githubusercontent.com/3721204/137990347-b59428d6-b5fe-4edb-8ceb-ab37b69b7e76.png)
 
 ### Autocomplete
 ![autocomplete](https://user-images.githubusercontent.com/3721204/137990341-39251a51-7fb8-47cc-a92e-b3893ef6cb34.png)
