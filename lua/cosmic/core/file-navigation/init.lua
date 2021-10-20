@@ -39,16 +39,13 @@ require('telescope').setup({
         },
       },
       sort_mru = true,
-      --        sort_lastused = true,
       preview_title = false,
     },
     lsp_references = {
-      --        mappings = mappings.normal,
       initial_mode = 'normal',
       sorting_strategy = 'ascending',
       layout_strategy = 'cursor',
-      preview_title = '',
-      --       dynamic_preview_title = true,
+      preview_title = false,
       results_title = false,
       prompt_title = 'References',
       layout_config = {
