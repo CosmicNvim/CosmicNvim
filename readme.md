@@ -1,6 +1,8 @@
-# ✨ CosmicNvim ✨
+# ✨ CosmicNvim
 
-Welcome! CosmicNvim is a lightweight and opinionated Neovim config for web development, specifically designed to provide a  ✨ COSMIC  ✨ programming experience!
+Welcome!
+
+✨ CosmicNvim is a lightweight and opinionated Neovim config for web development, specifically designed to provide a COSMIC programming experience!
 
 ## 🚀 Stellar Features
 
@@ -67,6 +69,18 @@ You will need to set up Packers compiled file via the steps below:
 4. Install LSP servers, `:LspInstallInfo` or `:LspInstall tsserver`
 
 _Install script coming soon..._
+
+## Mappings
+
+[File navigation](./lua/cosmic/core/file-navigation/mappings.lua)
+
+[File explorer](./lua/cosmic/core/file-explorer/mappings.lua)
+
+[Terminal](./lua/cosmic/core/terminal/mappings.lua)
+
+[LSP](./lua/cosmic/lsp/mappings.lua)
+
+[Other](./lua/cosmic/mappings.lua)
 
 ## 📷 Screenshots
 
