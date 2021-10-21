@@ -31,33 +31,16 @@ Full featured native LSP functionality!
 
 _While CosmicNvim is geared specifically toward TypeScript/JavaScript development, it should be able to provide a great experience with any LSP supported language._
 
-### How to install
+## Installation
 
-_Runs best on Neovim (>=0.6.0) but requires (>=0.5.1)_
+### Quick guide
 
-Using [stow](https://www.gnu.org/software/stow/)
+_Install script coming soon..._
 
-```
-  $ git clone git@github.com:mattleong/CosmicNvim.git
-  $ mkdir ~/.config/nvim
-  $ stow -t ~/.config/nvim CosmicNvim
-```
-
-Symlinking (don't use relative pathing)
-
-```
-  $ cd ~/
-  $ git clone git@github.com:mattleong/CosmicNvim.git
-  $ ln -s ~/.config/nvim ~/CosmicNvim
-```
-
-Just clone it
 ```
   $ cd ~/.config
   $ git clone git@github.com:mattleong/CosmicNvim.git nvim
 ```
-
-#### First run
 
 You will need to set up Packers compiled file via the steps below:
 
@@ -66,7 +49,7 @@ You will need to set up Packers compiled file via the steps below:
 3. Restart NVIM
 4. Install LSP servers, `:LspInstallInfo` or `:LspInstall tsserver`
 
-_Install script coming soon..._
+For addtional installation details, please refer to the [wiki page](https://github.com/mattleong/CosmicNvim/wiki/Installation).
 
 ## Mappings
 
