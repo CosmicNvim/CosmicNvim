@@ -1,8 +1,6 @@
-# ✨ CosmicNvim
+<h1 align="center">💫 CosmicNvim</h1>
 
-Welcome!
-
-✨ CosmicNvim is a lightweight and opinionated Neovim config for web development, specifically designed to provide a COSMIC programming experience!
+CosmicNvim is a lightweight and opinionated Neovim config for web development, specifically designed to provide a 💫 COSMIC programming experience!
 
 ## 🚀 Stellar Features
 
