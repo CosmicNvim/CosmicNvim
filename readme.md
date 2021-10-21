@@ -35,7 +35,7 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 
 ### Quick guide
 
-_Install script coming soon..._
+_Requires Neovim (+0.6.0)_
 
 ```
   $ cd ~/.config
@@ -49,7 +49,7 @@ You will need to set up Packers compiled file via the steps below:
 3. Restart NVIM
 4. Install LSP servers, `:LspInstallInfo` or `:LspInstall tsserver`
 
-For addtional installation details, please refer to the [wiki page](https://github.com/mattleong/CosmicNvim/wiki/Installation).
+For additional installation details, please refer to the [wiki page](https://github.com/mattleong/CosmicNvim/wiki/Installation).
 
 ## Mappings
 
