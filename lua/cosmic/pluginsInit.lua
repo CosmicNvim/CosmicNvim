@@ -1,7 +1,7 @@
-local present, packer = pcall(require, "cosmic.packer")
+local present, packer = pcall(require, 'cosmic.packer')
 
 if not present then
-   return false
+  return false
 end
 
 local use = packer.use
@@ -13,7 +13,7 @@ return packer.startup(function()
     'lewis6991/impatient.nvim',
     config = function()
       require('impatient')
-    end
+    end,
   })
 
   use({ -- color scheme
@@ -138,7 +138,7 @@ return packer.startup(function()
     event = 'VimEnter',
     config = function()
       require('auto-session').setup({
-        pre_save_cmds = { 'NvimTreeClose', 'TroubleClose', 'cclose' },
+        pre_save_cmds = { 'NvimTreeClose', 'cclose' },
       })
     end,
   })
