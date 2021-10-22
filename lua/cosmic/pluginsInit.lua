@@ -159,10 +159,7 @@ return packer.startup(function()
 
   -- comments and stuff
   use({
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end,
+    'b3nj5m1n/kommentary',
     event = 'BufRead',
   })
 
