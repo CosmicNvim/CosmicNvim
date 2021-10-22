@@ -56,16 +56,4 @@ function M.init()
   do_legacy_diagnostic_signs()
 end
 
-function M.trouble()
-  require('trouble').setup({
-    mode = 'lsp_document_diagnostics', -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
-    signs = {
-      error = icons.error .. ' ',
-      warning = icons.warn .. ' ',
-      hint = icons.hint .. ' ',
-      information = icons.info .. ' ',
-    },
-  })
-end
-
 return M

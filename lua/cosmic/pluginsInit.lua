@@ -88,21 +88,6 @@ return packer.startup(function()
     },
   })
 
-  -- diagnostics
-  use({
-    'folke/trouble.nvim',
-    opt = true,
-    config = function()
-      require('cosmic.lsp.diagnostics').trouble()
-    end,
-    cmd = {
-      'Trouble',
-      'TroubleClose',
-      'TroubleToggle',
-      'TroubleRefresh',
-    },
-  })
-
   -- git commands
   use({
     'tpope/vim-fugitive',
