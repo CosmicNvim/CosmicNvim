@@ -25,6 +25,7 @@ Full featured native LSP functionality!
 - Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)
 - Easy LSP installation with [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
 - Autocompletion provided by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - Session management with [auto-session](https://github.com/rmagatti/auto-session)
 - Additional custom highlighting
 - Floating windows for references, renaming, diagnostics, code actions and more!
@@ -35,7 +36,10 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 
 ### Quick guide
 
-_Requires Neovim (+0.6.0)_
+#### Prerequisites
+- Neovim (+0.6.0)
+- [Node.js](https://nodejs.org/en/)
+- [prettierd](https://github.com/fsouza/prettierd) (for Prettier formatting)
 
 ```
   $ cd ~/.config
@@ -47,9 +51,11 @@ You will need to set up Packers compiled file via the steps below:
 1. Start NVIM
 2. Run `PackerUpdate` & `PackerCompile`
 3. Restart NVIM
-4. Install LSP servers, `:LspInstallInfo` or `:LspInstall tsserver`
+4. Install LSP servers, `:LspInstallInfo` (hit enter to install)
 
-For additional installation details, please refer to the [wiki page](https://github.com/mattleong/CosmicNvim/wiki/Installation).
+Additional Cosmic installation [details](https://github.com/mattleong/CosmicNvim/wiki/Installation).
+
+Additional LSP server installation [details](https://github.com/mattleong/CosmicNvim/wiki/Installing-LSP-servers).
 
 ## Mappings
 

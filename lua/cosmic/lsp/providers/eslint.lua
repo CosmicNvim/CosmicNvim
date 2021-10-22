@@ -2,7 +2,7 @@ local util = require('lspconfig').util
 
 return {
   settings = {
-    packageManager = 'yarn',
+    packageManager = 'npm',
     format = true,
   },
   root_dir = function(fname)
