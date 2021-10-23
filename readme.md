@@ -60,7 +60,7 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 
 ## Mappings
 
-[File navigation](./lua/cosmic/core/file-navigation/mappings.lua)
+[File Navigation](./lua/cosmic/core/navigation/mappings.lua)
 
 [File explorer](./lua/cosmic/core/file-explorer/mappings.lua)
 

@@ -128,7 +128,7 @@ return packer.startup(function()
       },
     },
     config = function()
-      require('cosmic.core.file-navigation')
+      require('cosmic.core.navigation')
     end,
     event = 'BufRead',
   })

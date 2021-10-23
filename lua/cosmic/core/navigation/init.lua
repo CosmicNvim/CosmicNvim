@@ -1,5 +1,5 @@
 local actions = require('telescope.actions')
-local mappings = require('cosmic.core.file-navigation.mappings').mappings()
+local mappings = require('cosmic.core.navigation.mappings').mappings()
 local icons = require('cosmic.core.theme.icons')
 
 local opts_cursor = {
