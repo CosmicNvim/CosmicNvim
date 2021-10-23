@@ -80,12 +80,13 @@ require('telescope').setup({
     lsp_document_diagnostics = {
       initial_mode = 'normal',
       sorting_strategy = 'ascending',
-      layout_strategy = 'cursor',
+      layout_strategy = 'vertical',
       prompt_title = 'Diagnostics',
       results_title = '',
       layout_config = {
         width = 0.5,
         height = 0.5,
+        prompt_position = 'top'
       },
       mappings = mappings,
     },

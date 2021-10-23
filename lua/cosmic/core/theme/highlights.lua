@@ -32,7 +32,7 @@ function M.init()
   highlight('TelescopeSelectionCaret', 'None', colors.selection_caret)
 
   -- autocomplete highlights
-  highlight('CmpItemAbbrDeprecated', colors.warn)
+  highlight('CmpItemAbbrDeprecated', 'None', colors.warn)
 
   -- todo: needs to highlight after lsp start, why? idk
   vim.cmd([[
