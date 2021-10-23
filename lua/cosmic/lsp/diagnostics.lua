@@ -22,7 +22,7 @@ function M.init()
     signs = true,
     severity_sort = true,
     float = {
-      show_header = true,
+      show_header = false,
       source = 'always',
       border = 'single',
     },

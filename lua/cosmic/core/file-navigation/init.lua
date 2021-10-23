@@ -2,6 +2,32 @@ local actions = require('telescope.actions')
 local mappings = require('cosmic.core.file-navigation.mappings').mappings()
 local icons = require('cosmic.core.theme.icons')
 
+local opts_cursor = {
+  initial_mode = 'normal',
+  sorting_strategy = 'ascending',
+  layout_strategy = 'cursor',
+  preview_title = false,
+  results_title = false,
+  layout_config = {
+    width = 0.3,
+    height = 0.3,
+  },
+  mappings = mappings,
+}
+
+local opts_vertical = {
+  initial_mode = 'normal',
+  sorting_strategy = 'ascending',
+  layout_strategy = 'vertical',
+  results_title = false,
+  layout_config = {
+    width = 0.3,
+    height = 0.5,
+    prompt_position = 'top',
+    mirror = true,
+  },
+}
+
 require('telescope').setup({
   defaults = {
     prompt_prefix = '🔍 ',
@@ -41,66 +67,25 @@ require('telescope').setup({
       sort_mru = true,
       preview_title = false,
     },
-    lsp_references = {
-      initial_mode = 'normal',
-      sorting_strategy = 'ascending',
-      layout_strategy = 'cursor',
-      preview_title = false,
-      results_title = false,
-      prompt_title = 'References',
-      layout_config = {
-        width = 0.4,
-        height = 0.4,
-      },
-    },
-    lsp_code_actions = {
-      initial_mode = 'normal',
-      sorting_strategy = 'ascending',
-      layout_strategy = 'cursor',
-      preview = false,
+    lsp_code_actions = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Code Actions',
-      results_title = '',
-      layout_config = {
-        width = 0.2,
-        height = 0.3,
-      },
-    },
-    lsp_range_code_actions = {
-      initial_mode = 'normal',
-      sorting_strategy = 'ascending',
-      layout_strategy = 'cursor',
-      preview = false,
+    }),
+    lsp_range_code_actions = vim.tbl_deep_extend('force', opts_vertical, {
       prompt_title = 'Code Actions',
-      results_title = '',
-      layout_config = {
-        width = 0.3,
-        height = 0.3,
-      },
-    },
-    lsp_document_diagnostics = {
-      initial_mode = 'normal',
-      sorting_strategy = 'ascending',
-      layout_strategy = 'vertical',
-      prompt_title = 'Diagnostics',
-      results_title = '',
-      layout_config = {
-        width = 0.5,
-        height = 0.5,
-        prompt_position = 'top'
-      },
+    }),
+    lsp_document_diagnostics = vim.tbl_deep_extend('force', opts_vertical, {
+      prompt_title = 'Document Diagnostics',
       mappings = mappings,
-    },
-    lsp_definitions = {
-      layout_strategy = 'cursor',
+    }),
+    lsp_implementations = vim.tbl_deep_extend('force', opts_cursor, {
+      prompt_title = 'Implementations',
+    }),
+    lsp_definitions = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Definitions',
-      preview_title = false,
-      results_title = false,
-      layout_config = {
-        width = 0.5,
-        height = 0.5,
-      },
-      mappings = mappings,
-    },
+    }),
+    lsp_references = vim.tbl_deep_extend('force', opts_cursor, {
+      prompt_title = 'References',
+    }),
     find_files = {
       prompt_title = '✨ Search Project ✨',
       mappings = mappings,
