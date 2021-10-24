@@ -45,4 +45,6 @@ M.root_dir = function(fname)
     or util.root_pattern('tsconfig.json')(fname)
 end
 
+M.autostart = true
+
 return M
