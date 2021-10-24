@@ -26,15 +26,19 @@ local requested_servers = {
   'jsonls',
   'cssls',
   'html',
-  -- 'intelephense',
-  -- 'pyright',
-  -- 'gopls',
 }
 
--- add servers set in config to requested_servers table
-for config_server in pairs(config.lsp.servers) do
-  if requested_servers[config_server] == nil then
-    table.insert(requested_servers, config_server)
+-- get disabled servers from config
+local disabled_servers = {}
+if config.lsp and config.lsp.servers then
+  for config_server, config_opt in pairs(config.lsp.servers) do
+    if config_opt == false then
+      for server in pairs(requested_servers) do
+        if (requested_servers[server] == config_server) then
+          table.insert(disabled_servers, requested_servers[server])
+        end
+      end
+    end
   end
 end
 
@@ -51,14 +55,16 @@ for server in pairs(requested_servers) do
   end
 end
 
---[[ Auto-format *.rs (rust) files prior to saving them
-     autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000) ]]
+-- print(vim.inspect(requested_servers))
+-- print(vim.inspect(disabled_servers))
 
 lsp_installer.on_server_ready(function(server)
   local opts = default_config
-  --[[ if config.lsp.servers[server.name] == nil then
+
+  opts.autostart = true
+  if vim.tbl_contains(disabled_servers, server.name) then
     opts.autostart = false
-  end ]]
+  end
 
   if server.name == 'sumneko_lua' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.lua'))

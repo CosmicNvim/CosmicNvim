@@ -22,19 +22,6 @@ formatters.prettier = {
   formatStdin = true,
 }
 
---[[ local filetypes = {
-  css = { prettier },
-  html = { prettier },
-  lua = { stylua },
-  javascript = { prettier },
-  javascriptreact = { prettier },
-  json = { prettier },
-  markdown = { prettier },
-  scss = { prettier },
-  typescript = { prettier },
-  typescriptreact = { prettier },
-  yaml = { prettier },
-} ]]
 local filetype_defaults = {
   css = {},
   html = {},
@@ -73,7 +60,7 @@ formatters.defaults = {
 }
 
 local function is_formatter_disabled(formatter)
-  if config.lsp.servers.efm.disable_formatters then
+  if config.lsp and config.lsp.servers and config.lsp.servers.efm and config.lsp.servers.efm.disable_formatters then
     for i in pairs(config.lsp.servers.efm.disable_formatters) do
       local disabled = config.lsp.servers.efm.disable_formatters[i]
       if disabled == formatter then
@@ -87,17 +74,16 @@ end
 local languages = {}
 for formatter, filetypes in pairs(formatters.defaults) do
   if not is_formatter_disabled(formatter) then
-    -- print(formatter)
-    for i in pairs(formatters.defaults[formatter]) do
-      local filetype = formatters.defaults[formatter][i]
-      -- print(filetype)
+    for i in pairs(filetypes) do
+      local filetype = filetypes[i]
       languages[filetype] = languages[filetype] or {}
-      table.insert(languages[filetype], { [formatter] = formatters[formatter] })
+      table.insert(languages[filetype], formatters[formatter])
     end
   end
 end
 
 -- print(vim.inspect(languages))
+-- print(vim.inspect(languages['javascript']['prettier']))
 
 return {
   init_options = { documentFormatting = true, codeAction = true },
@@ -108,6 +94,6 @@ return {
       or util.root_pattern('.eslintrc.js')(fname)
       or util.root_pattern('tsconfig.json')(fname)
   end,
-  filetype_defaults = vim.tbl_keys(filetype_defaults),
+  filetypes = vim.tbl_keys(filetype_defaults),
   settings = { languages = languages },
 }
