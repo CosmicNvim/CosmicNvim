@@ -33,11 +33,11 @@ local disabled_servers = {}
 if config.lsp and config.lsp.servers then
   for config_server, config_opt in pairs(config.lsp.servers) do
     if config_opt == false then
-      for server in pairs(requested_servers) do
-        if (requested_servers[server] == config_server) then
-          table.insert(disabled_servers, requested_servers[server])
-        end
-      end
+      table.insert(disabled_servers, config_server)
+    elseif not vim.tbl_contains(requested_servers, config_server) then
+      -- add additonally defined servers to be installed
+      -- todo: how to handle non-default server opts?
+      table.insert(requested_servers, config_server)
     end
   end
 end

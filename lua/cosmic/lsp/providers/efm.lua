@@ -61,11 +61,8 @@ formatters.defaults = {
 
 local function is_formatter_disabled(formatter)
   if config.lsp and config.lsp.servers and config.lsp.servers.efm and config.lsp.servers.efm.disable_formatters then
-    for i in pairs(config.lsp.servers.efm.disable_formatters) do
-      local disabled = config.lsp.servers.efm.disable_formatters[i]
-      if disabled == formatter then
-        return true
-      end
+    if vim.tbl_contains(config.lsp.servers.efm.disable_formatters, formatter) then
+      return true
     end
   end
   return false
@@ -74,8 +71,7 @@ end
 local languages = {}
 for formatter, filetypes in pairs(formatters.defaults) do
   if not is_formatter_disabled(formatter) then
-    for i in pairs(filetypes) do
-      local filetype = filetypes[i]
+    for _, filetype in pairs(filetypes) do
       languages[filetype] = languages[filetype] or {}
       table.insert(languages[filetype], formatters[formatter])
     end
