@@ -52,20 +52,20 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 ```
   $ cd ~/.config
   $ git clone git@github.com:mattleong/CosmicNvim.git nvim
+  $ nvim .
 ```
-
-You will need to set up Packers compiled file via the steps below:
-
-1. Start NVIM
-2. Run `PackerUpdate` & `PackerCompile`
-3. Restart NVIM
-4. Install LSP servers, `:LspInstallInfo` (hit enter to install)
 
 Additional Cosmic installation [details](https://github.com/mattleong/CosmicNvim/wiki/Installation).
 
 Additional LSP server installation [details](https://github.com/mattleong/CosmicNvim/wiki/Installing-LSP-servers).
 
-## Mappings
+## Configuration
+
+[Cosmic configurations](./lua/cosmic/config/config.lua)
+[Add additional mappings](./lua/cosmic/config/mappings.lua)
+[Add addtional vim options](./lua/cosmic/config/editor.lua)
+
+## Default Mappings
 
 [File Navigation](./lua/cosmic/core/navigation/mappings.lua)
 
