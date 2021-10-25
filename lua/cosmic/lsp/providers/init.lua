@@ -44,13 +44,11 @@ end
 
 -- go through requested_servers and ensure installation
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
-for server in pairs(requested_servers) do
-  local requested_server = requested_servers[server]
-
-  local ok, serv = lsp_installer_servers.get_server(requested_server)
+for _, requested_server in pairs(requested_servers) do
+  local ok, server = lsp_installer_servers.get_server(requested_server)
   if ok then
-    if not serv:is_installed() then
-      serv:install()
+    if not server:is_installed() then
+      server:install()
     end
   end
 end

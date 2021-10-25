@@ -1,3 +1,4 @@
+local config = require('cosmic.config')
 local M = {}
 
 function M.on_attach(client, bufnr)
@@ -12,6 +13,12 @@ function M.on_attach(client, bufnr)
   if vim.tbl_contains(formatting_servers, client.name) then
     client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.document_range_formatting = true
+    if config.lsp and config.lsp.format_on_save then
+      -- todo: don't run more than once
+      vim.cmd([[
+         autocmd BufWritePre * lua vim.lsp.buf.formatting()
+      ]])
+    end
   else
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
