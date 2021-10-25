@@ -7,6 +7,9 @@ local utils = require('cosmic.utils')
 local colors = require('cosmic.core.theme.colors')
 local highlight = utils.highlight
 local icons = require('cosmic.core.theme.icons')
+local config = require('cosmic.config')
+
+local main_icon = config.statusline.main_icon
 
 local get_mode = function()
   local mode_colors = {
@@ -93,7 +96,7 @@ gls.left = {
   },
   {
     Ghost = {
-      provider = BracketProvider(icons.ghost, true),
+      provider = BracketProvider(main_icon, true),
       highlight = 'GalaxyViModeInv',
     },
   },
@@ -380,7 +383,7 @@ gls.short_line_left = {
   },
   {
     GhostShort = {
-      provider = BracketProvider(icons.ghost, true),
+      provider = BracketProvider(main_icon, true),
       highlight = { colors.bg, colors.white },
     },
   },
