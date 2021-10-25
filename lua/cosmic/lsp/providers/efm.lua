@@ -56,21 +56,12 @@ formatters.defaults = {
     'scss',
     'yaml',
   },
-  stylua = { 'lua' }
+  stylua = { 'lua' },
 }
-
-local function is_formatter_disabled(formatter)
-  if config.lsp and config.lsp.servers and config.lsp.servers.efm and config.lsp.servers.efm.disable_formatters then
-    if vim.tbl_contains(config.lsp.servers.efm.disable_formatters, formatter) then
-      return true
-    end
-  end
-  return false
-end
 
 local languages = {}
 for formatter, filetypes in pairs(formatters.defaults) do
-  if not is_formatter_disabled(formatter) then
+  if not vim.tbl_contains(config.lsp.servers.efm.disable_formatters, formatter) then
     for _, filetype in pairs(filetypes) do
       languages[filetype] = languages[filetype] or {}
       table.insert(languages[filetype], formatters[formatter])

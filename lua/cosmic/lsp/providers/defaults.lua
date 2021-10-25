@@ -1,6 +1,7 @@
 local config = require('cosmic.config')
 local M = {}
 
+local auto_format_lock = false;
 function M.on_attach(client, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
@@ -13,8 +14,8 @@ function M.on_attach(client, bufnr)
   if vim.tbl_contains(formatting_servers, client.name) then
     client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.document_range_formatting = true
-    if config.lsp and config.lsp.format_on_save then
-      -- todo: don't run more than once
+    if config.lsp.format_on_save and not auto_format_lock then
+      auto_format_lock = true -- just run autocommand once
       vim.cmd([[
          autocmd BufWritePre * lua vim.lsp.buf.formatting()
       ]])

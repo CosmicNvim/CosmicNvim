@@ -6,7 +6,7 @@ local default_config = {
     servers = {
       eslint = true,
       efm = {
-        disable_formatters = { 'eslint', },
+        disable_formatters = { 'eslint' },
       },
     },
   },
