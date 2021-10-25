@@ -2,6 +2,7 @@ local config = require('cosmic.config')
 local M = {}
 
 local auto_format_lock = false;
+
 function M.on_attach(client, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
@@ -10,10 +11,10 @@ function M.on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local formatting_servers = { 'efm', 'eslint' }
-  if vim.tbl_contains(formatting_servers, client.name) then
+  if config.lsp.can_client_format(client.name) then
     client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.document_range_formatting = true
+    -- auto format on save
     if config.lsp.format_on_save and not auto_format_lock then
       auto_format_lock = true -- just run autocommand once
       vim.cmd([[

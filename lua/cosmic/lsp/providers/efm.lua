@@ -23,17 +23,17 @@ formatters.prettier = {
 }
 
 local filetype_defaults = {
-  css = {},
-  html = {},
-  lua = {},
-  javascript = {},
-  javascriptreact = {},
-  json = {},
-  markdown = {},
-  scss = {},
-  typescript = {},
-  typescriptreact = {},
-  yaml = {},
+  'css',
+  'html',
+  'lua',
+  'javascript',
+  'javascriptreact',
+  'json',
+  'markdown',
+  'scss',
+  'typescript',
+  'typescriptreact',
+  'yaml',
 }
 
 formatters.defaults = {
@@ -61,6 +61,7 @@ formatters.defaults = {
 
 local languages = {}
 for formatter, filetypes in pairs(formatters.defaults) do
+  -- disable specific formatters
   if not vim.tbl_contains(config.lsp.servers.efm.disable_formatters, formatter) then
     for _, filetype in pairs(filetypes) do
       languages[filetype] = languages[filetype] or {}
@@ -68,9 +69,6 @@ for formatter, filetypes in pairs(formatters.defaults) do
     end
   end
 end
-
--- print(vim.inspect(languages))
--- print(vim.inspect(languages['javascript']['prettier']))
 
 return {
   init_options = { documentFormatting = true, codeAction = true },
@@ -81,6 +79,6 @@ return {
       or util.root_pattern('.eslintrc.js')(fname)
       or util.root_pattern('tsconfig.json')(fname)
   end,
-  filetypes = vim.tbl_keys(filetype_defaults),
+  filetypes = filetype_defaults,
   settings = { languages = languages },
 }
