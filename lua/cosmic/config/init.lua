@@ -18,7 +18,7 @@ local default_config = {
   lsp = {
     format_on_save = false, -- true/false or table of filetypes {'.ts', '.js',}
     servers = {
-      eslint = true, -- enable/disable server
+      eslint = true, -- enable/disable server + formatting
       -- rust_analyzer = true, -- enable non-default servers (todo: support for custom server configs)
       efm = {
         format = true, -- true or false
@@ -35,7 +35,7 @@ local config = vim.tbl_deep_extend('force', default_config, user_config)
 -- default servers that can be formatted
 local user_servers = vim.tbl_keys(config.lsp.servers)
 function config.lsp.can_client_format(client_name)
-  if (config.lsp.servers[client_name] == true) then
+  if config.lsp.servers[client_name] == true then
     return true
   end
 
@@ -43,7 +43,7 @@ function config.lsp.can_client_format(client_name)
     return (config.lsp.servers[client_name].format == true)
   end
 
-  return true
+  return false
 end
 
 return config

@@ -14,21 +14,21 @@ config.lsp = {
 
   servers = {
 
-    -- enable/disable server
+    -- enable/disable server + formatting
     eslint = false,
 
     -- enable non-default servers (todo: support for custom server configs)
     rust_analyzer = true,
 
-    efm = {
-      -- specifc to efm, e.g. 'eslint', 'prettier', 'lua'
-      disable_formatters = {},
-    },
-
    tsserver = {
-      -- disable formatting all together
+      -- disable formatting
       format = false,
    }
+
+    efm = {
+      -- specifc to efm, e.g. 'eslint', 'prettier', 'stylua'
+      disable_formatters = {},
+    },
 
   }
 }
