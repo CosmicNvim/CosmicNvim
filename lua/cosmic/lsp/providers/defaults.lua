@@ -14,12 +14,18 @@ function M.on_attach(client, bufnr)
   if config.lsp.can_client_format(client.name) then
     client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.document_range_formatting = true
-    -- auto format on save
+    -- check user config to see if we can format on save
     if config.lsp.format_on_save and not auto_format_lock then
       auto_format_lock = true -- just run autocommand once
-      vim.cmd([[
-         autocmd BufWritePre * lua vim.lsp.buf.formatting()
-      ]])
+      local format_filetypes = ''
+      if (vim.tbl_islist(config.lsp.format_on_save)) then
+        for _, ft in pairs(config.lsp.format_on_save) do
+          format_filetypes = format_filetypes .. '*' .. ft
+        end
+      else
+        format_filetypes = '*'
+      end
+      vim.cmd(string.format('autocomd BufWritePre %s lua vim.lsp.buf.formatting()', format_filetypes))
     end
   else
     client.resolved_capabilities.document_formatting = false
