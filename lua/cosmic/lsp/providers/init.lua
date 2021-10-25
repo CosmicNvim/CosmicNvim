@@ -62,9 +62,7 @@ lsp_installer.on_server_ready(function(server)
     opts.autostart = false
   end
 
-  if server.name == 'sumneko_lua' then
-    opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.lua'))
-  elseif server.name == 'tsserver' then
+  if server.name == 'tsserver' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.tsserver'))
   elseif server.name == 'efm' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.efm'))
