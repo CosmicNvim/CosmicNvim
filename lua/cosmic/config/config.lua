@@ -36,18 +36,3 @@ config.lsp = {
 return config
 
 ]]
-local config = {
-  lsp = {
-    format_on_save = true,
-    servers = {
-      eslint = {
-        format = false,
-      },
-      efm = {
-        -- specifc to efm, e.g. 'eslint', 'prettier', 'stylua'
-        disable_formatters = {'eslint'},
-      },
-    }
-  }
-}
-return config

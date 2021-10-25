@@ -68,6 +68,10 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 
 [Add additional vim options](./lua/cosmic/config/editor.lua)
 
+## Treesitter Support
+
+Enter `:TSInstall` followed by <TAB> to see your options for languages with treesitter support
+
 ## Default Mappings
 
 [File Navigation](./lua/cosmic/core/navigation/mappings.lua)
