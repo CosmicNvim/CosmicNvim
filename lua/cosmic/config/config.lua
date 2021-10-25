@@ -1,6 +1,7 @@
 -- Override Cosmic configuration options
 
 --[[
+
 local config = {}
 
 config.statusline = {
@@ -10,7 +11,7 @@ config.statusline = {
 config.lsp = {
 
   -- true/false or table of filetypes {'.ts', '.js',}
-  format_on_save = false,
+  format_on_save = true,
 
   servers = {
 
@@ -20,18 +21,18 @@ config.lsp = {
     -- enable non-default servers (todo: support for custom server configs)
     rust_analyzer = true,
 
-   tsserver = {
+    tsserver = {
       -- disable formatting
       format = false,
-   }
+    },
 
     efm = {
       -- specifc to efm, e.g. 'eslint', 'prettier', 'stylua'
-      disable_formatters = {},
+      disable_formatters = {'eslint'},
     },
-
-  }
+  },
 }
 
 return config
+
 ]]
