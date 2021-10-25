@@ -16,9 +16,11 @@ local default_config = {
     main_icon = require('cosmic.core.theme.icons').ghost,
   },
   lsp = {
-    format_on_save = false, -- true/false or table of filetypes {'.ts', '.js',}
+    format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     servers = {
-      eslint = true, -- enable/disable server + formatting
+      eslint = {
+        format = false,
+      }, -- enable/disable server + formatting
       -- rust_analyzer = true, -- enable non-default servers (todo: support for custom server configs)
       efm = {
         format = true, -- true or false
