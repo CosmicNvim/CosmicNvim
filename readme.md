@@ -30,7 +30,7 @@ Full featured native LSP functionality!
 - Explore files with [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
 - Fuzzy finder and some LSP actions with [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)
-- Easy LSP installation with [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
+- Auto LSP installation with [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
 - Autocompletion provided by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - Session management with [auto-session](https://github.com/rmagatti/auto-session)
@@ -62,7 +62,9 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 ## Configuration
 
 [Cosmic configurations](./lua/cosmic/config/config.lua)
+
 [Add additional mappings](./lua/cosmic/config/mappings.lua)
+
 [Add addtional vim options](./lua/cosmic/config/editor.lua)
 
 ## Default Mappings

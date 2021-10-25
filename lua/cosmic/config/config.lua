@@ -3,6 +3,10 @@
 --[[
 local config = {}
 
+config.statusline = {
+  main_icon = '★',
+}
+
 config.lsp = {
 
   -- true/false or table of filetypes {'.ts', '.js',}
