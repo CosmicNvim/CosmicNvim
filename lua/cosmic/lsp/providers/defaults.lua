@@ -1,7 +1,7 @@
 local config = require('cosmic.config')
 local M = {}
 
-local auto_format_lock = false;
+local auto_format_lock = false
 
 function M.on_attach(client, bufnr)
   local function buf_set_option(...)
@@ -18,14 +18,22 @@ function M.on_attach(client, bufnr)
     if config.lsp.format_on_save and not auto_format_lock then
       auto_format_lock = true -- just run autocommand once
       local format_filetypes = ''
-      if (vim.tbl_islist(config.lsp.format_on_save)) then
+      if vim.tbl_islist(config.lsp.format_on_save) then
         for _, ft in pairs(config.lsp.format_on_save) do
           format_filetypes = format_filetypes .. '*' .. ft
         end
       else
         format_filetypes = '*'
       end
-      vim.cmd(string.format('autocmd BufWritePre %s lua vim.lsp.buf.formatting_sync(nil, 200)', format_filetypes))
+      vim.cmd(string.format(
+        [[
+          augroup CosmicFormat
+          autocmd!
+          autocmd BufWritePre %s lua vim.lsp.buf.formatting_sync(nil, 200)
+          augroup end
+        ]],
+        format_filetypes
+      ))
     end
   else
     client.resolved_capabilities.document_formatting = false
