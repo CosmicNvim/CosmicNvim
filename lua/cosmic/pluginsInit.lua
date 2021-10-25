@@ -6,6 +6,22 @@ end
 
 local use = packer.use
 
+local ok, user_plugins = pcall(require, 'cosmic.config.plugins')
+if not ok then
+  error(string.format('Error loading user custom plugins...\n\n%s', user_plugins))
+  return false
+end
+
+if user_plugins == true then
+  user_plugins = {
+    disable = {},
+  }
+end
+
+if not vim.tbl_islist(user_plugins.disable) then
+  user_plugins.disable = {}
+end
+
 return packer.startup(function()
   use('wbthomason/packer.nvim')
 
@@ -94,6 +110,7 @@ return packer.startup(function()
     'tpope/vim-fugitive',
     opt = true,
     cmd = 'Git',
+    disable = vim.tbl_contains(user_plugins.disable, 'tpope/vim-fugitive'),
   })
 
   -- git column signs
@@ -104,6 +121,7 @@ return packer.startup(function()
     config = function()
       require('gitsigns').setup()
     end,
+    disable = vim.tbl_contains(user_plugins.disable, 'lewis6991/gitsigns.nvim'),
   })
 
   -- floating terminal
@@ -142,6 +160,7 @@ return packer.startup(function()
         pre_save_cmds = { 'NvimTreeClose', 'cclose' },
       })
     end,
+    disable = vim.tbl_contains(user_plugins.disable, 'rmagatti/auto-session'),
   })
 
   -- lang/syntax stuff
@@ -162,6 +181,7 @@ return packer.startup(function()
   use({
     'b3nj5m1n/kommentary',
     event = 'BufRead',
+    disable = vim.tbl_contains(user_plugins.disable, 'b3nj5m1n/kommentary'),
   })
 
   -- colorized hex codes
@@ -172,5 +192,12 @@ return packer.startup(function()
     config = function()
       require('colorizer').setup()
     end,
+    disable = vim.tbl_contains(user_plugins.disable, 'norcalli/nvim-colorizer.lua'),
   })
+
+  if user_plugins.add and not vim.tbl_isempty(user_plugins) then
+    for _, plugin in pairs(user_plugins.add) do
+      use(plugin)
+    end
+  end
 end)

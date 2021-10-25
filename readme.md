@@ -64,6 +64,8 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 
 [Cosmic configurations](./lua/cosmic/config/config.lua)
 
+[Plugin configurations](./lua/cosmic/config/plugins.lua)
+
 [Add additional mappings](./lua/cosmic/config/mappings.lua)
 
 [Add additional vim options](./lua/cosmic/config/editor.lua)
