@@ -1,8 +1,8 @@
 local cmd = vim.cmd
 
-cmd('packadd packer.nvim')
-
 local present, packer = pcall(require, 'packer')
+
+local first_install = false
 
 if not present then
   local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
@@ -24,8 +24,7 @@ if not present then
 
   if present then
     print('Packer cloned successfully.')
-    packer.sync()
-    packer.compile()
+    first_install = true
   else
     error("Couldn't clone packer !\nPacker path: " .. packer_path .. '\n' .. packer)
   end
@@ -41,9 +40,12 @@ packer.init({
   git = {
     clone_timeout = 800, -- Timeout, in seconds, for git clones
   },
-  compile_path = vim.fn.stdpath('config')..'/lua/cosmic/compiled.lua',
+  compile_path = vim.fn.stdpath('config') .. '/lua/cosmic/compiled.lua',
   auto_clean = true,
   compile_on_sync = true,
 })
 
-return packer
+return {
+  packer = packer,
+  first_install = first_install,
+}

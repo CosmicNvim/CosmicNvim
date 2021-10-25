@@ -17,4 +17,5 @@
   },
 }
 
-return plugins ]]
+return plugins
+]]

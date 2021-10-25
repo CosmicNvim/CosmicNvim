@@ -1,9 +1,10 @@
-local present, packer = pcall(require, 'cosmic.packer')
+local present, cosmic_packer = pcall(require, 'cosmic.packer')
 
 if not present then
   return false
 end
 
+local packer = cosmic_packer.packer
 local use = packer.use
 
 local ok, user_plugins = pcall(require, 'cosmic.config.plugins')
