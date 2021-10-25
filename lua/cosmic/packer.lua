@@ -24,6 +24,8 @@ if not present then
 
   if present then
     print('Packer cloned successfully.')
+    packer.sync()
+    packer.compile()
   else
     error("Couldn't clone packer !\nPacker path: " .. packer_path .. '\n' .. packer)
   end
