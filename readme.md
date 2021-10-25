@@ -46,7 +46,8 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 #### Prerequisites
 - Neovim (+0.6.0)
 - [Node.js](https://nodejs.org/en/)
-- [prettierd](https://github.com/fsouza/prettierd) (for Prettier formatting)
+- [prettierd](https://github.com/fsouza/prettierd) (for Prettier formatting, optional)
+- [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/efm, optional)
 
 #### Install
 ```
@@ -65,7 +66,7 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 
 [Add additional mappings](./lua/cosmic/config/mappings.lua)
 
-[Add addtional vim options](./lua/cosmic/config/editor.lua)
+[Add additional vim options](./lua/cosmic/config/editor.lua)
 
 ## Default Mappings
 
