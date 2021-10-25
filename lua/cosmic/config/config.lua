@@ -1,16 +1,21 @@
+-- Override Cosmic configuration options
+
+--[[
 local config = {}
---[[ config.lsp = {
+config.lsp = {
   format_on_save = true,
   servers = {
     eslint = false,
     efm = {
       format = false -- disable formatting all together
-      disable_formatters = {'eslint', 'prettier', 'stylua'}
+      disable_formatters = {}, -- e.g. 'eslint', 'prettier', 'lua'
     },
    tsserver = {
       format = false,
    }
   }
-} ]]
+}
 
 return config
+]]
+
