@@ -201,4 +201,8 @@ return packer.startup(function()
       use(plugin)
     end
   end
+
+  if cosmic_packer.first_install then
+    packer.sync()
+  end
 end)
