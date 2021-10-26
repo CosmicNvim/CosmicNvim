@@ -1,8 +1,8 @@
 require('cosmic.disabled')
 require('cosmic.pluginsInit')
 require('cosmic.compiled')
-require('cosmic.mappings')
 require('cosmic.editor')
+require('cosmic.mappings')
 
 do
   local ok, err = pcall(require, 'cosmic.config.editor')
