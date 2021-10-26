@@ -15,10 +15,14 @@ end
 
 if user_plugins == true then
   user_plugins = {
+    add = {},
     disable = {},
   }
 end
 
+if not vim.tbl_islist(user_plugins.add) then
+  user_plugins.add = {}
+end
 if not vim.tbl_islist(user_plugins.disable) then
   user_plugins.disable = {}
 end
@@ -200,7 +204,7 @@ return packer.startup(function()
     disable = vim.tbl_contains(user_plugins.disable, 'colorizer'),
   })
 
-  if user_plugins.add and not vim.tbl_isempty(user_plugins) then
+  if user_plugins.add and not vim.tbl_isempty(user_plugins.add) then
     for _, plugin in pairs(user_plugins.add) do
       use(plugin)
     end
