@@ -73,6 +73,7 @@ return packer.startup(function()
       'NvimTreeRefresh',
       'NvimTreeToggle',
     },
+    disable = vim.tbl_contains(user_plugins.disable, 'nvim-tree'),
   })
 
   use({ -- lsp
@@ -111,7 +112,7 @@ return packer.startup(function()
     'tpope/vim-fugitive',
     opt = true,
     cmd = 'Git',
-    disable = vim.tbl_contains(user_plugins.disable, 'tpope/vim-fugitive'),
+    disable = vim.tbl_contains(user_plugins.disable, 'fugitive'),
   })
 
   -- git column signs
@@ -122,7 +123,7 @@ return packer.startup(function()
     config = function()
       require('gitsigns').setup()
     end,
-    disable = vim.tbl_contains(user_plugins.disable, 'lewis6991/gitsigns.nvim'),
+    disable = vim.tbl_contains(user_plugins.disable, 'gitsigns'),
   })
 
   -- floating terminal
@@ -133,6 +134,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.core.terminal')
     end,
+    disable = vim.tbl_contains(user_plugins.disable, 'terminal'),
   })
 
   -- file navigation
@@ -150,6 +152,7 @@ return packer.startup(function()
       require('cosmic.core.navigation')
     end,
     event = 'BufRead',
+    disable = vim.tbl_contains(user_plugins.disable, 'telescope'),
   })
 
   -- session management
@@ -161,7 +164,7 @@ return packer.startup(function()
         pre_save_cmds = { 'NvimTreeClose', 'cclose' },
       })
     end,
-    disable = vim.tbl_contains(user_plugins.disable, 'rmagatti/auto-session'),
+    disable = vim.tbl_contains(user_plugins.disable, 'auto-session'),
   })
 
   -- lang/syntax stuff
@@ -176,13 +179,14 @@ return packer.startup(function()
     config = function()
       require('cosmic.core.treesitter')
     end,
+    disable = vim.tbl_contains(user_plugins.disable, 'treesitter'),
   })
 
   -- comments and stuff
   use({
     'b3nj5m1n/kommentary',
     event = 'BufRead',
-    disable = vim.tbl_contains(user_plugins.disable, 'b3nj5m1n/kommentary'),
+    disable = vim.tbl_contains(user_plugins.disable, 'kommentary'),
   })
 
   -- colorized hex codes
@@ -193,7 +197,7 @@ return packer.startup(function()
     config = function()
       require('colorizer').setup()
     end,
-    disable = vim.tbl_contains(user_plugins.disable, 'norcalli/nvim-colorizer.lua'),
+    disable = vim.tbl_contains(user_plugins.disable, 'colorizer'),
   })
 
   if user_plugins.add and not vim.tbl_isempty(user_plugins) then

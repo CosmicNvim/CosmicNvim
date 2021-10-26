@@ -1,11 +1,14 @@
 local cmd = vim.cmd
 local opt = vim.opt
+local g = vim.g
 local indent = 2
 
 cmd([[
 	filetype plugin indent on
 	autocmd BufWritePre * :%s/\s\+$//e
 ]])
+
+g.mapleader = ' '
 
 -- misc
 opt.syntax = 'enable'

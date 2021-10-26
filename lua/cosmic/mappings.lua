@@ -1,7 +1,4 @@
-local g = vim.g
 local map = require('cosmic.utils').map
-
-g.mapleader = ' '
 
 -- Quickfix
 map('n', '<leader>ck', ':cexpr []<CR>', { noremap = true })

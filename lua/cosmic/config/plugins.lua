@@ -8,12 +8,16 @@
       requires = { 'kyazdani42/nvim-web-devicons' },
     },
   },
-  disable = {
-    'tpope/vim-fugitive',
-    'lewis6991/gitsigns.nvim',
-    'norcalli/nvim-colorizer.lua',
-    'rmagatti/auto-session',
-    'b3nj5m1n/kommentary',
+  disable = { -- disabling some plugins may mean you'll have to remap some keybindings
+    'auto-session',
+    'colorizer',
+    'fugitive',
+    'gitsigns',
+    'kommentary',
+    'treesitter'
+    'telescope'
+    'terminal',
+    'nvim-tree'
   },
 }
 
