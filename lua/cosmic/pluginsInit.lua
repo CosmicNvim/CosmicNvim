@@ -60,6 +60,7 @@ return packer.startup(function()
       require('cosmic.core.statusline')
     end,
     after = 'nvim-web-devicons',
+    disable = vim.tbl_contains(user_plugins.disable, 'statusline'),
   })
 
   -- file explorer

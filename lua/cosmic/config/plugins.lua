@@ -16,6 +16,7 @@ local plugins = {
     'fugitive',
     'gitsigns',
     'kommentary',
+    'statusline',
     'treesitter',
     'telescope',
     'terminal',
