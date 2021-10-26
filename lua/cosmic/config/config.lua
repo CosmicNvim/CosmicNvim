@@ -25,7 +25,7 @@ config.lsp = {
 
     -- disable underline for diagnostic
     underline = false,
-  }
+  },
 
   servers = {
 
