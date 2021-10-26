@@ -46,9 +46,6 @@ function M.on_attach(client, bufnr)
       border = 'single',
     },
   }, bufnr)
-
-  -- for some reason, highlights have to happen here
-  require('cosmic.core.theme.highlights').init()
 end
 
 M.flags = {

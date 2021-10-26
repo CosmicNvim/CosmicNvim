@@ -2,6 +2,7 @@ require('cosmic.disabled')
 require('cosmic.pluginsInit')
 require('cosmic.compiled')
 require('cosmic.editor')
+require('cosmic.core.theme.highlights')
 
 do
   local ok, err = pcall(require, 'cosmic.config.editor')

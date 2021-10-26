@@ -6,7 +6,6 @@ local opts_cursor = {
   initial_mode = 'normal',
   sorting_strategy = 'ascending',
   layout_strategy = 'cursor',
-  preview_title = false,
   results_title = false,
   layout_config = {
     width = 0.5,
@@ -34,6 +33,7 @@ require('telescope').setup({
     file_ignore_patterns = {
       '.git/',
     },
+    dynamic_preview_title = true,
     vimgrep_arguments = {
       'rg',
       '--ignore',
