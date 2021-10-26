@@ -9,8 +9,8 @@ local opts_cursor = {
   preview_title = false,
   results_title = false,
   layout_config = {
-    width = 0.3,
-    height = 0.3,
+    width = 0.5,
+    height = 0.4,
   },
   mappings = mappings,
 }
