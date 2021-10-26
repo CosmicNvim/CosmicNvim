@@ -12,7 +12,6 @@ local opts_cursor = {
     width = 0.5,
     height = 0.4,
   },
-  mappings = mappings,
 }
 
 local opts_vertical = {
@@ -59,11 +58,11 @@ require('telescope').setup({
   pickers = {
     buffers = {
       prompt_title = '✨ Search Buffers ✨',
-      mappings = {
+      mappings = vim.tbl_deep_extend('force', {
         n = {
           ['d'] = actions.delete_buffer,
         },
-      },
+      }, mappings),
       sort_mru = true,
       preview_title = false,
     },
@@ -79,12 +78,15 @@ require('telescope').setup({
     }),
     lsp_implementations = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Implementations',
+      mappings = mappings,
     }),
     lsp_definitions = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Definitions',
+      mappings = mappings,
     }),
     lsp_references = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'References',
+      mappings = mappings,
     }),
     find_files = {
       prompt_title = '✨ Search Project ✨',
