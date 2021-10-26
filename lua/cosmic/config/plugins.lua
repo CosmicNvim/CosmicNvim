@@ -16,8 +16,8 @@ local plugins = {
     'fugitive',
     'gitsigns',
     'kommentary',
-    'treesitter'
-    'telescope'
+    'treesitter',
+    'telescope',
     'terminal',
     'nvim-tree'
   },
