@@ -28,6 +28,6 @@ map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', opts
 map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', opts)
 
 -- typescript helpers
-map('n', '<space>gr', ':tslsprenamefile<cr>', opts)
-map('n', '<space>go', ':tslsporganize<cr>', opts)
-map('n', '<space>gi', ':tslspimportall<cr>', opts)
+map('n', '<space>gr', ':TSLspRenameFile<CR>', opts)
+map('n', '<space>go', ':TSLspOrganize<CR>', opts)
+map('n', '<space>gi', ':TSLspImportAll<CR>', opts)
