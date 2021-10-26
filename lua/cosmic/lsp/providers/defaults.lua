@@ -40,8 +40,6 @@ function M.on_attach(client, bufnr)
     client.resolved_capabilities.document_range_formatting = false
   end
 
-  require('cosmic.lsp.mappings')
-
   require('lsp_signature').on_attach({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = {
