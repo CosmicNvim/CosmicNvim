@@ -19,9 +19,14 @@ highlight('WarningMsg', 'None', colors.warn)
 
 -- legacy diagnostics highlight
 highlight('LspDiagnosticsError', 'None', colors.error)
-highlight('LspDiagnosticsWarn', 'None', colors.warn)
-highlight('LspDiagnosticsInfo', 'None', colors.info)
+highlight('LspDiagnosticsWarning', 'None', colors.warn)
+highlight('LspDiagnosticsInformation', 'None', colors.info)
 highlight('LspDiagnosticsHint', 'None', colors.hint)
+
+highlight('LspDiagnosticsSignError', 'None', colors.error)
+highlight('LspDiagnosticsSignWarning', 'None', colors.warn)
+highlight('LspDiagnosticsSignInformation', 'None', colors.info)
+highlight('LspDiagnosticsSignHint', 'None', colors.hint)
 
 -- signature highlight color
 highlight('LspSignatureActiveParameter', 'None', colors.orange)
