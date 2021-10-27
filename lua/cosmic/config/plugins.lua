@@ -20,7 +20,7 @@ local plugins = {
     'treesitter',
     'telescope',
     'terminal',
-    'nvim-tree'
+    'nvim-tree',
   },
 }
 

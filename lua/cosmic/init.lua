@@ -1,21 +1,17 @@
-require('cosmic.disabled')
-require('cosmic.pluginsInit')
-require('cosmic.compiled')
-require('cosmic.editor')
-require('cosmic.core.theme.highlights')
+local cosmic_modules = {
+  'cosmic.disabled',
+  'cosmic.pluginsInit',
+  'cosmic.compiled',
+  'cosmic.editor',
+  'cosmic.core.theme.highlights',
+  'cosmic.config.editor',
+  'cosmic.mappings',
+  'cosmic.config.mappings',
+}
 
-do
-  local ok, err = pcall(require, 'cosmic.config.editor')
+for _, mod in ipairs(cosmic_modules) do
+  local ok, err = pcall(require, mod)
   if not ok then
-    error(string.format('Error loading custom editor settings...\n\n%s', err))
-  end
-end
-
-require('cosmic.mappings')
-
-do
-  local ok, err = pcall(require, 'cosmic.config.mappings')
-  if not ok then
-    error(string.format('Error loading custom mapping settings...\n\n%s', err))
+    error(string.format('Error loading %s...\n\n%s', mod, err))
   end
 end
