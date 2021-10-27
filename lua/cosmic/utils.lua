@@ -34,9 +34,9 @@ end
 
 function M.highlight(group, bg, fg, gui)
   if gui ~= nil and gui ~= '' then
-    vim.api.nvim_command(string.format('hi %s guibg=%s guifg=%s gui=%s', group, bg, fg, gui))
+    vim.api.nvim_command(('hi %s guibg=%s guifg=%s gui=%s'):format(group, bg, fg, gui))
   else
-    vim.api.nvim_command(string.format('hi %s guibg=%s guifg=%s', group, bg, fg))
+    vim.api.nvim_command(('hi %s guibg=%s guifg=%s'):format(group, bg, fg))
   end
 end
 

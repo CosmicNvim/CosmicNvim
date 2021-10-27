@@ -2,7 +2,7 @@
 local ok, user_config = pcall(require, 'cosmic.config.config')
 
 if not ok then
-  error(string.format('Error loading user config...\n\n%s', user_config))
+  error(('Error loading user config...\n\n%s'):format(user_config))
   error('No user config, using default instead...')
 end
 
@@ -29,7 +29,7 @@ local default_config = {
         -- todo: icons for diagnostics?
         --[[ format = function(diagnostic)
         if diagnostic.severity == vim.diagnostic.severity.ERROR then
-          return string.format('E: %s', diagnostic.message)
+          return ('E: %s'):format(diagnostic.message)
         end
         return diagnostic.message
       end, ]]

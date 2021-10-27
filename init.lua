@@ -1,5 +1,5 @@
 local ok, err = pcall(require, 'cosmic')
 
 if not ok then
-  error(string.format('Error loading core...\n\n%s', err))
+  error(('Error loading core...\n\n%s'):format(err))
 end
