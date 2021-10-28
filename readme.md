@@ -32,8 +32,10 @@ Full featured native LSP functionality!
 - Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)
 - Auto LSP installation with [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
 - Autocompletion provided by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- Additional TypeScript support with [nvim-lsp-ts-utils](https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - Session management with [auto-session](https://github.com/rmagatti/auto-session)
+- Notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - Additional custom highlighting
 - Floating windows for references, renaming, diagnostics, code actions and more!
 
@@ -44,12 +46,14 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 ### Quick guide
 
 #### Prerequisites
+
 - Neovim (+0.6.0)
 - [Node.js](https://nodejs.org/en/)
 - [prettierd](https://github.com/fsouza/prettierd) (for prettier formatting w/efm, optional)
 - [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/efm, optional)
 
 #### Install
+
 ```
   $ cd ~/.config
   $ git clone git@github.com:mattleong/CosmicNvim.git nvim
@@ -72,7 +76,7 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 
 ## Treesitter Support
 
-Enter `:TSInstall` followed by <TAB> to see your options for languages with treesitter support
+Enter `:TSInstall` followed by <TAB> to see your options for additional language support.
 
 ## Default Mappings
 
@@ -89,31 +93,40 @@ Enter `:TSInstall` followed by <TAB> to see your options for languages with tree
 ## 📷 Screenshots
 
 ### Statusline
+
 ![normal](https://user-images.githubusercontent.com/3721204/137990346-8f614b6b-63da-471a-b5be-635b587f10a1.png)
 ![insert](https://user-images.githubusercontent.com/3721204/137990345-d036c2d1-0f9e-4d4e-bd6c-13e051609f61.png)
 ![visual](https://user-images.githubusercontent.com/3721204/137990348-6eb29e9b-e912-4d6e-8a5e-e763816613d7.png)
 ![replace](https://user-images.githubusercontent.com/3721204/137990347-b59428d6-b5fe-4edb-8ceb-ab37b69b7e76.png)
 
 ### Autocomplete
+
 <img width="2532" alt="autocomplete" src="https://user-images.githubusercontent.com/3721204/138015498-3b18495e-9011-4ac2-9f3f-f020feb85caf.png">
 
 ### Rename
+
 ![rename](https://user-images.githubusercontent.com/3721204/138015221-0e55c63a-b640-46e0-9353-7e891f804d67.png)
 
 #### Rename change notification
+
 <img width="486" alt="Screen Shot 2021-10-27 at 9 41 06 PM" src="https://user-images.githubusercontent.com/3721204/139188213-b1e067a6-4317-40c8-b9b2-77b0ae696f8a.png">
 
 ### Hover
+
 ![hover](https://user-images.githubusercontent.com/3721204/138015245-a530e565-d1cb-4d2a-bcbc-7a8109befcda.png)
 
 ### Find Reference
+
 ![reference](https://user-images.githubusercontent.com/3721204/138015259-d59fbafb-86cc-471e-bfe8-46f723da359c.png)
 
 ### Code Action
+
 ![code_action](https://user-images.githubusercontent.com/3721204/138015273-770404ea-9cf7-48cf-8a31-62d865e6fa2a.png)
 
 ### File Navigation
+
 ![find_files](https://user-images.githubusercontent.com/3721204/138015288-9d592ebd-cfe0-4dc4-9cf0-2f2940487576.png)
 
 ### Floating Terminal
+
 ![terminal](https://user-images.githubusercontent.com/3721204/138015301-97d95ac5-49f3-4d31-9f1e-db15d4e6e9e2.png)
