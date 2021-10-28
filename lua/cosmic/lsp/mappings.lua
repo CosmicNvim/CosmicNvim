@@ -22,10 +22,10 @@ map('v', '<leader>ga', '<cmd>lua require("telescope.builtin").lsp_range_code_act
 map('n', '<leader>gf', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
 map('n', '<C-K>', '<cmd>lua require("lsp_signature").signature()<cr>', opts)
 
--- lsp workleader
-map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workleader_folder()<cr>', opts)
-map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workleader_folder()<cr>', opts)
-map('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workleader_folders()))<cr>', opts)
+-- lsp workspace
+map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', opts)
+map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', opts)
+map('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', opts)
 
 -- typescript helpers
 map('n', '<leader>gr', ':TSLspRenameFile<CR>', opts)
