@@ -62,13 +62,17 @@ function M.rename()
         vim.notify(("Error running LSP query '%s': %s"):format(method, err), vim.log.levels.ERROR)
         return
       end
+
       -- echo the resulting changes
+      local new_word = ''
       if result and result.changes then
         local msg = ''
         for f, c in pairs(result.changes) do
+          new_word = c[1].newText
           msg = msg .. ('%d changes -> %s'):format(#c, utils.get_relative_path(f)) .. '\n'
         end
-        msg = msg:sub(1, #msg - 1)
+        local currName = vim.fn.expand('<cword>')
+        msg = msg .. ('\n%s -> %s'):format(currName, new_word)
         vim.notify(msg, vim.log.levels.INFO)
       end
     end
@@ -77,14 +81,14 @@ function M.rename()
   end
 
   function M._rename()
-    local newName = vim.trim(vim.fn.getline('.'):sub(5, -1))
+    local new_name = vim.trim(vim.fn.getline('.'):sub(5, -1))
     vim.cmd([[q!]])
     local params = lsp.util.make_position_params()
-    local currName = vim.fn.expand('<cword>')
-    if not (newName and #newName > 0) or newName == currName then
+    local curr_name = vim.fn.expand('<cword>')
+    if not (new_name and #new_name > 0) or new_name == curr_name then
       return
     end
-    params.newName = newName
+    params.newName = new_name
     lsp.buf_request(0, 'textDocument/rename', params, handler)
   end
 end
