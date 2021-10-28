@@ -61,9 +61,12 @@ function M.rename()
     end
     -- echo the resulting changes
     if result and result.changes then
+      local msg = ''
       for f, c in pairs(result.changes) do
-        vim.notify(('%d changes -> %s'):format(#c, utils.get_relative_path(f)), vim.log.levels.INFO)
+        msg = msg .. ('%d changes -> %s'):format(#c, utils.get_relative_path(f)) .. '\n'
       end
+      msg = msg:sub(1, #msg - 1)
+      vim.notify(msg, vim.log.levels.INFO)
     end
     vim.lsp.handlers[method](...)
   end
