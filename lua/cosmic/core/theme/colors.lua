@@ -7,6 +7,7 @@ local colors = {
   blue = themeColors.blue,
   purple = themeColors.magenta,
   orange = themeColors.orange,
+  trace = themeColors.orange,
   hint = themeColors.teal,
   red = themeColors.red,
   diffAdd = themeColors.git.add,

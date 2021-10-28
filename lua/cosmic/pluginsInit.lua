@@ -37,6 +37,24 @@ return packer.startup(function()
     end,
   })
 
+  use({
+    'rcarriga/nvim-notify',
+    config = function()
+      local icons = require('cosmic.core.theme.icons')
+      require('notify').setup({
+        icons = {
+          ERROR = icons.error,
+          WARN = icons.warn,
+          INFO = icons.info,
+          DEBUG = icons.debug,
+          TRACE = icons.trace,
+        },
+      })
+      vim.notify = require('notify')
+    end,
+    disable = vim.tbl_contains(user_plugins.disable, 'notify'),
+  })
+
   use({ -- color scheme
     'folke/tokyonight.nvim',
     config = function()

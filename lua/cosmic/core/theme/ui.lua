@@ -1,14 +1,15 @@
-local colors = require('cosmic.core.theme.colors')
-local icons = require('cosmic.core.theme.icons')
-local highlight = require('cosmic.utils').highlight
 local M = {}
 
 local api = vim.api
 local lsp = vim.lsp
 local buf, win
-local prompt_str = ' ' .. icons.folder.arrow_closed .. ' '
 
 function M.rename()
+  local colors = require('cosmic.core.theme.colors')
+  local icons = require('cosmic.core.theme.icons')
+  local utils = require('cosmic.utils')
+  local highlight = utils.highlight
+  local prompt_str = ' ' .. icons.folder.arrow_closed .. ' '
   local map_opts = { noremap = true, silent = true }
   local opts = {
     style = 'minimal',
@@ -27,7 +28,7 @@ function M.rename()
   api.nvim_win_set_option(win, 'sidescrolloff', 0)
   api.nvim_buf_set_option(buf, 'modifiable', true)
   api.nvim_buf_set_option(buf, 'buftype', 'prompt')
-  api.nvim_buf_add_highlight(buf, -1, "LspRenamePrompt", 0, 0, #prompt_str)
+  api.nvim_buf_add_highlight(buf, -1, 'LspRenamePrompt', 0, 0, #prompt_str)
   highlight('LspRenamePrompt', 'None', colors.selection_caret)
 
   vim.fn.prompt_setprompt(buf, prompt_str)
@@ -42,6 +43,31 @@ function M.rename()
     map_opts
   )
 
+  local function handler(...)
+    local result
+    local method
+    local err = select(1, ...)
+    local is_new = not select(4, ...) or type(select(4, ...)) ~= 'number'
+    if is_new then
+      method = select(3, ...).method
+      result = select(2, ...)
+    else
+      method = select(2, ...)
+      result = select(3, ...)
+    end
+    if err then
+      vim.notify(("Error running LSP query '%s': %s"):format(method, err), vim.log.levels.ERROR)
+      return
+    end
+    -- echo the resulting changes
+    if result and result.changes then
+      for f, c in pairs(result.changes) do
+        vim.notify(('%d changes -> %s'):format(#c, utils.get_relative_path(f)), vim.log.levels.INFO)
+      end
+    end
+    vim.lsp.handlers[method](...)
+  end
+
   function M._rename()
     local newName = vim.trim(vim.fn.getline('.'):sub(5, -1))
     vim.cmd([[q!]])
@@ -51,7 +77,7 @@ function M.rename()
       return
     end
     params.newName = newName
-    lsp.buf_request(0, 'textDocument/rename', params)
+    lsp.buf_request(0, 'textDocument/rename', params, handler)
   end
 end
 
