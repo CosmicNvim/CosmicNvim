@@ -72,8 +72,8 @@ function M.rename()
           msg = msg .. ('%d changes -> %s'):format(#c, utils.get_relative_path(f)) .. '\n'
         end
         local currName = vim.fn.expand('<cword>')
-        msg = msg .. ('\n%s -> %s'):format(currName, new_word)
-        vim.notify(msg, vim.log.levels.INFO)
+        msg = msg:sub(1, #msg - 1)
+        vim.notify(msg, vim.log.levels.INFO, { title = ('Rename: %s -> %s'):format(currName, new_word) })
       end
     end
 
