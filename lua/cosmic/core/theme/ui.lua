@@ -8,6 +8,7 @@ function M.rename()
   local colors = require('cosmic.core.theme.colors')
   local icons = require('cosmic.core.theme.icons')
   local utils = require('cosmic.utils')
+  local config = require('cosmic.config')
   local highlight = utils.highlight
   local prompt_str = ' ' .. icons.folder.arrow_closed .. ' '
   local map_opts = { noremap = true, silent = true }
@@ -55,19 +56,23 @@ function M.rename()
       method = select(2, ...)
       result = select(3, ...)
     end
-    if err then
-      vim.notify(("Error running LSP query '%s': %s"):format(method, err), vim.log.levels.ERROR)
-      return
-    end
-    -- echo the resulting changes
-    if result and result.changes then
-      local msg = ''
-      for f, c in pairs(result.changes) do
-        msg = msg .. ('%d changes -> %s'):format(#c, utils.get_relative_path(f)) .. '\n'
+
+    if config.lsp.rename_notification then
+      if err then
+        vim.notify(("Error running LSP query '%s': %s"):format(method, err), vim.log.levels.ERROR)
+        return
       end
-      msg = msg:sub(1, #msg - 1)
-      vim.notify(msg, vim.log.levels.INFO)
+      -- echo the resulting changes
+      if result and result.changes then
+        local msg = ''
+        for f, c in pairs(result.changes) do
+          msg = msg .. ('%d changes -> %s'):format(#c, utils.get_relative_path(f)) .. '\n'
+        end
+        msg = msg:sub(1, #msg - 1)
+        vim.notify(msg, vim.log.levels.INFO)
+      end
     end
+
     vim.lsp.handlers[method](...)
   end
 

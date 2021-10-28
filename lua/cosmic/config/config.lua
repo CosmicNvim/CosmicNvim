@@ -13,6 +13,9 @@ config.lsp = {
   -- true/false or table of filetypes {'.ts', '.js',}
   format_on_save = true,
 
+  -- set to false to disable rename notification
+  rename_notification = false,
+
   diagnostic = {
     -- disable diagnostic virtual text (see :h vim.diagnostic.config for all options)
     virtual_text = false,
