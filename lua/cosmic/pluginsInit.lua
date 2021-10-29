@@ -52,6 +52,7 @@ return packer.startup(function()
       })
       vim.notify = require('notify')
     end,
+    after = 'tokyonight.nvim',
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
   })
 

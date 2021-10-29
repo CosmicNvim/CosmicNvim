@@ -49,11 +49,11 @@ local default_config = {
         },
         -- todo: icons for diagnostics?
         --[[ format = function(diagnostic)
-        if diagnostic.severity == vim.diagnostic.severity.ERROR then
-          return ('E: %s'):format(diagnostic.message)
-        end
-        return diagnostic.message
-      end, ]]
+          if diagnostic.severity == vim.diagnostic.severity.ERROR then
+            return ('E: %s'):format(diagnostic.message)
+          end
+          return diagnostic.message
+        end, ]]
       },
     },
     servers = {
@@ -78,7 +78,6 @@ local default_config = {
 }
 
 local config = vim.tbl_deep_extend('force', default_config, user_config)
--- default servers that can be formatted
 local user_servers = vim.tbl_keys(config.lsp.servers)
 function config.lsp.can_client_format(client_name)
   if config.lsp.servers[client_name] == true then
