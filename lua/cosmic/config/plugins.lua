@@ -17,6 +17,7 @@ local plugins = {
     'gitsigns',
     'kommentary',
     'statusline',
+    'theme', -- if default theme is disabled, you will need to update add your own statusline
     'treesitter',
     'telescope',
     'terminal',

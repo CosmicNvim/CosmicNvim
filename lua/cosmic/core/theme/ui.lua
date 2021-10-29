@@ -5,7 +5,6 @@ local lsp = vim.lsp
 local buf, win
 
 function M.rename()
-  local colors = require('cosmic.core.theme.colors')
   local icons = require('cosmic.core.theme.icons')
   local utils = require('cosmic.utils')
   local config = require('cosmic.config')
@@ -29,8 +28,12 @@ function M.rename()
   api.nvim_win_set_option(win, 'sidescrolloff', 0)
   api.nvim_buf_set_option(buf, 'modifiable', true)
   api.nvim_buf_set_option(buf, 'buftype', 'prompt')
-  api.nvim_buf_add_highlight(buf, -1, 'LspRenamePrompt', 0, 0, #prompt_str)
-  highlight('LspRenamePrompt', 'None', colors.selection_caret)
+
+  local _, colors = pcall(require, 'cosmic.core.theme.colors')
+  if colors then
+    api.nvim_buf_add_highlight(buf, -1, 'LspRenamePrompt', 0, 0, #prompt_str)
+    highlight('LspRenamePrompt', 'None', colors.selection_caret)
+  end
 
   vim.fn.prompt_setprompt(buf, prompt_str)
 
