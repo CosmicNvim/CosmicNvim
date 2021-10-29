@@ -62,6 +62,7 @@ return packer.startup(function()
       vim.g.tokyonight_sidebars = { 'qf', 'packer' }
       vim.cmd('color tokyonight')
     end,
+    -- disable = vim.tbl_contains(user_plugins.disable, 'theme'),
   })
 
   use({ -- icons

@@ -31,6 +31,20 @@ local get_mode = function()
   end
 end
 
+local function get_basename(file)
+  return file:match('^.+/(.+)$')
+end
+
+local function get_git_root()
+  local git_dir = require('galaxyline.providers.vcs').get_git_dir()
+  if not git_dir then
+    return 'not a git dir '
+  end
+
+  local git_root = git_dir:gsub('/.git/?$', '')
+  return get_basename(git_root) .. ' '
+end
+
 local check_width_and_git_and_buffer = function()
   return condition.check_git_workspace() and condition.buffer_not_empty()
 end
@@ -337,7 +351,7 @@ gls.right = {
   },
   {
     GitRoot = {
-      provider = utils.get_git_root,
+      provider = get_git_root,
       condition = check_buffer_and_width,
       icon = '  ' .. icons.file .. ' ',
       highlight = 'GalaxyViModeInv',
@@ -434,7 +448,7 @@ gls.short_line_right = {
   },
   {
     GitRootShort = {
-      provider = utils.get_git_root,
+      provider = get_git_root,
       condition = condition.buffer_not_empty,
       icon = '  ' .. icons.file .. ' ',
       highlight = { colors.bg, colors.white },
