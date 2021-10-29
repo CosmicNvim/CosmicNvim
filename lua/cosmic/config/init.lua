@@ -30,9 +30,17 @@ local default_config = {
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     rename_notification = true,
+    -- vim.diagnostic.config settiings
     diagnostic = {
+      underline = true,
       signs = true,
       update_in_insert = false,
+      severity_sort = true,
+      float = {
+        show_header = false,
+        source = 'always',
+        border = 'single',
+      },
       virtual_text = {
         spacing = 4,
         source = 'always',
@@ -49,10 +57,15 @@ local default_config = {
       },
     },
     servers = {
+      -- override lsp server options
+      --[[ rust_analyzer = {
+        opts = {}
+      }, ]]
+      -- enable/disable server + formatting
+      -- rust_analyzer = true, -- enable non-default servers (todo: support for custom server configs)
       eslint = {
         format = false,
-      }, -- enable/disable server + formatting
-      -- rust_analyzer = true, -- enable non-default servers (todo: support for custom server configs)
+      },
       efm = {
         format = true, -- true or false
         disable_formatters = { 'eslint' }, -- e.g. 'eslint', 'prettier', 'stylua'

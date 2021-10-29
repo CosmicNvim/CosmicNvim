@@ -4,6 +4,7 @@
 
 local config = {}
 
+-- statusline settings
 config.statusline = {
   main_icon = '★',
 }
@@ -29,12 +30,13 @@ config.lsp = {
   -- set to false to disable rename notification
   rename_notification = false,
 
+  -- see :h vim.diagnostic.config for all diagnostic configuration options
   diagnostic = {
 
-    -- disable diagnostic virtual text (see :h vim.diagnostic.config for all options)
+    -- disable diagnostic virtual text
     virtual_text = false,
 
-    -- disable diagnostic signs (see :h vim.diagnostic.config for all options)
+    -- disable diagnostic signs
     signs = false,
 
     -- enable diagnostic update on insert
@@ -70,6 +72,7 @@ config.lsp = {
       -- specifc to efm, e.g. 'eslint', 'prettier', 'stylua'
       disable_formatters = {'eslint'},
     },
+
   },
 }
 

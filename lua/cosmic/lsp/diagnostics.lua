@@ -3,18 +3,7 @@ local icons = require('cosmic.core.theme.icons')
 local M = {}
 
 function M.init()
-  vim.diagnostic.config({
-    underline = true,
-    update_in_insert = config.lsp.diagnostic.update_in_insert,
-    virtual_text = config.lsp.diagnostic.virtual_text,
-    signs = config.lsp.diagnostic.signs,
-    severity_sort = true,
-    float = {
-      show_header = false,
-      source = 'always',
-      border = 'single',
-    },
-  })
+  vim.diagnostic.config(config.lsp.diagnostic)
 
   local function do_diagnostic_signs()
     local signs = {
