@@ -15,6 +15,18 @@ local default_config = {
   statusline = {
     main_icon = require('cosmic.core.theme.icons').ghost,
   },
+  treesitter = {
+    ensure_installed = {
+      'typescript',
+      'javascript',
+      'tsx',
+      'html',
+      'css',
+      'lua',
+      'json',
+      'scss',
+    },
+  },
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     rename_notification = true,

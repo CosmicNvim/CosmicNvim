@@ -8,6 +8,19 @@ config.statusline = {
   main_icon = '★',
 }
 
+config.treesitter = {
+  ensure_installed = {
+    'typescript',
+    'javascript',
+    'tsx',
+    'html',
+    'css',
+    'lua',
+    'json',
+    'scss',
+  },
+}
+
 config.lsp = {
 
   -- true/false or table of filetypes {'.ts', '.js',}
@@ -17,6 +30,7 @@ config.lsp = {
   rename_notification = false,
 
   diagnostic = {
+
     -- disable diagnostic virtual text (see :h vim.diagnostic.config for all options)
     virtual_text = false,
 
@@ -28,6 +42,7 @@ config.lsp = {
 
     -- disable underline for diagnostic
     underline = false,
+
   },
 
   servers = {
@@ -36,7 +51,7 @@ config.lsp = {
     eslint = false,
 
     -- enable non-default servers, use default lsp config
-    -- check here for configs that will be used: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
+    -- check here for configs that will be used by default: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
     rust_analyzer = true,
 
     tsserver = {

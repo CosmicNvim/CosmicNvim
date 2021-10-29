@@ -1,18 +1,6 @@
+local config = require('cosmic.config')
 require('nvim-treesitter.configs').setup({
-  ensure_installed = {
-    'typescript',
-    'javascript',
-    'tsx',
-    'html',
-    'css',
-    'bash',
-    'lua',
-    'json',
-    'python',
-    'php',
-    'scss',
-    'go',
-  },
+  ensure_installed = config.treesitter.ensure_installed,
   highlight = {
     enable = true,
     use_languagetree = true,
