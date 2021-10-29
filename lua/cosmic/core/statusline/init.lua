@@ -415,7 +415,9 @@ gls.short_line_left = {
         end,
         'FileIcon',
       },
-      condition = condition.buffer_not_empty,
+      condition = function()
+        return condition.buffer_not_empty() and vim.bo.filetype ~= 'NvimTree'
+      end,
       highlight = {
         require('galaxyline.providers.fileinfo').get_file_icon,
         colors.bg,
@@ -425,14 +427,18 @@ gls.short_line_left = {
   {
     FilePathShort = {
       provider = FilePathShortProvider,
-      condition = condition.buffer_not_empty,
+      condition = function()
+        return condition.buffer_not_empty() and vim.bo.filetype ~= 'NvimTree'
+      end,
       highlight = { colors.white, colors.bg },
     },
   },
   {
     FileNameShort = {
       provider = 'FileName',
-      condition = condition.buffer_not_empty,
+      condition = function()
+        return condition.buffer_not_empty() and vim.bo.filetype ~= 'NvimTree'
+      end,
       highlight = { colors.white, colors.bg },
     },
   },
