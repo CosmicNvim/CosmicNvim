@@ -28,23 +28,12 @@ function M.highlight(group, bg, fg, gui)
   end
 end
 
-function M.get_relative_path(path)
-  local split_path = M.split(path, '/')
-  local split_cwd = M.split(vim.fn.getcwd(), '/')
-  local curr_dir = split_cwd[#split_cwd]
-  local nice_path = ''
-
-  local ok = false
-  for _, dir in ipairs(split_path) do
-    if dir == curr_dir then
-      ok = true
-    end
-    if ok then
-      nice_path = nice_path .. '/' .. dir
-    end
-  end
-
-  return '.' .. nice_path
+function M.get_relative_path(file_path)
+  local plenary_path = require('plenary.path')
+  local parsed_path, _ = file_path:gsub('file://', '')
+  local path = plenary_path:new(parsed_path)
+  local relative_path = path:make_relative(vim.fn.getcwd())
+  return './' .. relative_path
 end
 
 return M

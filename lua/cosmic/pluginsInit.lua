@@ -37,6 +37,23 @@ return packer.startup(function()
     end,
   })
 
+  use({ 'nvim-lua/plenary.nvim' })
+
+  use({ -- color scheme
+    'folke/tokyonight.nvim',
+    config = function()
+      vim.g.tokyonight_style = 'night'
+      vim.g.tokyonight_sidebars = { 'qf', 'packer' }
+      vim.cmd('color tokyonight')
+    end,
+    disable = vim.tbl_contains(user_plugins.disable, 'theme'),
+  })
+
+  use({ -- icons
+    'kyazdani42/nvim-web-devicons',
+    after = 'tokyonight.nvim',
+  })
+
   use({
     'rcarriga/nvim-notify',
     config = function()
@@ -54,21 +71,6 @@ return packer.startup(function()
     end,
     after = 'tokyonight.nvim',
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
-  })
-
-  use({ -- color scheme
-    'folke/tokyonight.nvim',
-    config = function()
-      vim.g.tokyonight_style = 'night'
-      vim.g.tokyonight_sidebars = { 'qf', 'packer' }
-      vim.cmd('color tokyonight')
-    end,
-    disable = vim.tbl_contains(user_plugins.disable, 'theme'),
-  })
-
-  use({ -- icons
-    'kyazdani42/nvim-web-devicons',
-    after = 'tokyonight.nvim',
   })
 
   -- theme stuff
