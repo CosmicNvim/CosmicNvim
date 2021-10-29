@@ -35,12 +35,20 @@ config.lsp = {
     -- enable/disable server + formatting
     eslint = false,
 
-    -- enable non-default servers (todo: support for custom server configs)
+    -- enable non-default servers, use default lsp config
+    -- check here for configs that will be used: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
     rust_analyzer = true,
 
     tsserver = {
       -- disable formatting
       format = false,
+      -- OR add/override server options
+      opts = {
+        on_attach = function(client, bufnr) end,
+        flags = {
+          debounce_text_changes = 150,
+        }
+      }
     },
 
     efm = {

@@ -51,17 +51,16 @@ for _, requested_server in pairs(requested_servers) do
   end
 end
 
--- print(vim.inspect(requested_servers))
--- print(vim.inspect(disabled_servers))
-
 lsp_installer.on_server_ready(function(server)
   local opts = default_config
 
+  -- disable server if config disabled server list says so
   opts.autostart = true
   if vim.tbl_contains(disabled_servers, server.name) then
     opts.autostart = false
   end
 
+  -- set up default cosmic options
   if server.name == 'tsserver' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.tsserver'))
   elseif server.name == 'efm' then
@@ -70,6 +69,13 @@ lsp_installer.on_server_ready(function(server)
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.jsonls'))
   elseif server.name == 'eslint' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.eslint'))
+  end
+
+  -- override options if user definds them
+  if config.lsp.servers[server.name] then
+    if config.lsp.servers[server.name].opts ~= nil then
+      opts = config.lsp.servers[server.name].opts
+    end
   end
 
   -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
