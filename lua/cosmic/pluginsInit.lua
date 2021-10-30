@@ -89,7 +89,7 @@ return packer.startup(function()
   use({
     'kyazdani42/nvim-tree.lua',
     config = function()
-      require('cosmic.core.file-explorer').init()
+      require('cosmic.core.file-explorer')
     end,
     opt = true,
     cmd = {

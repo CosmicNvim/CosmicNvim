@@ -1,6 +1,17 @@
 local actions = require('telescope.actions')
-local mappings = require('cosmic.core.navigation.mappings').mappings()
 local icons = require('cosmic.core.theme.icons')
+
+local default_mappings = {
+  n = {
+    ['Q'] = actions.smart_add_to_qflist + actions.open_qflist,
+    ['q'] = actions.smart_send_to_qflist + actions.open_qflist,
+    ['<tab>'] = actions.toggle_selection + actions.move_selection_next,
+    ['<s-tab>'] = actions.toggle_selection + actions.move_selection_previous,
+    ['v'] = actions.file_vsplit,
+    ['s'] = actions.file_split,
+    ['<cr>'] = actions.file_edit,
+  },
+}
 
 local opts_cursor = {
   initial_mode = 'normal',
@@ -58,11 +69,11 @@ require('telescope').setup({
   pickers = {
     buffers = {
       prompt_title = '✨ Search Buffers ✨',
-      mappings = vim.tbl_deep_extend('force', {
+      default_mappings = vim.tbl_deep_extend('force', {
         n = {
           ['d'] = actions.delete_buffer,
         },
-      }, mappings),
+      }, default_mappings),
       sort_mru = true,
       preview_title = false,
     },
@@ -74,33 +85,33 @@ require('telescope').setup({
     }),
     lsp_document_diagnostics = vim.tbl_deep_extend('force', opts_vertical, {
       prompt_title = 'Document Diagnostics',
-      mappings = mappings,
+      default_mappings = default_mappings,
     }),
     lsp_implementations = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Implementations',
-      mappings = mappings,
+      default_mappings = default_mappings,
     }),
     lsp_definitions = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Definitions',
-      mappings = mappings,
+      default_mappings = default_mappings,
     }),
     lsp_references = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'References',
-      mappings = mappings,
+      default_mappings = default_mappings,
     }),
     find_files = {
       prompt_title = '✨ Search Project ✨',
-      mappings = mappings,
+      default_mappings = default_mappings,
       hidden = true,
     },
     git_files = {
       prompt_title = '✨ Search Git Project ✨',
-      mappings = mappings,
+      default_mappings = default_mappings,
       hidden = true,
     },
     live_grep = {
       prompt_title = '✨ Live Grep ✨',
-      mappings = mappings,
+      default_mappings = default_mappings,
     },
   },
 })

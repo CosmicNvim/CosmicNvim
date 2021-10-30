@@ -32,7 +32,7 @@ opt.expandtab = true
 opt.wildmenu = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/wp-includes/*', '*/wp-admin/*', '*/vendor/*' }
+opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
 opt.hlsearch = false
 
 -- ui
