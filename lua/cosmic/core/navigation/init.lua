@@ -69,7 +69,7 @@ require('telescope').setup({
   pickers = {
     buffers = {
       prompt_title = '✨ Search Buffers ✨',
-      default_mappings = vim.tbl_deep_extend('force', {
+      mappings = vim.tbl_deep_extend('force', {
         n = {
           ['d'] = actions.delete_buffer,
         },
@@ -85,33 +85,33 @@ require('telescope').setup({
     }),
     lsp_document_diagnostics = vim.tbl_deep_extend('force', opts_vertical, {
       prompt_title = 'Document Diagnostics',
-      default_mappings = default_mappings,
+      mappings = default_mappings,
     }),
     lsp_implementations = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Implementations',
-      default_mappings = default_mappings,
+      mappings = default_mappings,
     }),
     lsp_definitions = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Definitions',
-      default_mappings = default_mappings,
+      mappings = default_mappings,
     }),
     lsp_references = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'References',
-      default_mappings = default_mappings,
+      mappings = default_mappings,
     }),
     find_files = {
       prompt_title = '✨ Search Project ✨',
-      default_mappings = default_mappings,
+      mappings = default_mappings,
       hidden = true,
     },
     git_files = {
       prompt_title = '✨ Search Git Project ✨',
-      default_mappings = default_mappings,
+      mappings = default_mappings,
       hidden = true,
     },
     live_grep = {
       prompt_title = '✨ Live Grep ✨',
-      default_mappings = default_mappings,
+      mappings = default_mappings,
     },
   },
 })
