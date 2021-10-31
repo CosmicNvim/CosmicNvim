@@ -37,6 +37,8 @@ return packer.startup(function()
     end,
   })
 
+  use('nathom/filetype.nvim')
+
   use({ 'nvim-lua/plenary.nvim' })
 
   use({ -- color scheme
