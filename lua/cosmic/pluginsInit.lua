@@ -216,6 +216,38 @@ return packer.startup(function()
     disable = vim.tbl_contains(user_plugins.disable, 'kommentary'),
   })
 
+  -- todo highlights
+  use({
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      local icons = require('cosmic.core.theme.icons')
+      require('todo-comments').setup({
+        keywords = {
+          FIX = {
+            icon = icons.debug, -- icon used for the sign, and in search results
+            color = 'error', -- can be a hex color, or a named color (see below)
+            alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE', 'fix', 'fixme', 'bug' }, -- a set of other keywords that all map to this FIX keywords
+            -- signs = false, -- configure signs for some keywords individually
+          },
+          TODO = { icon = icons.check, color = 'info', alt = { 'todo' } },
+          HACK = { icon = icons.flame, color = 'warning', alt = { 'hack' } },
+          WARN = { icon = icons.warn, color = 'warning', alt = { 'WARNING', 'XXX', 'warn', 'warning' } },
+          PERF = { icon = icons.perf, alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE', 'perf', 'performance' } },
+          NOTE = { icon = icons.note, color = 'hint', alt = { 'INFO', 'note' } },
+        },
+        colors = {
+          error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
+          warning = { 'DiagnosticWarning', 'WarningMsg', '#FBBF24' },
+          info = { 'DiagnosticInformation', '#2563EB' },
+          hint = { 'DiagnosticHint', '#10B981' },
+          default = { 'Identifier', '#7C3AED' },
+        },
+      })
+    end,
+    event = 'BufRead',
+    disable = vim.tbl_contains(user_plugins.disable, 'todo-comments'),
+  })
   -- colorized hex codes
   use({
     'norcalli/nvim-colorizer.lua',
