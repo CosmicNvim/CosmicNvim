@@ -1,16 +1,13 @@
 local map = require('cosmic.utils').map
 
--- Quickfix
+-- Quickfix mappings
 map('n', '<leader>ck', ':cexpr []<cr>')
 map('n', '<leader>cc', ':cclose <cr>')
 map('n', '<leader>co', ':copen <cr>')
 map('n', '<leader>cf', ':cfdo %s/')
 
-map('n', '<leader>cp', ':cprev <cr>')
-map('n', '<leader>cn', ':cnext <cr>')
-
-map('n', '<leader>bp', ':bprev <cr>')
-map('n', '<leader>bn', ':bnext <cr>')
+-- make Y behave like others
+map('n', 'Y', 'y$')
 
 require('cosmic.core.navigation.mappings')
 require('cosmic.core.file-explorer.mappings')
