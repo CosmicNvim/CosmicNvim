@@ -232,11 +232,11 @@ return packer.startup(function()
             alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE', 'fix', 'fixme', 'bug' }, -- a set of other keywords that all map to this FIX keywords
             -- signs = false, -- configure signs for some keywords individually
           },
-          TODO = { icon = icons.check, color = 'info', alt = { 'todo' } },
-          HACK = { icon = icons.flame, color = 'warning', alt = { 'hack' } },
-          WARN = { icon = icons.warn, color = 'warning', alt = { 'WARNING', 'XXX', 'warn', 'warning' } },
-          PERF = { icon = icons.perf, alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE', 'perf', 'performance' } },
-          NOTE = { icon = icons.note, color = 'hint', alt = { 'INFO', 'note' } },
+          TODO = { icon = icons.check, color = 'info' },
+          HACK = { icon = icons.flame, color = 'warning' },
+          WARN = { icon = icons.warn, color = 'warning', alt = { 'WARNING', 'XXX' } },
+          PERF = { icon = icons.perf, alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
+          NOTE = { icon = icons.note, color = 'hint', alt = { 'INFO' } },
         },
         colors = {
           error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
