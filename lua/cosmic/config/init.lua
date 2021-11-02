@@ -57,18 +57,43 @@ local default_config = {
       },
     },
     servers = {
-      -- override lsp server options
-      --[[ rust_analyzer = {
-        opts = {}
-      }, ]]
       -- enable/disable server + formatting
-      -- rust_analyzer = true, -- enable non-default servers (todo: support for custom server configs)
+      -- rust_analyzer = true, -- enable non-default servers
+
+      -- or override lsp server options
+      --[[
+      rust_analyzer = {
+        opts = {}
+      },
+      ]]
+
+      -- enable, but disable formatting
       eslint = {
         format = false,
       },
       efm = {
-        format = true, -- true or false
+        format = true,
         disable_formatters = { 'eslint' }, -- e.g. 'eslint', 'prettier', 'stylua'
+      },
+      sumneko_lua = {
+        opts = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+              },
+              workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = {
+                  [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                  [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                },
+                maxPreload = 10000,
+              },
+            },
+          },
+        },
       },
       tsserver = {
         format = false, -- disable formatting all together

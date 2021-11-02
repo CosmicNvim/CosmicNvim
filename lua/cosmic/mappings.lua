@@ -9,7 +9,7 @@ map('n', '<leader>cf', ':cfdo %s/')
 -- make Y behave like others
 map('n', 'Y', 'y$')
 
-require('cosmic.core.navigation.mappings')
+require('cosmic.core.navigation.mappings').init()
 require('cosmic.core.file-explorer.mappings')
 require('cosmic.core.terminal.mappings')
 require('cosmic.lsp.mappings')

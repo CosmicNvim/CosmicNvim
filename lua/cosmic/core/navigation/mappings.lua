@@ -1,23 +1,36 @@
 local map = require('cosmic.utils').map
+local M = {}
 
--- navigation
-map('n', '<leader>sf', ':Telescope find_files<cr>')
-map('n', '<leader>sg', ':Telescope git_files<cr>')
-map('n', '<leader>sk', ':Telescope buffers<cr>')
-map('n', '<leader>ss', ':Telescope live_grep<cr>')
+M.project_files = function()
+  local opts = {} -- define here if you want to define something
+  local ok = pcall(require('telescope.builtin').git_files, opts)
+  if not ok then
+    require('telescope.builtin').find_files(opts)
+  end
+end
 
--- git navigation
-map('n', '<leader>ggc', ':Telescope git_commits<cr>')
-map('n', '<leader>ggs', ':Telescope git_status<cr>')
+M.init = function()
+  -- navigation
+  map('n', '<leader>sf', '<cmd>lua require("cosmic.core.navigation.mappings").project_files()<cr>')
+  map('n', '<leader>sp', ':Telescope find_files<cr>')
+  map('n', '<leader>sk', ':Telescope buffers<cr>')
+  map('n', '<leader>ss', ':Telescope live_grep<cr>')
 
--- quickfix navigation
-map('n', '<leader>cp', ':cprev<cr>')
-map('n', '<leader>cn', ':cnext<cr>')
+  -- git navigation
+  map('n', '<leader>ggc', ':Telescope git_commits<cr>')
+  map('n', '<leader>ggs', ':Telescope git_status<cr>')
 
--- buffer navigation
-map('n', '<leader>bp', ':bprev<cr>')
-map('n', '<leader>bn', ':bnext<cr>')
+  -- quickfix navigation
+  map('n', '<leader>cp', ':cprev<cr>')
+  map('n', '<leader>cn', ':cnext<cr>')
 
--- tab navigation
-map('n', '<leader>tp', ':tprev<cr>')
-map('n', '<leader>tn', ':tnext<cr>')
+  -- buffer navigation
+  map('n', '<leader>bp', ':bprev<cr>')
+  map('n', '<leader>bn', ':bnext<cr>')
+
+  -- tab navigation
+  map('n', '<leader>tp', ':tprev<cr>')
+  map('n', '<leader>tn', ':tnext<cr>')
+end
+
+return M
