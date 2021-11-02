@@ -105,11 +105,11 @@ Enter `:TSInstall` followed by <TAB> to see your options for additional language
 
 ### Rename
 
-![rename](https://user-images.githubusercontent.com/3721204/138015221-0e55c63a-b640-46e0-9353-7e891f804d67.png)
+<img width="1791" alt="Screen Shot 2021-11-01 at 9 42 21 PM" src="https://user-images.githubusercontent.com/3721204/139788009-ea4637e8-2791-419b-b5a5-794daea8774d.png">
 
 #### Rename change notification
 
-<img width="486" alt="Screen Shot 2021-10-27 at 9 41 06 PM" src="https://user-images.githubusercontent.com/3721204/139188213-b1e067a6-4317-40c8-b9b2-77b0ae696f8a.png">
+<img width="452" alt="Screen Shot 2021-11-01 at 9 38 32 PM" src="https://user-images.githubusercontent.com/3721204/139787765-bf10958d-21d9-48d1-8632-135950a3f1fb.png">
 
 ### Hover
 
