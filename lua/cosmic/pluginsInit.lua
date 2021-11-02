@@ -121,7 +121,7 @@ return packer.startup(function()
   use({
     'hrsh7th/nvim-cmp',
     config = function()
-      require('cosmic.lsp.autocomplete')
+      require('cosmic.lsp.autocomplete').init()
     end,
     requires = {
       'hrsh7th/cmp-nvim-lsp',
@@ -131,9 +131,17 @@ return packer.startup(function()
       'hrsh7th/nvim-cmp',
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
-      'windwp/nvim-autopairs',
       'onsails/lspkind-nvim',
     },
+    event = 'InsertEnter',
+  })
+
+  use({
+    'windwp/nvim-autopairs',
+    config = function()
+      require('cosmic.lsp.autocomplete').autopairs()
+    end,
+    after = 'nvim-cmp',
   })
 
   -- git commands
