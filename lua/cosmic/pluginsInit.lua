@@ -45,7 +45,7 @@ return packer.startup(function()
     'folke/tokyonight.nvim',
     config = function()
       vim.g.tokyonight_style = 'night'
-      vim.g.tokyonight_sidebars = { 'qf', 'packer' }
+      vim.g.tokyonight_sidebars = { 'qf' }
       vim.cmd('color tokyonight')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'theme'),
@@ -73,6 +73,7 @@ return packer.startup(function()
     end,
     after = 'tokyonight.nvim',
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
+    event = 'BufEnter',
   })
 
   -- theme stuff
@@ -134,6 +135,7 @@ return packer.startup(function()
       'onsails/lspkind-nvim',
     },
     event = 'InsertEnter',
+    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
   use({
@@ -142,6 +144,7 @@ return packer.startup(function()
       require('cosmic.lsp.autocomplete').autopairs()
     end,
     after = 'nvim-cmp',
+    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
   -- git commands
@@ -213,6 +216,7 @@ return packer.startup(function()
       'nvim-treesitter/nvim-treesitter-refactor',
     },
     run = ':TSUpdate',
+    event = 'BufRead',
     config = function()
       require('cosmic.core.treesitter')
     end,

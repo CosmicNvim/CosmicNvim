@@ -12,6 +12,7 @@ local plugins = {
   },
   disable = { -- disabling some core plugins may mean you'll have to remap some keybindings
     'auto-session',
+    'autocomplete',
     'colorizer',
     'fugitive',
     'gitsigns',
