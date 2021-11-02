@@ -72,7 +72,7 @@ lsp_installer.on_server_ready(function(server)
   end
 
   -- override options if user definds them
-  if config.lsp.servers[server.name] then
+  if type(config.lsp.servers[server.name]) == 'table' then
     if config.lsp.servers[server.name].opts ~= nil then
       opts = config.lsp.servers[server.name].opts
     end
