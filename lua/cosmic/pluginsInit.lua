@@ -116,6 +116,8 @@ return packer.startup(function()
     config = function()
       require('cosmic.lsp')
     end,
+    after = 'nvim-cmp',
+    event = 'BufEnter',
   })
 
   -- autocompletion
@@ -134,7 +136,7 @@ return packer.startup(function()
       'saadparwaiz1/cmp_luasnip',
       'onsails/lspkind-nvim',
     },
-    event = 'InsertEnter',
+    event = 'BufEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
