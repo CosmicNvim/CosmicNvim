@@ -203,7 +203,7 @@ return packer.startup(function()
     event = 'VimEnter',
     config = function()
       require('auto-session').setup({
-        pre_save_cmds = { 'NvimTreeClose', 'cclose' },
+        pre_save_cmds = { 'NvimTreeClose', 'cclose', 'lua vim.notify.dismiss()' },
       })
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'auto-session'),
