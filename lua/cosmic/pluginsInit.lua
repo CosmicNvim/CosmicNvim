@@ -193,7 +193,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.core.navigation')
     end,
-    event = 'BufRead',
+    event = 'BufEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'telescope'),
   })
 
@@ -218,7 +218,7 @@ return packer.startup(function()
       'nvim-treesitter/nvim-treesitter-refactor',
     },
     run = ':TSUpdate',
-    event = 'BufRead',
+    event = 'BufEnter',
     config = function()
       require('cosmic.core.treesitter')
     end,
