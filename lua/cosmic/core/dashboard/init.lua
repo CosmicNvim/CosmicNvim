@@ -25,7 +25,7 @@ g.dashboard_session_directory = vim.fn.stdpath('data') .. '/sessions'
 
 g.dashboard_custom_section = {
   find_file = {
-    description = { icons.file1 .. ' Find  File          <leader>ff' },
+    description = { icons.file1 .. ' Find File           <leader>ff' },
     command = 'Telescope find_files',
   },
   file_explorer = {
@@ -37,9 +37,9 @@ g.dashboard_custom_section = {
     command = 'NvimTreeToggle',
   },
   last_session = {
-    description = { icons.clock .. ' Load session        <leader>sl' },
+    description = { icons.clock .. ' Load Session        <leader>sl' },
     command = 'lua vim.cmd(":silent RestoreSession")',
   },
 }
 
-g.dashboard_custom_footer = { '💫' }
+g.dashboard_custom_footer = { '💫 github.com/mattleong/CosmicNvim' }
