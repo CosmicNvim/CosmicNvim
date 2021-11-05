@@ -34,7 +34,7 @@ g.dashboard_custom_section = {
   },
   find_string = {
     description = { icons.word .. '  Grep String         <leader>fs' },
-    command = 'NvimTreeToggle',
+    command = 'Telescope grep_string',
   },
   last_session = {
     description = { icons.clock .. ' Load Session        <leader>sl' },
