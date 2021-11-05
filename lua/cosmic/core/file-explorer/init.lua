@@ -27,15 +27,18 @@ g.nvim_tree_icons = {
   },
 }
 
+g.nvim_tree_respect_buf_cwd = 1
+
 -- set up args
 local args = {
   auto_close = true,
   diagnostics = {
     enable = true,
   },
+  update_cwd = true,
   update_focused_file = {
     enable = true,
-    ignore_list = {},
+    update_cwd = true,
   },
 }
 

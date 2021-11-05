@@ -196,7 +196,7 @@ return packer.startup(function()
     disable = vim.tbl_contains(user_plugins.disable, 'telescope'),
   })
 
-  -- session management
+  -- session/project management
   use({
     'glepnir/dashboard-nvim',
     config = function()
