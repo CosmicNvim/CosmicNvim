@@ -14,6 +14,7 @@ local plugins = {
     'auto-session',
     'autocomplete',
     'colorizer',
+    'dashboard',
     'fugitive',
     'gitsigns',
     'kommentary',

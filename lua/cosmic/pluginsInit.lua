@@ -73,7 +73,6 @@ return packer.startup(function()
     end,
     after = 'tokyonight.nvim',
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
-    event = 'BufEnter',
   })
 
   -- theme stuff
@@ -199,12 +198,18 @@ return packer.startup(function()
 
   -- session management
   use({
+    'glepnir/dashboard-nvim',
+    config = function()
+      require('cosmic.core.dashboard')
+    end,
+    disable = vim.tbl_contains(user_plugins.disable, 'dashboard'),
+  })
+
+  use({
     'rmagatti/auto-session',
     event = 'VimEnter',
     config = function()
-      require('auto-session').setup({
-        pre_save_cmds = { 'NvimTreeClose', 'cclose', 'lua vim.notify.dismiss()' },
-      })
+      require('cosmic.core.session')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'auto-session'),
   })
@@ -228,7 +233,7 @@ return packer.startup(function()
   -- comments and stuff
   use({
     'b3nj5m1n/kommentary',
-    event = 'BufRead',
+    event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'kommentary'),
   })
 
@@ -261,7 +266,7 @@ return packer.startup(function()
         },
       })
     end,
-    event = 'BufRead',
+    event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'todo-comments'),
   })
   -- colorized hex codes
