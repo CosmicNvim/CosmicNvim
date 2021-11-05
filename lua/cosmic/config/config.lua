@@ -9,18 +9,8 @@ config.statusline = {
   main_icon = '★',
 }
 
-config.treesitter = {
-  ensure_installed = {
-    'typescript',
-    'javascript',
-    'tsx',
-    'html',
-    'css',
-    'lua',
-    'json',
-    'scss',
-  },
-}
+See cosmic defaults: cosmic/core/treesitter/init.lua
+config.treesitter = {}
 
 config.lsp = {
 
@@ -31,20 +21,8 @@ config.lsp = {
   rename_notification = false,
 
   -- see :h vim.diagnostic.config for all diagnostic configuration options
+  -- see cosmic defaults: cosmic/lsp/diagnostics.lua
   diagnostic = {
-
-    -- disable diagnostic virtual text
-    virtual_text = false,
-
-    -- disable diagnostic signs
-    signs = false,
-
-    -- enable diagnostic update on insert
-    update_in_insert = true,
-
-    -- disable underline for diagnostic
-    underline = false,
-
   },
 
   servers = {

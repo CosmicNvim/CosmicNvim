@@ -29,11 +29,11 @@ g.dashboard_custom_section = {
     command = 'Telescope find_files',
   },
   file_explorer = {
-    description = { icons.file2 .. ' File Manager        <C-n>    ' },
+    description = { icons.file2 .. ' File Manager        <C-n>     ' },
     command = 'NvimTreeToggle',
   },
   find_string = {
-    description = { icons.word .. '  Grep String         <leader>fs' },
+    description = { icons.word .. ' Grep String         <leader>fs' },
     command = 'Telescope grep_string',
   },
   last_session = {

@@ -1,7 +1,35 @@
 local config = require('cosmic.config')
 local icons = require('cosmic.core.theme.icons')
 
-vim.diagnostic.config(config.lsp.diagnostic)
+local defaults = {
+  underline = true,
+  signs = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    show_header = false,
+    source = 'always',
+    border = 'single',
+  },
+  virtual_text = {
+    spacing = 4,
+    source = 'always',
+    severity = {
+      min = vim.diagnostic.severity.HINT,
+    },
+    -- todo: icons for diagnostics?
+    --[[ format = function(diagnostic)
+          if diagnostic.severity == vim.diagnostic.severity.ERROR then
+            return ('E: %s'):format(diagnostic.message)
+          end
+          return diagnostic.message
+        end, ]]
+  },
+}
+
+local opts = vim.tbl_deep_extend('force', defaults, config.lsp.diagnostic or {})
+
+vim.diagnostic.config(opts)
 
 local function do_diagnostic_signs()
   local signs = {

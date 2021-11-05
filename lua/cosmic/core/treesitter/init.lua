@@ -1,6 +1,16 @@
 local config = require('cosmic.config')
-require('nvim-treesitter.configs').setup({
-  ensure_installed = config.treesitter.ensure_installed,
+
+local defaults = {
+  ensure_installed = {
+    'typescript',
+    'javascript',
+    'tsx',
+    'html',
+    'css',
+    'lua',
+    'json',
+    'scss',
+  },
   highlight = {
     enable = true,
     use_languagetree = true,
@@ -18,4 +28,6 @@ require('nvim-treesitter.configs').setup({
     highlight_definitions = { enable = true },
     highlight_current_scope = { enable = false },
   },
-})
+}
+
+require('nvim-treesitter.configs').setup(vim.tbl_deep_extend('force', defaults, config.treesitter or {}))

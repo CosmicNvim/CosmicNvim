@@ -15,47 +15,10 @@ local default_config = {
   statusline = {
     main_icon = require('cosmic.core.theme.icons').ghost,
   },
-  treesitter = {
-    ensure_installed = {
-      'typescript',
-      'javascript',
-      'tsx',
-      'html',
-      'css',
-      'lua',
-      'json',
-      'scss',
-    },
-  },
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     rename_notification = true,
     -- vim.diagnostic.config settiings
-    diagnostic = {
-      underline = true,
-      signs = true,
-      update_in_insert = false,
-      severity_sort = true,
-      float = {
-        show_header = false,
-        source = 'always',
-        border = 'single',
-      },
-      virtual_text = {
-        spacing = 4,
-        source = 'always',
-        severity = {
-          min = vim.diagnostic.severity.HINT,
-        },
-        -- todo: icons for diagnostics?
-        --[[ format = function(diagnostic)
-          if diagnostic.severity == vim.diagnostic.severity.ERROR then
-            return ('E: %s'):format(diagnostic.message)
-          end
-          return diagnostic.message
-        end, ]]
-      },
-    },
     servers = {
       -- enable/disable server + formatting
       -- rust_analyzer = true, -- enable non-default servers

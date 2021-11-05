@@ -9,7 +9,12 @@ local highlight = utils.highlight
 local icons = require('cosmic.core.theme.icons')
 local config = require('cosmic.config')
 
-local main_icon = config.statusline.main_icon
+local defaults = vim.tbl_deep_extend('force', {
+  statusline = {
+    main_icon = icons.ghost,
+  },
+}, config.statusline or {})
+local main_icon = defaults.statusline.main_icon
 
 local get_mode = function()
   local mode_colors = {
