@@ -67,6 +67,8 @@ lsp_installer.on_server_ready(function(server)
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.efm'))
   elseif server.name == 'jsonls' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.jsonls'))
+  elseif server.name == 'sumneko_lua' then
+    opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.lua'))
   elseif server.name == 'eslint' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.eslint'))
   end

@@ -38,26 +38,6 @@ local default_config = {
         format = true,
         disable_formatters = { 'eslint' }, -- e.g. 'eslint', 'prettier', 'stylua'
       },
-      sumneko_lua = {
-        opts = {
-          settings = {
-            Lua = {
-              diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
-              },
-              workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {
-                  [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                  [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                },
-                maxPreload = 10000,
-              },
-            },
-          },
-        },
-      },
       tsserver = {
         format = false, -- disable formatting all together
       },
