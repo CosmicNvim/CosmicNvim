@@ -94,16 +94,29 @@ return packer.startup(function()
     disable = vim.tbl_contains(user_plugins.disable, 'nvim-tree'),
   })
 
-  use({ -- lsp
-    'williamboman/nvim-lsp-installer',
+  use({
+    'neovim/nvim-lspconfig',
     requires = {
-      'neovim/nvim-lspconfig',
-      'jose-elias-alvarez/nvim-lsp-ts-utils',
-      'ray-x/lsp_signature.nvim',
+      {
+        'hrsh7th/cmp-nvim-lsp',
+        after = 'nvim-lspconfig',
+      },
+      {
+        'jose-elias-alvarez/nvim-lsp-ts-utils',
+        after = 'cmp-nvim-lsp',
+      },
+      {
+        'ray-x/lsp_signature.nvim',
+        after = 'nvim-lsp-ts-utils',
+      },
+      {
+        'williamboman/nvim-lsp-installer',
+        after = 'lsp_signature.nvim',
+        config = function()
+          require('cosmic.lsp')
+        end,
+      },
     },
-    config = function()
-      require('cosmic.lsp')
-    end,
     event = 'BufReadPre',
   })
 
@@ -120,7 +133,6 @@ return packer.startup(function()
       { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
       { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
       { 'onsails/lspkind-nvim', after = 'cmp-path' },
-      { 'hrsh7th/cmp-nvim-lsp' },
     },
     event = 'InsertEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
