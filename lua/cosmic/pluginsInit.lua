@@ -45,14 +45,8 @@ return packer.startup(function()
     disable = vim.tbl_contains(user_plugins.disable, 'theme'),
   })
 
-  use({ -- icons
-    'kyazdani42/nvim-web-devicons',
-    after = 'tokyonight.nvim',
-  })
-
   use({
     'rcarriga/nvim-notify',
-    opt = true,
     config = function()
       local icons = require('cosmic.core.theme.icons')
       require('notify').setup({
@@ -78,7 +72,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.core.statusline')
     end,
-    after = 'nvim-web-devicons',
+    after = 'tokyonight.nvim',
     disable = vim.tbl_contains(user_plugins.disable, 'statusline') or vim.tbl_contains(user_plugins.disable, 'theme'),
   })
 
@@ -104,14 +98,13 @@ return packer.startup(function()
     'williamboman/nvim-lsp-installer',
     requires = {
       'neovim/nvim-lspconfig',
-      'ray-x/lsp_signature.nvim',
       'jose-elias-alvarez/nvim-lsp-ts-utils',
+      'ray-x/lsp_signature.nvim',
     },
     config = function()
       require('cosmic.lsp')
     end,
-    after = 'nvim-cmp',
-    event = 'BufEnter',
+    event = 'BufReadPre',
   })
 
   -- autocompletion
@@ -121,16 +114,15 @@ return packer.startup(function()
       require('cosmic.lsp.autocomplete').init()
     end,
     requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/nvim-cmp',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-      'onsails/lspkind-nvim',
+      { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
+      { 'hrsh7th/cmp-buffer', after = 'cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
+      { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
+      { 'onsails/lspkind-nvim', after = 'cmp-path' },
+      { 'hrsh7th/cmp-nvim-lsp' },
     },
-    event = 'BufEnter',
+    event = 'InsertEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
@@ -188,7 +180,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.core.navigation')
     end,
-    event = 'BufEnter',
+    event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'telescope'),
   })
 

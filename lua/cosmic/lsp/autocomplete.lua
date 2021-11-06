@@ -108,8 +108,8 @@ M.autopairs = function()
   })
 
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-
-  require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
+  local cmp = require('cmp')
+  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 end
 
 return M
