@@ -28,18 +28,12 @@ if not vim.tbl_islist(user_plugins.disable) then
 end
 
 return packer.startup(function()
-  use('wbthomason/packer.nvim')
-
   use({
+    'wbthomason/packer.nvim',
     'lewis6991/impatient.nvim',
-    config = function()
-      require('impatient')
-    end,
+    'nathom/filetype.nvim',
+    'nvim-lua/plenary.nvim',
   })
-
-  use('nathom/filetype.nvim')
-
-  use({ 'nvim-lua/plenary.nvim' })
 
   use({ -- color scheme
     'folke/tokyonight.nvim',
@@ -58,6 +52,7 @@ return packer.startup(function()
 
   use({
     'rcarriga/nvim-notify',
+    opt = true,
     config = function()
       local icons = require('cosmic.core.theme.icons')
       require('notify').setup({
@@ -160,6 +155,7 @@ return packer.startup(function()
   use({
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
+    opt = true,
     event = 'BufRead',
     config = function()
       require('gitsigns').setup()
