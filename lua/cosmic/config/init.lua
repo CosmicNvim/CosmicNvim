@@ -12,9 +12,6 @@ end
 
 -- these settings will be merged with any settings definined in config.lua
 local default_config = {
-  statusline = {
-    main_icon = require('cosmic.core.theme.icons').ghost,
-  },
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     rename_notification = true,

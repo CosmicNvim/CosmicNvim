@@ -4,14 +4,19 @@
 
 local config = {}
 
+-- auto session settings
+-- see Cosmic defaults: core/session/init.lua
+config.session = {}
+
 -- statusline settings
 config.statusline = {
   main_icon = '★',
 }
 
-See cosmic defaults: cosmic/core/treesitter/init.lua
+-- see Cosmic defaults: core/treesitter/init.lua
 config.treesitter = {}
 
+-- lsp Settings
 config.lsp = {
 
   -- true/false or table of filetypes {'.ts', '.js',}
@@ -21,9 +26,8 @@ config.lsp = {
   rename_notification = false,
 
   -- see :h vim.diagnostic.config for all diagnostic configuration options
-  -- see cosmic defaults: cosmic/lsp/diagnostics.lua
-  diagnostic = {
-  },
+  -- see Cosmic defaults: lsp/diagnostics.lua
+  diagnostic = {},
 
   servers = {
 
