@@ -119,4 +119,4 @@ Enter `:TSInstall` followed by <TAB> to see your options for additional language
 
 <img width="1792" alt="hover" src="https://user-images.githubusercontent.com/3721204/140592798-b9dbbdee-8496-4998-a874-110a051a7672.png">
   
-
+[See more screenshots](https://github.com/mattleong/CosmicNvim/wiki/Screenshots)
