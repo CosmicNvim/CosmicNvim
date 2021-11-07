@@ -105,8 +105,12 @@ return packer.startup(function()
         after = 'nvim-lsp-ts-utils',
       },
       {
-        'williamboman/nvim-lsp-installer',
+        'onsails/lspkind-nvim',
         after = 'lsp_signature.nvim',
+      },
+      {
+        'williamboman/nvim-lsp-installer',
+        after = 'lspkind-nvim',
         config = function()
           require('cosmic.lsp')
         end,
@@ -127,7 +131,6 @@ return packer.startup(function()
       { 'hrsh7th/cmp-buffer', after = 'cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
       { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
-      { 'onsails/lspkind-nvim', after = 'cmp-path' },
     },
     event = 'InsertEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
