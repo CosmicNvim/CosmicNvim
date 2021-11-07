@@ -9,6 +9,7 @@ local colors = {
   white = themeColors.fg_dark,
   bg = themeColors.bg,
   bg_highlight = themeColors.bg_highlight,
+  bg_dark = themeColors.bg_dark,
   blue = themeColors.blue,
   purple = themeColors.magenta,
   orange = themeColors.orange,
