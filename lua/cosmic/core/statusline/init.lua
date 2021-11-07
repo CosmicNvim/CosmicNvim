@@ -106,6 +106,32 @@ galaxy.short_line_list = {
   'fugitiveblame',
 }
 
+gls.mid = {
+  {
+    LSPStatus = {
+      provider = function()
+        local clients = utils.get_active_lsp_client_names()
+        local client_str = ''
+
+        if #clients < 1 then
+          return client_str
+        end
+
+        table.sort(clients)
+        for i, client in ipairs(clients) do
+          client_str = client_str .. client
+          if i < #clients then
+            client_str = client_str .. ', '
+          end
+        end
+
+        return 'LSP: [' .. client_str .. ']'
+      end,
+      highlight = 'GalaxyText',
+    },
+  },
+}
+
 gls.left = {
   {
     GhostLeftBracket = {
@@ -139,6 +165,7 @@ gls.left = {
         highlight('GalaxyViModeNested', mode_nested, colors.bg)
         highlight('GalaxyViModeNestedInv', colors.bg, mode_nested)
         highlight('GalaxyPercentBracket', colors.bg, mode_color)
+        highlight('GalaxyText', colors.bg, mode_color)
 
         highlight('GalaxyGitLCBracket', mode_nested, mode_color)
 

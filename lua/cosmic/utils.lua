@@ -36,4 +36,14 @@ function M.get_relative_path(file_path)
   return './' .. relative_path
 end
 
+function M.get_active_lsp_client_names()
+  local active_clients = vim.lsp.get_active_clients()
+  local client_names = {}
+  for i, client in pairs(active_clients) do
+    table.insert(client_names, i, client.name)
+  end
+
+  return client_names
+end
+
 return M
