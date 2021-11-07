@@ -104,10 +104,7 @@ return packer.startup(function()
         'ray-x/lsp_signature.nvim',
         after = 'nvim-lsp-ts-utils',
       },
-      {
-        'onsails/lspkind-nvim',
-        after = 'lsp_signature.nvim',
-      },
+      { 'onsails/lspkind-nvim', after = 'lsp_signature.nvim' },
       {
         'williamboman/nvim-lsp-installer',
         after = 'lspkind-nvim',
@@ -116,7 +113,11 @@ return packer.startup(function()
         end,
       },
     },
-    event = 'BufReadPre',
+  })
+
+  use({
+    'L3MON4D3/LuaSnip',
+    event = 'InsertEnter',
   })
 
   -- autocompletion
@@ -126,14 +127,13 @@ return packer.startup(function()
       require('cosmic.lsp.autocomplete').init()
     end,
     requires = {
-      { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-buffer', after = 'cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
       { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
     },
-    event = 'InsertEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
+    after = 'LuaSnip',
   })
 
   use({
