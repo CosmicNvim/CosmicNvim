@@ -2,11 +2,6 @@
 local ok, user_config = pcall(require, 'cosmic.config.config')
 
 if not ok then
-  error(('Error loading user config...\n\n%s'):format(user_config))
-  error('No user config, using default instead...')
-end
-
-if user_config == true then
   user_config = {}
 end
 

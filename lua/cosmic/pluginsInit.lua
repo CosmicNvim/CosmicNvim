@@ -9,11 +9,6 @@ local use = packer.use
 
 local ok, user_plugins = pcall(require, 'cosmic.config.plugins')
 if not ok then
-  error(('Error loading user custom plugins...\n\n%s'):format(user_plugins))
-  return false
-end
-
-if user_plugins == true then
   user_plugins = {
     add = {},
     disable = {},
