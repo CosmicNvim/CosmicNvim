@@ -69,13 +69,15 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 
 ## Configuration
 
-[Cosmic configurations](./lua/cosmic/config/config-example.lua)
+[Cosmic configurations](./lua/cosmic/config/examples/config.lua)
 
-[Plugin configurations](./lua/cosmic/config/plugins-example.lua)
+[Plugin configurations](./lua/cosmic/config/examples/plugins.lua)
 
-[Add additional mappings](./lua/cosmic/config/mappings-example.lua)
+[Add additional mappings](./lua/cosmic/config/examples/mappings.lua)
 
-[Add additional vim options](./lua/cosmic/config/editor-example.lua)
+[Add additional vim options](./lua/cosmic/config/examples/editor.lua)
+
+[More info](./lua/cosmic/config/examples/readme.md)
 
 ## Treesitter Support
 
