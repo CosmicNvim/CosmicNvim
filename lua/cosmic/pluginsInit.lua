@@ -118,6 +118,7 @@ return packer.startup(function()
   use({
     'L3MON4D3/LuaSnip',
     event = 'InsertEnter',
+    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
   -- autocompletion
@@ -132,7 +133,6 @@ return packer.startup(function()
       { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
       { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
     },
-    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
     after = 'LuaSnip',
   })
 
@@ -142,7 +142,6 @@ return packer.startup(function()
       require('cosmic.lsp.autocomplete').autopairs()
     end,
     after = 'nvim-cmp',
-    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
   -- git commands
