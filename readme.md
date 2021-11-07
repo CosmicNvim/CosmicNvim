@@ -3,7 +3,9 @@
 <p align="center">
   <img alt="Neovim Minimum Version" src="https://img.shields.io/badge/Neovim-0.6.0+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mattleong/CosmicNvim?style=flat-square&logo=Github">
-  <img alt="Discord" src="https://img.shields.io/discord/901609359291854899?style=flat-square&logo=Discord">
+  <a target="_blank" href="https://discord.gg/EwdrKzVbvJ">
+    <img alt="Discord" src="https://img.shields.io/discord/901609359291854899?style=flat-square&logo=Discord">
+  </a>
   <img alt="Website" src="https://img.shields.io/website?style=flat-square&up_message=live&label=website&url=https%3A%2F%2Fcosmicnvim.vercel.app%2F">
 </p>
 
