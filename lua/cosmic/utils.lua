@@ -43,6 +43,7 @@ function M.get_active_lsp_client_names()
     table.insert(client_names, i, client.name)
   end
 
+  table.sort(client_names)
   return client_names
 end
 

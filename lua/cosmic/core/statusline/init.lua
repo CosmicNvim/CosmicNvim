@@ -117,7 +117,6 @@ gls.mid = {
           return client_str
         end
 
-        table.sort(clients)
         for i, client in ipairs(clients) do
           client_str = client_str .. client
           if i < #clients then
