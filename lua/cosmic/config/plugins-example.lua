@@ -18,13 +18,13 @@ local plugins = {
     'fugitive',
     'gitsigns',
     'kommentary',
+    'nvim-tree',
     'statusline',
     'telescope',
     'terminal',
-    'theme', -- if default theme is disabled, you will need to update add your own statusline
+    'theme',
     'todo-comments',
     'treesitter',
-    'nvim-tree',
   },
 }
 

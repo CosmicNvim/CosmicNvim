@@ -68,7 +68,7 @@ return packer.startup(function()
       require('cosmic.core.statusline')
     end,
     after = 'tokyonight.nvim',
-    disable = vim.tbl_contains(user_plugins.disable, 'statusline') or vim.tbl_contains(user_plugins.disable, 'theme'),
+    disable = vim.tbl_contains(user_plugins.disable, 'statusline'),
   })
 
   -- file explorer
