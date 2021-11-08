@@ -103,7 +103,7 @@ function M.update()
         table.insert(errors, err)
       end,
     })
-    :sync() -- or start()
+    :sync()
 end
 
 return M

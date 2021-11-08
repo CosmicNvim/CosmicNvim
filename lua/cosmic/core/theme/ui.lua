@@ -69,13 +69,12 @@ function M.rename()
       -- echo the resulting changes
       local new_word = ''
       if result and result.changes then
-        local msg = ''
+        local msg = {}
         for f, c in pairs(result.changes) do
           new_word = c[1].newText
-          msg = msg .. ('%d changes -> %s'):format(#c, utils.get_relative_path(f)) .. '\n'
+          table.insert(msg, ('%d changes -> %s'):format(#c, utils.get_relative_path(f)))
         end
         local currName = vim.fn.expand('<cword>')
-        msg = msg:sub(1, #msg - 1)
         vim.notify(msg, vim.log.levels.INFO, { title = ('Rename: %s -> %s'):format(currName, new_word) })
       end
     end
