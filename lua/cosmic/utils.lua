@@ -47,21 +47,25 @@ function M.get_active_lsp_client_names()
   return client_names
 end
 
-local function reload(module_pattern)
+local function unload(module_pattern, reload)
+  reload = reload or false
   for module, _ in pairs(package.loaded) do
     if module:match(module_pattern) then
       package.loaded[module] = nil
-      require(module)
+      if reload then
+        require(module)
+      end
     end
   end
 end
 
 function M.reload_user_config()
-  reload('cosmic.config')
+  unload('cosmic.config', true)
 end
 
 function M.reload_cosmic()
-  reload('cosmic')
+  unload('cosmic')
+  require('cosmic')
 end
 
 function M.get_install_dir()
