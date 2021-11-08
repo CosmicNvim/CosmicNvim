@@ -47,4 +47,59 @@ function M.get_active_lsp_client_names()
   return client_names
 end
 
+local function reload(module_pattern)
+  for module, _ in pairs(package.loaded) do
+    if module:match(module_pattern) then
+      package.loaded[module] = nil
+      require(module)
+    end
+  end
+end
+
+function M.reload_user_config()
+  reload('cosmic.config')
+end
+
+function M.reload_cosmic()
+  reload('cosmic')
+end
+
+function M.get_install_dir()
+  local config_dir = os.getenv('COSMICNVIM_INSTALL_DIR')
+  if not config_dir then
+    return vim.fn.stdpath('config')
+  end
+  return config_dir
+end
+
+-- update instance of CosmicNvim
+function M.update()
+  local Job = require('plenary.job')
+  local path = M.get_install_dir()
+  local err = false
+
+  Job
+    :new({
+      command = 'git',
+      args = { 'pull' },
+      cwd = path,
+      on_exit = function()
+        if not err then
+          vim.notify(
+            'Please restart CosmicNvim and run `:PackerSync`',
+            vim.log.levels.INFO,
+            { title = 'CosmicNvim Updated!', timeout = 30000 }
+          )
+        end
+      end,
+      on_stderr = function(_, return_val)
+        err = return_val
+        vim.notify(err, vim.log.levels.ERROR, {
+          title = 'CosmicNvim Update Failed!',
+        })
+      end,
+    })
+    :sync() -- or start()
+end
+
 return M
