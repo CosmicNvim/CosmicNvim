@@ -117,7 +117,14 @@ return packer.startup(function()
 
   use({
     'L3MON4D3/LuaSnip',
-    event = 'InsertEnter',
+    config = function()
+      require('cosmic.core.snippets')
+    end,
+    requires = {
+      {
+        'rafamadriz/friendly-snippets',
+      },
+    },
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
@@ -133,7 +140,7 @@ return packer.startup(function()
       { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
       { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
     },
-    after = 'LuaSnip',
+    event = 'InsertEnter',
   })
 
   use({

@@ -29,8 +29,8 @@ M.init = function()
   map('n', '<leader>bn', ':bnext<cr>')
 
   -- tab navigation
-  map('n', '<leader>tp', ':tprev<cr>')
-  map('n', '<leader>tn', ':tnext<cr>')
+  map('n', '<leader>tp', ':tabprevious<cr>')
+  map('n', '<leader>tn', ':tabnext<cr>')
 end
 
 return M
