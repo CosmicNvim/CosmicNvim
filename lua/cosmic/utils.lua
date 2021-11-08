@@ -83,6 +83,11 @@ function M.update()
       command = 'git',
       args = { 'pull', '--ff-only' },
       cwd = path,
+      on_start = function()
+        vim.notify('Updating...', vim.log.levels.INFO, {
+          title = 'CosmicNvim',
+        })
+      end,
       on_exit = function()
         if vim.tbl_isempty(errors) then
           vim.notify(
