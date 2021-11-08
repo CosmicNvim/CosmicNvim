@@ -75,6 +75,8 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 :CosmicUpdate
 ```
 
+By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpath('config')`, i.e. `~/.config/nvim`. Otherwise, you may define the shell environment variable `COSMICNVIM_INSTALL_DIR`.
+
 #### Reload user config
 
 ```
