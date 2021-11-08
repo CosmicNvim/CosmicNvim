@@ -120,11 +120,11 @@ Enter `:TSInstall` followed by <TAB> to see your options for additional language
 ## 📷 Screenshots
 
 ### Statusline
-
-![normal](https://user-images.githubusercontent.com/3721204/137990346-8f614b6b-63da-471a-b5be-635b587f10a1.png)
-![insert](https://user-images.githubusercontent.com/3721204/137990345-d036c2d1-0f9e-4d4e-bd6c-13e051609f61.png)
-![visual](https://user-images.githubusercontent.com/3721204/137990348-6eb29e9b-e912-4d6e-8a5e-e763816613d7.png)
-![replace](https://user-images.githubusercontent.com/3721204/137990347-b59428d6-b5fe-4edb-8ceb-ab37b69b7e76.png)
+  
+<img width="1762" alt="normal" src="https://user-images.githubusercontent.com/3721204/140678741-266dc883-e1bb-4729-827e-1195acd62762.png">
+<img width="1762" alt="insert" src="https://user-images.githubusercontent.com/3721204/140678744-a89b7413-383d-4d81-affd-03c3815644bc.png">
+<img width="1762" alt="visual" src="https://user-images.githubusercontent.com/3721204/140678746-3ac4396d-32f9-4988-a296-76857291baca.png">
+<img width="1774" alt="replace" src="https://user-images.githubusercontent.com/3721204/140678745-a1cb5200-f945-4cff-ae0c-2285b25f333f.png">
 
 ### Dashboard
 
