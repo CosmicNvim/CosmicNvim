@@ -67,6 +67,26 @@ Additional Cosmic installation [details](https://github.com/mattleong/CosmicNvim
 
 Additional LSP server installation [details](https://github.com/mattleong/CosmicNvim/wiki/Installing-LSP-servers).
 
+## Cosmic Commands
+
+#### Update CosmicNvim
+
+```
+:CosmicUpdate
+```
+
+#### Reload user config
+
+```
+:CosmicReloadConfig
+```
+
+#### Reload CosmicNvim
+
+```
+:CosmicReload
+```
+
 ## Configuration
 
 [Cosmic configurations](./lua/cosmic/config/examples/config.lua)
