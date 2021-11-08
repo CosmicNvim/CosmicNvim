@@ -76,27 +76,31 @@ end
 function M.update()
   local Job = require('plenary.job')
   local path = M.get_install_dir()
-  local err = false
+  local errors = {}
 
   Job
     :new({
       command = 'git',
-      args = { 'pull' },
+      args = { 'pull', '--ff-only' },
       cwd = path,
       on_exit = function()
-        if not err then
+        if vim.tbl_isempty(errors) then
           vim.notify(
             'Please restart CosmicNvim and run `:PackerSync`',
             vim.log.levels.INFO,
             { title = 'CosmicNvim Updated!', timeout = 30000 }
           )
+        else
+          table.insert(errors, 1, 'Something went wrong! Please pull changes manually.')
+          table.insert(errors, 2, '')
+          vim.notify(errors, vim.log.levels.ERROR, {
+            title = 'CosmicNvim Update Failed!',
+            timeout = 30000,
+          })
         end
       end,
-      on_stderr = function(_, return_val)
-        err = return_val
-        vim.notify(err, vim.log.levels.ERROR, {
-          title = 'CosmicNvim Update Failed!',
-        })
+      on_stderr = function(_, err)
+        table.insert(errors, err)
       end,
     })
     :sync() -- or start()
