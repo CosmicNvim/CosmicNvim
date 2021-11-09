@@ -43,6 +43,7 @@ require('telescope').setup({
     selection_caret = icons.folder.arrow_closed,
     file_ignore_patterns = {
       '.git/',
+      'node_modules',
     },
     dynamic_preview_title = true,
     vimgrep_arguments = {

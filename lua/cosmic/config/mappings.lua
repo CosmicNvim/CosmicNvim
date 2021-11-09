@@ -2,10 +2,10 @@
 -- To view maps set, use `:Telescope keymaps`
 -- or `:map`, `:map <leader>`
 
---[[
-
-local cmd = vim.cmd
+-- local cmd = vim.cmd
 local map = require('cosmic.utils').map
+
+--[[
 
 -- Example: Additional insert mapping:
 map('i', 'jj', '<esc>', { noremap = true, silent = true })
@@ -20,3 +20,5 @@ map('i', 'jj', '<esc>', { noremap = true, silent = true })
 cmd('unmap <leader>f')
 
 --]]
+
+map('n', '<leader>w', ':w!<cr>')
