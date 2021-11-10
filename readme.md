@@ -11,6 +11,8 @@
 
 CosmicNvim is a lightweight and opinionated Neovim config for web development, specifically designed to provide a 💫 COSMIC programming experience!
 
+<img width="1792" alt="dashboard" src="https://user-images.githubusercontent.com/3721204/140592730-fc512005-6060-4dd2-8b90-0afa865d61d3.png">
+
 ## 🚀 Stellar Features
 
 #### Native LSP
@@ -124,10 +126,6 @@ Enter `:TSInstall` followed by <TAB> to see your options for additional language
 <img width="1762" alt="insert" src="https://user-images.githubusercontent.com/3721204/140678744-a89b7413-383d-4d81-affd-03c3815644bc.png">
 <img width="1762" alt="visual" src="https://user-images.githubusercontent.com/3721204/140678746-3ac4396d-32f9-4988-a296-76857291baca.png">
 <img width="1774" alt="replace" src="https://user-images.githubusercontent.com/3721204/140678745-a1cb5200-f945-4cff-ae0c-2285b25f333f.png">
-
-### Dashboard
-
-<img width="1792" alt="dashboard" src="https://user-images.githubusercontent.com/3721204/140592730-fc512005-6060-4dd2-8b90-0afa865d61d3.png">
 
 ### Autocomplete
 
