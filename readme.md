@@ -21,8 +21,7 @@ Full featured native LSP functionality!
 - 🔍 Find references/type def/declaration
 - 💡 Code actions
 - 🚨 Statusline diagnostics
-- ⚠️ Linting thanks to [eslint](https://github.com/williamboman/nvim-lsp-installer/blob/main/lua/nvim-lsp-installer/servers/eslint/README.md)
-- 🔧 Formatting thanks to [efm](https://github.com/mattn/efm-langserver)
+- 🔧 Formatting/linting thanks to [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
 
 ##### Additional features
 
@@ -52,8 +51,8 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 
 - Neovim (+0.6.0)
 - [Node.js](https://nodejs.org/en/)
-- [prettierd](https://github.com/fsouza/prettierd) (for prettier formatting w/efm, optional)
-- [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/efm, optional)
+- [prettierd](https://github.com/fsouza/prettierd) (for prettier formatting w/null-ls, optional)
+- [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/null-ls, optional)
 
 #### Install
 
@@ -120,7 +119,7 @@ Enter `:TSInstall` followed by <TAB> to see your options for additional language
 ## 📷 Screenshots
 
 ### Statusline
-  
+
 <img width="1762" alt="normal" src="https://user-images.githubusercontent.com/3721204/140678741-266dc883-e1bb-4729-827e-1195acd62762.png">
 <img width="1762" alt="insert" src="https://user-images.githubusercontent.com/3721204/140678744-a89b7413-383d-4d81-affd-03c3815644bc.png">
 <img width="1762" alt="visual" src="https://user-images.githubusercontent.com/3721204/140678746-3ac4396d-32f9-4988-a296-76857291baca.png">
