@@ -64,9 +64,11 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
   $ nvim .
 ```
 
-Additional Cosmic installation [details](https://github.com/mattleong/CosmicNvim/wiki/Installation).
+Additional CosmicNvim installation [details](https://github.com/mattleong/CosmicNvim/wiki/Installation).
 
 Additional LSP server installation [details](https://github.com/mattleong/CosmicNvim/wiki/Installing-LSP-servers).
+
+CosmicNvim uninstallation [details](https://github.com/mattleong/CosmicNvim/wiki/Uninstalling-CosmicNvim).
 
 ## Cosmic Commands
 
