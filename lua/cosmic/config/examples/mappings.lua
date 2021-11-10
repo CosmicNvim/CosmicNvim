@@ -15,4 +15,4 @@ map('i', 'jj', '<esc>', { noremap = true, silent = true })
 -- map('t', ...)
 
 -- Example: Disable find files keymap
-cmd('unmap <leader>f')
+-- cmd('unmap <leader>f')
