@@ -1,7 +1,5 @@
 -- Add additional plugins as well as disable some core plugins
 
---[[
-
 local plugins = {
   add = {
     'ggandor/lightspeed.nvim',
@@ -29,5 +27,3 @@ local plugins = {
 }
 
 return plugins
-
-]]

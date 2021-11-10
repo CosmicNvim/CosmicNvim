@@ -1,6 +1,5 @@
 -- Override Cosmic configuration options
 
---[[
 -- You can require null-ls if needed
 -- local null_ls = require('null-ls')
 
@@ -33,9 +32,6 @@ config.lsp = {
 
   servers = {
 
-    -- enable/disable server + formatting
-    eslint = false,
-
     -- enable non-default servers, use default lsp config
     -- check here for configs that will be used by default: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
     rust_analyzer = true,
@@ -48,18 +44,16 @@ config.lsp = {
         on_attach = function(client, bufnr) end,
         flags = {
           debounce_text_changes = 150,
-        }
-      }
+        },
+      },
     },
 
     -- See Cosmic defaults lsp/providers/null_ls.lua
-    null_ls = {}
+    null_ls = {},
   },
 
   -- See Cosmic defaults lsp/providers/tsserver.lua
-  ts_utils = {}
+  ts_utils = {},
 }
 
 return config
-
-]]

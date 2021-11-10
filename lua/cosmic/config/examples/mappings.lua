@@ -2,8 +2,6 @@
 -- To view maps set, use `:Telescope keymaps`
 -- or `:map`, `:map <leader>`
 
---[[
-
 local cmd = vim.cmd
 local map = require('cosmic.utils').map
 
@@ -18,5 +16,3 @@ map('i', 'jj', '<esc>', { noremap = true, silent = true })
 
 -- Example: Disable find files keymap
 cmd('unmap <leader>f')
-
---]]
