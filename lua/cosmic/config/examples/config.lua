@@ -24,7 +24,7 @@ config.lsp = {
   format_on_save = true,
 
   -- set to false to disable rename notification
-  rename_notification = false,
+  rename_notification = true,
 
   -- see :h vim.diagnostic.config for all diagnostic configuration options
   -- see Cosmic defaults: lsp/diagnostics.lua
@@ -34,7 +34,7 @@ config.lsp = {
 
     -- enable non-default servers, use default lsp config
     -- check here for configs that will be used by default: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
-    rust_analyzer = true,
+    -- rust_analyzer = true,
 
     tsserver = {
       -- disable formatting (defaults to true)
@@ -53,6 +53,7 @@ config.lsp = {
   },
 
   -- See Cosmic defaults lsp/providers/tsserver.lua
+  -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
   ts_utils = {},
 }
 

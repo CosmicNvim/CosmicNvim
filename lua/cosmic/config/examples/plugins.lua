@@ -9,7 +9,8 @@ local plugins = {
     },
   },
   disable = { -- disabling some core plugins may mean you'll have to remap some keybindings
-    --[[ 'auto-session',
+    --[[
+    'auto-session',
     'autocomplete',
     'colorizer',
     'dashboard',
@@ -22,7 +23,8 @@ local plugins = {
     'terminal',
     'theme',
     'todo-comments',
-    'treesitter', ]]
+    'treesitter',
+    ]]
   },
 }
 
