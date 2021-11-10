@@ -1,6 +1,8 @@
 -- Override Cosmic configuration options
 
 --[[
+-- You can require null-ls if needed
+-- local null_ls = require('null-ls')
 
 local config = {}
 
@@ -39,7 +41,7 @@ config.lsp = {
     rust_analyzer = true,
 
     tsserver = {
-      -- disable formatting
+      -- disable formatting (defaults to true)
       format = false,
       -- OR add/override server options
       opts = {
@@ -50,12 +52,12 @@ config.lsp = {
       }
     },
 
-    efm = {
-      -- specifc to efm, e.g. 'eslint', 'prettier', 'stylua'
-      disable_formatters = {'eslint'},
-    },
-
+    -- See Cosmic defaults lsp/providers/null_ls.lua
+    null_ls = {}
   },
+
+  -- See Cosmic defaults lsp/providers/tsserver.lua
+  ts_utils = {}
 }
 
 return config

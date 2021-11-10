@@ -116,6 +116,14 @@ return packer.startup(function()
   })
 
   use({
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('cosmic.lsp.providers.null_ls')
+    end,
+    requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  })
+
+  use({
     'L3MON4D3/LuaSnip',
     config = function()
       require('cosmic.core.snippets')

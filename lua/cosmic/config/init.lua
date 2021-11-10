@@ -22,17 +22,13 @@ local default_config = {
       },
       ]]
 
-      -- enable, but disable formatting
-      eslint = {
-        format = false,
-      },
-      efm = {
-        format = true,
-        disable_formatters = { 'eslint' }, -- e.g. 'eslint', 'prettier', 'stylua'
+      sumneko_lua = {
+        format = false, -- disable formatting all together
       },
       tsserver = {
         format = false, -- disable formatting all together
       },
+      null_ls = {},
     },
   },
 }
@@ -48,7 +44,7 @@ function config.lsp.can_client_format(client_name)
     return (config.lsp.servers[client_name].format == true)
   end
 
-  return false
+  return true
 end
 
 return config

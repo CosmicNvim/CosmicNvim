@@ -19,8 +19,8 @@ lsp_installer.settings({
 
 -- initial default serverse
 local requested_servers = {
-  'eslint',
-  'efm',
+  -- 'eslint',
+  -- 'efm',
   'tsserver',
   'sumneko_lua',
   'jsonls',
@@ -63,14 +63,10 @@ lsp_installer.on_server_ready(function(server)
   -- set up default cosmic options
   if server.name == 'tsserver' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.tsserver'))
-  elseif server.name == 'efm' then
-    opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.efm'))
   elseif server.name == 'jsonls' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.jsonls'))
   elseif server.name == 'sumneko_lua' then
     opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.lua'))
-  elseif server.name == 'eslint' then
-    opts = vim.tbl_deep_extend('force', opts, require('cosmic.lsp.providers.eslint'))
   end
 
   -- override options if user definds them

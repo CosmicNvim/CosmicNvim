@@ -49,7 +49,15 @@ M.flags = {
   debounce_text_changes = 150,
 }
 
-M.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local function get_capabilities()
+  local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+  if not ok then
+    return {}
+  end
+  return cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+end
+
+M.capabilities = get_capabilities()
 
 M.root_dir = function(fname)
   local util = require('lspconfig').util

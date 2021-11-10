@@ -19,6 +19,7 @@ map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 map('n', '<leader>ga', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>')
 map('v', '<leader>ga', '<cmd>lua require("telescope.builtin").lsp_range_code_actions()<cr>')
 map('n', '<leader>gf', '<cmd>lua vim.lsp.buf.formatting()<cr>')
+map('v', '<leader>gf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>')
 map('n', '<C-K>', '<cmd>lua require("lsp_signature").signature()<cr>')
 
 -- lsp workspace
