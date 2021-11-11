@@ -39,8 +39,12 @@ end
 function M.get_active_lsp_client_names()
   local active_clients = vim.lsp.get_active_clients()
   local client_names = {}
-  for i, client in pairs(active_clients) do
-    table.insert(client_names, i, client.name)
+  for i, client in pairs(active_clients or {}) do
+    local buf = vim.api.nvim_get_current_buf()
+    -- only return attached buffers
+    if vim.lsp.buf_is_attached(buf, client.id) then
+      table.insert(client_names, i, client.name)
+    end
   end
 
   table.sort(client_names)
