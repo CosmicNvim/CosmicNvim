@@ -91,27 +91,25 @@ return packer.startup(function()
 
   use({
     'neovim/nvim-lspconfig',
+    config = function()
+      require('cosmic.lsp')
+    end,
     requires = {
       {
-        'hrsh7th/cmp-nvim-lsp',
+        'ray-x/lsp_signature.nvim',
+        config = function()
+          -- must happen after servers are set up
+          require('lsp_signature').setup({
+            bind = true, -- This is mandatory, otherwise border config won't get registered.
+            handler_opts = {
+              border = 'rounded',
+            },
+          })
+        end,
         after = 'nvim-lspconfig',
       },
-      {
-        'jose-elias-alvarez/nvim-lsp-ts-utils',
-        after = 'cmp-nvim-lsp',
-      },
-      {
-        'ray-x/lsp_signature.nvim',
-        after = 'nvim-lsp-ts-utils',
-      },
-      { 'onsails/lspkind-nvim', after = 'lsp_signature.nvim' },
-      {
-        'williamboman/nvim-lsp-installer',
-        after = 'lspkind-nvim',
-        config = function()
-          require('cosmic.lsp')
-        end,
-      },
+      { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
+      { 'williamboman/nvim-lsp-installer' },
     },
   })
 
@@ -121,18 +119,12 @@ return packer.startup(function()
       require('cosmic.lsp.providers.null_ls')
     end,
     requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
   })
 
   use({
-    'L3MON4D3/LuaSnip',
-    config = function()
-      require('cosmic.core.snippets')
-    end,
-    requires = {
-      {
-        'rafamadriz/friendly-snippets',
-      },
-    },
+    'onsails/lspkind-nvim',
+    event = 'InsertEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
@@ -143,20 +135,32 @@ return packer.startup(function()
       require('cosmic.lsp.autocomplete').init()
     end,
     requires = {
-      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer', after = 'cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
       { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
+      {
+        'windwp/nvim-autopairs',
+        config = function()
+          require('cosmic.lsp.autocomplete').autopairs()
+        end,
+        after = 'cmp-path',
+      },
     },
-    event = 'InsertEnter',
+    after = 'lspkind-nvim',
+    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
   use({
-    'windwp/nvim-autopairs',
+    'L3MON4D3/LuaSnip',
     config = function()
-      require('cosmic.lsp.autocomplete').autopairs()
+      require('cosmic.core.snippets')
     end,
-    after = 'nvim-cmp',
+    requires = {
+      'rafamadriz/friendly-snippets',
+    },
+    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
   -- git commands

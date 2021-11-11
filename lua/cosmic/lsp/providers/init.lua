@@ -35,7 +35,6 @@ for config_server, config_opt in pairs(config.lsp.servers) do
     table.insert(disabled_servers, config_server)
   elseif not vim.tbl_contains(requested_servers, config_server) then
     -- add additonally defined servers to be installed
-    -- todo: how to handle non-default server opts?
     table.insert(requested_servers, config_server)
   end
 end

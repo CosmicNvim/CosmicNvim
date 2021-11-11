@@ -37,19 +37,19 @@ function M.on_attach(client, bufnr)
     client.resolved_capabilities.document_range_formatting = false
   end
 
-  require('lsp_signature').on_attach({
+  --[[ require('lsp_signature').on_attach({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = {
       border = 'single',
     },
-  }, bufnr)
+  }, bufnr) ]]
 end
 
 M.flags = {
   debounce_text_changes = 150,
 }
 
-local function get_capabilities()
+--[[ local function get_capabilities()
   local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
   if not ok then
     return {}
@@ -57,7 +57,8 @@ local function get_capabilities()
   return cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
-M.capabilities = get_capabilities()
+M.capabilities = get_capabilities() ]]
+M.capabilities = {}
 
 M.root_dir = function(fname)
   local util = require('lspconfig').util
