@@ -63,3 +63,5 @@ vim.cmd([[
 highlight clear NormalFloat
 highlight link NormalFloat Normal
 ]])
+
+vim.o.background = 'dark'

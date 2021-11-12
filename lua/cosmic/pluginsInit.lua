@@ -62,6 +62,16 @@ return packer.startup(function()
   })
 
   use({
+    'ellisonleao/gruvbox.nvim',
+    requires = { 'rktjmp/lush.nvim' },
+    config = function()
+      vim.o.background = 'dark'
+      vim.cmd([[colorscheme gruvbox]])
+    end,
+    disable = config.theme ~= 'gruvbox.nvim',
+  })
+
+  use({
     'rcarriga/nvim-notify',
     config = function()
       local icons = require('cosmic.core.theme.icons')
