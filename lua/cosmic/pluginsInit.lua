@@ -52,6 +52,16 @@ return packer.startup(function()
   })
 
   use({
+    'shaunsingh/nord.nvim',
+    config = function()
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = true
+      require('nord').set()
+    end,
+    disable = config.theme ~= 'nord.nvim',
+  })
+
+  use({
     'rcarriga/nvim-notify',
     config = function()
       local icons = require('cosmic.core.theme.icons')

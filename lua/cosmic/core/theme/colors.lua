@@ -68,6 +68,50 @@ elseif config.theme == 'Catppuccino.nvim' then
 	catppuccin14 = "#221E2F",		-- Raisin Black
 	catppuccin15 = "#312C44",		-- Space Cadet
 } ]]
+elseif config.theme == 'nord.nvim' then
+  local theme = require('nord.colors')
+  local nord = {
+    --16 colors
+    nord0_gui = '#2E3440',
+    nord1_gui = '#3B4252',
+    nord2_gui = '#434C5E',
+    nord3_gui = '#4C566A',
+    nord3_gui_bright = '#616E88',
+    nord4_gui = '#D8DEE9',
+    nord5_gui = '#E5E9F0',
+    nord6_gui = '#ECEFF4',
+    nord7_gui = '#8FBCBB',
+    nord8_gui = '#88C0D0',
+    nord9_gui = '#81A1C1',
+    nord10_gui = '#5E81AC',
+    nord11_gui = '#BF616A',
+    nord12_gui = '#D08770',
+    nord13_gui = '#EBCB8B',
+    nord14_gui = '#A3BE8C',
+    nord15_gui = '#B48EAD',
+    none = 'NONE',
+  }
+  colors = {
+    white = theme.nord4_gui,
+    bg = theme.nord2_gui,
+    bg_highlight = theme.nord2_gui,
+    bg_dark = theme.nord0_gui,
+    normal = theme.nord9_gui,
+    insert = theme.nord14_gui,
+    command = theme.nord13_gui,
+    visual = theme.nord15_gui,
+    replace = theme.nord11_gui,
+    diffAdd = theme.nord14_gui,
+    diffModified = theme.nord13_gui,
+    diffDeleted = theme.nord11_gui,
+    trace = theme.nord13_gui,
+    hint = theme.nord8_gui,
+    info = theme.nord9_gui,
+    error = theme.nord11_gui,
+    warn = theme.nord13_gui,
+    floatBorder = theme.nord3_gui,
+    selection_caret = theme.nord9_gui,
+  }
 end
 
 return colors
