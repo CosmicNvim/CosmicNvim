@@ -64,4 +64,7 @@ highlight clear NormalFloat
 highlight link NormalFloat Normal
 ]])
 
-vim.o.background = 'dark'
+local config = require('cosmic.config')
+if config.theme == 'gruvbox.nvim' then
+  vim.o.background = 'dark'
+end

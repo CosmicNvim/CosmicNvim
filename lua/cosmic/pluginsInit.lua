@@ -65,7 +65,6 @@ return packer.startup(function()
     'ellisonleao/gruvbox.nvim',
     requires = { 'rktjmp/lush.nvim' },
     config = function()
-      vim.o.background = 'dark'
       vim.cmd([[colorscheme gruvbox]])
     end,
     disable = config.theme ~= 'gruvbox.nvim',
