@@ -22,6 +22,8 @@ if not vim.tbl_islist(user_plugins.disable) then
   user_plugins.disable = {}
 end
 
+local config = require('cosmic.config')
+
 return packer.startup(function()
   use({
     'wbthomason/packer.nvim',
@@ -37,7 +39,16 @@ return packer.startup(function()
       vim.g.tokyonight_sidebars = { 'qf' }
       vim.cmd('color tokyonight')
     end,
-    disable = vim.tbl_contains(user_plugins.disable, 'theme'),
+    disable = config.theme ~= 'tokyonight.nvim',
+  })
+
+  use({
+    'Pocco81/Catppuccino.nvim',
+    config = function()
+      vim.cmd('color catppuccin')
+    end,
+    branch = 'dev-remaster',
+    disable = config.theme ~= 'catppuccin',
   })
 
   use({
@@ -55,7 +66,7 @@ return packer.startup(function()
       })
       vim.notify = require('notify')
     end,
-    after = 'tokyonight.nvim',
+    after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
   })
 
@@ -67,7 +78,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.core.statusline')
     end,
-    after = 'tokyonight.nvim',
+    after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'statusline'),
   })
 

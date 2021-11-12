@@ -18,16 +18,16 @@ local main_icon = defaults.statusline.main_icon
 
 local get_mode = function()
   local mode_colors = {
-    [110] = { 'NORMAL', colors.blue, colors.bg_highlight },
-    [105] = { 'INSERT', colors.hint, colors.bg_highlight },
-    [99] = { 'COMMAND', colors.orange, colors.bg_highlight },
-    [116] = { 'TERMINAL', colors.blue, colors.bg_highlight },
-    [118] = { 'VISUAL', colors.purple, colors.bg_highlight },
-    [22] = { 'V-BLOCK', colors.purple, colors.bg_highlight },
-    [86] = { 'V-LINE', colors.purple, colors.bg_highlight },
-    [82] = { 'REPLACE', colors.red, colors.bg_highlight },
-    [115] = { 'SELECT', colors.red, colors.bg_highlight },
-    [83] = { 'S-LINE', colors.red, colors.bg_highlight },
+    [110] = { 'NORMAL', colors.normal, colors.bg_highlight },
+    [105] = { 'INSERT', colors.insert, colors.bg_highlight },
+    [99] = { 'COMMAND', colors.command, colors.bg_highlight },
+    [116] = { 'TERMINAL', colors.normal, colors.bg_highlight },
+    [118] = { 'VISUAL', colors.visual, colors.bg_highlight },
+    [22] = { 'V-BLOCK', colors.visual, colors.bg_highlight },
+    [86] = { 'V-LINE', colors.visual, colors.bg_highlight },
+    [82] = { 'REPLACE', colors.replace, colors.bg_highlight },
+    [115] = { 'SELECT', colors.replace, colors.bg_highlight },
+    [83] = { 'S-LINE', colors.replace, colors.bg_highlight },
   }
 
   local mode_data = mode_colors[vim.fn.mode():byte()]
