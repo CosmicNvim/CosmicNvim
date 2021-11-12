@@ -48,7 +48,7 @@ return packer.startup(function()
       vim.cmd('color catppuccin')
     end,
     branch = 'dev-remaster',
-    disable = config.theme ~= 'catppuccin',
+    disable = config.theme ~= 'Catppuccino.nvim',
   })
 
   use({

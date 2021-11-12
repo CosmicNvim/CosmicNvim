@@ -26,7 +26,7 @@ if config.theme == 'tokyonight.nvim' then
     floatBorder = themeColors.border_highlight,
     selection_caret = themeColors.purple,
   }
-elseif config.theme == 'catppuccin' then
+elseif config.theme == 'Catppuccino.nvim' then
   local theme = require('catppuccin.core.color_palette')
 
   colors = {
