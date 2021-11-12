@@ -8,7 +8,7 @@ end
 -- these settings will be merged with any settings definined in config.lua
 local default_config = {
   -- theme = 'Catppuccino.nvim',
-  theme = 'gruvbox.nvim',
+  theme = 'tokyonight.nvim',
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     rename_notification = true,

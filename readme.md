@@ -27,7 +27,7 @@ Full featured native LSP functionality!
 
 ##### Additional features
 
-- Amazing colors thanks to [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
+- Amazing default theme thanks to [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - Enhanced syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Dashboard via [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 - Hand-built statusline with [galaxyline](https://github.com/NTBBloodbath/galaxyline.nvim)
@@ -70,6 +70,27 @@ Additional LSP server installation [details](https://github.com/mattleong/Cosmic
 
 CosmicNvim uninstallation [details](https://github.com/mattleong/CosmicNvim/wiki/Uninstalling-CosmicNvim).
 
+## Theming
+
+CosmicNvim comes with first-class support for the following themes:
+
+- [Catppuccino](https://github.com/Pocco81/Catppuccino.nvim)
+- [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
+- [Nord](https://github.com/shaunsingh/nord.nvim)
+- [Tokyonight](https://github.com/folke/tokyonight.nvim)
+
+## Configuration
+
+[Cosmic configurations](./lua/cosmic/config/examples/config.lua)
+
+[Plugin configurations](./lua/cosmic/config/examples/plugins.lua)
+
+[Add additional mappings](./lua/cosmic/config/examples/mappings.lua)
+
+[Add additional vim options](./lua/cosmic/config/examples/editor.lua)
+
+[More info](./lua/cosmic/config/examples/readme.md)
+
 ## Cosmic Commands
 
 #### Update CosmicNvim
@@ -91,18 +112,6 @@ By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpa
 ```
 :CosmicReload
 ```
-
-## Configuration
-
-[Cosmic configurations](./lua/cosmic/config/examples/config.lua)
-
-[Plugin configurations](./lua/cosmic/config/examples/plugins.lua)
-
-[Add additional mappings](./lua/cosmic/config/examples/mappings.lua)
-
-[Add additional vim options](./lua/cosmic/config/examples/editor.lua)
-
-[More info](./lua/cosmic/config/examples/readme.md)
 
 ## Treesitter Support
 
