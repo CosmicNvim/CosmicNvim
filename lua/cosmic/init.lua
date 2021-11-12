@@ -1,7 +1,7 @@
 local cosmic_modules = {
+  'cosmic.compiled',
   'cosmic.disabled',
   'cosmic.pluginsInit',
-  'cosmic.compiled',
   'cosmic.commands',
   'cosmic.editor',
   'cosmic.mappings',

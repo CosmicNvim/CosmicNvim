@@ -66,13 +66,23 @@ local function unload(module_pattern, reload)
 end
 
 function M.reload_user_config()
-  unload('cosmic.config', true)
+  unload('cosmic.config')
+  require('cosmic')
 end
 
-function M.reload_cosmic()
+function M.reload_cosmic(sync)
   unload('cosmic')
   require('cosmic')
-  vim.cmd(':e')
+  if sync then
+    require('cosmic.packer').packer.sync()
+  else
+    require('cosmic.packer').packer.compile()
+  end
+  vim.cmd(':silent e')
+  vim.notify('CosmicNvim reloaded!', vim.log.levels.INFO, {
+    title = 'CosmicNvim',
+  })
+  -- vim.cmd(':silent bufdo e')
 end
 
 function M.get_install_dir()
