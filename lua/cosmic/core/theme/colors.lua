@@ -7,6 +7,8 @@ elseif config.theme == 'Catppuccino.nvim' then
   colors = require('cosmic.core.theme.integrated.catppuccin')
 elseif config.theme == 'gruvbox.nvim' then
   colors = require('cosmic.core.theme.integrated.gruvbox')
+elseif config.theme == 'rose-pine' then
+  colors = require('cosmic.core.theme.integrated.rosepine')
 elseif config.theme == 'nord.nvim' then
   colors = require('cosmic.core.theme.integrated.nord')
 end

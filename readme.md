@@ -76,6 +76,7 @@ CosmicNvim comes with first-class support for the following themes:
 
 - [Catppuccino](https://github.com/Pocco81/Catppuccino.nvim)
 - [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
+- [Rose-pine](https://github.com/rose-pine/neovim)
 - [Nord](https://github.com/shaunsingh/nord.nvim)
 - [Tokyonight](https://github.com/folke/tokyonight.nvim)
 

@@ -21,6 +21,7 @@ config.treesitter = {}
 -- 'Catppuccino.nvim'
 -- 'gruvbox.nvim'
 -- 'nord.nvim'
+-- 'rose-pine'
 config.theme = 'tokyonight.nvim' -- default
 
 -- lsp settings
