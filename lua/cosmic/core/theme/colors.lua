@@ -13,4 +13,8 @@ elseif config.theme == 'nord.nvim' then
   colors = require('cosmic.core.theme.integrated.nord')
 end
 
+if vim.tbl_isempty(colors) then
+  return false
+end
+
 return colors
