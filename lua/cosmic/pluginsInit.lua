@@ -60,11 +60,23 @@ return packer.startup(function()
     end,
     disable = config.theme ~= 'nord.nvim',
   })
+    
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    config = function()
+      vim.g.rose_pine_variant = 'base'
+      vim.cmd('colorscheme rose-pine')
+    end,
+    disable = config.theme ~= 'rose-pine',
+  })
+
 
   use({
     'ellisonleao/gruvbox.nvim',
     requires = { 'rktjmp/lush.nvim' },
     config = function()
+      vim.o.background = 'dark'
       vim.cmd([[colorscheme gruvbox]])
     end,
     disable = config.theme ~= 'gruvbox.nvim',
