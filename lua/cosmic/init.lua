@@ -1,5 +1,4 @@
 local cosmic_modules = {
-  'cosmic.compiled',
   'cosmic.disabled',
   'cosmic.pluginsInit',
   'cosmic.commands',
@@ -16,6 +15,7 @@ for _, mod in ipairs(cosmic_modules) do
 end
 
 local user_config_modules = {
+  'cosmic.compiled',
   'cosmic.config.editor',
   'cosmic.config.mappings',
 }

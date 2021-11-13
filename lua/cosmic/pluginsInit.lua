@@ -65,6 +65,7 @@ return packer.startup(function()
     'ellisonleao/gruvbox.nvim',
     requires = { 'rktjmp/lush.nvim' },
     config = function()
+      -- todo: does nothing
       vim.o.background = 'dark'
       vim.cmd('colorscheme gruvbox')
     end,
@@ -93,6 +94,7 @@ return packer.startup(function()
           DEBUG = icons.debug,
           TRACE = icons.trace,
         },
+        background_colour = require('cosmic.core.theme.colors').notify_bg,
       })
       vim.notify = require('notify')
     end,

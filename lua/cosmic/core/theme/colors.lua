@@ -17,4 +17,9 @@ if vim.tbl_isempty(colors) then
   return false
 end
 
+colors.notify_bg = 'Normal'
+if config.theme == 'gruvbox.nvim' then
+  colors.notify_bg = colors.bg
+end
+
 return colors
