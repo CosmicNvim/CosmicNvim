@@ -56,11 +56,6 @@ highlight('NotifyTRACEIcon', nil, colors.trace)
 
 highlight('TelescopeBorder', 'None', colors.floatBorder)
 highlight('FloatermBorder', 'None', colors.floatBorder)
-highlight('StatusLine', colors.statusline_bg, 'StatusLine')
+highlight('StatusLine', colors.statusline_bg, colors.statusline_bg)
 highlight('FloatBorder', 'None', colors.floatBorder)
 highlight('NormalFloat', 'Normal', 'Normal')
-
-local config = require('cosmic.config')
-if config.theme == 'gruvbox.nvim' then
-  vim.o.background = 'dark'
-end

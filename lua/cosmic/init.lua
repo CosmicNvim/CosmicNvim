@@ -10,7 +10,11 @@ local cosmic_modules = {
 
 for _, mod in ipairs(cosmic_modules) do
   local ok, err = pcall(require, mod)
-  if not ok then
+  if mod == 'cosmic.compiled' and not ok then
+    vim.notify('Run :PackerCompile!', vim.log.levels.WARN, {
+      title = 'CosmicNvim',
+    })
+  elseif not ok then
     error(('Error loading %s...\n\n%s'):format(mod, err))
   end
 end

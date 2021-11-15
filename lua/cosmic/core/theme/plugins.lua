@@ -46,9 +46,8 @@ function M.init(use, config)
     as = 'gruvbox',
     requires = { 'rktjmp/lush.nvim' },
     config = function()
-      -- todo: does nothing
       vim.o.background = 'dark'
-      vim.cmd('colorscheme gruvbox')
+      vim.cmd('color gruvbox')
     end,
     disable = config.theme ~= 'gruvbox',
   })
