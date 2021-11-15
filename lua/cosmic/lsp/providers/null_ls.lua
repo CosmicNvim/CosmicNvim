@@ -19,7 +19,7 @@ null_ls.config(vim.tbl_deep_extend('force', {
     }),
     null_ls.builtins.code_actions.gitsigns,
   },
-}, config.lsp.servers.null_ls))
+}, config.lsp.servers.null_ls or {}))
 
 require('lspconfig')['null-ls'].setup({
   on_attach = on_attach,

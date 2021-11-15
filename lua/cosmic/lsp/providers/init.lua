@@ -19,8 +19,6 @@ lsp_installer.settings({
 
 -- initial default serverse
 local requested_servers = {
-  -- 'eslint',
-  -- 'efm',
   'tsserver',
   'sumneko_lua',
   'jsonls',

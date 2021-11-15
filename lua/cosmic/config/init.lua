@@ -30,7 +30,6 @@ local default_config = {
       tsserver = {
         format = false, -- disable formatting all together
       },
-      null_ls = {},
     },
   },
 }

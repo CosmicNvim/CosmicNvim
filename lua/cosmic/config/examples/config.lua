@@ -18,11 +18,11 @@ config.statusline = {
 config.treesitter = {}
 
 -- theming, don't forget to run :PackerSync and reload CosmicNvim when chaning themes
--- 'Catppuccino.nvim'
--- 'gruvbox.nvim'
--- 'nord.nvim'
+-- 'catppuccino'
+-- 'gruvbox'
+-- 'nord'
 -- 'rose-pine'
-config.theme = 'tokyonight.nvim' -- don't define or set to nil, if you want to enable your own theme in cosmic/config/plugins.lua
+config.theme = 'tokyonight' -- don't define or set to nil, if you want to enable your own theme in cosmic/config/plugins.lua
 
 -- lsp settings
 config.lsp = {
