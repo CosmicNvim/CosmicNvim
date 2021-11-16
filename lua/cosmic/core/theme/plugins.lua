@@ -2,7 +2,7 @@ local M = {}
 
 M.supported_themes = {
   'tokyonight',
-  'catppuccino',
+  'catppuccin',
   'gruvbox',
   'rose-pine',
   'nord',
@@ -27,7 +27,7 @@ function M.init(use, config)
       vim.cmd('color catppuccin')
     end,
     branch = 'dev-remaster',
-    disable = config.theme ~= 'catppuccino',
+    disable = config.theme ~= 'catppuccin',
   })
 
   use({

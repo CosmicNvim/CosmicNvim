@@ -18,7 +18,7 @@ config.statusline = {
 config.treesitter = {}
 
 -- theming, don't forget to run :PackerSync and reload CosmicNvim when chaning themes
--- 'catppuccino'
+-- 'catppuccin'
 -- 'gruvbox'
 -- 'nord'
 -- 'rose-pine'
