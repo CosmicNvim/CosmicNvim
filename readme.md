@@ -105,12 +105,6 @@ By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpa
 #### Reload user config
 
 ```
-:CosmicReloadConfig
-```
-
-#### Reload CosmicNvim
-
-```
 :CosmicReload
 ```
 
