@@ -234,7 +234,7 @@ return packer.startup(function()
       'nvim-treesitter/nvim-treesitter-refactor',
     },
     run = ':TSUpdate',
-    event = 'BufEnter',
+    -- event = 'BufEnter',
     config = function()
       require('cosmic.core.treesitter')
     end,
