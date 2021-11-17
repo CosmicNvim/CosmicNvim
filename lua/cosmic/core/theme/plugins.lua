@@ -21,8 +21,9 @@ function M.init(use, config)
   })
 
   use({
-    'Pocco81/Catppuccino.nvim',
-    as = 'catppuccino',
+    'catppuccin/nvim',
+    commit = '85ffe3e29843a47d858b583fc88fc018206674c0',
+    as = 'catppuccin',
     config = function()
       vim.cmd('color catppuccin')
     end,
