@@ -21,8 +21,8 @@ M.init = function()
   map('n', '<leader>ggs', ':Telescope git_status<cr>')
 
   -- quickfix navigation
-  map('n', '<leader>cp', ':cprev<cr>')
-  map('n', '<leader>cn', ':cnext<cr>')
+  map('n', '<leader>cp', ':cprev<cr>zz')
+  map('n', '<leader>cn', ':cnext<cr>zz')
 
   -- buffer navigation
   map('n', '<leader>bp', ':bprev<cr>')
