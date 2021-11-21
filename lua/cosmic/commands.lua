@@ -1,5 +1,5 @@
 vim.cmd([[
 command! CosmicUpdate lua require('cosmic.utils').update()
-command! CosmicReload lua require('cosmic.utils').reload_cosmic()
+command! CosmicReload lua require('cosmic.utils').reload_user_config(true)
+command! CosmicReloadSync lua require('cosmic.utils').reload_user_config_sync()
 ]])
--- command! CosmicReloadSync lua require('cosmic.utils').reload_cosmic(true)

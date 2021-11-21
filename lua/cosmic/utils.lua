@@ -68,30 +68,39 @@ end
 local function clear_cache()
   if 0 == vim.fn.delete(vim.fn.stdpath('config') .. '/lua/cosmic/compiled.lua') then
     vim.cmd(':LuaCacheClear')
-    vim.notify('Cache cleared', vim.log.levels.INFO, {
+    vim.notify('Cache cleared!', vim.log.levels.INFO, {
       title = 'CosmicNvim',
     })
   end
 end
 
-function M.post_reload()
+function M.post_reload(msg)
+  unload('cosmic.utils', true)
   unload('cosmic.core.theme.colors', true)
   unload('cosmic.core.theme.highlights', true)
   unload('cosmic.core.statusline', true)
-  vim.notify('CosmicNvim reloaded!', vim.log.levels.INFO, {
+  msg = msg or 'User config reloaded!'
+  vim.notify(msg, vim.log.levels.INFO, {
     title = 'CosmicNvim',
   })
 end
 
-function M.reload_cosmic(sync)
-  vim.cmd([[autocmd User PackerCompileDone ++once lua require('cosmic.utils').post_reload()]])
+function M.reload_user_config_sync()
+  M.reload_user_config()
   clear_cache()
-  unload('cosmic.pluginsInit', true)
   unload('cosmic.config', true)
-  if sync then
-    vim.cmd(':PackerSync')
-  else
-    vim.cmd(':PackerCompile')
+  unload('cosmic.pluginsInit', true)
+  vim.cmd(
+    [[autocmd User PackerCompileDone ++once lua require('cosmic.utils').post_reload('User config reloaded! \nPlease restart CosmicNvim!')]]
+  )
+  vim.cmd(':PackerSync')
+end
+
+function M.reload_user_config(notify)
+  notify = notify or false
+  unload('cosmic.config', true)
+  if notify then
+    M.post_reload()
   end
 end
 
