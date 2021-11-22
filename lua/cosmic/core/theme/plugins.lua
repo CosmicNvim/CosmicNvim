@@ -5,6 +5,7 @@ M.supported_themes = {
   'catppuccin',
   'gruvbox',
   'rose-pine',
+  'nightfox',
   'nord',
 }
 
@@ -62,6 +63,16 @@ function M.init(use, config)
     end,
     disable = config.theme ~= 'rose-pine',
   })
+
+  use({
+    'EdenEast/nightfox.nvim',
+    as = 'nightfox',
+    config = function()
+      vim.cmd('color nightfox')
+    end,
+    disable = config.theme ~= 'nightfox'
+  })
+
 end
 
 return M
