@@ -37,18 +37,7 @@ return packer.startup(function()
   use({
     'rcarriga/nvim-notify',
     config = function()
-      local icons = require('cosmic.core.theme.icons')
-      require('notify').setup({
-        icons = {
-          ERROR = icons.error,
-          WARN = icons.warn,
-          INFO = icons.info,
-          DEBUG = icons.debug,
-          TRACE = icons.trace,
-        },
-        background_colour = require('cosmic.core.theme.colors').notify_bg,
-      })
-      vim.notify = require('notify')
+      require('cosmic.core.notifications')
     end,
     after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
@@ -234,7 +223,6 @@ return packer.startup(function()
       'nvim-treesitter/nvim-treesitter-refactor',
     },
     run = ':TSUpdate',
-    -- event = 'BufEnter',
     config = function()
       require('cosmic.core.treesitter')
     end,
@@ -253,29 +241,7 @@ return packer.startup(function()
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      local icons = require('cosmic.core.theme.icons')
-      require('todo-comments').setup({
-        keywords = {
-          FIX = {
-            icon = icons.debug, -- icon used for the sign, and in search results
-            color = 'error', -- can be a hex color, or a named color (see below)
-            alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE', 'fix', 'fixme', 'bug' }, -- a set of other keywords that all map to this FIX keywords
-            -- signs = false, -- configure signs for some keywords individually
-          },
-          TODO = { icon = icons.check, color = 'info' },
-          HACK = { icon = icons.flame, color = 'warning' },
-          WARN = { icon = icons.warn, color = 'warning', alt = { 'WARNING', 'XXX' } },
-          PERF = { icon = icons.perf, alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
-          NOTE = { icon = icons.note, color = 'hint', alt = { 'INFO' } },
-        },
-        colors = {
-          error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
-          warning = { 'DiagnosticWarning', 'WarningMsg', '#FBBF24' },
-          info = { 'DiagnosticInformation', '#2563EB' },
-          hint = { 'DiagnosticHint', '#10B981' },
-          default = { 'Identifier', '#7C3AED' },
-        },
-      })
+      require('cosmic.core.comments')
     end,
     event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'todo-comments'),
