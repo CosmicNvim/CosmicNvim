@@ -81,6 +81,8 @@ CosmicNvim comes with first-class support for the following themes:
 - [Tokyonight](https://github.com/folke/tokyonight.nvim)
 - [Nightfox](https://github.com/EdenEast/nightfox.nvim)
 
+[Additional Screenshots](https://github.com/mattleong/CosmicNvim/wiki/Theme-Screenshots)
+
 ## Configuration
 
 [Cosmic configurations](./lua/cosmic/config/examples/config.lua)
