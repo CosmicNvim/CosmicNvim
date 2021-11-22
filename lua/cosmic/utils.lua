@@ -91,11 +91,12 @@ function M.reload_user_config_sync()
   vim.cmd(':PackerSync')
 end
 
-function M.reload_user_config(notify)
-  notify = notify or false
+function M.reload_user_config(compile)
+  compile = compile or false
   unload('cosmic.config', true)
-  if notify then
-    M.post_reload()
+  if compile then
+    vim.cmd([[autocmd User PackerCompileDone ++once lua require('cosmic.utils').post_reload()]])
+    vim.cmd(':PackerCompile')
   end
 end
 
