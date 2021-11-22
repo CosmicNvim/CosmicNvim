@@ -2,6 +2,7 @@ local M = {}
 
 M.supported_themes = {
   'catppuccin',
+  'dracula',
   'gruvbox',
   'nightfox',
   'nord',
@@ -81,6 +82,15 @@ function M.init(use, config)
       vim.cmd('color onedark')
     end,
     disable = config.theme ~= 'onedark',
+  })
+
+  use({
+    'Mofiqul/dracula.nvim',
+    as = 'dracula',
+    config = function()
+      vim.cmd('color dracula')
+    end,
+    disable = config.theme ~= 'dracula',
   })
 end
 

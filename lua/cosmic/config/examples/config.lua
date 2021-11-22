@@ -19,6 +19,7 @@ config.treesitter = {}
 
 -- theming, don't forget to run :PackerSync and reload CosmicNvim when chaning themes
 -- 'catppuccin'
+-- 'dracula'
 -- 'gruvbox'
 -- 'nightfox'
 -- 'nord'

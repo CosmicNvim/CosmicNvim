@@ -75,12 +75,13 @@ CosmicNvim uninstallation [details](https://github.com/mattleong/CosmicNvim/wiki
 CosmicNvim comes with first-class support for the following themes:
 
 - [Catppuccino](https://github.com/Pocco81/Catppuccino.nvim)
+- [Dracula](https://github.com/Mofiqul/dracula.nvim)
 - [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
-- [Rose-pine](https://github.com/rose-pine/neovim)
-- [Nord](https://github.com/shaunsingh/nord.nvim)
-- [Tokyonight](https://github.com/folke/tokyonight.nvim)
 - [Nightfox](https://github.com/EdenEast/nightfox.nvim)
+- [Nord](https://github.com/shaunsingh/nord.nvim)
 - [Onedark](https://github.com/navarasu/onedark.nvim)
+- [Rose-pine](https://github.com/rose-pine/neovim)
+- [Tokyonight](https://github.com/folke/tokyonight.nvim)
 
 [Additional Screenshots](https://github.com/mattleong/CosmicNvim/wiki/Theme-Screenshots)
 
