@@ -90,9 +90,7 @@ function M.reload_user_config_sync()
   clear_cache()
   unload('cosmic.config', true)
   unload('cosmic.pluginsInit', true)
-  vim.cmd(
-    [[autocmd User PackerCompileDone ++once lua require('cosmic.utils').post_reload('User config reloaded! \nPlease restart CosmicNvim!')]]
-  )
+  vim.cmd([[autocmd User PackerCompileDone ++once lua require('cosmic.utils').post_reload()]])
   vim.cmd(':PackerSync')
 end
 
