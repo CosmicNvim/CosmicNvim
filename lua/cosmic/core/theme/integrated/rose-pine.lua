@@ -1,20 +1,5 @@
 local theme = require('rose-pine.palette')
---[[ base = '#191724',
-	surface = '#1f1d2e',
-	overlay = '#26233a',
-	inactive = '#555169',
-	subtle = '#6e6a86',
-	text = '#e0def4',
-	love = '#eb6f92',
-	gold = '#f6c177',
-	rose = '#ebbcba',
-	pine = '#31748f',
-	foam = '#9ccfd8',
-	iris = '#c4a7e7',
-	highlight = '#2a2837',
-	highlight_inactive = '#211f2d',
-	highlight_overlay = '#3a384a',
-	none = 'NONE', ]]
+
 local colors = {
   white = theme.text,
   bg = theme.surface,

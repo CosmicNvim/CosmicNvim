@@ -1,12 +1,13 @@
 local M = {}
 
 M.supported_themes = {
-  'tokyonight',
   'catppuccin',
   'gruvbox',
-  'rose-pine',
   'nightfox',
   'nord',
+  'onedark',
+  'rose-pine',
+  'tokyonight',
 }
 
 function M.init(use, config)
@@ -70,9 +71,17 @@ function M.init(use, config)
     config = function()
       vim.cmd('color nightfox')
     end,
-    disable = config.theme ~= 'nightfox'
+    disable = config.theme ~= 'nightfox',
   })
 
+  use({
+    'navarasu/onedark.nvim',
+    as = 'onedark',
+    config = function()
+      vim.cmd('color onedark')
+    end,
+    disable = config.theme ~= 'onedark',
+  })
 end
 
 return M

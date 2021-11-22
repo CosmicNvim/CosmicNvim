@@ -129,10 +129,11 @@ function M.update()
       on_exit = function()
         if vim.tbl_isempty(errors) then
           vim.notify(
-            'Please restart CosmicNvim and run `:PackerSync`',
+            'Updated! Running CosmicReloadSync...',
             vim.log.levels.INFO,
-            { title = 'CosmicNvim Updated!', timeout = 30000 }
+            { title = 'CosmicNvim', timeout = 30000 }
           )
+          M.reload_user_config_sync()
         else
           table.insert(errors, 1, 'Something went wrong! Please pull changes manually.')
           table.insert(errors, 2, '')

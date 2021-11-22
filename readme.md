@@ -80,6 +80,7 @@ CosmicNvim comes with first-class support for the following themes:
 - [Nord](https://github.com/shaunsingh/nord.nvim)
 - [Tokyonight](https://github.com/folke/tokyonight.nvim)
 - [Nightfox](https://github.com/EdenEast/nightfox.nvim)
+- [Onedark](https://github.com/navarasu/onedark.nvim)
 
 [Additional Screenshots](https://github.com/mattleong/CosmicNvim/wiki/Theme-Screenshots)
 
