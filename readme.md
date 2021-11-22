@@ -79,6 +79,7 @@ CosmicNvim comes with first-class support for the following themes:
 - [Rose-pine](https://github.com/rose-pine/neovim)
 - [Nord](https://github.com/shaunsingh/nord.nvim)
 - [Tokyonight](https://github.com/folke/tokyonight.nvim)
+- [Nightfox](https://github.com/EdenEast/nightfox.nvim)
 
 ## Configuration
 

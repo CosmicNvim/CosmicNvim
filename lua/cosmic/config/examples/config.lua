@@ -22,6 +22,7 @@ config.treesitter = {}
 -- 'gruvbox'
 -- 'nord'
 -- 'rose-pine'
+-- nightfox
 config.theme = 'tokyonight' -- don't define or set to nil, if you want to enable your own theme in cosmic/config/plugins.lua
 
 -- lsp settings
