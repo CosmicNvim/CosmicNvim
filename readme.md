@@ -76,6 +76,7 @@ CosmicNvim comes with first-class support for the following themes:
 
 - [Catppuccino](https://github.com/Pocco81/Catppuccino.nvim)
 - [Dracula](https://github.com/Mofiqul/dracula.nvim)
+- [Enfocado](https://github.com/wuelnerdotexe/vim-enfocado)
 - [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
 - [Nightfox](https://github.com/EdenEast/nightfox.nvim)
 - [Nord](https://github.com/shaunsingh/nord.nvim)

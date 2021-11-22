@@ -68,9 +68,6 @@ end
 local function clear_cache()
   if 0 == vim.fn.delete(vim.fn.stdpath('config') .. '/lua/cosmic/compiled.lua') then
     vim.cmd(':LuaCacheClear')
-    vim.notify('Cache cleared!', vim.log.levels.INFO, {
-      title = 'CosmicNvim',
-    })
   end
 end
 

@@ -3,6 +3,7 @@ local M = {}
 M.supported_themes = {
   'catppuccin',
   'dracula',
+  'enfocado',
   'gruvbox',
   'nightfox',
   'nord',
@@ -91,6 +92,15 @@ function M.init(use, config)
       vim.cmd('color dracula')
     end,
     disable = config.theme ~= 'dracula',
+  })
+
+  use({
+    'wuelnerdotexe/vim-enfocado',
+    as = 'enfocado',
+    config = function()
+      vim.cmd('color enfocado')
+    end,
+    disable = config.theme ~= 'enfocado',
   })
 end
 
