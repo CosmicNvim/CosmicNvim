@@ -8,6 +8,7 @@ function M.rename()
   local icons = require('cosmic.core.theme.icons')
   local utils = require('cosmic.utils')
   local config = require('cosmic.config')
+  local Logger = require('cosmic.utils.logger')
   local highlight = utils.highlight
   local prompt_str = ' ' .. icons.folder.arrow_closed .. ' '
   local map_opts = { noremap = true, silent = true }
@@ -62,7 +63,7 @@ function M.rename()
 
     if config.lsp.rename_notification then
       if err then
-        vim.notify(("Error running LSP query '%s': %s"):format(method, err), vim.log.levels.ERROR)
+        Logger:error(("Error running LSP query '%s': %s"):format(method, err))
         return
       end
 
@@ -75,7 +76,7 @@ function M.rename()
           table.insert(msg, ('%d changes -> %s'):format(#c, utils.get_relative_path(f)))
         end
         local currName = vim.fn.expand('<cword>')
-        vim.notify(msg, vim.log.levels.INFO, { title = ('Rename: %s -> %s'):format(currName, new_word) })
+        Logger:log(msg, { title = ('Rename: %s -> %s'):format(currName, new_word) })
       end
     end
 

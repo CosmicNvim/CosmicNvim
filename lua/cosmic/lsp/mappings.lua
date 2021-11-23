@@ -25,7 +25,11 @@ map('n', '<C-K>', '<cmd>lua require("lsp_signature").signature()<cr>')
 -- lsp workspace
 map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>')
 map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>')
-map('n', '<leader>wl', '<cmd>lua vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>')
+map(
+  'n',
+  '<leader>wl',
+  '<cmd>lua require("cosmic.utils.logger"):log(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>'
+)
 
 -- typescript helpers
 map('n', '<leader>gr', ':TSLspRenameFile<CR>')

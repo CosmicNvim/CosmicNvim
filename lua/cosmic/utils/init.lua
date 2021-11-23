@@ -1,3 +1,4 @@
+local Logger = require('cosmic.utils.logger')
 local M = {}
 
 function M.map(mode, lhs, rhs, opts)
@@ -77,9 +78,7 @@ function M.post_reload(msg)
   unload('cosmic.core.theme.highlights', true)
   unload('cosmic.core.statusline', true)
   msg = msg or 'User config reloaded!'
-  vim.notify(msg, vim.log.levels.INFO, {
-    title = 'CosmicNvim',
-  })
+  Logger:log(msg)
 end
 
 function M.reload_user_config_sync()
@@ -120,25 +119,16 @@ function M.update()
       args = { 'pull', '--ff-only' },
       cwd = path,
       on_start = function()
-        vim.notify('Updating...', vim.log.levels.INFO, {
-          title = 'CosmicNvim',
-        })
+        Logger:log('Updating...')
       end,
       on_exit = function()
         if vim.tbl_isempty(errors) then
-          vim.notify(
-            'Updated! Running CosmicReloadSync...',
-            vim.log.levels.INFO,
-            { title = 'CosmicNvim', timeout = 30000 }
-          )
+          Logger:log('Updated! Running CosmicReloadSync...', { timeout = 30000 })
           M.reload_user_config_sync()
         else
           table.insert(errors, 1, 'Something went wrong! Please pull changes manually.')
           table.insert(errors, 2, '')
-          vim.notify(errors, vim.log.levels.ERROR, {
-            title = 'CosmicNvim Update Failed!',
-            timeout = 30000,
-          })
+          Logger:error('Update failed!', { timeout = 30000 })
         end
       end,
       on_stderr = function(_, err)
