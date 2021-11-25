@@ -42,4 +42,4 @@ g.dashboard_custom_section = {
   },
 }
 
-g.dashboard_custom_footer = { '💫 github.com/mattleong/CosmicNvim' }
+g.dashboard_custom_footer = { '💫 github.com/CosmicNvim/CosmicNvim' }
