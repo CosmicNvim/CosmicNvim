@@ -7,7 +7,7 @@ local defaults = {
   update_in_insert = false,
   severity_sort = true,
   float = {
-    show_header = false,
+    header = false,
     source = 'always',
     border = 'single',
   },
