@@ -17,6 +17,7 @@ null_ls.config(vim.tbl_deep_extend('force', {
         '-',
       },
     }),
+    null_ls.builtins.formatting.stylelint,
     null_ls.builtins.code_actions.gitsigns,
   },
 }, config.lsp.servers.null_ls or {}))

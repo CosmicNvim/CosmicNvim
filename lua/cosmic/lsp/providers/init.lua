@@ -17,14 +17,9 @@ lsp_installer.settings({
   },
 })
 
--- initial default serverse
-local requested_servers = {
-  'tsserver',
-  'sumneko_lua',
-  'jsonls',
-  'cssls',
-  'html',
-}
+-- initial default servers
+-- by default tsserver/ts_utils and null_ls are enabled
+local requested_servers = {}
 
 -- get disabled servers from config
 local disabled_servers = {}

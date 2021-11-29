@@ -14,18 +14,18 @@ local default_config = {
     -- vim.diagnostic.config settiings
     servers = {
       -- enable/disable server + formatting
-      -- rust_analyzer = true, -- enable non-default servers
+      -- enable non-default servers
+      -- rust_analyzer = true,
 
       -- or override lsp server options
-      --[[
-      rust_analyzer = {
+      --[[ rust_analyzer = {
         opts = {}
-      },
-      ]]
+      }, ]]
 
       sumneko_lua = {
         format = false, -- disable formatting all together
       },
+      html = true,
       tsserver = {
         format = false, -- disable formatting all together
       },
