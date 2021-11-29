@@ -37,7 +37,7 @@ return packer.startup(function()
   use({
     'rcarriga/nvim-notify',
     config = function()
-      require('cosmic.core.notifications')
+      require('cosmic.core.notify')
     end,
     after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
@@ -59,7 +59,7 @@ return packer.startup(function()
   use({
     'kyazdani42/nvim-tree.lua',
     config = function()
-      require('cosmic.core.file-explorer')
+      require('cosmic.core.nvim-tree')
     end,
     opt = true,
     cmd = {
@@ -190,7 +190,7 @@ return packer.startup(function()
       },
     },
     config = function()
-      require('cosmic.core.navigation')
+      require('cosmic.core.telescope')
     end,
     event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'telescope'),
@@ -241,7 +241,7 @@ return packer.startup(function()
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require('cosmic.core.comments')
+      require('cosmic.core.todo-comments')
     end,
     event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'todo-comments'),

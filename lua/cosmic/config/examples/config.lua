@@ -64,17 +64,17 @@ config.lsp = {
   ts_utils = {},
 }
 
+-- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
+config.auto_session = {}
+
 -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
 config.comments = {}
-
--- See :h nvim-tree.setup
-config.nvim_tree = {}
 
 -- See :h notify.setup
 config.notify = {}
 
--- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
-config.session = {}
+-- See :h nvim-tree.setup
+config.nvim_tree = {}
 
 -- See :h telescope.setup
 config.telescope = {}

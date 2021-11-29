@@ -132,9 +132,9 @@ Enter `:TSInstall` followed by <TAB> to see your options for additional language
 
 ## Default Mappings
 
-[File Navigation](./lua/cosmic/core/navigation/mappings.lua)
+[File navigation](./lua/cosmic/core/telescope/mappings.lua)
 
-[File explorer](./lua/cosmic/core/file-explorer/mappings.lua)
+[File explorer](./lua/cosmic/core/nvim-tree/mappings.lua)
 
 [Terminal](./lua/cosmic/core/terminal/mappings.lua)
 

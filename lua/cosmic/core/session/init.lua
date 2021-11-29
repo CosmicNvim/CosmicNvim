@@ -6,4 +6,4 @@ local defaults = {
   auto_restore_enabled = false,
 }
 
-require('auto-session').setup(vim.tbl_deep_extend('force', defaults, config.session or {}))
+require('auto-session').setup(vim.tbl_deep_extend('force', defaults, config.auto_session or {}))
