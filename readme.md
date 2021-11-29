@@ -47,7 +47,7 @@ Full featured native LSP functionality!
 
 _While CosmicNvim is geared specifically toward TypeScript/JavaScript development, it should be able to provide a great experience with any LSP supported language._
 
-## Installation
+## 🛠 Installation
 
 ### Quick guide
 
@@ -72,7 +72,7 @@ Additional LSP server installation [details](https://github.com/CosmicNvim/Cosmi
 
 CosmicNvim uninstallation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Uninstalling-CosmicNvim).
 
-## Theming
+## 🎨 Theming
 
 CosmicNvim comes with first-class support for the following themes:
 
@@ -88,7 +88,7 @@ CosmicNvim comes with first-class support for the following themes:
 
 [Additional Screenshots](https://github.com/CosmicNvim/CosmicNvim/wiki/Theme-Screenshots)
 
-## Configuration
+## ⚙️ Configuration
 
 [General Info](./lua/cosmic/config/examples/readme.md)
 
@@ -100,7 +100,7 @@ CosmicNvim comes with first-class support for the following themes:
 
 [Add additional vim options](./lua/cosmic/config/examples/editor.lua)
 
-## Cosmic Commands
+## ✨ Cosmic Commands
 
 #### Update CosmicNvim
 
@@ -126,11 +126,7 @@ Useful for changing themes or updating plugins on the fly!
 
 Useful for non-plugin related changes such as editor settings or mappings.
 
-## Treesitter Support
-
-Enter `:TSInstall` followed by <TAB> to see your options for additional language support.
-
-## Default Mappings
+## 🗺 Default Mappings
 
 [File navigation](./lua/cosmic/core/telescope/mappings.lua)
 
