@@ -55,8 +55,9 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 
 - Neovim (+0.6.0)
 - [Node.js](https://nodejs.org/en/)
-- [prettierd](https://github.com/fsouza/prettierd) (for prettier formatting w/null-ls, optional)
-- [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/null-ls, optional)
+- [prettierd](https://github.com/fsouza/prettierd) (for prettier formatting w/null_ls, optional)
+- [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/null_ls, optional)
+- [stylelint](https://stylelint.io/) (for scss/css formatting and diagnostics w/null_ls)
 
 #### Install
 
