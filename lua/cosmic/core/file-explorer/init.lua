@@ -1,5 +1,6 @@
 local g = vim.g
 local icons = require('cosmic.core.theme.icons')
+local config = require('cosmic.config')
 
 -- settings
 g.nvim_tree_git_hl = 1
@@ -40,4 +41,4 @@ local args = {
   },
 }
 
-require('nvim-tree').setup(args)
+require('nvim-tree').setup(vim.tbl_deep_extend('force', args, config.nvim_tree or {}))

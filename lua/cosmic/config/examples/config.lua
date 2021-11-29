@@ -68,4 +68,10 @@ config.lsp = {
   ts_utils = {},
 }
 
+config.nvim_tree = {
+  view = {
+    width = 50,
+  },
+}
+
 return config
