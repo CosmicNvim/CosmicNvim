@@ -68,7 +68,7 @@ config.lsp = {
 config.auto_session = {}
 
 -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
-config.comments = {}
+config.todo_comments = {}
 
 -- See :h notify.setup
 config.notify = {}

@@ -22,4 +22,4 @@ require('todo-comments').setup(vim.tbl_deep_extend('force', {
     hint = { 'DiagnosticHint', '#10B981' },
     default = { 'Identifier', '#7C3AED' },
   },
-}, config.comments or {}))
+}, config.todo_comments or {}))
