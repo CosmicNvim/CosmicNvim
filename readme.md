@@ -57,7 +57,6 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 - [Node.js](https://nodejs.org/en/)
 - [prettierd](https://github.com/fsouza/prettierd) (for prettier formatting w/null_ls, optional)
 - [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/null_ls, optional)
-- [stylelint](https://stylelint.io/) (for scss/css formatting and diagnostics w/null_ls)
 
 #### Install
 
@@ -91,6 +90,8 @@ CosmicNvim comes with first-class support for the following themes:
 
 ## Configuration
 
+[General Info](./lua/cosmic/config/examples/readme.md)
+
 [Cosmic configurations](./lua/cosmic/config/examples/config.lua)
 
 [Plugin configurations](./lua/cosmic/config/examples/plugins.lua)
@@ -98,8 +99,6 @@ CosmicNvim comes with first-class support for the following themes:
 [Add additional mappings](./lua/cosmic/config/examples/mappings.lua)
 
 [Add additional vim options](./lua/cosmic/config/examples/editor.lua)
-
-[More info](./lua/cosmic/config/examples/readme.md)
 
 ## Cosmic Commands
 
