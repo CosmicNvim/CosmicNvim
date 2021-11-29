@@ -11,7 +11,7 @@ local config = require('cosmic.config')
 
 local defaults = vim.tbl_deep_extend('force', {
   statusline = {
-    main_icon = icons.ghost,
+    main_icon = icons.cosmic,
   },
 }, config.statusline or {})
 local main_icon = defaults.statusline.main_icon

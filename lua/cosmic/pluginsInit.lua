@@ -32,6 +32,7 @@ return packer.startup(function()
     'nvim-lua/plenary.nvim',
   })
 
+  -- initialize theme plugins
   require('cosmic.core.theme.plugins').init(use, config)
 
   use({
