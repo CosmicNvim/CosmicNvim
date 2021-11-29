@@ -1,5 +1,7 @@
 local icons = require('cosmic.core.theme.icons')
-require('todo-comments').setup({
+local config = require('cosmic.config')
+
+require('todo-comments').setup(vim.tbl_deep_extend('force', {
   keywords = {
     FIX = {
       icon = icons.debug, -- icon used for the sign, and in search results
@@ -20,4 +22,4 @@ require('todo-comments').setup({
     hint = { 'DiagnosticHint', '#10B981' },
     default = { 'Identifier', '#7C3AED' },
   },
-})
+}, config.comments or {}))

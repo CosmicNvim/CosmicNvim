@@ -1,5 +1,6 @@
 local actions = require('telescope.actions')
 local icons = require('cosmic.core.theme.icons')
+local config = require('cosmic.config')
 
 local default_mappings = {
   n = {
@@ -37,7 +38,7 @@ local opts_vertical = {
   },
 }
 
-require('telescope').setup({
+require('telescope').setup(vim.tbl_deep_extend('force', {
   defaults = {
     prompt_prefix = '🔍 ',
     selection_caret = icons.folder.arrow_closed,
@@ -114,6 +115,6 @@ require('telescope').setup({
       mappings = default_mappings,
     },
   },
-})
+}, config.telescope or {}))
 
 require('telescope').load_extension('fzf')

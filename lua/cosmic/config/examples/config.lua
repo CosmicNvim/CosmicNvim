@@ -5,19 +5,15 @@
 
 local config = {}
 
--- auto session settings
--- see Cosmic defaults: core/session/init.lua
-config.session = {}
-
--- statusline settings
+-- default statusline icon
 config.statusline = {
   main_icon = '★',
 }
 
--- see Cosmic defaults: core/treesitter/init.lua
+-- See :h nvim-treesitter-quickstart
 config.treesitter = {}
 
--- theming, don't forget to run :PackerSync and reload CosmicNvim when chaning themes
+-- theming, don't forget to run :CosmicReloadSync when changing themes
 -- 'catppuccin'
 -- 'dracula'
 -- 'enfocado'
@@ -68,10 +64,19 @@ config.lsp = {
   ts_utils = {},
 }
 
-config.nvim_tree = {
-  view = {
-    width = 50,
-  },
-}
+-- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
+config.comments = {}
+
+-- See :h nvim-tree.setup
+config.nvim_tree = {}
+
+-- See :h notify.setup
+config.notify = {}
+
+-- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
+config.session = {}
+
+-- See :h telescope.setup
+config.telescope = {}
 
 return config
