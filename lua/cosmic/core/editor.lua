@@ -12,7 +12,6 @@ g.mapleader = ' '
 
 -- misc
 opt.syntax = 'enable'
-opt.hidden = true
 opt.encoding = 'utf-8'
 opt.clipboard = 'unnamedplus'
 opt.backspace = { 'eol', 'start', 'indent' }
