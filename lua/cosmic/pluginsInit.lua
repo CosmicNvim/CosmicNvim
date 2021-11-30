@@ -33,12 +33,12 @@ return packer.startup(function()
   })
 
   -- initialize theme plugins
-  require('cosmic.core.theme.plugins').init(use, config)
+  require('cosmic.theme.plugins').init(use, config)
 
   use({
     'rcarriga/nvim-notify',
     config = function()
-      require('cosmic.core.notify')
+      require('cosmic.modules.notify')
     end,
     after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
@@ -50,7 +50,7 @@ return packer.startup(function()
     branch = 'main',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
-      require('cosmic.core.statusline')
+      require('cosmic.modules.statusline')
     end,
     after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'statusline'),
@@ -60,7 +60,7 @@ return packer.startup(function()
   use({
     'kyazdani42/nvim-tree.lua',
     config = function()
-      require('cosmic.core.nvim-tree')
+      require('cosmic.modules.nvim-tree')
     end,
     opt = true,
     cmd = {
@@ -140,7 +140,7 @@ return packer.startup(function()
   use({
     'L3MON4D3/LuaSnip',
     config = function()
-      require('cosmic.core.snippets')
+      require('cosmic.modules.snippets')
     end,
     requires = {
       'rafamadriz/friendly-snippets',
@@ -174,7 +174,7 @@ return packer.startup(function()
     opt = true,
     cmd = { 'FloatermToggle', 'FloatermNew', 'FloatermSend' },
     config = function()
-      require('cosmic.core.terminal')
+      require('cosmic.modules.terminal')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'terminal'),
   })
@@ -191,7 +191,7 @@ return packer.startup(function()
       },
     },
     config = function()
-      require('cosmic.core.telescope')
+      require('cosmic.modules.telescope')
     end,
     event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'telescope'),
@@ -201,7 +201,7 @@ return packer.startup(function()
   use({
     'glepnir/dashboard-nvim',
     config = function()
-      require('cosmic.core.dashboard')
+      require('cosmic.modules.dashboard')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'dashboard'),
   })
@@ -210,7 +210,7 @@ return packer.startup(function()
     'rmagatti/auto-session',
     event = 'VimEnter',
     config = function()
-      require('cosmic.core.session')
+      require('cosmic.modules.session')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'auto-session'),
   })
@@ -225,7 +225,7 @@ return packer.startup(function()
     },
     run = ':TSUpdate',
     config = function()
-      require('cosmic.core.treesitter')
+      require('cosmic.modules.treesitter')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'treesitter'),
   })
@@ -242,7 +242,7 @@ return packer.startup(function()
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require('cosmic.core.todo-comments')
+      require('cosmic.modules.todo-comments')
     end,
     event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'todo-comments'),

@@ -74,9 +74,9 @@ end
 
 function M.post_reload(msg)
   unload('cosmic.utils', true)
-  unload('cosmic.core.theme.colors', true)
-  unload('cosmic.core.theme.highlights', true)
-  unload('cosmic.core.statusline', true)
+  unload('cosmic.theme.colors', true)
+  unload('cosmic.theme.highlights', true)
+  unload('cosmic.modules.statusline', true)
   msg = msg or 'User config reloaded!'
   Logger:log(msg)
 end
@@ -85,7 +85,7 @@ function M.reload_user_config_sync()
   M.reload_user_config()
   clear_cache()
   unload('cosmic.config', true)
-  unload('cosmic.pluginsInit', true)
+  unload('cosmic.modulesInit', true)
   vim.cmd([[autocmd User PackerCompileDone ++once lua require('cosmic.utils').post_reload()]])
   vim.cmd(':PackerSync')
 end

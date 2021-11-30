@@ -1,5 +1,5 @@
 local g = vim.g
-local icons = require('cosmic.core.theme.icons')
+local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 
 -- settings

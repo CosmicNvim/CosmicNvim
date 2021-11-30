@@ -9,8 +9,8 @@ map('n', '<leader>cf', ':cfdo %s/')
 -- make Y behave like others
 map('n', 'Y', 'y$')
 
-require('cosmic.core.session.mappings')
-require('cosmic.core.telescope.mappings').init()
-require('cosmic.core.nvim-tree.mappings')
-require('cosmic.core.terminal.mappings')
+require('cosmic.modules.session.mappings')
+require('cosmic.modules.telescope.mappings').init()
+require('cosmic.modules.nvim-tree.mappings')
+require('cosmic.modules.terminal.mappings')
 require('cosmic.lsp.mappings')

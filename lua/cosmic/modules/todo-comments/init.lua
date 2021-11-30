@@ -1,4 +1,4 @@
-local icons = require('cosmic.core.theme.icons')
+local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 
 require('todo-comments').setup(vim.tbl_deep_extend('force', {

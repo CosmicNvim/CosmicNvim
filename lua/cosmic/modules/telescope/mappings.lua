@@ -11,7 +11,7 @@ end
 
 M.init = function()
   -- navigation
-  map('n', '<leader>ff', '<cmd>lua require("cosmic.core.telescope.mappings").project_files()<cr>')
+  map('n', '<leader>ff', '<cmd>lua require("cosmic.modules.telescope.mappings").project_files()<cr>')
   map('n', '<leader>fp', ':Telescope find_files<cr>')
   map('n', '<leader>fk', ':Telescope buffers<cr>')
   map('n', '<leader>fs', ':Telescope live_grep<cr>')

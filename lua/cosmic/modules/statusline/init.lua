@@ -4,9 +4,9 @@ local diag = require('galaxyline.providers.diagnostic')
 local condition = require('galaxyline.condition')
 local fileinfo = require('galaxyline.providers.fileinfo')
 local utils = require('cosmic.utils')
-local colors = require('cosmic.core.theme.colors')
+local colors = require('cosmic.theme.colors')
 local highlight = utils.highlight
-local icons = require('cosmic.core.theme.icons')
+local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 
 local defaults = vim.tbl_deep_extend('force', {

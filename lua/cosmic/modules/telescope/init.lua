@@ -1,5 +1,5 @@
 local actions = require('telescope.actions')
-local icons = require('cosmic.core.theme.icons')
+local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 
 local default_mappings = {

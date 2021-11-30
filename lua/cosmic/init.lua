@@ -1,13 +1,13 @@
 local cosmic_modules = {
   'cosmic.compiled',
-  'cosmic.disabled',
+  'cosmic.core.disabled',
   'cosmic.pluginsInit',
-  'cosmic.commands',
-  'cosmic.editor',
+  'cosmic.core.commands',
+  'cosmic.core.editor',
   'cosmic.config.editor',
-  'cosmic.mappings',
+  'cosmic.core.mappings',
   'cosmic.config.mappings',
-  'cosmic.core.theme.highlights',
+  'cosmic.theme.highlights',
 }
 
 for _, mod in ipairs(cosmic_modules) do

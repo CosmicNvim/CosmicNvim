@@ -1,4 +1,4 @@
-local _, colors = pcall(require, 'cosmic.core.theme.colors')
+local _, colors = pcall(require, 'cosmic.theme.colors')
 if not colors then
   return
 end

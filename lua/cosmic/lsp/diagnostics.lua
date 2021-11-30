@@ -1,5 +1,5 @@
 local config = require('cosmic.config')
-local icons = require('cosmic.core.theme.icons')
+local icons = require('cosmic.theme.icons')
 
 local defaults = {
   underline = true,

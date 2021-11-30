@@ -1,4 +1,4 @@
-local icons = require('cosmic.core.theme.icons')
+local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 
 require('notify').setup(vim.tbl_deep_extend('force', {
@@ -9,6 +9,6 @@ require('notify').setup(vim.tbl_deep_extend('force', {
     DEBUG = icons.debug,
     TRACE = icons.trace,
   },
-  background_colour = require('cosmic.core.theme.colors').notify_bg,
+  background_colour = require('cosmic.theme.colors').notify_bg,
 }, config.notify or {}))
 vim.notify = require('notify')
