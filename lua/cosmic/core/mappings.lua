@@ -6,9 +6,6 @@ map('n', '<leader>cc', ':cclose <cr>')
 map('n', '<leader>co', ':copen <cr>')
 map('n', '<leader>cf', ':cfdo %s/')
 
--- make Y behave like others
-map('n', 'Y', 'y$')
-
 require('cosmic.modules.session.mappings')
 require('cosmic.modules.telescope.mappings').init()
 require('cosmic.modules.nvim-tree.mappings')

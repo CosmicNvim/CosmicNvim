@@ -13,7 +13,7 @@ map('n', 'gn', '<cmd>lua require("cosmic.theme.ui").rename()<cr>')
 -- diagnostics
 map('n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 map('n', ']g', '<cmd>lua vim.diagnostic.goto_next()<cr>')
-map('n', 'ge', '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", })<cr>')
+map('n', 'ge', '<cmd>lua vim.diagnostic.open_float(nil, { scope = "line", })<cr>')
 map('n', '<leader>ge', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>')
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 map('n', '<leader>ga', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>')
