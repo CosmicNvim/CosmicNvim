@@ -1,7 +1,8 @@
 local config = require('cosmic.config')
-local on_attach = require('cosmic.lsp.providers.defaults').on_attach
+local defaults = require('cosmic.lsp.providers.defaults')
 local null_ls = require('null-ls')
 
+local config_opts = config.lsp.servers.null_ls or {}
 null_ls.config(vim.tbl_deep_extend('force', {
   -- you must define at least one source for the plugin to work
   sources = {
@@ -19,8 +20,6 @@ null_ls.config(vim.tbl_deep_extend('force', {
     }),
     null_ls.builtins.code_actions.gitsigns,
   },
-}, config.lsp.servers.null_ls or {}))
+}, config_opts or {}))
 
-require('lspconfig')['null-ls'].setup({
-  on_attach = on_attach,
-})
+require('lspconfig')['null-ls'].setup(vim.tbl_deep_extend('force', defaults, config_opts.opts or {}))
