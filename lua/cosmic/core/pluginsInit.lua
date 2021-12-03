@@ -208,7 +208,6 @@ return packer.startup(function()
 
   use({
     'rmagatti/auto-session',
-    event = 'VimEnter',
     config = function()
       require('cosmic.modules.session')
     end,
