@@ -7,12 +7,6 @@ g.nvim_tree_git_hl = 1
 g.nvim_tree_refresh_wait = 300
 
 g.nvim_tree_special_files = {}
-g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1,
-  folder_arrows = 1,
-}
 
 g.nvim_tree_icons = {
   default = '',
@@ -38,6 +32,14 @@ local args = {
   },
   update_focused_file = {
     enable = true,
+  },
+  view = {
+    width = 35,
+    number = true,
+    relativenumber = true,
+  },
+  git = {
+    ignore = true,
   },
 }
 
