@@ -86,14 +86,30 @@ local BracketProvider = function(icon, cond)
   return function()
     local result
 
-    if cond == true or cond == false then
+    if type(cond) == 'boolean' then
       result = cond
     else
       result = cond()
     end
 
-    if result ~= nil and result ~= '' then
+    if result == nil then
+      return
+    end
+
+    if type(result) == 'number' then
+      if result > 0 then
+        return icon
+      end
+    end
+
+    if type(result) == 'boolean' and result == true then
       return icon
+    end
+
+    if type(result) == 'string' then
+      if #result > 0 then
+        return icon
+      end
     end
   end
 end
@@ -245,7 +261,7 @@ gls.left = {
   {
     DiffAdd = {
       provider = 'DiffAdd',
-      icon = '  ',
+      icon = ' ' .. icons.diff_add,
       condition = check_width_and_git_and_buffer,
       highlight = { colors.diffAdd, colors.statusline_bg },
     },
@@ -254,7 +270,7 @@ gls.left = {
     DiffModified = {
       provider = 'DiffModified',
       condition = check_width_and_git_and_buffer,
-      icon = '  ',
+      icon = ' ' .. icons.diff_modified,
       highlight = { colors.diffModified, colors.statusline_bg },
     },
   },
@@ -262,7 +278,7 @@ gls.left = {
     DiffRemove = {
       provider = 'DiffRemove',
       condition = check_width_and_git_and_buffer,
-      icon = '  ',
+      icon = ' ' .. icons.diff_remove,
       highlight = { colors.diffDeleted, colors.statusline_bg },
     },
   },
@@ -309,6 +325,7 @@ gls.right = {
     DiagnosticInfoLeftBracket = {
       provider = BracketProvider(icons.arrow_left, diag.get_diagnostic_info),
       highlight = 'DiagnosticInfo',
+      condition = condition.buffer_not_empty,
     },
   },
   {
@@ -316,7 +333,7 @@ gls.right = {
       provider = diag.get_diagnostic_info,
       icon = '  ' .. icons.info .. ' ',
       highlight = 'DiagnosticInfo',
-      condition = check_width_and_git_and_buffer,
+      condition = condition.buffer_not_empty,
     },
   },
   {
