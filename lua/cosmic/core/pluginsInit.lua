@@ -89,7 +89,27 @@ return packer.startup(function()
     'CosmicNvim/cosmic-ui',
     requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'ray-x/lsp_signature.nvim' },
     config = function()
-      require('cosmic-ui').setup({})
+      local diagnostic = {}
+      local hover = {}
+      local signature_help = {}
+      local icons = require('cosmic.theme.icons')
+
+      if config and config.lsp and config.lsp.diagnostic then
+        diagnostic = config.lsp.diagnostic
+      end
+      if config and config.lsp and config.lsp.hover then
+        hover = config.lsp.hover
+      end
+      if config and config.lsp and config.lsp.signature_help then
+        signature_help = config.lsp.signature_help
+      end
+
+      require('cosmic-ui').setup({
+        icons = icons,
+        diagnostic = diagnostic,
+        hover = hover,
+        signature_help = signature_help,
+      })
     end,
     after = 'nvim-lspconfig',
   })

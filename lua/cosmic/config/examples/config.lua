@@ -62,6 +62,10 @@ config.lsp = {
   -- See Cosmic defaults lsp/providers/tsserver.lua
   -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
   ts_utils = {},
+
+  -- see Cosmic-UI settings
+  hover = {},
+  signature_help = {},
 }
 
 -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
