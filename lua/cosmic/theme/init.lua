@@ -2,38 +2,48 @@ local _, colors = pcall(require, 'cosmic.theme.colors')
 if not colors then
   return
 end
-local highlight = require('cosmic.theme.highlight')
+local highlight = require('cosmic.theme.utils').highlight
+local get_highlight = require('cosmic.theme.utils').get_highlight
+local set_highlight = require('cosmic.theme.utils').set_highlight
 
 -- @TODO: can i get rid of this?
 highlight('StatusLine', colors.statusline_bg, colors.statusline_bg)
 
--- @TODO: is all this work worth it?
---[[ -- diagnostic virtual text highlights
-highlight('DiagnosticVirtualTextError', 'None', colors.error)
-highlight('DiagnosticVirtualTextWarn', 'None', colors.warn)
-highlight('DiagnosticVirtualTextInfo', 'None', colors.info)
-highlight('DiagnosticVirtualTextHint', 'None', colors.hint)
+local error_colors = get_highlight('DiagnosticError')
+set_highlight(
+  'DiagnosticErrorInv',
+  vim.tbl_extend('force', error_colors, {
+    guibg = error_colors.guifg,
+    guifg = colors.statusline_bg,
+  })
+)
 
--- diagnostics highlight
-highlight('DiagnosticError', 'None', colors.error)
-highlight('DiagnosticWarn', 'None', colors.warn)
-highlight('DiagnosticInfo', 'None', colors.info)
-highlight('DiagnosticHint', 'None', colors.hint)
+local warning_colors = get_highlight('DiagnosticWarn')
+set_highlight(
+  'DiagnosticWarnInv',
+  vim.tbl_extend('force', warning_colors, {
+    guibg = warning_colors.guifg,
+    guifg = colors.statusline_bg,
+  })
+)
 
-highlight('Error', 'None', colors.error)
-highlight('ErrorMsg', 'None', colors.error)
-highlight('WarningMsg', 'None', colors.warn)
+local hint_colors = get_highlight('DiagnosticHint')
+set_highlight(
+  'DiagnosticHintInv',
+  vim.tbl_extend('force', hint_colors, {
+    guibg = hint_colors.guifg,
+    guifg = colors.statusline_bg,
+  })
+)
 
--- legacy diagnostics highlight
-highlight('LspDiagnosticsError', 'None', colors.error)
-highlight('LspDiagnosticsWarning', 'None', colors.warn)
-highlight('LspDiagnosticsInformation', 'None', colors.info)
-highlight('LspDiagnosticsHint', 'None', colors.hint)
-
-highlight('LspDiagnosticsSignError', 'None', colors.error)
-highlight('LspDiagnosticsSignWarning', 'None', colors.warn)
-highlight('LspDiagnosticsSignInformation', 'None', colors.info)
-highlight('LspDiagnosticsSignHint', 'None', colors.hint) ]]
+local info_colors = get_highlight('DiagnosticInfo')
+set_highlight(
+  'DiagnosticInfoInv',
+  vim.tbl_extend('force', info_colors, {
+    guibg = info_colors.guifg,
+    guifg = colors.statusline_bg,
+  })
+)
 
 -- notification highlights
 highlight('NotifyINFOBorder', nil, colors.hint)

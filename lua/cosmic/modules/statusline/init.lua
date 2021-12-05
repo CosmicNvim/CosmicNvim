@@ -5,7 +5,7 @@ local condition = require('galaxyline.condition')
 local fileinfo = require('galaxyline.providers.fileinfo')
 local utils = require('cosmic.utils')
 local colors = require('cosmic.theme.colors')
-local highlight = require('cosmic.theme.highlight')
+local highlight = require('cosmic.theme.utils').highlight
 local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 
@@ -291,9 +291,10 @@ gls.left = {
 }
 
 gls.right = {
+  -- Error
   {
     DiagnosticErrorLeftBracket = {
-      provider = BracketProvider(icons.arrow_left, diag.get_diagnostic_error),
+      provider = BracketProvider(icons.rounded_left_filled, diag.get_diagnostic_error),
       highlight = 'DiagnosticError',
       condition = condition.buffer_not_empty,
     },
@@ -301,41 +302,65 @@ gls.right = {
   {
     DiagnosticError = {
       provider = diag.get_diagnostic_error,
-      highlight = 'DiagnosticError',
+      highlight = 'DiagnosticErrorInv',
       icon = '  ' .. icons.error .. ' ',
       condition = condition.buffer_not_empty,
     },
   },
   {
+    DiagnosticErrorRightBracket = {
+      provider = BracketProvider(icons.rounded_right_filled .. ' ', diag.get_diagnostic_error),
+      highlight = 'DiagnosticError',
+      condition = condition.buffer_not_empty,
+    },
+  },
+  -- Warning
+  {
     DiagnosticWarnLeftBracket = {
-      provider = BracketProvider(icons.arrow_left, diag.get_diagnostic_warn),
-      highlight = 'DiagnosticWarning',
+      provider = BracketProvider(icons.rounded_left_filled, diag.get_diagnostic_warn),
+      highlight = 'DiagnosticWarn',
       condition = condition.buffer_not_empty,
     },
   },
   {
     DiagnosticWarn = {
       provider = diag.get_diagnostic_warn,
-      highlight = 'DiagnosticWarning',
+      highlight = 'DiagnosticWarnInv',
       icon = '  ' .. icons.warn .. ' ',
       condition = condition.buffer_not_empty,
     },
   },
   {
-    DiagnosticInfoLeftBracket = {
-      provider = BracketProvider(icons.arrow_left, diag.get_diagnostic_info),
-      highlight = 'DiagnosticInfo',
+    DiagnosticWarnRightBracket = {
+      provider = BracketProvider(icons.rounded_right_filled .. ' ', diag.get_diagnostic_warn),
+      highlight = 'DiagnosticWarn',
+      condition = condition.buffer_not_empty,
+    },
+  },
+  -- Hint
+  {
+    DiagnosticHintLeftBracket = {
+      provider = BracketProvider(icons.rounded_left_filled, diag.get_diagnostic_hint),
+      highlight = 'DiagnosticHint',
       condition = condition.buffer_not_empty,
     },
   },
   {
-    DiagnosticInfo = {
-      provider = diag.get_diagnostic_info,
-      icon = '  ' .. icons.info .. ' ',
-      highlight = 'DiagnosticInfo',
+    DiagnosticHint = {
+      provider = diag.get_diagnostic_hint,
+      icon = '  ' .. icons.hint .. ' ',
+      highlight = 'DiagnosticHintInv',
       condition = condition.buffer_not_empty,
     },
   },
+  {
+    DiagnosticHintRightBracket = {
+      provider = BracketProvider(icons.rounded_right_filled .. ' ', diag.get_diagnostic_hint),
+      highlight = 'DiagnosticHint',
+      condition = condition.buffer_not_empty,
+    },
+  },
+  -- Git
   {
     GitBranchRightBracket = {
       provider = BracketProvider(icons.arrow_left_filled, true),
@@ -351,6 +376,7 @@ gls.right = {
       highlight = 'GalaxyViModeInv',
     },
   },
+  -- Editor info
   {
     LineColumn = {
       provider = {
