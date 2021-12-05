@@ -29,6 +29,7 @@ Full featured native LSP functionality!
 
 ##### Additional features
 
+- Aesthetically pleasing UI via [Cosmic-UI](https://github.com/CosmicNvim/cosmic-ui)
 - Amazing default theme thanks to [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - Enhanced syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Dashboard via [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
