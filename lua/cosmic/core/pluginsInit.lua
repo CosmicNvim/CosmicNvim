@@ -80,22 +80,18 @@ return packer.startup(function()
       require('cosmic.lsp')
     end,
     requires = {
-      {
-        'ray-x/lsp_signature.nvim',
-        config = function()
-          -- must happen after servers are set up
-          require('lsp_signature').setup({
-            bind = true, -- This is mandatory, otherwise border config won't get registered.
-            handler_opts = {
-              border = 'rounded',
-            },
-          })
-        end,
-        after = 'nvim-lspconfig',
-      },
       { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
       { 'williamboman/nvim-lsp-installer' },
     },
+  })
+
+  use({
+    'CosmicNvim/cosmic-ui',
+    requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'ray-x/lsp_signature.nvim' },
+    config = function()
+      require('cosmic-ui').setup({})
+    end,
+    after = 'nvim-lspconfig',
   })
 
   use({

@@ -2,7 +2,7 @@ local _, colors = pcall(require, 'cosmic.theme.colors')
 if not colors then
   return
 end
-local highlight = require('cosmic.utils').highlight
+local highlight = require('cosmic.theme.highlight')
 
 -- diagnostic virtual text highlights
 highlight('DiagnosticVirtualTextError', 'None', colors.error)
@@ -32,7 +32,7 @@ highlight('LspDiagnosticsSignInformation', 'None', colors.info)
 highlight('LspDiagnosticsSignHint', 'None', colors.hint)
 
 -- signature highlight color
-highlight('LspSignatureActiveParameter', 'None', colors.orange)
+-- highlight('LspSignatureActiveParameter', 'None', colors.orange)
 
 -- currently not working?
 highlight('TelescopeSelectionCaret', 'None', colors.selection_caret)
