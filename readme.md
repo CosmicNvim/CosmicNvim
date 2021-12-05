@@ -33,7 +33,7 @@ Full featured native LSP functionality!
 - Amazing default theme thanks to [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - Enhanced syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Dashboard via [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
-- Hand-built statusline with [galaxyline](https://github.com/NTBBloodbath/galaxyline.nvim)
+- Hand-built statusline with [galaxyline](https://github.com/CosmicNvim/galaxyline.nvim)
 - Explore files with [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
 - Fuzzy finder and some LSP actions with [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)

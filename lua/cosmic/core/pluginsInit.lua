@@ -46,7 +46,7 @@ return packer.startup(function()
 
   -- theme stuff
   use({ -- statusline
-    'NTBBloodbath/galaxyline.nvim',
+    'CosmicNvim/galaxyline.nvim',
     branch = 'main',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()

@@ -4,7 +4,11 @@ if not colors then
 end
 local highlight = require('cosmic.theme.highlight')
 
--- diagnostic virtual text highlights
+-- @TODO: can i get rid of this?
+highlight('StatusLine', colors.statusline_bg, colors.statusline_bg)
+
+-- @TODO: is all this work worth it?
+--[[ -- diagnostic virtual text highlights
 highlight('DiagnosticVirtualTextError', 'None', colors.error)
 highlight('DiagnosticVirtualTextWarn', 'None', colors.warn)
 highlight('DiagnosticVirtualTextInfo', 'None', colors.info)
@@ -29,16 +33,7 @@ highlight('LspDiagnosticsHint', 'None', colors.hint)
 highlight('LspDiagnosticsSignError', 'None', colors.error)
 highlight('LspDiagnosticsSignWarning', 'None', colors.warn)
 highlight('LspDiagnosticsSignInformation', 'None', colors.info)
-highlight('LspDiagnosticsSignHint', 'None', colors.hint)
-
--- signature highlight color
--- highlight('LspSignatureActiveParameter', 'None', colors.orange)
-
--- currently not working?
-highlight('TelescopeSelectionCaret', 'None', colors.selection_caret)
-
--- autocomplete highlights
-highlight('CmpItemAbbrDeprecated', 'None', colors.warn)
+highlight('LspDiagnosticsSignHint', 'None', colors.hint) ]]
 
 -- notification highlights
 highlight('NotifyINFOBorder', nil, colors.hint)
@@ -54,8 +49,5 @@ highlight('NotifyTRACEBorder', nil, colors.trace)
 highlight('NotifyTRACETitle', nil, colors.trace)
 highlight('NotifyTRACEIcon', nil, colors.trace)
 
-highlight('TelescopeBorder', 'None', colors.floatBorder)
-highlight('FloatermBorder', 'None', colors.floatBorder)
-highlight('StatusLine', colors.statusline_bg, colors.statusline_bg)
-highlight('FloatBorder', 'None', colors.floatBorder)
-highlight('NormalFloat', 'Normal', 'Normal')
+vim.cmd('hi FloatBorder guibg=None')
+vim.cmd('hi! link FloatermBorder FloatBorder')
