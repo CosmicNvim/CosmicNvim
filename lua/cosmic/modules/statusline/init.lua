@@ -5,7 +5,7 @@ local condition = require('galaxyline.condition')
 local fileinfo = require('galaxyline.providers.fileinfo')
 local utils = require('cosmic.utils')
 local colors = require('cosmic.theme.colors')
-local highlight = utils.highlight
+local highlight = require('cosmic.theme.highlight')
 local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 

@@ -8,7 +8,7 @@ map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 map('n', 'gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>')
 map('n', 'gt', '<cmd>lua require("telescope.builtin").lsp_type_definitions()<cr>')
 map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
-map('n', 'gn', '<cmd>lua require("cosmic.theme.ui").rename()<cr>')
+map('n', 'gn', '<cmd>lua require("cosmic-ui").rename()<cr>')
 
 -- diagnostics
 map('n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<cr>')

@@ -59,7 +59,7 @@ M.init = function()
       }),
     },
     documentation = {
-      border = 'single',
+      border = 'rounded',
       winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
     },
     experimental = {
