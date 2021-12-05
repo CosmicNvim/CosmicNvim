@@ -28,7 +28,18 @@ function M.init(use, config)
     'catppuccin/nvim',
     as = 'catppuccin',
     config = function()
-      vim.cmd('color catppuccin')
+      local catppuccin = require('catppuccin')
+      catppuccin.setup({
+        integrations = {
+          gitsigns = true,
+          telescope = true,
+          dashboard = true,
+          nvimtree = {
+            enabled = true,
+          },
+        },
+      })
+      vim.cmd('colorscheme catppuccin')
     end,
     disable = config.theme ~= 'catppuccin',
   })
