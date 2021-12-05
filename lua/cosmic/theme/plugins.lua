@@ -26,12 +26,10 @@ function M.init(use, config)
 
   use({
     'catppuccin/nvim',
-    commit = '85ffe3e29843a47d858b583fc88fc018206674c0',
     as = 'catppuccin',
     config = function()
       vim.cmd('color catppuccin')
     end,
-    branch = 'dev-remaster',
     disable = config.theme ~= 'catppuccin',
   })
 
