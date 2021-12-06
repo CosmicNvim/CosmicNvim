@@ -119,6 +119,7 @@ return packer.startup(function()
       end
 
       require('cosmic-ui').setup({
+        border = 'rounded',
         icons = icons,
         diagnostic = diagnostic,
         hover = hover,
