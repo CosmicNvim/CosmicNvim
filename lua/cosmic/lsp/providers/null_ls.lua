@@ -19,6 +19,15 @@ null_ls.config(vim.tbl_deep_extend('force', {
       },
     }),
     null_ls.builtins.code_actions.gitsigns,
+    null_ls.builtins.diagnostics.eslint_d.with({ -- eslint or eslint_d
+      -- prefer_local = 'node_modules/.bin',
+    }),
+    null_ls.builtins.code_actions.eslint_d.with({ -- eslint or eslint_d
+      -- prefer_local = 'node_modules/.bin',
+    }),
+    null_ls.builtins.formatting.prettierd.with({ -- prettier, eslint, eslint_d, or prettierd
+      -- prefer_local = 'node_modules/.bin',
+    }),
   },
 }, config_opts or {}))
 
