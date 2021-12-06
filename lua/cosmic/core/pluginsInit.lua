@@ -86,6 +86,16 @@ return packer.startup(function()
   })
 
   use({
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('cosmic.lsp.providers.null_ls')
+    end,
+    requires = { 'nvim-lua/plenary.nvim' },
+    disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
+    after = 'nvim-lspconfig',
+  })
+
+  use({
     'CosmicNvim/cosmic-ui',
     requires = {
       'MunifTanjim/nui.nvim',
@@ -118,21 +128,6 @@ return packer.startup(function()
     after = 'nvim-lspconfig',
   })
 
-  use({
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require('cosmic.lsp.providers.null_ls')
-    end,
-    requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
-  })
-
-  use({
-    'onsails/lspkind-nvim',
-    event = 'InsertEnter',
-    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
-  })
-
   -- autocompletion
   use({
     'hrsh7th/nvim-cmp',
@@ -140,11 +135,21 @@ return packer.startup(function()
       require('cosmic-ui').setup_autocomplete()
     end,
     requires = {
+      { 'onsails/lspkind-nvim' },
+      {
+        'L3MON4D3/LuaSnip',
+        config = function()
+          require('cosmic.modules.snippets')
+        end,
+        requires = {
+          'rafamadriz/friendly-snippets',
+        },
+      },
       { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer', after = 'cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
-      { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       {
         'windwp/nvim-autopairs',
         config = function()
@@ -153,18 +158,7 @@ return packer.startup(function()
         after = 'cmp-path',
       },
     },
-    after = 'lspkind-nvim',
-    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
-  })
-
-  use({
-    'L3MON4D3/LuaSnip',
-    config = function()
-      require('cosmic.modules.snippets')
-    end,
-    requires = {
-      'rafamadriz/friendly-snippets',
-    },
+    event = 'InsertEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
