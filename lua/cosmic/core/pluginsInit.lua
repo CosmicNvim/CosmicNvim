@@ -87,7 +87,11 @@ return packer.startup(function()
 
   use({
     'CosmicNvim/cosmic-ui',
-    requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'ray-x/lsp_signature.nvim' },
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+      'ray-x/lsp_signature.nvim',
+    },
     config = function()
       local diagnostic = {}
       local hover = {}
@@ -133,7 +137,7 @@ return packer.startup(function()
   use({
     'hrsh7th/nvim-cmp',
     config = function()
-      require('cosmic.lsp.autocomplete').init()
+      require('cosmic-ui').setup_autocomplete()
     end,
     requires = {
       { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
@@ -144,7 +148,7 @@ return packer.startup(function()
       {
         'windwp/nvim-autopairs',
         config = function()
-          require('cosmic.lsp.autocomplete').autopairs()
+          require('cosmic.modules.auto-pairs')
         end,
         after = 'cmp-path',
       },
