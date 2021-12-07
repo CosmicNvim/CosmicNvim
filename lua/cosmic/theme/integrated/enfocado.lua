@@ -27,7 +27,6 @@ local colors = {
   white = theme.fg_1,
   bg = theme.bg_2,
   bg_highlight = theme.bg_2,
-  statusline_bg = theme.bg_1,
   normal = theme.green,
   insert = theme.cyan,
   command = theme.orange,

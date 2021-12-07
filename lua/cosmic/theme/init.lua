@@ -6,15 +6,13 @@ local highlight = require('cosmic.theme.utils').highlight
 local get_highlight = require('cosmic.theme.utils').get_highlight
 local set_highlight = require('cosmic.theme.utils').set_highlight
 
--- @TODO: can i get rid of this?
-highlight('StatusLine', colors.statusline_bg, colors.statusline_bg)
-
+local statusline_colors = get_highlight('StatusLine')
 local error_colors = get_highlight('DiagnosticError')
 set_highlight(
   'DiagnosticErrorInv',
   vim.tbl_extend('force', error_colors, {
     guibg = error_colors.guifg,
-    guifg = colors.statusline_bg,
+    guifg = statusline_colors.guibg,
   })
 )
 
@@ -23,7 +21,7 @@ set_highlight(
   'DiagnosticWarnInv',
   vim.tbl_extend('force', warning_colors, {
     guibg = warning_colors.guifg,
-    guifg = colors.statusline_bg,
+    guifg = statusline_colors.guibg,
   })
 )
 
@@ -32,7 +30,7 @@ set_highlight(
   'DiagnosticHintInv',
   vim.tbl_extend('force', hint_colors, {
     guibg = hint_colors.guifg,
-    guifg = colors.statusline_bg,
+    guifg = statusline_colors.guibg,
   })
 )
 
@@ -41,7 +39,7 @@ set_highlight(
   'DiagnosticInfoInv',
   vim.tbl_extend('force', info_colors, {
     guibg = info_colors.guifg,
-    guifg = colors.statusline_bg,
+    guifg = statusline_colors.guibg,
   })
 )
 

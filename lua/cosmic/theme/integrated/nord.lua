@@ -3,7 +3,6 @@ local colors = {
   white = theme.nord4_gui,
   bg = theme.nord1_gui,
   bg_highlight = theme.nord1_gui,
-  statusline_bg = theme.nord2_gui,
   normal = theme.nord9_gui,
   insert = theme.nord14_gui,
   command = theme.nord13_gui,

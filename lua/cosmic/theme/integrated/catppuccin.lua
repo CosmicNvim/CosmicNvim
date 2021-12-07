@@ -4,7 +4,6 @@ local colors = {
   white = theme.catppuccin0,
   bg = theme.catppuccin12,
   bg_highlight = theme.catppuccin15,
-  statusline_bg = theme.catppuccin14,
   normal = theme.catppuccin3,
   insert = theme.catppuccin4,
   command = theme.catppuccin5,

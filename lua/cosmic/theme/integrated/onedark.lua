@@ -4,7 +4,6 @@ local colors = {
   white = theme.fg,
   bg = theme.bg3,
   bg_highlight = theme.bg3,
-  statusline_bg = theme.bg0,
   normal = theme.green,
   insert = theme.cyan,
   command = theme.orange,

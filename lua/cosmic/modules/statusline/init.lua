@@ -8,6 +8,8 @@ local colors = require('cosmic.theme.colors')
 local highlight = require('cosmic.theme.utils').highlight
 local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
+local get_highlight = require('cosmic.theme.utils').get_highlight
+local statusline_colors = get_highlight('StatusLine')
 
 local defaults = vim.tbl_deep_extend('force', {
   statusline = {
@@ -50,7 +52,7 @@ local function get_git_root()
   return get_basename(git_root) .. ' '
 end
 
-local check_width_and_git_and_buffer = function()
+local check_git_and_buffer = function()
   return condition.check_git_workspace() and condition.buffer_not_empty()
 end
 
@@ -122,31 +124,6 @@ galaxy.short_line_list = {
   'fugitiveblame',
 }
 
-gls.mid = {
-  {
-    LSPStatus = {
-      provider = function()
-        local clients = utils.get_active_lsp_client_names()
-        local client_str = ''
-
-        if #clients < 1 then
-          return client_str
-        end
-
-        for i, client in ipairs(clients) do
-          client_str = client_str .. client
-          if i < #clients then
-            client_str = client_str .. ', '
-          end
-        end
-
-        return 'LSP: [' .. client_str .. ']'
-      end,
-      highlight = 'GalaxyText',
-    },
-  },
-}
-
 gls.left = {
   {
     GhostLeftBracket = {
@@ -177,10 +154,10 @@ gls.left = {
         local label, mode_color, mode_nested = unpack(m)
         highlight('GalaxyViMode', mode_color, mode_nested)
         highlight('GalaxyViModeInv', mode_nested, mode_color)
-        highlight('GalaxyViModeNested', mode_nested, colors.statusline_bg)
-        highlight('GalaxyViModeNestedInv', colors.statusline_bg, mode_nested)
-        highlight('GalaxyPercentBracket', colors.statusline_bg, mode_color)
-        highlight('GalaxyText', colors.statusline_bg, mode_color)
+        highlight('GalaxyViModeNested', mode_nested, 'StatusLine')
+        highlight('GalaxyViModeNestedInv', 'StatusLine', mode_nested)
+        highlight('GalaxyPercentBracket', 'StatusLine', mode_color)
+        highlight('GalaxyText', 'StatusLine', mode_color)
 
         highlight('GalaxyGitLCBracket', mode_nested, mode_color)
 
@@ -188,9 +165,9 @@ gls.left = {
           highlight('GalaxyViModeBracket', mode_nested, mode_color)
         else
           if condition.check_git_workspace() then
-            highlight('GalaxyGitLCBracket', colors.statusline_bg, mode_color)
+            highlight('GalaxyGitLCBracket', 'StatusLine', mode_color)
           end
-          highlight('GalaxyViModeBracket', colors.statusline_bg, mode_color)
+          highlight('GalaxyViModeBracket', 'StatusLine', mode_color)
         end
         return '  ' .. label .. ' '
       end,
@@ -205,7 +182,7 @@ gls.left = {
   {
     GitIcon = {
       provider = BracketProvider('  ' .. icons.branch .. ' ', true),
-      condition = check_width_and_git_and_buffer,
+      condition = check_git_and_buffer,
       highlight = 'GalaxyViModeInv',
     },
   },
@@ -222,7 +199,7 @@ gls.left = {
         end
         return branch_name .. ' '
       end,
-      condition = check_width_and_git_and_buffer,
+      condition = check_git_and_buffer,
       highlight = 'GalaxyViModeInv',
       separator = icons.arrow_right,
       separator_highlight = 'GalaxyViModeInv',
@@ -262,30 +239,24 @@ gls.left = {
     DiffAdd = {
       provider = 'DiffAdd',
       icon = ' ' .. icons.diff_add,
-      condition = check_width_and_git_and_buffer,
-      highlight = { colors.diffAdd, colors.statusline_bg },
+      condition = check_git_and_buffer,
+      highlight = { colors.diffAdd, 'StatusLine' },
     },
   },
   {
     DiffModified = {
       provider = 'DiffModified',
-      condition = check_width_and_git_and_buffer,
+      condition = check_git_and_buffer,
       icon = ' ' .. icons.diff_modified,
-      highlight = { colors.diffModified, colors.statusline_bg },
+      highlight = { colors.diffModified, 'StatusLine' },
     },
   },
   {
     DiffRemove = {
       provider = 'DiffRemove',
-      condition = check_width_and_git_and_buffer,
+      condition = check_git_and_buffer,
       icon = ' ' .. icons.diff_remove,
-      highlight = { colors.diffDeleted, colors.statusline_bg },
-    },
-  },
-  {
-    WSpace = {
-      provider = 'WhiteSpace',
-      highlight = { colors.statusline_bg, colors.statusline_bg },
+      highlight = { colors.diffDeleted, 'StatusLine' },
     },
   },
 }
@@ -369,6 +340,40 @@ gls.right = {
     },
   },
   {
+    LSPStatus = {
+      provider = function()
+        local clients = utils.get_active_lsp_client_names()
+        local client_str = ''
+
+        if #clients < 1 then
+          return client_str
+        end
+
+        for i, client in ipairs(clients) do
+          client_str = client_str .. client
+          if i < #clients then
+            client_str = client_str .. ', '
+          end
+        end
+
+        if client_str:len() < 1 then
+          return
+        end
+
+        return '  LSP: [' .. client_str .. ']'
+      end,
+      highlight = 'GalaxyViModeInv',
+      condition = check_buffer_and_width,
+    },
+  },
+  {
+    LSPStatusArrow = {
+      provider = BracketProvider('  ' .. icons.arrow_left, true),
+      highlight = 'GalaxyViModeInv',
+      condition = check_buffer_and_width,
+    },
+  },
+  {
     GitRoot = {
       provider = get_git_root,
       condition = check_buffer_and_width,
@@ -412,19 +417,19 @@ gls.short_line_left = {
   {
     GhostLeftBracketShort = {
       provider = BracketProvider(icons.rounded_left_filled, true),
-      highlight = { colors.white, colors.statusline_bg },
+      highlight = { colors.white, 'StatusLine' },
     },
   },
   {
     GhostShort = {
       provider = BracketProvider(main_icon, true),
-      highlight = { colors.statusline_bg, colors.white },
+      highlight = { 'StatusLine', colors.white },
     },
   },
   {
     GhostRightBracketShort = {
       provider = BracketProvider(icons.rounded_right_filled, true),
-      highlight = { colors.white, colors.statusline_bg },
+      highlight = { colors.white, 'StatusLine' },
     },
   },
   {
@@ -440,7 +445,7 @@ gls.short_line_left = {
       end,
       highlight = {
         require('galaxyline.providers.fileinfo').get_file_icon,
-        colors.statusline_bg,
+        'StatusLine',
       },
     },
   },
@@ -450,7 +455,7 @@ gls.short_line_left = {
       condition = function()
         return condition.buffer_not_empty() and vim.bo.filetype ~= 'NvimTree'
       end,
-      highlight = { colors.white, colors.statusline_bg },
+      highlight = { colors.white, 'StatusLine' },
     },
   },
   {
@@ -459,7 +464,7 @@ gls.short_line_left = {
       condition = function()
         return condition.buffer_not_empty() and vim.bo.filetype ~= 'NvimTree'
       end,
-      highlight = { colors.white, colors.statusline_bg },
+      highlight = { colors.white, 'StatusLine' },
     },
   },
 }
@@ -469,7 +474,7 @@ gls.short_line_right = {
     GitRootShortLeftBracket = {
       provider = BracketProvider(icons.arrow_left_filled, true),
       condition = condition.buffer_not_empty,
-      highlight = { colors.white, colors.statusline_bg },
+      highlight = { colors.white, 'StatusLine' },
     },
   },
   {
@@ -477,14 +482,14 @@ gls.short_line_right = {
       provider = get_git_root,
       condition = condition.buffer_not_empty,
       icon = '  ' .. icons.file .. ' ',
-      highlight = { colors.statusline_bg, colors.white },
+      highlight = { statusline_colors.guibg, colors.white },
     },
   },
   {
     GitRootShortRightBracket = {
       provider = BracketProvider(icons.rounded_right_filled, true),
       condition = condition.buffer_not_empty,
-      highlight = { colors.white, colors.statusline_bg },
+      highlight = { colors.white, 'StatusLine' },
     },
   },
 }

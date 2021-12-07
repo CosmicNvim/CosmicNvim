@@ -5,7 +5,6 @@ local colors = {
   white = themeColors.fg_dark,
   bg = themeColors.bg,
   bg_highlight = themeColors.bg_highlight,
-  statusline_bg = themeColors.bg_dark,
   normal = themeColors.blue,
   insert = themeColors.teal,
   command = themeColors.orange,

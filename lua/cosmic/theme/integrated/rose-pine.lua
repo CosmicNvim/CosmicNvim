@@ -4,7 +4,6 @@ local colors = {
   white = theme.text,
   bg = theme.surface,
   bg_highlight = theme.surface,
-  statusline_bg = theme.base,
   normal = theme.pine,
   insert = theme.foam,
   command = theme.gold,

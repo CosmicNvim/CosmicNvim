@@ -5,7 +5,6 @@ local colors = {
   white = convert.hsl_to_hex(theme.light0_hard),
   bg = convert.hsl_to_hex(theme.dark0),
   bg_highlight = convert.hsl_to_hex(theme.dark1),
-  statusline_bg = convert.hsl_to_hex(theme.dark2),
   normal = convert.hsl_to_hex(theme.neutral_yellow),
   insert = convert.hsl_to_hex(theme.neutral_green),
   command = convert.hsl_to_hex(theme.neutral_orange),

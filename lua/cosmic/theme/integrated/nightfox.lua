@@ -5,7 +5,6 @@ local colors = {
   white = themeColors.fg_alt,
   bg = themeColors.bg,
   bg_highlight = themeColors.bg_highlight,
-  statusline_bg = themeColors.bg_alt,
   normal = themeColors.blue,
   insert = themeColors.cyan,
   command = themeColors.orange,
@@ -24,3 +23,4 @@ local colors = {
 }
 
 return colors
+

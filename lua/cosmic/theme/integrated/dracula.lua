@@ -31,7 +31,6 @@ local colors = {
   white = theme.white,
   bg = theme.nontext,
   bg_highlight = theme.nontext,
-  statusline_bg = theme.bg,
   normal = theme.bright_green,
   insert = theme.bright_cyan,
   command = theme.orange,
