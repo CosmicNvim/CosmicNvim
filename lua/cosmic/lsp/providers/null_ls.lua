@@ -11,18 +11,7 @@ null_ls.config(vim.tbl_deep_extend('force', {
     null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.formatting.eslint_d,
     null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.formatting.stylua.with({
-      args = {
-        '-s',
-        '--quote-style',
-        'AutoPreferSingle',
-        '--indent-type',
-        'Spaces',
-        '--indent-width',
-        '2',
-        '-',
-      },
-    }),
+    null_ls.builtins.formatting.stylua,
   },
 }, config_opts or {}))
 
