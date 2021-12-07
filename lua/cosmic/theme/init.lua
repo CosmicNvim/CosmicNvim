@@ -59,3 +59,4 @@ highlight('NotifyTRACEIcon', nil, colors.trace)
 
 vim.cmd('hi FloatBorder guibg=None')
 vim.cmd('hi! link FloatermBorder FloatBorder')
+vim.cmd('hi link Floaterm NormalFloat')
