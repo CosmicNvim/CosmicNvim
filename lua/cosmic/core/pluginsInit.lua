@@ -225,9 +225,11 @@ return packer.startup(function()
 
   -- comments and stuff
   use({
-    'b3nj5m1n/kommentary',
+    'numToStr/Comment.nvim',
+    config = function()
+      require('cosmic.plugins.comments')
+    end,
     event = 'BufWinEnter',
-    disable = vim.tbl_contains(user_plugins.disable, 'kommentary'),
   })
 
   -- todo highlights

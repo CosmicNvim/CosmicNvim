@@ -71,6 +71,9 @@ config.lsp = {
 -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
 config.auto_session = {}
 
+-- https://github.com/numToStr/Comment.nvim#configuration-optional
+config.comments = {}
+
 -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
 config.todo_comments = {}
 
