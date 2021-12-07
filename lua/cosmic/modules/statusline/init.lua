@@ -360,7 +360,7 @@ gls.right = {
           return
         end
 
-        return '  LSP: [' .. client_str .. ']'
+        return '  (' .. client_str .. ')'
       end,
       highlight = 'GalaxyViModeInv',
       condition = check_buffer_and_width,
