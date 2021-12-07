@@ -129,11 +129,11 @@ Useful for non-plugin related changes such as editor settings or mappings.
 
 ## 🗺 Default Mappings
 
-[File navigation](./lua/cosmic/modules/telescope/mappings.lua)
+[File navigation](./lua/cosmic.plugins/telescope/mappings.lua)
 
-[File explorer](./lua/cosmic/modules/nvim-tree/mappings.lua)
+[File explorer](./lua/cosmic.plugins/nvim-tree/mappings.lua)
 
-[Terminal](./lua/cosmic/modules/terminal/mappings.lua)
+[Terminal](./lua/cosmic.plugins/terminal/mappings.lua)
 
 [LSP](./lua/cosmic/lsp/mappings.lua)
 

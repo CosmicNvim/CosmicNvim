@@ -57,7 +57,7 @@ end
 function M.post_reload(msg)
   unload('cosmic.utils', true)
   unload('cosmic.theme', true)
-  unload('cosmic.modules.statusline', true)
+  unload('cosmic.plugins.statusline', true)
   msg = msg or 'User config reloaded!'
   Logger:log(msg)
 end

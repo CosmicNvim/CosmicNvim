@@ -1,10 +1,10 @@
-local cosmic_modules = {
+local mods = {
   'cosmic.compiled',
   'cosmic.core',
   'cosmic.theme',
 }
 
-for _, mod in ipairs(cosmic_modules) do
+for _, mod in ipairs(mods) do
   local ok, err = pcall(require, mod)
   if mod == 'cosmic.compiled' and not ok then
     vim.notify('Run :PackerCompile!', vim.log.levels.WARN, {
