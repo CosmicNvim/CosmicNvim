@@ -33,10 +33,6 @@ config.lsp = {
   -- set to false to disable rename notification
   rename_notification = true,
 
-  -- see :h vim.diagnostic.config for all diagnostic configuration options
-  -- see Cosmic defaults: lsp/diagnostics.lua
-  diagnostic = {},
-
   servers = {
 
     -- enable non-default servers, use default lsp config
@@ -62,10 +58,6 @@ config.lsp = {
   -- See Cosmic defaults lsp/providers/tsserver.lua
   -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
   ts_utils = {},
-
-  -- see Cosmic-UI settings
-  hover = {},
-  signature_help = {},
 }
 -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
 config.auto_session = {}
@@ -74,7 +66,11 @@ config.auto_session = {}
 config.comments = {}
 
 -- See https://github.com/CosmicNvim/cosmic-ui#%EF%B8%8F-configuration
-config.cosmic_ui = {}
+config.cosmic_ui = {
+  -- see :h vim.diagnostic.config for all diagnostic configuration options
+  -- see Cosmic-ui defaults: https://github.com/CosmicNvim/cosmic-ui/blob/main/lua/cosmic-ui/diagnostics/init.lua
+  diagnostic = {},
+}
 
 -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
 config.todo_comments = {}
