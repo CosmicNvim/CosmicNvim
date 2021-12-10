@@ -62,7 +62,7 @@ lsp_installer.on_server_ready(function(server)
   -- override options if user definds them
   if type(config.lsp.servers[server.name]) == 'table' then
     if config.lsp.servers[server.name].opts ~= nil then
-      opts = config.lsp.servers[server.name].opts
+      opts = vim.tbl_deep_extend('force', opts, config.lsp.servers[server.name].opts)
     end
   end
 
