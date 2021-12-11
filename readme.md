@@ -154,11 +154,15 @@ Useful for non-plugin related changes such as editor settings or mappings.
 
 ### Rename
 
-<img width="859" alt="rename" src="https://user-images.githubusercontent.com/3721204/140592783-c9875634-805e-45f4-8547-6dcb5b5c7404.png">
+<img width="498" alt="Screen Shot 2021-12-10 at 4 22 28 PM" src="https://user-images.githubusercontent.com/3721204/145656501-e1aec4be-c8bc-4e59-8c2f-2d99d50bbea2.png">
 
 ### Rename change notification
 
 <img width="1792" alt="rename notification" src="https://user-images.githubusercontent.com/3721204/140592788-27c0f02a-e31b-4af7-8f0c-a49a988e295e.png">
+
+### Code Actions
+
+<img width="613" alt="Screen Shot 2021-12-10 at 3 37 38 PM" src="https://user-images.githubusercontent.com/3721204/145654798-84c88a69-414e-457b-b595-e76b767ea5d3.png">
 
 ### Hover
 
