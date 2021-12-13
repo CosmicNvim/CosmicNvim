@@ -105,6 +105,10 @@ require('telescope').setup(vim.tbl_deep_extend('force', {
       mappings = default_mappings,
       hidden = true,
     },
+    diagnostics = {
+      initial_mode = 'normal',
+      mappings = default_mappings,
+    },
     git_files = {
       prompt_title = '✨ Search Git Project ✨',
       mappings = default_mappings,

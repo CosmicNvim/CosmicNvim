@@ -31,5 +31,4 @@ require('null-ls').setup(vim.tbl_deep_extend('force', {
     null_ls.builtins.formatting.stylua,
   },
 
-  root_dir = defaults.root_dir,
-}, config_opts or {}))
+}, defaults, config_opts or {}))

@@ -14,15 +14,24 @@ map('n', 'gn', '<cmd>lua require("cosmic-ui").rename()<cr>')
 map('n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 map('n', ']g', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 map('n', 'ge', '<cmd>lua vim.diagnostic.open_float(nil, { scope = "line", })<cr>')
-map('n', '<leader>ge', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>')
+map('n', '<leader>ge', '<cmd>Telescope diagnostics bufnr=0<cr>')
+
+-- hover
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+
+-- code actions
 map('n', '<leader>ga', '<cmd>lua require("cosmic-ui").code_actions()<cr>')
 map('v', '<leader>ga', '<cmd>lua require("cosmic-ui").range_code_actions()<cr>')
+
+-- formatting
 map('n', '<leader>gf', '<cmd>lua vim.lsp.buf.formatting()<cr>')
 map('v', '<leader>gf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>')
+
+-- signature help
 map('n', '<C-K>', '<cmd>lua require("lsp_signature").signature()<cr>')
 
 -- lsp workspace
+map('n', '<leader>wd', '<cmd>Telescope diagnostics<cr>')
 map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>')
 map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>')
 map(
