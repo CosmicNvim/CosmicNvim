@@ -2,14 +2,18 @@ local config = require('cosmic.config')
 
 local defaults = {
   ensure_installed = {
-    'typescript',
-    'javascript',
-    'tsx',
-    'html',
     'css',
-    'lua',
+    'html',
+    'javascript',
+    'jsdoc',
     'json',
+    'lua',
+    'markdown',
+    'php',
+    'python',
     'scss',
+    'tsx',
+    'typescript',
   },
   highlight = {
     enable = true,

@@ -10,9 +10,6 @@ config.statusline = {
   main_icon = '★',
 }
 
--- See :h nvim-treesitter-quickstart
-config.treesitter = {}
-
 -- theming, don't forget to run :CosmicReloadSync when changing themes
 -- 'catppuccin'
 -- 'dracula'
@@ -74,6 +71,9 @@ config.cosmic_ui = {
 
 -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
 config.todo_comments = {}
+
+-- See :h nvim-treesitter-quickstart
+config.treesitter = {}
 
 -- See :h notify.setup
 config.notify = {}
