@@ -69,6 +69,9 @@ config.cosmic_ui = {
   diagnostic = {},
 }
 
+-- See :h telescope.setup
+config.telescope = {}
+
 -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
 config.todo_comments = {}
 
@@ -80,8 +83,5 @@ config.notify = {}
 
 -- See :h nvim-tree.setup
 config.nvim_tree = {}
-
--- See :h telescope.setup
-config.telescope = {}
 
 return config
