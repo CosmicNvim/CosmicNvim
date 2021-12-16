@@ -108,7 +108,8 @@ function M.init(use, config)
     'wuelnerdotexe/vim-enfocado',
     as = 'enfocado',
     config = function()
-      vim.cmd('color enfocado')
+      vim.g.enfocado_style = 'nature'
+      vim.cmd('autocmd VimEnter * ++nested colorscheme enfocado')
     end,
     disable = config.theme ~= 'enfocado',
   })
