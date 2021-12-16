@@ -26,7 +26,6 @@ function M.init(use, config)
 
   use({
     'catppuccin/nvim',
-    branch = 'dev-rc',
     as = 'catppuccin',
     config = function()
       local catppuccin = require('catppuccin')
