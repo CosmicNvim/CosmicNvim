@@ -112,7 +112,7 @@ return packer.startup(function()
   use({
     'hrsh7th/nvim-cmp',
     config = function()
-      require('cosmic.lsp.autocomplete').init()
+      require('cosmic.plugins.nvim-cmp')
     end,
     requires = {
       { 'onsails/lspkind-nvim' },

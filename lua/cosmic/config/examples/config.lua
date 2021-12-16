@@ -56,6 +56,10 @@ config.lsp = {
   -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
   ts_utils = {},
 }
+
+-- See :h cmp-usage
+config.autocomplete = {}
+
 -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
 config.auto_session = {}
 
