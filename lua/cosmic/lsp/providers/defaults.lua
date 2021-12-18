@@ -55,4 +55,6 @@ end
 
 M.autostart = true
 
+M.single_file_mode = true
+
 return M

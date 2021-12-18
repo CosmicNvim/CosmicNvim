@@ -1,6 +1,7 @@
 local cmp = require('cmp')
-local utils = require('cosmic-ui.utils')
 local cosmic_ui = require('cosmic-ui')
+local utils = require('cosmic-ui.utils')
+local luasnip = require('luasnip')
 local config = require('cosmic.config')
 
 local has_words_before = function()
@@ -28,11 +29,10 @@ local get_formatting = function()
   }
 end
 
--- @TODO: support for vsnip, ultisnips
 local default_cmp_opts = {
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -51,8 +51,8 @@ local default_cmp_opts = {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif require('luasnip').expand_or_jumpable() then
-        require('luasnip').expand_or_jump()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
@@ -65,8 +65,8 @@ local default_cmp_opts = {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif require('luasnip').jumpable(-1) then
-        require('luasnip').jump(-1)
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
