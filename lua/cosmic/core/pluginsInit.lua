@@ -80,32 +80,34 @@ return packer.startup(function()
       require('cosmic.lsp')
     end,
     requires = {
-      { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
       { 'williamboman/nvim-lsp-installer' },
+      { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
+      {
+        'ray-x/lsp_signature.nvim',
+        config = function()
+          require('cosmic.plugins.lsp-signature')
+        end,
+        after = 'nvim-lspconfig',
+      },
+      {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function()
+          require('cosmic.lsp.providers.null_ls')
+        end,
+        disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
+        after = 'nvim-lspconfig',
+      },
     },
-  })
-
-  use({
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require('cosmic.lsp.providers.null_ls')
-    end,
-    requires = { 'nvim-lua/plenary.nvim' },
-    disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
-    after = 'nvim-lspconfig',
   })
 
   use({
     'CosmicNvim/cosmic-ui',
     requires = {
       'MunifTanjim/nui.nvim',
-      'nvim-lua/plenary.nvim',
-      'ray-x/lsp_signature.nvim',
     },
     config = function()
       require('cosmic.plugins.cosmic-ui')
     end,
-    after = 'nvim-lspconfig',
   })
 
   -- autocompletion
