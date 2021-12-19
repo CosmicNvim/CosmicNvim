@@ -75,6 +75,16 @@ return packer.startup(function()
   })
 
   use({
+    'CosmicNvim/cosmic-ui',
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('cosmic.plugins.cosmic-ui')
+    end,
+  })
+
+  use({
     'neovim/nvim-lspconfig',
     config = function()
       require('cosmic.lsp')
@@ -98,16 +108,6 @@ return packer.startup(function()
         after = 'nvim-lspconfig',
       },
     },
-  })
-
-  use({
-    'CosmicNvim/cosmic-ui',
-    requires = {
-      'MunifTanjim/nui.nvim',
-    },
-    config = function()
-      require('cosmic.plugins.cosmic-ui')
-    end,
   })
 
   -- autocompletion
