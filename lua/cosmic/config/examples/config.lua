@@ -73,6 +73,9 @@ config.cosmic_ui = {
   diagnostic = {},
 }
 
+-- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
+config.luasnip = {}
+
 -- See :h telescope.setup
 config.telescope = {}
 
