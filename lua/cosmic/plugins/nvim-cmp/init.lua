@@ -1,5 +1,4 @@
 local cmp = require('cmp')
-local cosmic_ui = require('cosmic-ui')
 local utils = require('cosmic-ui.utils')
 local luasnip = require('luasnip')
 local config = require('cosmic.config')
@@ -76,7 +75,7 @@ local default_cmp_opts = {
     }),
   },
   documentation = {
-    border = cosmic_ui.get_border(),
+    border = config.border,
     winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
   },
   experimental = {

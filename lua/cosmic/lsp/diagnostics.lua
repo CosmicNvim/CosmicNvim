@@ -1,6 +1,5 @@
 local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
-local cosmic_ui = require('cosmic-ui')
 
 -- set up LSP signs
 local signs = {
@@ -28,7 +27,7 @@ vim.diagnostic.config(vim.tbl_deep_extend('force', {
   float = {
     header = false,
     source = 'always',
-    border = cosmic_ui.get_border(),
+    border = config.border,
   },
   virtual_text = {
     spacing = 4,
