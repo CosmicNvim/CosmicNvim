@@ -93,19 +93,20 @@ return packer.startup(function()
       { 'williamboman/nvim-lsp-installer' },
       { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
       {
-        'ray-x/lsp_signature.nvim',
-        config = function()
-          require('cosmic.plugins.lsp-signature')
-        end,
-        after = 'nvim-lspconfig',
-      },
-      {
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
           require('cosmic.lsp.providers.null_ls')
         end,
         disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
         after = 'nvim-lspconfig',
+      },
+      {
+        'ray-x/lsp_signature.nvim',
+        config = function()
+          require('cosmic.plugins.lsp-signature')
+        end,
+        after = 'nvim-lspconfig',
+        disable = vim.tbl_contains(user_plugins.disable, 'lsp_signature'),
       },
     },
   })

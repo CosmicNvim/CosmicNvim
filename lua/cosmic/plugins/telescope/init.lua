@@ -56,6 +56,7 @@ require('telescope').setup(vim.tbl_deep_extend('force', {
       '--line-number',
       '--column',
       '--smart-case',
+      '--trim',
     },
   },
   extensions = {
@@ -116,6 +117,11 @@ require('telescope').setup(vim.tbl_deep_extend('force', {
     },
     live_grep = {
       prompt_title = '✨ Live Grep ✨',
+      mappings = default_mappings,
+    },
+    grep_string = {
+      initial_mode = 'normal',
+      prompt_title = '✨ Grep String ✨',
       mappings = default_mappings,
     },
   },
