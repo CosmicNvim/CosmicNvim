@@ -38,6 +38,15 @@ local opts_vertical = {
   },
 }
 
+local opts_flex = {
+  layout_strategy = 'flex',
+  results_title = false,
+  layout_config = {
+    width = 0.5,
+    height = 0.6,
+  },
+}
+
 require('telescope').setup(vim.tbl_deep_extend('force', {
   defaults = {
     prompt_prefix = '🔍 ',
@@ -69,7 +78,7 @@ require('telescope').setup(vim.tbl_deep_extend('force', {
     },
   },
   pickers = {
-    buffers = {
+    buffers = vim.tbl_deep_extend('force', opts_flex, {
       prompt_title = '✨ Search Buffers ✨',
       mappings = vim.tbl_deep_extend('force', {
         n = {
@@ -78,7 +87,7 @@ require('telescope').setup(vim.tbl_deep_extend('force', {
       }, default_mappings),
       sort_mru = true,
       preview_title = false,
-    },
+    }),
     lsp_code_actions = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Code Actions',
     }),
@@ -97,33 +106,31 @@ require('telescope').setup(vim.tbl_deep_extend('force', {
       prompt_title = 'Definitions',
       mappings = default_mappings,
     }),
-    lsp_references = vim.tbl_deep_extend('force', opts_cursor, {
+    lsp_references = vim.tbl_deep_extend('force', opts_vertical, {
       prompt_title = 'References',
       mappings = default_mappings,
     }),
-    find_files = {
+    find_files = vim.tbl_deep_extend('force', opts_flex, {
       prompt_title = '✨ Search Project ✨',
       mappings = default_mappings,
       hidden = true,
-    },
-    diagnostics = {
-      initial_mode = 'normal',
+    }),
+    diagnostics = vim.tbl_deep_extend('force', opts_vertical, {
       mappings = default_mappings,
-    },
-    git_files = {
+    }),
+    git_files = vim.tbl_deep_extend('force', opts_flex, {
       prompt_title = '✨ Search Git Project ✨',
       mappings = default_mappings,
       hidden = true,
-    },
-    live_grep = {
+    }),
+    live_grep = vim.tbl_deep_extend('force', opts_flex, {
       prompt_title = '✨ Live Grep ✨',
       mappings = default_mappings,
-    },
-    grep_string = {
-      initial_mode = 'normal',
+    }),
+    grep_string = vim.tbl_deep_extend('force', opts_vertical, {
       prompt_title = '✨ Grep String ✨',
       mappings = default_mappings,
-    },
+    }),
   },
 }, config.telescope or {}))
 
