@@ -117,7 +117,6 @@ return packer.startup(function()
       require('cosmic.plugins.nvim-cmp')
     end,
     requires = {
-      { 'onsails/lspkind-nvim' },
       {
         'L3MON4D3/LuaSnip',
         config = function()

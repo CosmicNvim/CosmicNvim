@@ -3,29 +3,37 @@ local utils = require('cosmic-ui.utils')
 local luasnip = require('luasnip')
 local config = require('cosmic.config')
 
+local kind_icons = {
+  Text = '',
+  Method = 'm',
+  Function = '',
+  Constructor = '',
+  Field = '',
+  Variable = '',
+  Class = '',
+  Interface = '',
+  Module = '',
+  Property = '',
+  Unit = '',
+  Value = '',
+  Enum = '',
+  Keyword = '',
+  Snippet = '',
+  Color = '',
+  File = '',
+  Reference = '',
+  Folder = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = '',
+  Event = '',
+  Operator = '',
+  TypeParameter = '',
+}
+
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end
-
-local get_formatting = function()
-  local ok, _ = pcall(require, 'lspkind')
-  if not ok then
-    return {}
-  end
-
-  return {
-    format = require('lspkind').cmp_format({
-      with_text = true,
-      menu = {
-        buffer = '[buf]',
-        nvim_lsp = '[LSP]',
-        nvim_lua = '[VimApi]',
-        path = '[path]',
-        luasnip = '[snip]',
-      },
-    }),
-  }
 end
 
 local default_cmp_opts = {
@@ -88,7 +96,20 @@ local default_cmp_opts = {
     { name = 'luasnip' },
     { name = 'path' },
   }),
-  formatting = get_formatting(),
+  formatting = {
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+      vim_item.menu = ({
+        nvim_lsp = '[lsp]',
+        luasnip = '[snip]',
+        buffer = '[buf]',
+        path = '[path]',
+        nvim_lua = '[nvim_api]',
+      })[entry.source.name]
+      return vim_item
+    end,
+  },
 }
 
 vim.cmd([[
