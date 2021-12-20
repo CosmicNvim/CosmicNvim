@@ -27,6 +27,7 @@ local defaults = {
   },
   context_commentstring = {
     enable = true,
+    enable_autocmd = false,
   },
   refactor = {
     highlight_definitions = { enable = true },
