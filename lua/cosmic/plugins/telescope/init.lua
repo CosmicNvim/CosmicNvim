@@ -42,8 +42,8 @@ local opts_flex = {
   layout_strategy = 'flex',
   results_title = false,
   layout_config = {
-    width = 0.5,
-    height = 0.6,
+    width = 0.7,
+    height = 0.7,
   },
 }
 
