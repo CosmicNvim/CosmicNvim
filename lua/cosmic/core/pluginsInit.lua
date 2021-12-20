@@ -159,7 +159,7 @@ return packer.startup(function()
     opt = true,
     event = 'BufRead',
     config = function()
-      require('gitsigns').setup()
+      require('cosmic.plugins.gitsigns')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'gitsigns'),
   })

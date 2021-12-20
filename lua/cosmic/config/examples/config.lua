@@ -22,6 +22,9 @@ local config = {
   -- see :h vim.diagnostic.config for all diagnostic configuration options
   diagnostic = {},
 
+  -- see :h gitsigns-usage
+  gitsigns = {},
+
   -- lsp settings
   lsp = {
 
