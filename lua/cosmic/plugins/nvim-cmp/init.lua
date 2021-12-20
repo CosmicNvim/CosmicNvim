@@ -2,34 +2,7 @@ local cmp = require('cmp')
 local utils = require('cosmic-ui.utils')
 local luasnip = require('luasnip')
 local config = require('cosmic.config')
-
-local kind_icons = {
-  Text = '',
-  Method = 'm',
-  Function = '',
-  Constructor = '',
-  Field = '',
-  Variable = '',
-  Class = '',
-  Interface = '',
-  Module = '',
-  Property = '',
-  Unit = '',
-  Value = '',
-  Enum = '',
-  Keyword = '',
-  Snippet = '',
-  Color = '',
-  File = '',
-  Reference = '',
-  Folder = '',
-  EnumMember = '',
-  Constant = '',
-  Struct = '',
-  Event = '',
-  Operator = '',
-  TypeParameter = '',
-}
+local icons = require('cosmic.theme.icons')
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -99,7 +72,7 @@ local default_cmp_opts = {
   formatting = {
     format = function(entry, vim_item)
       -- Kind icons
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+      vim_item.kind = string.format('%s %s', icons.kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         nvim_lsp = '[lsp]',
         luasnip = '[snip]',

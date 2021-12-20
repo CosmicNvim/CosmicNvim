@@ -17,8 +17,8 @@ require('todo-comments').setup(vim.tbl_deep_extend('force', {
   },
   colors = {
     error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
-    warning = { 'DiagnosticWarning', 'WarningMsg', '#FBBF24' },
-    info = { 'DiagnosticInformation', '#2563EB' },
+    warning = { 'DiagnosticWarn', 'WarningMsg', '#FBBF24' },
+    info = { 'DiagnosticInfo', '#2563EB' },
     hint = { 'DiagnosticHint', '#10B981' },
     default = { 'Identifier', '#7C3AED' },
   },

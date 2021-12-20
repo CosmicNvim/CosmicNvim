@@ -9,12 +9,9 @@ local signs = {
   Info = icons.info .. ' ',
 }
 
-local t = vim.fn.sign_getdefined('DiagnosticSignWarn')
-if vim.tbl_isempty(t) then
-  for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-  end
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
 end
 
 -- set up vim.diagnostics
@@ -25,9 +22,10 @@ vim.diagnostic.config(vim.tbl_deep_extend('force', {
   update_in_insert = false,
   severity_sort = true,
   float = {
-    header = false,
-    source = 'always',
     border = config.border,
+    focusable = false,
+    header = { icons.debug .. ' Diagnostics:', 'Normal' },
+    source = 'always',
   },
   virtual_text = {
     spacing = 4,
