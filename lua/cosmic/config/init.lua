@@ -23,6 +23,9 @@ local default_config = {
         opts = {}
       }, ]]
 
+      jsonls = {
+        format = false,
+      },
       sumneko_lua = {
         format = false, -- disable formatting all together
       },
