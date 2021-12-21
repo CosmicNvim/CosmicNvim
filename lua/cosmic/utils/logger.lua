@@ -1,3 +1,4 @@
+local utils = require('cosmic.utils')
 local Logger = {}
 Logger.__index = Logger
 
@@ -8,7 +9,7 @@ function Logger:log(msg, opts)
   vim.notify(
     msg,
     vim.log.levels.INFO,
-    vim.tbl_deep_extend('force', {
+    utils.merge({
       title = title,
     }, opts)
   )
@@ -19,7 +20,7 @@ function Logger:warn(msg, opts)
   vim.notify(
     msg,
     vim.log.levels.WARN,
-    vim.tbl_deep_extend('force', {
+    utils.merge({
       title = title,
     }, opts)
   )
@@ -30,7 +31,7 @@ function Logger:error(msg, opts)
   vim.notify(
     msg,
     vim.log.levels.ERROR,
-    vim.tbl_deep_extend('force', {
+    utils.merge({
       title = title,
     }, opts)
   )

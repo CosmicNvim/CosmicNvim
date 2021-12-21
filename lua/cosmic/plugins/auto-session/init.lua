@@ -1,4 +1,6 @@
 local config = require('cosmic.config')
+local utils = require('cosmic.utils')
+
 local defaults = {
   pre_save_cmds = { 'NvimTreeClose', 'cclose', 'lua vim.notify.dismiss()' },
   post_restore_cmds = { 'NvimTreeRefresh' },
@@ -7,4 +9,4 @@ local defaults = {
   auto_restore_enabled = false,
 }
 
-require('auto-session').setup(vim.tbl_deep_extend('force', defaults, config.auto_session or {}))
+require('auto-session').setup(utils.merge(defaults, config.auto_session or {}))

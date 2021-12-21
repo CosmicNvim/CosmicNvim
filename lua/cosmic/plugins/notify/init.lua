@@ -1,7 +1,8 @@
-local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
+local icons = require('cosmic.theme.icons')
+local utils = require('cosmic.utils')
 
-require('notify').setup(vim.tbl_deep_extend('force', {
+require('notify').setup(utils.merge({
   icons = {
     ERROR = icons.error,
     WARN = icons.warn,

@@ -1,5 +1,7 @@
 local config = require('cosmic.config')
 local ls = require('luasnip')
+local utils = require('cosmic.utils')
+
 -- some shorthands...
 --[[ local s = ls.snippet
 local sn = ls.snippet_node
@@ -10,7 +12,7 @@ local c = ls.choice_node
 local d = ls.dynamic_node ]]
 
 -- Every unspecified option will be set to the default.
-ls.config.set_config(vim.tbl_deep_extend('force', {
+ls.config.set_config(utils.merge({
   history = true,
   -- Update more often, :h events for more info.
   updateevents = 'TextChanged,TextChangedI',

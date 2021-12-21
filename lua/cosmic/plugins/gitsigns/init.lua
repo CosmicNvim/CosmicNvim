@@ -1,6 +1,7 @@
 local config = require('cosmic.config')
+local utils = require('cosmic.utils')
 
-require('gitsigns').setup(vim.tbl_deep_extend('force', {
+require('gitsigns').setup(utils.merge({
   signs = {
     add = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
     change = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },

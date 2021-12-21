@@ -1,7 +1,8 @@
-local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
+local icons = require('cosmic.theme.icons')
+local utils = require('cosmic.utils')
 
-require('todo-comments').setup(vim.tbl_deep_extend('force', {
+require('todo-comments').setup(utils.merge({
   keywords = {
     FIX = {
       icon = icons.debug, -- icon used for the sign, and in search results

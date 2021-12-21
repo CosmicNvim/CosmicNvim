@@ -1,6 +1,7 @@
 local actions = require('telescope.actions')
-local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
+local icons = require('cosmic.theme.icons')
+local utils = require('cosmic.utils')
 
 local default_mappings = {
   n = {
@@ -47,7 +48,7 @@ local opts_flex = {
   },
 }
 
-require('telescope').setup(vim.tbl_deep_extend('force', {
+require('telescope').setup(utils.merge({
   defaults = {
     prompt_prefix = '🔍 ',
     selection_caret = icons.folder.arrow_closed,
@@ -78,9 +79,9 @@ require('telescope').setup(vim.tbl_deep_extend('force', {
     },
   },
   pickers = {
-    buffers = vim.tbl_deep_extend('force', opts_flex, {
+    buffers = utils.merge(opts_flex, {
       prompt_title = '✨ Search Buffers ✨',
-      mappings = vim.tbl_deep_extend('force', {
+      mappings = utils.merge({
         n = {
           ['d'] = actions.delete_buffer,
         },
@@ -88,46 +89,46 @@ require('telescope').setup(vim.tbl_deep_extend('force', {
       sort_mru = true,
       preview_title = false,
     }),
-    lsp_code_actions = vim.tbl_deep_extend('force', opts_cursor, {
+    lsp_code_actions = utils.merge(opts_cursor, {
       prompt_title = 'Code Actions',
     }),
-    lsp_range_code_actions = vim.tbl_deep_extend('force', opts_vertical, {
+    lsp_range_code_actions = utils.merge(opts_vertical, {
       prompt_title = 'Code Actions',
     }),
-    lsp_document_diagnostics = vim.tbl_deep_extend('force', opts_vertical, {
+    lsp_document_diagnostics = utils.merge(opts_vertical, {
       prompt_title = 'Document Diagnostics',
       mappings = default_mappings,
     }),
-    lsp_implementations = vim.tbl_deep_extend('force', opts_cursor, {
+    lsp_implementations = utils.merge(opts_cursor, {
       prompt_title = 'Implementations',
       mappings = default_mappings,
     }),
-    lsp_definitions = vim.tbl_deep_extend('force', opts_cursor, {
+    lsp_definitions = utils.merge(opts_cursor, {
       prompt_title = 'Definitions',
       mappings = default_mappings,
     }),
-    lsp_references = vim.tbl_deep_extend('force', opts_vertical, {
+    lsp_references = utils.merge(opts_vertical, {
       prompt_title = 'References',
       mappings = default_mappings,
     }),
-    find_files = vim.tbl_deep_extend('force', opts_flex, {
+    find_files = utils.merge(opts_flex, {
       prompt_title = '✨ Search Project ✨',
       mappings = default_mappings,
       hidden = true,
     }),
-    diagnostics = vim.tbl_deep_extend('force', opts_vertical, {
+    diagnostics = utils.merge(opts_vertical, {
       mappings = default_mappings,
     }),
-    git_files = vim.tbl_deep_extend('force', opts_flex, {
+    git_files = utils.merge(opts_flex, {
       prompt_title = '✨ Search Git Project ✨',
       mappings = default_mappings,
       hidden = true,
     }),
-    live_grep = vim.tbl_deep_extend('force', opts_flex, {
+    live_grep = utils.merge(opts_flex, {
       prompt_title = '✨ Live Grep ✨',
       mappings = default_mappings,
     }),
-    grep_string = vim.tbl_deep_extend('force', opts_vertical, {
+    grep_string = utils.merge(opts_vertical, {
       prompt_title = '✨ Grep String ✨',
       mappings = default_mappings,
     }),

@@ -1,5 +1,5 @@
 local cmp = require('cmp')
-local utils = require('cosmic-ui.utils')
+local utils = require('cosmic.utils')
 local luasnip = require('luasnip')
 local config = require('cosmic.config')
 local icons = require('cosmic.theme.icons')

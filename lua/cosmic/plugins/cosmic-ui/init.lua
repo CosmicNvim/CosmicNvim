@@ -1,7 +1,8 @@
 local config = require('cosmic.config')
+local utils = require('cosmic.utils')
 
 local defaults = {
   border = 'rounded',
 }
 
-require('cosmic-ui').setup(vim.tbl_deep_extend('force', defaults, config.cosmic_ui or {}))
+require('cosmic-ui').setup(utils.merge(defaults, config.cosmic_ui or {}))

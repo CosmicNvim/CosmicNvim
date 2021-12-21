@@ -1,3 +1,4 @@
+local utils = require('cosmic.utils')
 local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 
@@ -16,7 +17,7 @@ end
 
 -- set up vim.diagnostics
 -- vim.diagnostic.config opts
-vim.diagnostic.config(vim.tbl_deep_extend('force', {
+vim.diagnostic.config(utils.merge({
   underline = true,
   signs = true,
   update_in_insert = false,

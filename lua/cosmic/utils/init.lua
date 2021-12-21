@@ -1,4 +1,3 @@
-local Logger = require('cosmic.utils.logger')
 local M = {}
 
 function M.map(mode, lhs, rhs, opts)
@@ -17,7 +16,7 @@ function M.buf_map(bufnr, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
 end
 
-M.merge = function(...)
+function M.merge(...)
   return vim.tbl_deep_extend('force', ...)
 end
 
@@ -67,6 +66,7 @@ local function clear_cache()
 end
 
 function M.post_reload(msg)
+  local Logger = require('cosmic.utils.logger')
   unload('cosmic.utils', true)
   unload('cosmic.theme', true)
   unload('cosmic.plugins.statusline', true)
@@ -102,6 +102,7 @@ end
 
 -- update instance of CosmicNvim
 function M.update()
+  local Logger = require('cosmic.utils.logger')
   local Job = require('plenary.job')
   local path = M.get_install_dir()
   local errors = {}

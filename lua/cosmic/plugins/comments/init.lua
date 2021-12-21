@@ -1,6 +1,7 @@
 local config = require('cosmic.config')
+local utils = require('cosmic.utils')
 
-require('Comment').setup(vim.tbl_deep_extend('force', {
+require('Comment').setup(utils.merge({
   pre_hook = function(ctx)
     local U = require('Comment.utils')
     local location = nil
