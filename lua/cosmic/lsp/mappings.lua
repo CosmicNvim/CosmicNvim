@@ -1,9 +1,9 @@
-local buf_map = require('cosmic.utils').buf_map
 local M = {}
 
 -- Mappings.
+function M.init(client, bufnr)
+  local buf_map = require('cosmic.utils').buf_map
 
-function M.init(bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_map(bufnr, 'n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>')
   buf_map(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
@@ -43,10 +43,12 @@ function M.init(bufnr)
     '<cmd>lua require("cosmic.utils.logger"):log(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>'
   )
 
-  -- typescript helpers
-  buf_map(bufnr, 'n', '<leader>gr', ':TSLspRenameFile<CR>')
-  buf_map(bufnr, 'n', '<leader>go', ':TSLspOrganize<CR>')
-  buf_map(bufnr, 'n', '<leader>gi', ':TSLspImportAll<CR>')
+  if client.name == 'tsserver' then
+    -- typescript helpers
+    buf_map(bufnr, 'n', '<leader>gr', ':TSLspRenameFile<CR>')
+    buf_map(bufnr, 'n', '<leader>go', ':TSLspOrganize<CR>')
+    buf_map(bufnr, 'n', '<leader>gi', ':TSLspImportAll<CR>')
+  end
 end
 
 return M

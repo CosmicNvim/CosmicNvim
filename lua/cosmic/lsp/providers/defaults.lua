@@ -37,7 +37,7 @@ function M.on_attach(client, bufnr)
     client.resolved_capabilities.document_range_formatting = false
   end
 
-  require('cosmic.lsp.mappings').init(bufnr)
+  require('cosmic.lsp.mappings').init(client, bufnr)
 end
 
 M.flags = {
