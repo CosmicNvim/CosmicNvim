@@ -61,6 +61,7 @@ return packer.startup(function()
     'kyazdani42/nvim-tree.lua',
     config = function()
       require('cosmic.plugins.nvim-tree')
+      require('cosmic.plugins.nvim-tree.mappings')
     end,
     opt = true,
     cmd = {
@@ -168,9 +169,10 @@ return packer.startup(function()
   use({
     'voldikss/vim-floaterm',
     opt = true,
-    cmd = { 'FloatermToggle', 'FloatermNew', 'FloatermSend' },
+    event = 'BufWinEnter',
     config = function()
       require('cosmic.plugins.terminal')
+      require('cosmic.plugins.terminal.mappings')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'terminal'),
   })
@@ -187,6 +189,7 @@ return packer.startup(function()
       },
     },
     config = function()
+      require('cosmic.plugins.telescope.mappings').init()
       require('cosmic.plugins.telescope')
     end,
     event = 'BufWinEnter',
@@ -206,6 +209,7 @@ return packer.startup(function()
     'rmagatti/auto-session',
     config = function()
       require('cosmic.plugins.auto-session')
+      require('cosmic.plugins.auto-session.mappings')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'auto-session'),
   })

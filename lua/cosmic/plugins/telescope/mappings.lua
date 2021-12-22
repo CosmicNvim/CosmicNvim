@@ -20,18 +20,6 @@ M.init = function()
   -- git navigation
   map('n', '<leader>ggc', ':Telescope git_commits<cr>')
   map('n', '<leader>ggs', ':Telescope git_status<cr>')
-
-  -- quickfix navigation
-  map('n', '<leader>cp', ':cprev<cr>zz')
-  map('n', '<leader>cn', ':cnext<cr>zz')
-
-  -- buffer navigation
-  map('n', '<leader>bp', ':bprev<cr>')
-  map('n', '<leader>bn', ':bnext<cr>')
-
-  -- tab navigation
-  map('n', '<leader>tp', ':tabprevious<cr>')
-  map('n', '<leader>tn', ':tabnext<cr>')
 end
 
 return M

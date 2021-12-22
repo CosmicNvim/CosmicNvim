@@ -5,14 +5,19 @@ map('n', '<leader>ck', ':cexpr []<cr>')
 map('n', '<leader>cc', ':cclose <cr>')
 map('n', '<leader>co', ':copen <cr>')
 map('n', '<leader>cf', ':cfdo %s/')
+map('n', '<leader>cp', ':cprev<cr>zz')
+map('n', '<leader>cn', ':cnext<cr>zz')
 
--- Resize with arrows
+-- buffer navigation
+map('n', '<leader>bp', ':bprev<cr>')
+map('n', '<leader>bn', ':bnext<cr>')
+
+-- tab navigation
+map('n', '<leader>tp', ':tabprevious<cr>')
+map('n', '<leader>tn', ':tabnext<cr>')
+
+-- resize with arrows
 map('n', '<C-Up>', ':resize -2<CR>')
 map('n', '<C-Down>', ':resize +2<CR>')
 map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
-
-require('cosmic.plugins.auto-session.mappings')
-require('cosmic.plugins.telescope.mappings').init()
-require('cosmic.plugins.nvim-tree.mappings')
-require('cosmic.plugins.terminal.mappings')
