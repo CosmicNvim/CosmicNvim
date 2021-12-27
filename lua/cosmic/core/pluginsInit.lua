@@ -91,6 +91,7 @@ return packer.startup(function()
       require('cosmic.lsp')
     end,
     requires = {
+      { 'b0o/SchemaStore.nvim' },
       { 'williamboman/nvim-lsp-installer' },
       { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
       {
