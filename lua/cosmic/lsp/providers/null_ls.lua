@@ -28,7 +28,9 @@ require('null-ls').setup(utils.merge({
       condition = has_eslint_config,
     }),
     null_ls.builtins.code_actions.gitsigns,
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettier.with({
+      prefer_local = 'node_modules/.bin',
+    }),
     null_ls.builtins.formatting.stylua,
   },
 }, defaults, config_opts or {}))
