@@ -40,7 +40,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.plugins.notify')
     end,
-    event = 'ColorScheme',
+    after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
   })
 
