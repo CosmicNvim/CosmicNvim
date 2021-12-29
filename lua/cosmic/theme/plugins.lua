@@ -4,13 +4,14 @@ M.supported_themes = {
   'catppuccin',
   'dracula',
   'enfocado',
+  'github',
   'gruvbox',
+  'kanagawa',
   'nightfox',
   'nord',
   'onedark',
   'rose-pine',
   'tokyonight',
-  'kanagawa',
 }
 
 function M.init(use, config)
@@ -118,10 +119,18 @@ function M.init(use, config)
     'rebelot/kanagawa.nvim',
     as = 'kanagawa',
     config = function()
-      -- setup must be called before loading
       vim.cmd('colorscheme kanagawa')
     end,
     disable = config.theme ~= 'kanagawa',
+  })
+
+  use({
+    'projekt0n/github-nvim-theme',
+    as = 'github',
+    config = function()
+      require('github-theme').setup()
+    end,
+    disable = config.theme ~= 'github',
   })
 end
 
