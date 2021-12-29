@@ -10,6 +10,7 @@ M.supported_themes = {
   'onedark',
   'rose-pine',
   'tokyonight',
+  'kanagawa',
 }
 
 function M.init(use, config)
@@ -111,6 +112,16 @@ function M.init(use, config)
       vim.cmd('autocmd VimEnter * ++nested colorscheme enfocado')
     end,
     disable = config.theme ~= 'enfocado',
+  })
+
+  use({
+    'rebelot/kanagawa.nvim',
+    as = 'kanagawa',
+    config = function()
+      -- setup must be called before loading
+      vim.cmd('colorscheme kanagawa')
+    end,
+    disable = config.theme ~= 'kanagawa',
   })
 end
 
