@@ -17,10 +17,10 @@ require('null-ls').setup(utils.merge({
     null_ls.builtins.formatting.eslint_d.with({
       prefer_local = 'node_modules/.bin',
     }),
-    null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.formatting.prettier.with({
       prefer_local = 'node_modules/.bin',
     }),
     null_ls.builtins.formatting.stylua,
+    null_ls.builtins.code_actions.gitsigns,
   },
 }, defaults, config_opts or {}))
