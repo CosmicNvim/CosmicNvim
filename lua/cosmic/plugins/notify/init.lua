@@ -10,6 +10,6 @@ require('notify').setup(utils.merge({
     DEBUG = icons.debug,
     TRACE = icons.trace,
   },
-  background_colour = require('cosmic.theme.colors').notify_bg,
+  background_colour = require('cosmic.theme.colors').bg,
 }, config.notify or {}))
 vim.notify = require('notify')
