@@ -7,6 +7,7 @@ end
 
 -- these settings will be merged with any settings definined in config.lua
 local default_config = {
+  border = 'rounded',
   theme = 'tokyonight',
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
@@ -22,6 +23,9 @@ local default_config = {
         opts = {}
       }, ]]
 
+      jsonls = {
+        format = false,
+      },
       sumneko_lua = {
         format = false, -- disable formatting all together
       },
@@ -33,7 +37,8 @@ local default_config = {
   },
 }
 
-local config = vim.tbl_deep_extend('force', default_config, user_config)
+local utils = require('cosmic.utils')
+local config = utils.merge(default_config, user_config)
 local user_servers = vim.tbl_keys(config.lsp.servers)
 
 function config.lsp.can_client_format(client_name)

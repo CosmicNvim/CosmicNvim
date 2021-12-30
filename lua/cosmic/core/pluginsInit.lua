@@ -46,7 +46,7 @@ return packer.startup(function()
 
   -- theme stuff
   use({ -- statusline
-    'CosmicNvim/galaxyline.nvim',
+    'NTBBloodbath/galaxyline.nvim',
     branch = 'main',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
@@ -61,6 +61,7 @@ return packer.startup(function()
     'kyazdani42/nvim-tree.lua',
     config = function()
       require('cosmic.plugins.nvim-tree')
+      require('cosmic.plugins.nvim-tree.mappings')
     end,
     opt = true,
     cmd = {
@@ -75,47 +76,50 @@ return packer.startup(function()
   })
 
   use({
+    'CosmicNvim/cosmic-ui',
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('cosmic.plugins.cosmic-ui')
+    end,
+  })
+
+  use({
     'neovim/nvim-lspconfig',
     config = function()
       require('cosmic.lsp')
     end,
     requires = {
-      { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
+      { 'b0o/SchemaStore.nvim' },
       { 'williamboman/nvim-lsp-installer' },
+      { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
+      {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function()
+          require('cosmic.lsp.providers.null_ls')
+        end,
+        disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
+        after = 'nvim-lspconfig',
+      },
+      {
+        'ray-x/lsp_signature.nvim',
+        config = function()
+          require('cosmic.plugins.lsp-signature')
+        end,
+        after = 'nvim-lspconfig',
+        disable = vim.tbl_contains(user_plugins.disable, 'lsp_signature'),
+      },
     },
-  })
-
-  use({
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require('cosmic.lsp.providers.null_ls')
-    end,
-    requires = { 'nvim-lua/plenary.nvim' },
-    disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
-    after = 'nvim-lspconfig',
-  })
-
-  use({
-    'CosmicNvim/cosmic-ui',
-    requires = {
-      'MunifTanjim/nui.nvim',
-      'nvim-lua/plenary.nvim',
-      'ray-x/lsp_signature.nvim',
-    },
-    config = function()
-      require('cosmic.plugins.cosmic-ui')
-    end,
-    after = 'nvim-lspconfig',
   })
 
   -- autocompletion
   use({
     'hrsh7th/nvim-cmp',
     config = function()
-      require('cosmic.lsp.autocomplete').init()
+      require('cosmic.plugins.nvim-cmp')
     end,
     requires = {
-      { 'onsails/lspkind-nvim' },
       {
         'L3MON4D3/LuaSnip',
         config = function()
@@ -157,7 +161,7 @@ return packer.startup(function()
     opt = true,
     event = 'BufRead',
     config = function()
-      require('gitsigns').setup()
+      require('cosmic.plugins.gitsigns')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'gitsigns'),
   })
@@ -166,9 +170,10 @@ return packer.startup(function()
   use({
     'voldikss/vim-floaterm',
     opt = true,
-    cmd = { 'FloatermToggle', 'FloatermNew', 'FloatermSend' },
+    event = 'BufWinEnter',
     config = function()
       require('cosmic.plugins.terminal')
+      require('cosmic.plugins.terminal.mappings')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'terminal'),
   })
@@ -185,6 +190,7 @@ return packer.startup(function()
       },
     },
     config = function()
+      require('cosmic.plugins.telescope.mappings').init()
       require('cosmic.plugins.telescope')
     end,
     event = 'BufWinEnter',
@@ -204,6 +210,7 @@ return packer.startup(function()
     'rmagatti/auto-session',
     config = function()
       require('cosmic.plugins.auto-session')
+      require('cosmic.plugins.auto-session.mappings')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'auto-session'),
   })

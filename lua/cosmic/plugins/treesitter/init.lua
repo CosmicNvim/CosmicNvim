@@ -1,4 +1,5 @@
 local config = require('cosmic.config')
+local utils = require('cosmic.utils')
 
 local defaults = {
   ensure_installed = {
@@ -27,6 +28,7 @@ local defaults = {
   },
   context_commentstring = {
     enable = true,
+    enable_autocmd = false,
   },
   refactor = {
     highlight_definitions = { enable = true },
@@ -34,4 +36,4 @@ local defaults = {
   },
 }
 
-require('nvim-treesitter.configs').setup(vim.tbl_deep_extend('force', defaults, config.treesitter or {}))
+require('nvim-treesitter.configs').setup(utils.merge(defaults, config.treesitter or {}))

@@ -1,7 +1,8 @@
-local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
+local icons = require('cosmic.theme.icons')
+local utils = require('cosmic.utils')
 
-require('notify').setup(vim.tbl_deep_extend('force', {
+require('notify').setup(utils.merge({
   icons = {
     ERROR = icons.error,
     WARN = icons.warn,
@@ -9,6 +10,8 @@ require('notify').setup(vim.tbl_deep_extend('force', {
     DEBUG = icons.debug,
     TRACE = icons.trace,
   },
-  background_colour = require('cosmic.theme.colors').notify_bg,
+  stages = 'slide',
+  background_colour = require('cosmic.theme.colors').bg,
 }, config.notify or {}))
+
 vim.notify = require('notify')

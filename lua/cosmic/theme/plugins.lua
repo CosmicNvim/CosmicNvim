@@ -4,7 +4,9 @@ M.supported_themes = {
   'catppuccin',
   'dracula',
   'enfocado',
+  'github',
   'gruvbox',
+  'kanagawa',
   'nightfox',
   'nord',
   'onedark',
@@ -26,7 +28,6 @@ function M.init(use, config)
 
   use({
     'catppuccin/nvim',
-    branch = 'dev-rc',
     as = 'catppuccin',
     config = function()
       local catppuccin = require('catppuccin')
@@ -62,7 +63,7 @@ function M.init(use, config)
     requires = { 'rktjmp/lush.nvim' },
     config = function()
       vim.o.background = 'dark'
-      vim.cmd('color gruvbox')
+      vim.cmd('colorscheme gruvbox')
     end,
     disable = config.theme ~= 'gruvbox',
   })
@@ -112,6 +113,24 @@ function M.init(use, config)
       vim.cmd('autocmd VimEnter * ++nested colorscheme enfocado')
     end,
     disable = config.theme ~= 'enfocado',
+  })
+
+  use({
+    'rebelot/kanagawa.nvim',
+    as = 'kanagawa',
+    config = function()
+      vim.cmd('colorscheme kanagawa')
+    end,
+    disable = config.theme ~= 'kanagawa',
+  })
+
+  use({
+    'projekt0n/github-nvim-theme',
+    as = 'github',
+    config = function()
+      require('github-theme').setup()
+    end,
+    disable = config.theme ~= 'github',
   })
 end
 

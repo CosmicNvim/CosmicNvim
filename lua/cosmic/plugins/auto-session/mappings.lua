@@ -6,5 +6,5 @@ map('n', '<leader>ss', '<cmd>SaveSession<cr>')
 map(
   'n',
   '<leader>si',
-  '<cmd>lua require("cosmic.utils.logger"):log(require("auto-session-library").current_session_name())<cr>'
+  '<cmd>lua require("cosmic.utils.logger"):log("Session name: " .. require("auto-session-library").current_session_name())<cr>'
 )

@@ -1,3 +1,4 @@
+local utils = require('cosmic.utils')
 local default_on_attach = require('cosmic.lsp.providers.defaults').on_attach
 local config = require('cosmic.config')
 local M = {}
@@ -8,7 +9,7 @@ function M.on_attach(client, bufnr)
   local ts_utils = require('nvim-lsp-ts-utils')
 
   -- defaults
-  ts_utils.setup(vim.tbl_deep_extend('force', {
+  ts_utils.setup(utils.merge({
     debug = false,
     disable_commands = false,
     enable_import_on_completion = true,

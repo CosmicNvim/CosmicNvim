@@ -1,6 +1,7 @@
+local config = require('cosmic.config')
 local g = vim.g
 local icons = require('cosmic.theme.icons')
-local config = require('cosmic.config')
+local utils = require('cosmic.utils')
 
 -- settings
 g.nvim_tree_git_hl = 1
@@ -30,6 +31,11 @@ local args = {
   diagnostics = {
     enable = true,
   },
+  ignore_ft_on_setup = {
+    'startify',
+    'dashboard',
+    'alpha',
+  },
   update_focused_file = {
     enable = true,
   },
@@ -43,4 +49,4 @@ local args = {
   },
 }
 
-require('nvim-tree').setup(vim.tbl_deep_extend('force', args, config.nvim_tree or {}))
+require('nvim-tree').setup(utils.merge(args, config.nvim_tree or {}))

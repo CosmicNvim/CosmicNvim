@@ -5,12 +5,13 @@ end
 local highlight = require('cosmic.theme.utils').highlight
 local get_highlight = require('cosmic.theme.utils').get_highlight
 local set_highlight = require('cosmic.theme.utils').set_highlight
+local utils = require('cosmic.utils')
 
 local statusline_colors = get_highlight('StatusLine')
 local error_colors = get_highlight('DiagnosticError')
 set_highlight(
   'DiagnosticErrorInv',
-  vim.tbl_extend('force', error_colors, {
+  utils.merge(error_colors, {
     guibg = error_colors.guifg,
     guifg = statusline_colors.guibg,
   })
@@ -19,7 +20,7 @@ set_highlight(
 local warning_colors = get_highlight('DiagnosticWarn')
 set_highlight(
   'DiagnosticWarnInv',
-  vim.tbl_extend('force', warning_colors, {
+  utils.merge(warning_colors, {
     guibg = warning_colors.guifg,
     guifg = statusline_colors.guibg,
   })
@@ -28,7 +29,7 @@ set_highlight(
 local hint_colors = get_highlight('DiagnosticHint')
 set_highlight(
   'DiagnosticHintInv',
-  vim.tbl_extend('force', hint_colors, {
+  utils.merge(hint_colors, {
     guibg = hint_colors.guifg,
     guifg = statusline_colors.guibg,
   })
@@ -37,7 +38,7 @@ set_highlight(
 local info_colors = get_highlight('DiagnosticInfo')
 set_highlight(
   'DiagnosticInfoInv',
-  vim.tbl_extend('force', info_colors, {
+  utils.merge(info_colors, {
     guibg = info_colors.guifg,
     guifg = statusline_colors.guibg,
   })

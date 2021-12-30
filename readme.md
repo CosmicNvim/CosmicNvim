@@ -13,7 +13,7 @@
 
 CosmicNvim is a lightweight and opinionated Neovim config for web development, specifically designed to provide a 💫 COSMIC programming experience!
 
-<img width="1792" alt="dashboard" src="https://user-images.githubusercontent.com/3721204/140592730-fc512005-6060-4dd2-8b90-0afa865d61d3.png">
+<img width="2531" alt="Screen Shot 2021-12-19 at 1 25 24 PM" src="https://user-images.githubusercontent.com/3721204/146691358-82a6ff64-1942-4351-ac53-e710a3e48700.png">
 
 ## 🚀 Stellar Features
 
@@ -29,7 +29,7 @@ Full featured native LSP functionality!
 
 ##### Additional features
 
-- Aesthetically pleasing UI via [Cosmic-UI](https://github.com/CosmicNvim/cosmic-ui)
+- Custom rename and code action popups via [Cosmic-UI](https://github.com/CosmicNvim/cosmic-ui)
 - Amazing default theme via [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - Enhanced syntax highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Dashboard via [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
@@ -80,7 +80,9 @@ CosmicNvim comes with first-class support for the following themes:
 - [Catppuccino](https://github.com/Pocco81/Catppuccino.nvim)
 - [Dracula](https://github.com/Mofiqul/dracula.nvim)
 - [Enfocado](https://github.com/wuelnerdotexe/vim-enfocado)
+- [Github](https://github.com/projekt0n/github-nvim-theme)
 - [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
+- [Kanagawa](https://github.com/rebelot/kanagawa.nvim)
 - [Nightfox](https://github.com/EdenEast/nightfox.nvim)
 - [Nord](https://github.com/shaunsingh/nord.nvim)
 - [Onedark](https://github.com/navarasu/onedark.nvim)
@@ -143,10 +145,17 @@ Useful for non-plugin related changes such as editor settings or mappings.
 
 ### Statusline
 
+<!--
 <img width="1762" alt="normal" src="https://user-images.githubusercontent.com/3721204/140678741-266dc883-e1bb-4729-827e-1195acd62762.png">
 <img width="1762" alt="insert" src="https://user-images.githubusercontent.com/3721204/140678744-a89b7413-383d-4d81-affd-03c3815644bc.png">
 <img width="1762" alt="visual" src="https://user-images.githubusercontent.com/3721204/140678746-3ac4396d-32f9-4988-a296-76857291baca.png">
 <img width="1774" alt="replace" src="https://user-images.githubusercontent.com/3721204/140678745-a1cb5200-f945-4cff-ae0c-2285b25f333f.png">
+-->
+
+<img width="1259" alt="Screen Shot 2021-12-19 at 1 21 21 PM" src="https://user-images.githubusercontent.com/3721204/146691276-cb9bebe3-ad60-4314-aeef-bd5848dc594f.png">
+<img width="1260" alt="Screen Shot 2021-12-19 at 1 21 35 PM" src="https://user-images.githubusercontent.com/3721204/146691275-53b3c18a-f71d-4512-8f69-29e36cd6e587.png">
+<img width="1262" alt="Screen Shot 2021-12-19 at 1 22 01 PM" src="https://user-images.githubusercontent.com/3721204/146691274-e273ea5f-09ed-4507-9bbe-3ffb833e963f.png">
+<img width="1256" alt="Screen Shot 2021-12-19 at 1 22 18 PM" src="https://user-images.githubusercontent.com/3721204/146691273-1479bc96-4c32-478b-adf6-95ae2b68d4a8.png">
 
 ### Autocomplete
 

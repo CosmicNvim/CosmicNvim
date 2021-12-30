@@ -11,7 +11,7 @@ local config = require('cosmic.config')
 local get_highlight = require('cosmic.theme.utils').get_highlight
 local statusline_colors = get_highlight('StatusLine')
 
-local defaults = vim.tbl_deep_extend('force', {
+local defaults = utils.merge({
   main_icon = icons.cosmic,
 }, config.statusline or {})
 local main_icon = defaults.main_icon
