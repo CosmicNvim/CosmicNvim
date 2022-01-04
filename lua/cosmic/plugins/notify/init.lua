@@ -15,3 +15,5 @@ require('notify').setup(utils.merge({
 }, config.notify or {}))
 
 vim.notify = require('notify')
+
+require('cosmic.plugins.notify.highlights')

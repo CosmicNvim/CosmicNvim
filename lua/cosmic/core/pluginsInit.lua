@@ -173,7 +173,6 @@ return packer.startup(function()
     event = 'BufWinEnter',
     config = function()
       require('cosmic.plugins.terminal')
-      require('cosmic.plugins.terminal.mappings')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'terminal'),
   })
