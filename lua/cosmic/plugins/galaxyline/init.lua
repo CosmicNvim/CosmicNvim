@@ -170,10 +170,6 @@ gls.left = {
           guibg = 'StatusLine',
           guifg = mode_color,
         })
-        set_highlight('GalaxyText', {
-          guibg = 'StatusLine',
-          guifg = mode_color,
-        })
         set_highlight('GalaxyGitLCBracket', {
           guibg = mode_nested,
           guifg = mode_color,
