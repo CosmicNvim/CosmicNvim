@@ -61,7 +61,6 @@ return packer.startup(function()
     'kyazdani42/nvim-tree.lua',
     config = function()
       require('cosmic.plugins.nvim-tree')
-      require('cosmic.plugins.nvim-tree.mappings')
     end,
     opt = true,
     cmd = {
