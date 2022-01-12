@@ -208,7 +208,6 @@ return packer.startup(function()
     'rmagatti/auto-session',
     config = function()
       require('cosmic.plugins.auto-session')
-      require('cosmic.plugins.auto-session.mappings')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'auto-session'),
   })

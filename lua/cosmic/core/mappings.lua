@@ -6,6 +6,10 @@ if not vim.tbl_contains(user_plugins.disable, 'nvim-tree') then
   require('cosmic.plugins.nvim-tree.mappings')
 end
 
+if not vim.tbl_contains(user_plugins.disable, 'auto-session') then
+  require('cosmic.plugins.auto-session.mappings')
+end
+
 -- Quickfix mappings
 map('n', '<leader>ck', ':cexpr []<cr>')
 map('n', '<leader>cc', ':cclose <cr>')
