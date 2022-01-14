@@ -4,9 +4,6 @@
 -- local null_ls = require('null-ls')
 
 local config = {
-  -- See :h cmp-usage
-  autocomplete = {},
-
   -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
   auto_session = {},
 
@@ -14,7 +11,7 @@ local config = {
   border = 'rounded',
 
   -- https://github.com/numToStr/Comment.nvim#configuration-optional
-  comments = {},
+  comment_nvim = {},
 
   -- See https://github.com/CosmicNvim/cosmic-ui#%EF%B8%8F-configuration
   cosmic_ui = {},
@@ -53,11 +50,12 @@ local config = {
       },
 
       -- See Cosmic defaults lsp/providers/null_ls.lua
+      -- and https://github.com/jose-elias-alvarez/null-ls.nvim/
+      -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
       null_ls = {},
     },
 
     -- See Cosmic defaults lsp/providers/tsserver.lua
-    -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
     ts_utils = {},
   },
 
@@ -96,9 +94,39 @@ local config = {
 
   -- See :h notify.setup
   notify = {},
+  --
+  -- See :h cmp-usage
+  nvim_cmp = {},
 
   -- See :h nvim-tree.setup
   nvim_tree = {},
+
+  add_plugins = {
+    'ggandor/lightspeed.nvim',
+    {
+      'romgrk/barbar.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+    },
+  },
+
+  disable_builtin_plugins = {
+    --[[
+    'auto-session',
+    'nvim-cmp',
+    'colorizer',
+    'dashboard',
+    'fugitive',
+    'gitsigns',
+    'comment-nvim',
+    'nvim-tree',
+    'galaxyline',
+    'telescope',
+    'terminal',
+    'theme',
+    'todo-comments',
+    'treesitter',
+    ]]
+  },
 }
 
 return config

@@ -1,7 +1,7 @@
 local cmp = require('cmp')
 local utils = require('cosmic.utils')
 local luasnip = require('luasnip')
-local config = require('cosmic.config')
+local user_config = require('cosmic.config')
 local icons = require('cosmic.theme.icons')
 
 local has_words_before = function()
@@ -56,7 +56,7 @@ local default_cmp_opts = {
     }),
   },
   documentation = {
-    border = config.border,
+    border = user_config.border,
     winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
   },
   experimental = {
@@ -89,7 +89,7 @@ vim.cmd([[
   autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 ]])
 
-local opts = utils.merge(default_cmp_opts, config.autocomplete or {})
+local opts = utils.merge(default_cmp_opts, user_config.nvim_cmp or {})
 
 cmp.setup(opts)
 

@@ -97,10 +97,6 @@ CosmicNvim comes with first-class support for the following themes:
 
 [Cosmic configurations](./lua/cosmic/config/examples/config.lua)
 
-[Plugin configurations](./lua/cosmic/config/examples/plugins.lua)
-
-[Add additional mappings](./lua/cosmic/config/examples/mappings.lua)
-
 [Add additional vim options](./lua/cosmic/config/examples/editor.lua)
 
 ## ✨ Cosmic Commands

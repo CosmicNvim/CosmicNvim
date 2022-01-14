@@ -16,4 +16,4 @@ require('Comment').setup(utils.merge({
       location = location,
     })
   end,
-}, config.comments or {}))
+}, config.comment_nvim or {}))

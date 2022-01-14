@@ -3,9 +3,8 @@ local cosmic_modules = {
   'cosmic.core.pluginsInit',
   'cosmic.core.commands',
   'cosmic.core.editor',
-  'cosmic.config.editor',
   'cosmic.core.mappings',
-  'cosmic.config.mappings',
+  'cosmic.config.editor',
 }
 
 for _, mod in ipairs(cosmic_modules) do
