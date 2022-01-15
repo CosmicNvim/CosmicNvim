@@ -1,4 +1,16 @@
 local map = require('cosmic.utils').map
+local ok, user_plugins = pcall(require, 'cosmic.config.plugins')
+
+-- Mappings for plugins that need to be lazy loaded
+if ok then
+  if not vim.tbl_contains(user_plugins.disable, 'nvim-tree') then
+    require('cosmic.plugins.nvim-tree.mappings')
+  end
+
+  if not vim.tbl_contains(user_plugins.disable, 'auto-session') then
+    require('cosmic.plugins.auto-session.mappings')
+  end
+end
 
 -- Quickfix mappings
 map('n', '<leader>ck', ':cexpr []<cr>')

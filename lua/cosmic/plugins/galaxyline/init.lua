@@ -5,7 +5,7 @@ local condition = require('galaxyline.condition')
 local fileinfo = require('galaxyline.providers.fileinfo')
 local utils = require('cosmic.utils')
 local colors = require('cosmic.theme.colors')
-local highlight = require('cosmic.theme.utils').highlight
+local set_highlight = require('cosmic.theme.utils').set_highlight
 local icons = require('cosmic.theme.icons')
 local config = require('cosmic.config')
 local get_highlight = require('cosmic.theme.utils').get_highlight
@@ -150,22 +150,47 @@ gls.left = {
         end
 
         local label, mode_color, mode_nested = unpack(m)
-        highlight('GalaxyViMode', mode_color, mode_nested)
-        highlight('GalaxyViModeInv', mode_nested, mode_color)
-        highlight('GalaxyViModeNested', mode_nested, 'StatusLine')
-        highlight('GalaxyViModeNestedInv', 'StatusLine', mode_nested)
-        highlight('GalaxyPercentBracket', 'StatusLine', mode_color)
-        highlight('GalaxyText', 'StatusLine', mode_color)
-
-        highlight('GalaxyGitLCBracket', mode_nested, mode_color)
+        set_highlight('GalaxyViMode', {
+          guibg = mode_color,
+          guifg = mode_nested,
+        })
+        set_highlight('GalaxyViModeInv', {
+          guibg = mode_nested,
+          guifg = mode_color,
+        })
+        set_highlight('GalaxyViModeNested', {
+          guibg = mode_nested,
+          guifg = 'StatusLine',
+        })
+        set_highlight('GalaxyViModeNestedInv', {
+          guibg = 'StatusLine',
+          guifg = mode_nested,
+        })
+        set_highlight('GalaxyPercentBracket', {
+          guibg = 'StatusLine',
+          guifg = mode_color,
+        })
+        set_highlight('GalaxyGitLCBracket', {
+          guibg = mode_nested,
+          guifg = mode_color,
+        })
 
         if condition.buffer_not_empty() then
-          highlight('GalaxyViModeBracket', mode_nested, mode_color)
+          set_highlight('GalaxyViModeBracket', {
+            guibg = mode_nested,
+            guifg = mode_color,
+          })
         else
           if condition.check_git_workspace() then
-            highlight('GalaxyGitLCBracket', 'StatusLine', mode_color)
+            set_highlight('GalaxyGitLCBracket', {
+              guibg = 'StatusLine',
+              guifg = mode_color,
+            })
           end
-          highlight('GalaxyViModeBracket', 'StatusLine', mode_color)
+          set_highlight('GalaxyViModeBracket', {
+            guibg = 'StatusLine',
+            guifg = mode_color,
+          })
         end
         return '  ' .. label .. ' '
       end,
