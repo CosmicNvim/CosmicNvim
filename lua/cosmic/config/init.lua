@@ -8,6 +8,8 @@ end
 -- these settings will be merged with any settings definined in config.lua
 local default_config = {
   border = 'rounded',
+  disable_builtin_plugins = {},
+  add_plugins = {},
   theme = 'tokyonight',
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}

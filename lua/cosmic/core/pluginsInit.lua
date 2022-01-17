@@ -10,16 +10,9 @@ local use = packer.use
 local ok, user_config = pcall(require, 'cosmic.config')
 if not ok then
   user_config = {
-    add = {},
-    disable = {},
+    add_plugins = {},
+    disable_builtin_plugins = {},
   }
-end
-
-if not vim.tbl_islist(user_config.add) then
-  user_config.add_plugins = {}
-end
-if not vim.tbl_islist(user_config.disable) then
-  user_config.disable_builtin_plugins = {}
 end
 
 local config = require('cosmic.config')
