@@ -25,8 +25,8 @@ local theme = {
 
 local colors = {
   white = theme.dim_0,
-  bg = theme.bg_2,
-  bg_highlight = theme.bg_1,
+  bg = theme.bg_1,
+  bg_highlight = theme.bg_2,
   normal = theme.dim_0,
   insert = theme.dim_0,
   command = theme.dim_0,
@@ -35,13 +35,12 @@ local colors = {
   diffAdd = theme.green,
   diffModified = theme.yellow,
   diffDeleted = theme.red,
-  trace = theme.br_orange,
+  trace = theme.br_magenta,
   hint = theme.br_blue,
   info = theme.br_yellow,
   error = theme.br_red,
   warn = theme.br_orange,
-  floatBorder = theme.cyan,
-  selection_caret = theme.cyan,
-  notify_bg = theme.bg_1
+  floatBorder = theme.fg_0,
+  selection_caret = theme.fg_0,
 }
 return colors
