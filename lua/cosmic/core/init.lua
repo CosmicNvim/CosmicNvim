@@ -1,8 +1,8 @@
 local cosmic_modules = {
   'cosmic.core.disabled',
+  'cosmic.core.editor',
   'cosmic.core.pluginsInit',
   'cosmic.core.commands',
-  'cosmic.core.editor',
   'cosmic.core.mappings',
   'cosmic.config.editor',
 }

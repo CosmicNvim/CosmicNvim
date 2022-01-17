@@ -1,9 +1,10 @@
-local theme_colors = require('github-theme.colors').setup()
+local config = require('github-theme.config')
+local theme_colors = require('github-theme.colors').setup(config.schema)
 
 local colors = {
-  white = theme_colors.white,
-  bg = theme_colors.bg_statusline,
-  bg_highlight = theme_colors.fg_statusline,
+  white = theme_colors.bright_white,
+  bg = theme_colors.bg,
+  bg_highlight = theme_colors.bg_highlight,
   normal = theme_colors.blue,
   insert = theme_colors.green,
   command = theme_colors.bright_magenta,
