@@ -32,6 +32,13 @@ function M.init(use, config)
     config = function()
       local catppuccin = require('catppuccin')
       catppuccin.setup({
+        styles = {
+          comments = 'NONE',
+          functions = 'NONE',
+          keywords = 'NONE',
+          strings = 'NONE',
+          variables = 'NONE',
+        },
         integrations = {
           gitsigns = true,
           telescope = true,
@@ -122,7 +129,7 @@ function M.init(use, config)
         'telescope',
         'todo-comments',
         'tree',
-        'treesitter'
+        'treesitter',
       }
       vim.cmd('autocmd VimEnter * ++nested colorscheme enfocado')
     end,
