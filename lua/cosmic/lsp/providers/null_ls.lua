@@ -28,6 +28,7 @@ require('null-ls').setup(utils.merge({
       condition = has_eslint_config,
       prefer_local = 'node_modules/.bin',
     }),
+    null_ls.builtins.diagnostics.shellcheck,
     null_ls.builtins.diagnostics.markdownlint,
     null_ls.builtins.formatting.prettierd.with({
       env = {
