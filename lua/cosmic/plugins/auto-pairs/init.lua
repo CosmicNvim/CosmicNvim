@@ -6,6 +6,7 @@ require('nvim-autopairs').setup({
     java = false,
   },
   disable_filetype = { 'TelescopePrompt', 'vim' },
+  fast_wrap = {},
 })
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
