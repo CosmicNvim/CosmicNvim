@@ -16,6 +16,13 @@ function M.buf_map(bufnr, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
 end
 
+function M.merge_list(tbl1, tbl2)
+  for _, v in ipairs(tbl2) do
+    table.insert(tbl1, v)
+  end
+  return tbl1
+end
+
 function M.merge(...)
   return vim.tbl_deep_extend('force', ...)
 end
