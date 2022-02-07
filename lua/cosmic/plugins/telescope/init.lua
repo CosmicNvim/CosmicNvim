@@ -1,5 +1,5 @@
 local actions = require('telescope.actions')
-local config = require('cosmic.config')
+local config = require('cosmic.core.user')
 local icons = require('cosmic.theme.icons')
 local utils = require('cosmic.utils')
 

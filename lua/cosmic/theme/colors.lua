@@ -1,4 +1,4 @@
-local config = require('cosmic.config')
+local config = require('cosmic.core.user')
 local colors = {}
 local mod = 'cosmic.theme.integrated.'
 local supported_themes = require('cosmic.theme.plugins').supported_themes

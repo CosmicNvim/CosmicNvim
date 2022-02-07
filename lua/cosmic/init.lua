@@ -10,7 +10,7 @@ for _, mod in ipairs(mods) do
     vim.notify('Run :PackerCompile!', vim.log.levels.WARN, {
       title = 'CosmicNvim',
     })
-  elseif not ok and not mod:find('cosmic.config') then
+  elseif not ok and not mod:find('cosmic.core.user') then
     error(('Error loading %s...\n\n%s'):format(mod, err))
   end
 end

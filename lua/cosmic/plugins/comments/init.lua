@@ -1,4 +1,4 @@
-local config = require('cosmic.config')
+local config = require('cosmic.core.user')
 local utils = require('cosmic.utils')
 
 require('Comment').setup(utils.merge({

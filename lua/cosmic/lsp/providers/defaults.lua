@@ -1,4 +1,4 @@
-local config = require('cosmic.config')
+local config = require('cosmic.core.user')
 local M = {}
 
 local auto_format_lock = false

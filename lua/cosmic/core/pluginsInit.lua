@@ -7,7 +7,7 @@ end
 local packer = cosmic_packer.packer
 local use = packer.use
 
-local ok, user_config = pcall(require, 'cosmic.config')
+local ok, user_config = pcall(require, 'cosmic.core.user')
 if not ok then
   user_config = {
     add_plugins = {},
@@ -15,7 +15,7 @@ if not ok then
   }
 end
 
-local config = require('cosmic.config')
+local config = require('cosmic.core.user')
 
 return packer.startup(function()
   use({

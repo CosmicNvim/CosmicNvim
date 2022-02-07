@@ -1,6 +1,6 @@
 local utils = require('cosmic.utils')
 local default_on_attach = require('cosmic.lsp.providers.defaults').on_attach
-local config = require('cosmic.config')
+local config = require('cosmic.core.user')
 local M = {}
 
 function M.on_attach(client, bufnr)

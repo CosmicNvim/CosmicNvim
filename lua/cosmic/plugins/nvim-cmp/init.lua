@@ -1,7 +1,7 @@
 local cmp = require('cmp')
 local utils = require('cosmic.utils')
 local luasnip = require('luasnip')
-local user_config = require('cosmic.config')
+local user_config = require('cosmic.core.user')
 local icons = require('cosmic.theme.icons')
 
 local has_words_before = function()

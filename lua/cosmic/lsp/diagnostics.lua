@@ -1,6 +1,6 @@
 local utils = require('cosmic.utils')
 local icons = require('cosmic.theme.icons')
-local config = require('cosmic.config')
+local config = require('cosmic.core.user')
 
 -- set up LSP signs
 local signs = {

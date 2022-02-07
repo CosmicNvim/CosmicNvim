@@ -1,5 +1,5 @@
 local map = require('cosmic.utils').map
-local user_plugins = require('cosmic.config')
+local user_plugins = require('cosmic.core.user')
 
 -- Mappings for plugins that need to be lazy loaded
 if not vim.tbl_contains(user_plugins.disable_builtin_plugins, 'nvim-tree') then

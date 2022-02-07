@@ -7,7 +7,7 @@ local utils = require('cosmic.utils')
 local colors = require('cosmic.theme.colors')
 local set_highlight = require('cosmic.theme.utils').set_highlight
 local icons = require('cosmic.theme.icons')
-local config = require('cosmic.config')
+local config = require('cosmic.core.user')
 local get_highlight = require('cosmic.theme.utils').get_highlight
 local statusline_colors = get_highlight('StatusLine')
 
