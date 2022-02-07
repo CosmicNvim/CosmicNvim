@@ -1,5 +1,5 @@
 local config = require('cosmic.core.user')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 
 local defaults = {
   pre_save_cmds = { 'NvimTreeClose', 'cclose', 'lua vim.notify.dismiss()' },
@@ -9,4 +9,4 @@ local defaults = {
   auto_restore_enabled = false,
 }
 
-require('auto-session').setup(utils.merge(defaults, config.auto_session or {}))
+require('auto-session').setup(u.merge(defaults, config.auto_session or {}))

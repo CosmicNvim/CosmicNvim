@@ -1,7 +1,7 @@
 local config = require('cosmic.core.user')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 
-require('gitsigns').setup(utils.merge({
+require('gitsigns').setup(u.merge({
   signs = {
     add = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
     change = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },

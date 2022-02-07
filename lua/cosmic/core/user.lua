@@ -39,8 +39,8 @@ local default_config = {
   },
 }
 
-local utils = require('cosmic.utils')
-local config = utils.merge(default_config, user_config)
+local u = require('cosmic.utils')
+local config = u.merge(default_config, user_config)
 local user_servers = vim.tbl_keys(config.lsp.servers)
 
 function config.lsp.can_client_format(client_name)

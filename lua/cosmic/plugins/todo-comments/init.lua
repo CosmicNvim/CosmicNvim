@@ -1,8 +1,8 @@
 local config = require('cosmic.core.user')
 local icons = require('cosmic.theme.icons')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 
-require('todo-comments').setup(utils.merge({
+require('todo-comments').setup(u.merge({
   keywords = {
     FIX = {
       icon = icons.debug, -- icon used for the sign, and in search results

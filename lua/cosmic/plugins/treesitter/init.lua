@@ -1,5 +1,5 @@
 local config = require('cosmic.core.user')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 
 local defaults = {
   ensure_installed = {
@@ -36,4 +36,4 @@ local defaults = {
   },
 }
 
-require('nvim-treesitter.configs').setup(utils.merge(defaults, config.treesitter or {}))
+require('nvim-treesitter.configs').setup(u.merge(defaults, config.treesitter or {}))

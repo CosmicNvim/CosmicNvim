@@ -1,5 +1,5 @@
 local cmp = require('cmp')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 local luasnip = require('luasnip')
 local user_config = require('cosmic.core.user')
 local icons = require('cosmic.theme.icons')
@@ -89,7 +89,7 @@ vim.cmd([[
   autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 ]])
 
-local opts = utils.merge(default_cmp_opts, user_config.nvim_cmp or {})
+local opts = u.merge(default_cmp_opts, user_config.nvim_cmp or {})
 
 cmp.setup(opts)
 

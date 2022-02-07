@@ -1,7 +1,7 @@
 local actions = require('telescope.actions')
 local config = require('cosmic.core.user')
 local icons = require('cosmic.theme.icons')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 
 local default_mappings = {
   n = {
@@ -48,7 +48,7 @@ local opts_flex = {
   },
 }
 
-require('telescope').setup(utils.merge({
+require('telescope').setup(u.merge({
   defaults = {
     prompt_prefix = '🔍 ',
     selection_caret = icons.folder.arrow_closed,
@@ -79,9 +79,9 @@ require('telescope').setup(utils.merge({
     },
   },
   pickers = {
-    buffers = utils.merge(opts_flex, {
+    buffers = u.merge(opts_flex, {
       prompt_title = '✨ Search Buffers ✨',
-      mappings = utils.merge({
+      mappings = u.merge({
         n = {
           ['d'] = actions.delete_buffer,
         },
@@ -89,46 +89,46 @@ require('telescope').setup(utils.merge({
       sort_mru = true,
       preview_title = false,
     }),
-    lsp_code_actions = utils.merge(opts_cursor, {
+    lsp_code_actions = u.merge(opts_cursor, {
       prompt_title = 'Code Actions',
     }),
-    lsp_range_code_actions = utils.merge(opts_vertical, {
+    lsp_range_code_actions = u.merge(opts_vertical, {
       prompt_title = 'Code Actions',
     }),
-    lsp_document_diagnostics = utils.merge(opts_vertical, {
+    lsp_document_diagnostics = u.merge(opts_vertical, {
       prompt_title = 'Document Diagnostics',
       mappings = default_mappings,
     }),
-    lsp_implementations = utils.merge(opts_cursor, {
+    lsp_implementations = u.merge(opts_cursor, {
       prompt_title = 'Implementations',
       mappings = default_mappings,
     }),
-    lsp_definitions = utils.merge(opts_cursor, {
+    lsp_definitions = u.merge(opts_cursor, {
       prompt_title = 'Definitions',
       mappings = default_mappings,
     }),
-    lsp_references = utils.merge(opts_vertical, {
+    lsp_references = u.merge(opts_vertical, {
       prompt_title = 'References',
       mappings = default_mappings,
     }),
-    find_files = utils.merge(opts_flex, {
+    find_files = u.merge(opts_flex, {
       prompt_title = '✨ Search Project ✨',
       mappings = default_mappings,
       hidden = true,
     }),
-    diagnostics = utils.merge(opts_vertical, {
+    diagnostics = u.merge(opts_vertical, {
       mappings = default_mappings,
     }),
-    git_files = utils.merge(opts_flex, {
+    git_files = u.merge(opts_flex, {
       prompt_title = '✨ Search Git Project ✨',
       mappings = default_mappings,
       hidden = true,
     }),
-    live_grep = utils.merge(opts_flex, {
+    live_grep = u.merge(opts_flex, {
       prompt_title = '✨ Live Grep ✨',
       mappings = default_mappings,
     }),
-    grep_string = utils.merge(opts_vertical, {
+    grep_string = u.merge(opts_vertical, {
       prompt_title = '✨ Grep String ✨',
       mappings = default_mappings,
     }),

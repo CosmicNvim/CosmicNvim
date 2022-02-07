@@ -1,4 +1,4 @@
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 local default_config = require('cosmic.lsp.providers.defaults')
 local config = require('cosmic.core.user')
 local lsp_installer = require('nvim-lsp-installer')
@@ -55,17 +55,17 @@ lsp_installer.on_server_ready(function(server)
 
   -- set up default cosmic options
   if server.name == 'tsserver' then
-    opts = utils.merge(opts, require('cosmic.lsp.providers.tsserver'))
+    opts = u.merge(opts, require('cosmic.lsp.providers.tsserver'))
   elseif server.name == 'jsonls' then
-    opts = utils.merge(opts, require('cosmic.lsp.providers.jsonls'))
+    opts = u.merge(opts, require('cosmic.lsp.providers.jsonls'))
   elseif server.name == 'sumneko_lua' then
-    opts = utils.merge(opts, require('cosmic.lsp.providers.sumneko_lua'))
+    opts = u.merge(opts, require('cosmic.lsp.providers.sumneko_lua'))
   end
 
   -- override options if user definds them
   if type(config.lsp.servers[server.name]) == 'table' then
     if config.lsp.servers[server.name].opts ~= nil then
-      opts = utils.merge(opts, config.lsp.servers[server.name].opts)
+      opts = u.merge(opts, config.lsp.servers[server.name].opts)
     end
   end
 

@@ -1,7 +1,7 @@
 local config = require('cosmic.core.user')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 
-require('Comment').setup(utils.merge({
+require('Comment').setup(u.merge({
   pre_hook = function(ctx)
     local U = require('Comment.utils')
     local location = nil

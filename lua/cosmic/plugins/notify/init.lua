@@ -1,8 +1,8 @@
 local config = require('cosmic.core.user')
 local icons = require('cosmic.theme.icons')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 
-require('notify').setup(utils.merge({
+require('notify').setup(u.merge({
   icons = {
     ERROR = icons.error,
     WARN = icons.warn,

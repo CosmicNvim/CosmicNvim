@@ -3,7 +3,7 @@ local gls = galaxy.section
 local diag = require('galaxyline.providers.diagnostic')
 local condition = require('galaxyline.condition')
 local fileinfo = require('galaxyline.providers.fileinfo')
-local utils = require('cosmic.utils')
+local u = require('cosmic.utils')
 local colors = require('cosmic.theme.colors')
 local set_highlight = require('cosmic.theme.utils').set_highlight
 local icons = require('cosmic.theme.icons')
@@ -11,7 +11,7 @@ local config = require('cosmic.core.user')
 local get_highlight = require('cosmic.theme.utils').get_highlight
 local statusline_colors = get_highlight('StatusLine')
 
-local defaults = utils.merge({
+local defaults = u.merge({
   main_icon = icons.cosmic,
 }, config.statusline or {})
 local main_icon = defaults.main_icon
@@ -60,7 +60,7 @@ end
 
 local FilePathShortProvider = function()
   local fp = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.:h')
-  local tbl = utils.split(fp, '/')
+  local tbl = u.split(fp, '/')
   local len = #tbl
 
   if len > 2 and tbl[1] ~= '~' then
@@ -365,7 +365,7 @@ gls.right = {
   {
     LSPStatus = {
       provider = function()
-        local clients = utils.get_active_lsp_client_names()
+        local clients = u.get_active_lsp_client_names()
         local client_str = ''
 
         if #clients < 1 then
