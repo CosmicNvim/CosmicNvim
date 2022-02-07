@@ -14,6 +14,6 @@ end
 
 return M
 
--- In config/mappings.lua
+-- In config/config.lua
 -- local map = require('cosmic.utils').map
 -- map('n', '<leader>tt', '<cmd>lua require("cosmic.config.utils").toggle_diagnostics()<cr>')

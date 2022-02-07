@@ -52,7 +52,12 @@ local config = {
       -- See Cosmic defaults lsp/providers/null_ls.lua
       -- and https://github.com/jose-elias-alvarez/null-ls.nvim/
       -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
-      null_ls = {},
+      null_ls = {
+        -- disable default list of sources provided by CosmicNvim
+        default_cosmic_sources = false,
+        -- add additional sources here
+        sources = {},
+      },
     },
 
     -- See Cosmic defaults lsp/providers/tsserver.lua
