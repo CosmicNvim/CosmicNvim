@@ -11,13 +11,14 @@
   </a>
 </p>
 
-CosmicNvim is a lightweight and opinionated Neovim config for web development, specifically designed to provide a 💫 COSMIC programming experience!
+CosmicNvim is a lightweight and opinionated Neovim config for web development,
+specifically designed to provide a 💫 COSMIC programming experience!
 
 <img width="2531" alt="Screen Shot 2021-12-19 at 1 25 24 PM" src="https://user-images.githubusercontent.com/3721204/146691358-82a6ff64-1942-4351-ac53-e710a3e48700.png">
 
 ## 🚀 Stellar Features
 
-#### Native LSP
+### Native LSP
 
 Full featured native LSP functionality!
 
@@ -27,7 +28,7 @@ Full featured native LSP functionality!
 - 🚨 Statusline diagnostics
 - 🔧 Formatting/linting thanks to [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
 
-##### Additional features
+#### Additional features
 
 - Custom rename and code action popups via [Cosmic-UI](https://github.com/CosmicNvim/cosmic-ui)
 - Amazing default theme via [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
@@ -46,7 +47,8 @@ Full featured native LSP functionality!
 - Additional custom highlighting
 - Floating windows for references, renaming, diagnostics, code actions and more!
 
-_While CosmicNvim is geared specifically toward TypeScript/JavaScript development, it should be able to provide a great experience with any LSP supported language._
+_While CosmicNvim is geared specifically toward TypeScript/JavaScript development, it should be able to provide a great
+experience with any LSP supported language._
 
 ## 🛠 Installation
 
@@ -61,10 +63,12 @@ _While CosmicNvim is geared specifically toward TypeScript/JavaScript developmen
 
 #### Install
 
-```
-  $ cd ~/.config
-  $ git clone git@github.com:CosmicNvim/CosmicNvim.git nvim
-  $ nvim .
+```bash
+  cd ~/.config
+  # back up current config
+  cp -r nvim nvim.backup
+  git clone git@github.com:CosmicNvim/CosmicNvim.git nvim
+  nvim .
 ```
 
 Additional CosmicNvim installation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Installation).
@@ -101,25 +105,26 @@ CosmicNvim comes with first-class support for the following themes:
 
 ## ✨ Cosmic Commands
 
-#### Update CosmicNvim
+### Update CosmicNvim
 
-```
+```vimcommand
 :CosmicUpdate
 ```
 
-By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpath('config')`, i.e. `~/.config/nvim`. Otherwise, you may define the shell environment variable `COSMICNVIM_INSTALL_DIR`.
+By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpath('config')`, i.e. `~/.config/nvim`.
+Otherwise, you may define the shell environment variable `COSMICNVIM_INSTALL_DIR`.
 
-#### Clear cache and sync plugins
+### Clear cache and sync plugins
 
-```
+```vimcommand
 :CosmicReloadSync
 ```
 
-Useful for changing themes or updating plugins on the fly!
+Useful for testing themes or plugins on the fly!
 
-#### Reload user config
+### Reload user config
 
-```
+```vimcommand
 :CosmicReload
 ```
 
@@ -127,11 +132,11 @@ Useful for non-plugin related changes such as editor settings or mappings.
 
 ## 🗺 Default Mappings
 
-[File navigation](./lua/cosmic.plugins/telescope/mappings.lua)
+[File navigation](./lua/cosmic/plugins/telescope/mappings.lua)
 
-[File explorer](./lua/cosmic.plugins/nvim-tree/mappings.lua)
+[File explorer](./lua/cosmic/plugins/nvim-tree/mappings.lua)
 
-[Terminal](./lua/cosmic.plugins/terminal/mappings.lua)
+[Terminal](./lua/cosmic/plugins/terminal/mappings.lua)
 
 [LSP](./lua/cosmic/lsp/mappings.lua)
 

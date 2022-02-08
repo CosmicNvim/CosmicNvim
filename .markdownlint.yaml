@@ -1,0 +1,8 @@
+MD033:
+  # Allowed elements
+  allowed_elements: [p, details, summary, a, img, h1]
+
+# MD013/line-length - Line length
+MD013:
+  # Number of characters
+  line_length: 120
