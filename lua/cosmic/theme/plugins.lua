@@ -33,7 +33,7 @@ function M.init(use, config)
       local catppuccin = require('catppuccin')
       catppuccin.setup({
         styles = {
-          comments = 'NONE',
+          comments = 'italic',
           functions = 'NONE',
           keywords = 'NONE',
           strings = 'NONE',
