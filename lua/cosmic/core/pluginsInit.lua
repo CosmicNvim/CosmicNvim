@@ -41,7 +41,6 @@ return packer.startup(function()
     config = function()
       require('cosmic.plugins.nvim-tree')
     end,
-    opt = true,
     cmd = {
       'NvimTreeClipboard',
       'NvimTreeClose',
