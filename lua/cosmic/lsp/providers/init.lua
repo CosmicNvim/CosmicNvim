@@ -58,6 +58,8 @@ lsp_installer.on_server_ready(function(server)
     opts = u.merge(opts, require('cosmic.lsp.providers.tsserver'))
   elseif server.name == 'jsonls' then
     opts = u.merge(opts, require('cosmic.lsp.providers.jsonls'))
+  elseif server.name == 'pyright' then
+    opts = u.merge(opts, require('cosmic.lsp.providers.pyright'))
   elseif server.name == 'sumneko_lua' then
     opts = u.merge(opts, require('cosmic.lsp.providers.sumneko_lua'))
   end
