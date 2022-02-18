@@ -41,7 +41,6 @@ local opts_vertical = {
 
 local opts_flex = {
   layout_strategy = 'flex',
-  results_title = false,
   layout_config = {
     width = 0.7,
     height = 0.7,

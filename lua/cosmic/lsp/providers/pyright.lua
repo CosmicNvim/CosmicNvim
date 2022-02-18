@@ -19,6 +19,15 @@ local function get_python_path(workspace)
 end
 
 return {
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = 'off',
+        useLibraryCodeForTypes = true,
+        completeFunctionParens = true,
+      },
+    },
+  },
   before_init = function(_, config)
     config.settings.python.pythonPath = get_python_path(config.root_dir)
   end,
