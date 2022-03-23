@@ -26,7 +26,7 @@ g.dashboard_session_directory = vim.fn.stdpath('data') .. '/sessions'
 g.dashboard_custom_section = {
   find_file = {
     description = { icons.file1 .. ' Find File           <leader>ff' },
-    command = 'Telescope find_files',
+    command = 'lua require("cosmic.plugins.telescope.mappings").project_files()',
   },
   file_explorer = {
     description = { icons.file2 .. ' File Manager        <C-n>     ' },
