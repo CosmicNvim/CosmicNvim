@@ -85,18 +85,30 @@ local default_cmp_opts = {
   },
 }
 
-vim.cmd([[
-  autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
-]])
+local augroup_name = 'CosmicNvimAutocomplete'
+local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    require('cmp').setup.buffer({ enabled = false })
+  end,
+  group = group,
+})
 
-local opts = u.merge(default_cmp_opts, user_config.nvim_cmp or {})
-
-cmp.setup(opts)
+cmp.setup(u.merge(default_cmp_opts, user_config.nvim_cmp or {}))
 
 cmp.setup.cmdline('/', {
   sources = {
     { name = 'buffer' },
   },
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+  }, {
+    { name = 'buffer' },
+  }),
 })
 
 -- cmp.setup.cmdline(':', {

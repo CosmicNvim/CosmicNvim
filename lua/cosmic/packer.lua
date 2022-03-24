@@ -30,7 +30,9 @@ if not present then
   end
 end
 
+-- @TODO: check if snapshot exists, if not create it
 packer.init({
+  -- snapshot = 'Cosmic',
   display = {
     open_fn = function()
       return require('packer.util').float({ border = 'rounded' })

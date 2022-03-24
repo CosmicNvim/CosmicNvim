@@ -1,4 +1,6 @@
 local M = {}
+local augroup_name = 'CosmicNvimUtils'
+local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 function M.map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
@@ -86,7 +88,13 @@ function M.reload_user_config_sync()
   clear_cache()
   unload('cosmic.core.user', true)
   unload('cosmic.core.pluginsInit', true)
-  vim.cmd([[autocmd User PackerCompileDone ++once lua require('cosmic.utils').post_reload()]])
+  vim.api.nvim_create_autocmd('User PackerCompileDone', {
+    callback = function()
+      M.post_reload()
+    end,
+    group = group,
+    once = true,
+  })
   vim.cmd(':PackerSync')
 end
 
@@ -94,7 +102,13 @@ function M.reload_user_config(compile)
   compile = compile or false
   unload('cosmic.core.user', true)
   if compile then
-    vim.cmd([[autocmd User PackerCompileDone ++once lua require('cosmic.utils').post_reload()]])
+    vim.api.nvim_create_autocmd('User PackerCompileDone', {
+      callback = function()
+        M.post_reload()
+      end,
+      group = group,
+      once = true,
+    })
     vim.cmd(':PackerCompile')
   end
 end
