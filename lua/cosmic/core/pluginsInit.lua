@@ -50,6 +50,7 @@ return packer.startup(function()
       'NvimTreeToggle',
     },
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'nvim-tree'),
+    event = 'VimEnter',
   })
 
   use({
@@ -60,6 +61,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.plugins.cosmic-ui')
     end,
+    event = 'BufWinEnter',
   })
 
   use({
@@ -88,6 +90,7 @@ return packer.startup(function()
         disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'lsp_signature'),
       },
     },
+    event = 'BufWinEnter',
   })
 
   -- autocompletion
@@ -136,7 +139,7 @@ return packer.startup(function()
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     opt = true,
-    event = 'BufRead',
+    event = 'BufWinEnter',
     config = function()
       require('cosmic.plugins.gitsigns')
     end,
