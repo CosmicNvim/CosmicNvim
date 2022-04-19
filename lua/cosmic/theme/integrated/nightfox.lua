@@ -1,26 +1,25 @@
-local theme = require('nightfox.colors')
-local themeColors = theme.init()
+local palette = require('nightfox.palette').load('nightfox')
+local spec = require('nightfox.spec').load('nightfox')
 
 local colors = {
-  white = themeColors.fg_alt,
-  bg = themeColors.bg,
-  bg_highlight = themeColors.bg_highlight,
-  normal = themeColors.blue,
-  insert = themeColors.cyan,
-  command = themeColors.orange,
-  visual = themeColors.magenta,
-  replace = themeColors.red,
-  diffAdd = themeColors.git.add,
-  diffModified = themeColors.git.change,
-  diffDeleted = themeColors.git.delete,
-  trace = themeColors.orange,
-  hint = themeColors.cyan,
-  info = themeColors.green_br,
-  error = themeColors.magenta_br,
-  warn = themeColors.orange,
-  floatBorder = themeColors.border_highlight,
-  selection_caret = themeColors.pink,
+  white = palette.fg2,
+  bg = palette.bg1,
+  bg_highlight = palette.bg3,
+  normal = palette.blue.base,
+  insert = palette.cyan.base,
+  command = palette.orange.base,
+  visual = palette.magenta.base,
+  replace = palette.red.base,
+  diffAdd = spec.git.add,
+  diffModified = spec.git.change,
+  diffDeleted = spec.git.delete,
+  trace = palette.orange.base,
+  hint = palette.cyan.base,
+  info = palette.green.bright,
+  error = palette.magenta.bright,
+  warn = palette.orange.base,
+  floatBorder = palette.bg3,
+  selection_caret = palette.pink.base,
 }
 
 return colors
-
