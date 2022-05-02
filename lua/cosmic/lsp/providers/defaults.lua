@@ -14,8 +14,8 @@ function M.on_attach(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   if config.lsp.can_client_format(client.name) then
-    client.resolved_capabilities.document_formatting = true
-    client.resolved_capabilities.document_range_formatting = true
+    client.server_capabilities.documentFormatting = true
+    client.server_capabilities.documentRangeFormatting = true
     -- check user config to see if we can format on save
     if config.lsp.format_on_save and not auto_format_lock then
       auto_format_lock = true -- just run autocommand once
@@ -30,15 +30,17 @@ function M.on_attach(client, bufnr)
 
       vim.api.nvim_create_autocmd(string.format('BufWritePre %s', format_filetypes), {
         callback = function()
-          vim.lsp.buf.formatting_sync(nil, config.lsp.format_timeout)
+          vim.lsp.buf.format({
+            timeout_ms = config.lsp.format_timeout,
+          })
         end,
         group = group,
         nested = true,
       })
     end
   else
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormatting = false
+    client.server_capabilities.documentRangeFormatting = false
   end
 
   require('cosmic.lsp.mappings').init(client, bufnr)
