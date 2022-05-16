@@ -1,6 +1,6 @@
 # Configuration
 
-There are two main configuraiton files that you may want to create.
+There are two main configuration files that you may want to create.
 
 - cosmic/config/config.lua
 - cosmic/config/editor.lua
