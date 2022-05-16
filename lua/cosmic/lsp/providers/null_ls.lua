@@ -1,7 +1,7 @@
 local u = require('cosmic.utils')
 local defaults = require('cosmic.lsp.providers.defaults')
-local config = require('cosmic.core.user')
 local null_ls = require('null-ls')
+local config = require('cosmic.core.user')
 
 local config_opts = config.lsp.servers.null_ls or {}
 
