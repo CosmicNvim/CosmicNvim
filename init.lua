@@ -1,5 +1,5 @@
-if vim.fn.has('nvim-0.7') == 0 then
-  error('Need Neovim v0.7+ in order to run Cosmic!')
+if vim.fn.has('nvim-0.8') == 0 then
+  error('Need Neovim v0.8+ in order to run Cosmic!')
 end
 
 do

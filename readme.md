@@ -1,7 +1,7 @@
 <h1 align="center">💫 CosmicNvim</h1>
 
 <p align="center">
-  <img alt="Neovim Minimum Version" src="https://img.shields.io/badge/Neovim-0.7.0+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim">
+  <img alt="Neovim Minimum Version" src="https://img.shields.io/badge/Neovim-0.8.0+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/CosmicNvim/CosmicNvim?style=flat-square&logo=Github">
   <a href="https://discord.gg/EwdrKzVbvJ">
     <img alt="Discord" src="https://img.shields.io/discord/901609359291854899?style=flat-square&logo=Discord">
@@ -56,7 +56,7 @@ experience with any LSP supported language._
 
 #### Prerequisites
 
-- Neovim (+0.7.0)
+- Neovim (+0.8.0)
 - [Node.js](https://nodejs.org/en/)
 - [prettierd](https://github.com/fsouza/prettierd) (for prettier formatting w/null_ls, optional)
 - [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/null_ls, optional)
