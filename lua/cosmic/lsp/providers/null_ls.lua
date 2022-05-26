@@ -18,11 +18,12 @@ if not config_opts.default_cosmic_sources then
       prefer_local = 'node_modules/.bin',
     }),
     null_ls.builtins.diagnostics.markdownlint,
-    null_ls.builtins.formatting.prettierd.with({
-      env = {
-        PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
-      },
-    }),
+    -- null_ls.builtins.formatting.prettierd.with({
+    --   env = {
+    --     PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
+    --   },
+    -- }),
+    null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.code_actions.gitsigns,
   }, config_opts.sources or {})

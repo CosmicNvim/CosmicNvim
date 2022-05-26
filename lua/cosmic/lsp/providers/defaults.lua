@@ -13,8 +13,7 @@ function M.on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  if config.lsp.format_on_save and not auto_format_lock then
-    auto_format_lock = true -- just run autocommand once
+  if config.lsp.format_on_save then
     local format_filetypes = ''
     if vim.tbl_islist(config.lsp.format_on_save) then
       for _, ft in pairs(config.lsp.format_on_save) do
