@@ -6,7 +6,7 @@ local config = require('cosmic.core.user')
 local config_opts = config.lsp.servers.null_ls or {}
 
 -- how to disable sources?
-if not config_opts.default_cosmic_sources then
+if config_opts.default_cosmic_sources then
   config_opts.sources = u.merge_list({
     null_ls.builtins.code_actions.eslint_d.with({
       prefer_local = 'node_modules/.bin',
