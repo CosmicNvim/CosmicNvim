@@ -99,7 +99,7 @@ local default_cmp_opts = {
 
 local augroup_name = 'CosmicNvimAutocomplete'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
-vim.api.nvim_create_autocmd('FileType', {
+vim.api.nvim_create_autocmd('FileType TelescopePrompt', {
   callback = function()
     require('cmp').setup.buffer({ enabled = false })
   end,
