@@ -90,6 +90,7 @@ CosmicNvim comes with first-class support for the following themes:
 - [Github](https://github.com/projekt0n/github-nvim-theme)
 - [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
 - [Kanagawa](https://github.com/rebelot/kanagawa.nvim)
+- [Monokai](https://github.com/tanvirtin/monokai.nvim)
 - [Nightfox](https://github.com/EdenEast/nightfox.nvim)
 - [Nord](https://github.com/shaunsingh/nord.nvim)
 - [Onedark](https://github.com/navarasu/onedark.nvim)

@@ -7,6 +7,7 @@ M.supported_themes = {
   'github',
   'gruvbox',
   'kanagawa',
+  'monokai',
   'nightfox',
   'nord',
   'onedark',
@@ -152,6 +153,16 @@ function M.init(use, config)
       require('github-theme').setup()
     end,
     disable = config.theme ~= 'github',
+  })
+
+  use({
+    'tanvirtin/monokai.nvim',
+    as = 'monokai',
+    config = function()
+      require('monokai').setup()
+    end,
+    disable = config.theme ~= 'monokai',
+    commit = "bff619d7a911cd8d8dcb5168db9ee6dfcc344934",
   })
 end
 
