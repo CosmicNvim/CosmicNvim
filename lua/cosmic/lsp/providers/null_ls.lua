@@ -3,7 +3,10 @@ local defaults = require('cosmic.lsp.providers.defaults')
 local null_ls = require('null-ls')
 local config = require('cosmic.core.user')
 
-local config_opts = config.lsp.servers.null_ls or {}
+local config_opts = u.merge(config.lsp.servers.null_ls or {}, {
+  default_cosmic_sources = true,
+  diagnostics_format = '#{m} (#{s}) [#{c}]',
+})
 
 -- how to disable sources?
 if config_opts.default_cosmic_sources then
