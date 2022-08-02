@@ -3,19 +3,11 @@ local augroup_name = 'CosmicNvimUtils'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 function M.map(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  if opts then
-    options = M.merge(options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-function M.buf_map(bufnr, mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  if opts then
-    options = M.merge(options, opts)
-  end
-  vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
+  local defaults = {
+    silent = true,
+    noremap = true,
+  }
+  vim.keymap.set(mode, lhs, rhs, M.merge(defaults, opts or {}))
 end
 
 function M.merge_list(tbl1, tbl2)

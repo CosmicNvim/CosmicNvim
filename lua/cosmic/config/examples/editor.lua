@@ -17,7 +17,7 @@ opt.tabstop = 4
 -- or `:map`, `:map <leader>`
 
 -- Example: Additional insert mapping:
-map('i', 'jj', '<esc>', { noremap = true, silent = true })
+map('i', 'jj', '<esc>')
 
 -- Mapping options:
 -- map('n', ...)
@@ -26,5 +26,6 @@ map('i', 'jj', '<esc>', { noremap = true, silent = true })
 -- map('t', ...)
 
 -- Example: Disable find files keymap
--- local cmd = vim.cmd
--- cmd('unmap <leader>f')
+-- vim.keymap.del('n', '<leader>f')
+
+-- See :h vim.keymap for more info
