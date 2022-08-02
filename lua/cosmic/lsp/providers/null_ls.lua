@@ -5,7 +5,6 @@ local config = require('cosmic.core.user')
 
 local config_opts = u.merge(config.lsp.servers.null_ls or {}, {
   default_cosmic_sources = true,
-  diagnostics_format = '#{m} (#{s}) [#{c}]',
 })
 
 -- how to disable sources?
