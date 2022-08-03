@@ -74,11 +74,10 @@ function M.post_reload(msg)
 end
 
 function M.reload_user_config_sync()
-  M.reload_user_config()
   clear_cache()
   unload('cosmic.core.user', true)
   unload('cosmic.core.pluginsInit', true)
-  vim.api.nvim_create_autocmd('User PackerCompileDone', {
+  vim.api.nvim_create_autocmd('User PackerComplete', {
     callback = function()
       M.post_reload()
     end,
