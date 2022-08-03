@@ -61,9 +61,7 @@ local function unload(module_pattern, reload)
 end
 
 local function clear_cache()
-  if 0 == vim.fn.delete(vim.fn.stdpath('config') .. '/lua/cosmic/compiled.lua') then
-    vim.cmd(':LuaCacheClear')
-  end
+  vim.cmd(':LuaCacheClear')
 end
 
 function M.post_reload(msg)
