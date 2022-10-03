@@ -22,6 +22,11 @@ return packer.startup(function()
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'notify'),
   })
 
+  use({
+    'kyazdani42/nvim-web-devicons',
+    after = user_config.theme,
+  })
+
   -- theme stuff
   use({ -- statusline
     'NTBBloodbath/galaxyline.nvim',

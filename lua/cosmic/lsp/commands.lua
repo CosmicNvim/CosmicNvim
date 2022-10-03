@@ -18,9 +18,7 @@ if config.lsp.format_on_save then
         timeout_ms = config.lsp.format_timeout,
         -- check user config to see if we can format on save
         filter = function(client)
-          if config.lsp.can_client_format(client.name) then
-            return client.name
-          end
+          return config.lsp.can_client_format(client.name)
         end,
       })
     end,
