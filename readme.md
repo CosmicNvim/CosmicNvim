@@ -84,7 +84,7 @@ CosmicNvim uninstallation [details](https://github.com/CosmicNvim/CosmicNvim/wik
 
 CosmicNvim comes with first-class support for the following themes:
 
-- [Catppuccino](https://github.com/Pocco81/Catppuccino.nvim)
+- [Catppuccin](https://github.com/catppuccin/catppuccin)
 - [Dracula](https://github.com/Mofiqul/dracula.nvim)
 - [Enfocado](https://github.com/wuelnerdotexe/vim-enfocado)
 - [Github](https://github.com/projekt0n/github-nvim-theme)
