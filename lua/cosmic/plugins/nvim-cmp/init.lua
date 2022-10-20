@@ -66,6 +66,10 @@ local default_cmp_opts = {
     }),
   }),
   window = {
+    completion = {
+      border = user_config.border,
+      winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
+    },
     documentation = {
       border = user_config.border,
       winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
@@ -99,13 +103,6 @@ local default_cmp_opts = {
 
 cmp.setup(u.merge(default_cmp_opts, user_config.nvim_cmp or {}))
 
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' },
-  },
-})
-
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
@@ -119,11 +116,20 @@ cmp.setup.filetype('TelescopePrompt', {
   enabled = false,
 })
 
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' },
---   }, {
---     { name = 'cmdline' },
---   }),
--- })
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' },
+  },
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+  }, {
+    { name = 'cmdline' },
+  }),
+})

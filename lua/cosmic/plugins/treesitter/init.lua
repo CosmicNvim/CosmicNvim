@@ -3,6 +3,7 @@ local u = require('cosmic.utils')
 
 local defaults = {
   ensure_installed = {
+    'astro',
     'css',
     'html',
     'javascript',
