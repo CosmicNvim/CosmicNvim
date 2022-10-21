@@ -15,6 +15,8 @@ local default_config = {
     format_timeout = 3000,
     rename_notification = true,
     servers = {
+      astro = true,
+      tailwindcss = true,
       jsonls = {
         format = false,
       },

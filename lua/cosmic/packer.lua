@@ -30,9 +30,7 @@ if not present then
   end
 end
 
--- @TODO: check if snapshot exists, if not create it
 packer.init({
-  -- snapshot = 'Cosmic',
   display = {
     open_fn = function()
       return require('packer.util').float({ border = 'rounded' })
@@ -43,6 +41,7 @@ packer.init({
     clone_timeout = 800, -- Timeout, in seconds, for git clones
   },
   compile_path = vim.fn.stdpath('config') .. '/lua/cosmic/compiled.lua',
+  snapshot_path = vim.fn.stdpath('config') .. '/snapshots',
   auto_clean = true,
   compile_on_sync = true,
 })
