@@ -14,12 +14,21 @@ return packer.startup(function()
   require('cosmic.theme.plugins').init(use, user_config)
 
   use({
-    'rcarriga/nvim-notify',
+    'folke/noice.nvim',
+    event = 'VimEnter',
     config = function()
-      require('cosmic.plugins.notify')
+      require('cosmic.plugins.noice')
     end,
-    after = user_config.theme,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'notify'),
+    requires = {
+      'MunifTanjim/nui.nvim',
+      {
+        'rcarriga/nvim-notify',
+        config = function()
+          --[[ manually resetup notify to get our custom setup ]]
+          require('cosmic.plugins.notify')
+        end,
+      },
+    },
   })
 
   use({

@@ -32,7 +32,7 @@ opt.softtabstop = indent
 opt.tabstop = indent
 
 -- search
-opt.hlsearch = false
+opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
@@ -41,7 +41,7 @@ opt.wildmenu = true
 -- ui
 opt.cursorline = true
 opt.laststatus = 2
-opt.lazyredraw = true
+--[[ opt.lazyredraw = true ]]
 opt.list = true
 opt.listchars = {
   tab = '❘-',

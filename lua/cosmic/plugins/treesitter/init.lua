@@ -13,6 +13,7 @@ local defaults = {
     'markdown',
     'php',
     'python',
+    'regex',
     'scss',
     'tsx',
     'typescript',
