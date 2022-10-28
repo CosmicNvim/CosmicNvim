@@ -10,12 +10,8 @@ return packer.startup(function()
     'nvim-lua/plenary.nvim',
   })
 
-  -- initialize theme plugins
-  require('cosmic.theme.plugins').init(use, user_config)
-
   use({
     'folke/noice.nvim',
-    event = 'VimEnter',
     config = function()
       require('cosmic.plugins.noice')
     end,
@@ -30,6 +26,9 @@ return packer.startup(function()
       },
     },
   })
+
+  -- initialize theme plugins
+  require('cosmic.theme.plugins').init(use, user_config)
 
   use({
     'kyazdani42/nvim-web-devicons',

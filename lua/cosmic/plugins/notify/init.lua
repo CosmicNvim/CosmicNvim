@@ -14,6 +14,7 @@ require('notify').setup(u.merge({
   background_colour = require('cosmic.theme.colors').bg,
 }, config.notify or {}))
 
-vim.notify = require('notify')
+-- folke/noice will do this for us :)
+--[[ vim.notify = require('notify') ]]
 
 require('cosmic.plugins.notify.highlights')
