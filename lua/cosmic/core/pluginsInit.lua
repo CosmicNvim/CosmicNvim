@@ -93,14 +93,6 @@ return packer.startup(function()
         disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'null-ls'),
         after = 'nvim-lspconfig',
       },
-      {
-        'ray-x/lsp_signature.nvim',
-        config = function()
-          require('cosmic.plugins.lsp-signature')
-        end,
-        after = 'nvim-lspconfig',
-        disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'lsp_signature'),
-      },
     },
     event = 'BufWinEnter',
   })

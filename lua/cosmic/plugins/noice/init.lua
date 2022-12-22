@@ -1,11 +1,23 @@
 require('noice').setup({
-  lsp = {
-    hover = {
-      enabled = false,
+  views = {
+    notify = {
+      merge = true,
     },
-    signature = {
-      enabled = false,
-      auto_open = false, -- Automatically show signature help when typing a trigger character from the LSP
+    hover = {
+      border = {
+        style = 'rounded',
+      },
+      position = { row = 2, col = 2 },
+    },
+  },
+  lsp = {
+    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+    override = {
+      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+      ['vim.lsp.util.stylize_markdown'] = true,
+      ['cmp.entry.get_documentation'] = true,
     },
   },
 })
+
+require('cosmic.plugins.noice.mappings')
