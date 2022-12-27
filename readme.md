@@ -80,25 +80,6 @@ Additional LSP server installation [details](https://github.com/CosmicNvim/Cosmi
 
 CosmicNvim uninstallation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Uninstalling-CosmicNvim).
 
-## 🎨 Theming
-
-CosmicNvim comes with first-class support for the following themes:
-
-- [Catppuccin](https://github.com/catppuccin/catppuccin)
-- [Dracula](https://github.com/Mofiqul/dracula.nvim)
-- [Enfocado](https://github.com/wuelnerdotexe/vim-enfocado)
-- [Github](https://github.com/projekt0n/github-nvim-theme)
-- [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
-- [Kanagawa](https://github.com/rebelot/kanagawa.nvim)
-- [Monokai](https://github.com/tanvirtin/monokai.nvim)
-- [Nightfox](https://github.com/EdenEast/nightfox.nvim)
-- [Nord](https://github.com/shaunsingh/nord.nvim)
-- [Onedark](https://github.com/navarasu/onedark.nvim)
-- [Rose-pine](https://github.com/rose-pine/neovim)
-- [Tokyonight](https://github.com/folke/tokyonight.nvim)
-
-[Additional Screenshots](https://github.com/CosmicNvim/CosmicNvim/wiki/Theme-Screenshots)
-
 ## ⚙️ Configuration
 
 [General Info](./lua/cosmic/config/examples/readme.md)

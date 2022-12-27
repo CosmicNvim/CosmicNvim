@@ -19,10 +19,6 @@ return packer.startup(function()
       'MunifTanjim/nui.nvim',
       {
         'rcarriga/nvim-notify',
-        config = function()
-          --[[ manually resetup notify to get our custom setup ]]
-          --[[ require('cosmic.plugins.notify') ]]
-        end,
       },
     },
   })
