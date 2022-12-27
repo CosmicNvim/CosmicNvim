@@ -1,4 +1,4 @@
-local set_highlight = require('cosmic.theme.utils').set_highlight
+local set_highlight = require('cosmic.utils.theme').set_highlight
 
 -- terminal highlights
 set_highlight('FloatBorder', {

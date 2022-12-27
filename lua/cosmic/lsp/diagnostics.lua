@@ -1,5 +1,5 @@
 local u = require('cosmic.utils')
-local icons = require('cosmic.theme.icons')
+local icons = require('cosmic.utils.icons')
 local config = require('cosmic.core.user')
 
 -- set up LSP signs

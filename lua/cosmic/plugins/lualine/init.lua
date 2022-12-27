@@ -1,7 +1,7 @@
 local config = require('cosmic.core.user')
 local utils = require('cosmic.utils')
 local lsp_utils = require('cosmic.utils.lsp')
-local icons = require('cosmic.theme.icons')
+local icons = require('cosmic.utils.icons')
 
 local custom_sections = {
   branch = { 'b:gitsigns_head', icon = icons.branch },

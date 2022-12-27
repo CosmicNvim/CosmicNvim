@@ -1,5 +1,5 @@
 local config = require('cosmic.core.user')
-local icons = require('cosmic.theme.icons')
+local icons = require('cosmic.utils.icons')
 local u = require('cosmic.utils')
 local augroup_name = 'CosmicNvimNvimTree'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
