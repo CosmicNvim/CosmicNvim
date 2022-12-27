@@ -1,5 +1,6 @@
 local config = require('cosmic.core.user')
 local utils = require('cosmic.utils')
+local lsp_utils = require('cosmic.utils.lsp')
 local icons = require('cosmic.theme.icons')
 
 local custom_sections = {
@@ -49,7 +50,7 @@ require('lualine').setup(utils.merge({
     },
     lualine_c = { custom_sections.diff },
     lualine_x = { 'diagnostics' },
-    lualine_y = { utils.get_lsp_status_str },
+    lualine_y = { lsp_utils.get_lsp_status_str },
     lualine_z = { 'location', 'progress' },
   },
   inactive_sections = {
