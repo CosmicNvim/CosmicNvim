@@ -1,5 +1,5 @@
-local theme = require('tokyonight.colors')
-local themeColors = theme.setup()
+local config = require('cosmic.plugins.tokyonight.config')
+local themeColors = require('tokyonight.colors').setup(config)
 
 local colors = {
   white = themeColors.fg_dark,
@@ -21,9 +21,5 @@ local colors = {
   floatBorder = themeColors.border_highlight,
   selection_caret = themeColors.purple,
 }
-
-if vim.tbl_isempty(colors) then
-  return false
-end
 
 return colors

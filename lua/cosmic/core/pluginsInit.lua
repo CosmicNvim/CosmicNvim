@@ -32,28 +32,22 @@ return packer.startup(function()
     'folke/tokyonight.nvim',
     as = 'tokyonight',
     config = function()
-      vim.g.tokyonight_style = 'night'
-      vim.g.tokyonight_sidebars = { 'qf' }
-      vim.cmd('color tokyonight')
+      -- set up theme
+      require('cosmic.plugins.tokyonight')
+      -- set up cosmic theming
       require('cosmic.theme')
     end,
-    commit = '8223c970677e4d88c9b6b6d81bda23daf11062bb',
-  })
-
-  use({
-    'kyazdani42/nvim-web-devicons',
-    after = user_config.theme,
+    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'tokyonight'),
   })
 
   -- theme stuff
   use({ -- statusline
     'NTBBloodbath/galaxyline.nvim',
     branch = 'main',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    requires = { 'kyazdani42/nvim-web-devicons' },
     config = function()
       require('cosmic.plugins.galaxyline')
     end,
-    after = user_config.theme,
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'galaxyline'),
   })
 

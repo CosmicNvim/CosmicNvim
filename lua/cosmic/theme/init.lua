@@ -1,8 +1,3 @@
-local _, colors = pcall(require, 'cosmic.theme.colors')
-if not colors then
-  return
-end
-
 local get_highlight = require('cosmic.theme.utils').get_highlight
 local set_highlight = require('cosmic.theme.utils').set_highlight
 local statusline_colors = get_highlight('StatusLine')
