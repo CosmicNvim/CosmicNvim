@@ -41,6 +41,7 @@ return packer.startup(function()
       require('cosmic.plugins.lualine')
     end,
     requires = { 'nvim-tree/nvim-web-devicons' },
+    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'lualine'),
   })
 
   -- file explorer
