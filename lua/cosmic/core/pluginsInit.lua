@@ -44,7 +44,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.plugins.lualine')
     end,
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    requires = { 'nvim-tree/nvim-web-devicons' },
   })
 
   -- file explorer
