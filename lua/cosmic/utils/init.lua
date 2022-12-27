@@ -1,6 +1,7 @@
 local M = {}
 local augroup_name = 'CosmicNvimUtils'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
+local icons = require('cosmic.theme.icons')
 
 function M.map(mode, lhs, rhs, opts)
   local defaults = {
@@ -85,6 +86,58 @@ function M.reload_user_config_sync()
     once = true,
   })
   vim.cmd(':PackerSync')
+end
+
+function M.get_short_file_path(path)
+  local dirs = {}
+  for dir in string.gmatch(path, '([^/]+)') do
+    table.insert(dirs, dir)
+  end
+
+  local n = #dirs
+  if n > 3 then
+    return '../' .. dirs[n - 2] .. '/' .. dirs[n - 1] .. '/' .. dirs[n]
+  end
+
+  return path
+end
+
+function M.get_lsp_status_str()
+  local clients = M.get_active_lsp_client_names()
+  local client_str = ''
+
+  if #clients < 1 then
+    return client_str
+  end
+
+  for i, client in ipairs(clients) do
+    client_str = client_str .. client
+    if i < #clients then
+      client_str = client_str .. ', '
+    end
+  end
+
+  if client_str:len() < 1 then
+    return
+  end
+
+  return client_str
+end
+
+function M.get_short_cwd()
+  local parts = vim.split(vim.fn.getcwd(), '/')
+  return parts[#parts]
+end
+
+function M.diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
 end
 
 function M.reload_user_config(compile)

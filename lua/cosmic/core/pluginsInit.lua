@@ -39,15 +39,12 @@ return packer.startup(function()
   })
 
   -- theme stuff
-  use({ -- statusline
-    'NTBBloodbath/galaxyline.nvim',
-    branch = 'main',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+  use({
+    'nvim-lualine/lualine.nvim',
     config = function()
-      require('cosmic.plugins.galaxyline')
+      require('cosmic.plugins.lualine')
     end,
-    after = 'tokyonight',
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'galaxyline'),
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   })
 
   -- file explorer
