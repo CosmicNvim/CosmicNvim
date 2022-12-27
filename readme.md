@@ -32,9 +32,10 @@ Full featured native LSP functionality!
 
 - Custom rename and code action popups via [Cosmic-UI](https://github.com/CosmicNvim/cosmic-ui)
 - Amazing default theme via [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
+- UI enhancements via [noice](https://github.com/folke/noice.nvim)
 - Enhanced syntax highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Dashboard via [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
-- Hand-built statusline via [galaxyline](https://github.com/CosmicNvim/galaxyline.nvim)
+- Custom statusline via [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - Explore files via [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
 - Fuzzy finder via [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)
@@ -43,7 +44,6 @@ Full featured native LSP functionality!
 - Additional TypeScript support via [nvim-lsp-ts-utils](https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - Session management via [auto-session](https://github.com/rmagatti/auto-session)
-- Notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - Additional custom highlighting
 - Floating windows for references, renaming, diagnostics, code actions and more!
 

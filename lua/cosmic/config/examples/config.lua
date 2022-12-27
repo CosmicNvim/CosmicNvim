@@ -56,12 +56,10 @@ local config = {
   },
   -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
   lsp_signature = {},
+
+  lualine = {},
   -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
   luasnip = {},
-  -- Default statusline icon
-  statusline = {
-    main_icon = '★',
-  },
   -- See :h telescope.setup
   telescope = {},
   -- Theming, don't forget to run :CosmicReloadSync when changing themes
@@ -96,7 +94,7 @@ local config = {
     'gitsigns',
     'comment-nvim',
     'nvim-tree',
-    'galaxyline',
+    'lualine',
     'telescope',
     'terminal',
     'theme',
