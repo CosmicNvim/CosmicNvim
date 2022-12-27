@@ -1,13 +1,26 @@
-local config = require('cosmic.core.user')
-local colors = {}
-local mod = 'cosmic.theme.integrated.'
-local supported_themes = require('cosmic.theme.plugins').supported_themes
+local theme = require('tokyonight.colors')
+local themeColors = theme.setup()
 
-for _, theme in pairs(supported_themes) do
-  if theme == config.theme then
-    colors = require(mod .. theme)
-  end
-end
+local colors = {
+  white = themeColors.fg_dark,
+  bg = themeColors.bg,
+  bg_highlight = themeColors.bg_highlight,
+  normal = themeColors.blue,
+  insert = themeColors.teal,
+  command = themeColors.orange,
+  visual = themeColors.magenta,
+  replace = themeColors.red,
+  diffAdd = themeColors.git.add,
+  diffModified = themeColors.git.change,
+  diffDeleted = themeColors.git.delete,
+  trace = themeColors.orange,
+  hint = themeColors.teal,
+  info = themeColors.green2,
+  error = themeColors.magenta2,
+  warn = themeColors.orange,
+  floatBorder = themeColors.border_highlight,
+  selection_caret = themeColors.purple,
+}
 
 if vim.tbl_isempty(colors) then
   return false
