@@ -1,14 +1,18 @@
+require('cosmic.plugins.galaxyline.highlights')
+local colors = require('cosmic.plugins.galaxyline.colors')
+
+local config = require('cosmic.core.user')
+local u = require('cosmic.utils')
+local set_highlight = require('cosmic.theme.utils').set_highlight
+local get_highlight = require('cosmic.theme.utils').get_highlight
+local icons = require('cosmic.theme.icons')
+
 local galaxy = require('galaxyline')
 local gls = galaxy.section
 local diag = require('galaxyline.providers.diagnostic')
 local condition = require('galaxyline.condition')
 local fileinfo = require('galaxyline.providers.fileinfo')
-local u = require('cosmic.utils')
-local colors = require('cosmic.theme.colors')
-local set_highlight = require('cosmic.theme.utils').set_highlight
-local icons = require('cosmic.theme.icons')
-local config = require('cosmic.core.user')
-local get_highlight = require('cosmic.theme.utils').get_highlight
+
 local statusline_colors = get_highlight('StatusLine')
 
 local defaults = u.merge({

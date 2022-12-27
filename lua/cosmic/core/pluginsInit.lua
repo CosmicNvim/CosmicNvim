@@ -21,7 +21,7 @@ return packer.startup(function()
         'rcarriga/nvim-notify',
         config = function()
           --[[ manually resetup notify to get our custom setup ]]
-          require('cosmic.plugins.notify')
+          --[[ require('cosmic.plugins.notify') ]]
         end,
       },
     },
@@ -34,8 +34,6 @@ return packer.startup(function()
     config = function()
       -- set up theme
       require('cosmic.plugins.tokyonight')
-      -- set up cosmic theming
-      require('cosmic.theme')
     end,
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'tokyonight'),
   })
@@ -48,6 +46,7 @@ return packer.startup(function()
     config = function()
       require('cosmic.plugins.galaxyline')
     end,
+    after = 'tokyonight',
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'galaxyline'),
   })
 
