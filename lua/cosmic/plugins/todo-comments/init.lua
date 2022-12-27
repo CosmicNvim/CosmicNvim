@@ -1,5 +1,5 @@
 local config = require('cosmic.core.user')
-local icons = require('cosmic.theme.icons')
+local icons = require('cosmic.utils.icons')
 local u = require('cosmic.utils')
 
 require('todo-comments').setup(u.merge({

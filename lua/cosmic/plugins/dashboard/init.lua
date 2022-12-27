@@ -1,4 +1,4 @@
-local icons = require('cosmic.theme.icons')
+local icons = require('cosmic.utils.icons')
 local g = vim.g
 
 g.dashboard_custom_header = {

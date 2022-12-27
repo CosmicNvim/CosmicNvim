@@ -2,7 +2,7 @@ local cmp = require('cmp')
 local u = require('cosmic.utils')
 local luasnip = require('luasnip')
 local user_config = require('cosmic.core.user')
-local icons = require('cosmic.theme.icons')
+local icons = require('cosmic.utils.icons')
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))

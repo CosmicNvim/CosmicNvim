@@ -19,32 +19,28 @@ return packer.startup(function()
       'MunifTanjim/nui.nvim',
       {
         'rcarriga/nvim-notify',
-        config = function()
-          --[[ manually resetup notify to get our custom setup ]]
-          require('cosmic.plugins.notify')
-        end,
       },
     },
   })
 
   -- initialize theme plugins
-  require('cosmic.theme.plugins').init(use, user_config)
-
-  use({
-    'kyazdani42/nvim-web-devicons',
-    after = user_config.theme,
+  use({ -- color scheme
+    'folke/tokyonight.nvim',
+    as = 'tokyonight',
+    config = function()
+      -- set up theme
+      require('cosmic.plugins.tokyonight')
+    end,
+    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'tokyonight'),
   })
 
   -- theme stuff
-  use({ -- statusline
-    'NTBBloodbath/galaxyline.nvim',
-    branch = 'main',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  use({
+    'nvim-lualine/lualine.nvim',
     config = function()
-      require('cosmic.plugins.galaxyline')
+      require('cosmic.plugins.lualine')
     end,
-    after = user_config.theme,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'galaxyline'),
+    requires = { 'nvim-tree/nvim-web-devicons' },
   })
 
   -- file explorer

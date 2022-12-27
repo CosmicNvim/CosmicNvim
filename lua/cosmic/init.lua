@@ -1,7 +1,6 @@
 local mods = {
   'cosmic.compiled',
   'cosmic.core',
-  'cosmic.theme',
 }
 
 for _, mod in ipairs(mods) do

@@ -6,8 +6,8 @@ vim.api.nvim_create_autocmd('VimResized', {
 })
 
 vim.cmd([[
-  command! CosmicUpdate lua require('cosmic.utils').update()
-  command! CosmicReload lua require('cosmic.utils').reload_user_config(true)
-  command! CosmicReloadSync lua require('cosmic.utils').reload_user_config_sync()
+  command! CosmicUpdate lua require('cosmic.utils.cosmic').update()
+  command! CosmicReload lua require('cosmic.utils.cosmic').reload_user_config(true)
+  command! CosmicReloadSync lua require('cosmic.utils.cosmic').reload_user_config_sync()
   command! LspFormat lua vim.lsp.buf.format()
 ]])
