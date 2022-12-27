@@ -1,3 +1,4 @@
+local config = require('cosmic.core.user')
 local utils = require('cosmic.utils')
 local icons = require('cosmic.theme.icons')
 
@@ -28,7 +29,7 @@ local custom_sections = {
   },
 }
 
-require('lualine').setup({
+require('lualine').setup(utils.merge({
   options = {
     theme = 'tokyonight',
   },
@@ -87,4 +88,4 @@ require('lualine').setup({
     lualine_z = {},
   },
   extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
-})
+}, config.lualine or {}))
