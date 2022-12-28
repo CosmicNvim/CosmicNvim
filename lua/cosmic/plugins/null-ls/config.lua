@@ -21,7 +21,7 @@ if config_opts.default_cosmic_sources then
     }),
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.code_actions.gitsigns,
-  }, config_opts.sources or {})
+  }, config_opts.get_sources() or {})
 end
 
-require('null-ls').setup(u.merge(defaults, config_opts))
+null_ls.setup(u.merge(defaults, config_opts))

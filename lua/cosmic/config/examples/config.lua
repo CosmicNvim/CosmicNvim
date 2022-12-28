@@ -4,18 +4,8 @@
 -- local null_ls = require('null-ls')
 
 local config = {
-  -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
-  auto_session = {},
   -- See :h nvim_open_win for possible border options
   border = 'rounded',
-  -- https://github.com/numToStr/Comment.nvim#configuration-optional
-  comment_nvim = {},
-  -- See https://github.com/CosmicNvim/cosmic-ui#%EF%B8%8F-configuration
-  cosmic_ui = {},
-  -- See :h vim.diagnostic.config for all diagnostic configuration options
-  diagnostic = {},
-  -- See :h gitsigns-usage
-  gitsigns = {},
   -- LSP settings
   lsp = {
     -- True/false or table of filetypes {'.ts', '.js',}
@@ -47,35 +37,61 @@ local config = {
       null_ls = {
         -- Disable default list of sources provided by CosmicNvim
         default_cosmic_sources = false,
+        --disable formatting
+        format = false,
         -- Add additional sources here
-        sources = {},
+        get_sources = function()
+          local null_ls = require('null-ls')
+          return {
+            null_ls.builtins.diagnostics.shellcheck,
+            null_ls.builtins.diagnostics.actionlint.with({
+              condition = function()
+                local cwd = vim.fn.expand('%:p:.')
+                return cwd:find('.github/workflows')
+              end,
+            }),
+          }
+        end,
       },
     },
     -- See Cosmic defaults lsp/providers/tsserver.lua
     ts_utils = {},
   },
-  -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
-  lsp_signature = {},
-  -- See https://github.com/nvim-lualine/lualine.nvim#default-configuration
-  lualine = {},
-  -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
-  luasnip = {},
-  -- See :h telescope.setup
-  telescope = {},
-  -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
-  todo_comments = {},
-  -- See :h nvim-treesitter-quickstart
-  treesitter = {},
-  -- See :h cmp-usage
-  nvim_cmp = {},
-  -- See :h nvim-tree.setup
-  nvim_tree = {},
-  -- Add additional plugins
+  -- adjust build in plugin settings
+  plugins = {
+    -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
+    auto_session = {},
+    -- https://github.com/numToStr/Comment.nvim#configuration-optional
+    comment_nvim = {},
+    -- See https://github.com/CosmicNvim/cosmic-ui#%EF%B8%8F-configuration
+    cosmic_ui = {},
+    -- See :h vim.diagnostic.config for all diagnostic configuration options
+    diagnostic = {},
+    -- See :h gitsigns-usage
+    gitsigns = {},
+    -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
+    lsp_signature = {},
+    -- See https://github.com/nvim-lualine/lualine.nvim#default-configuration
+    lualine = {},
+    -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
+    luasnip = {},
+    -- See :h telescope.setup
+    telescope = {},
+    -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
+    todo_comments = {},
+    -- See :h nvim-treesitter-quickstart
+    treesitter = {},
+    -- See :h cmp-usage
+    nvim_cmp = {},
+    -- See :h nvim-tree.setup
+    nvim_tree = {},
+  },
+  -- Add additional plugins (lazy.nvim)
   add_plugins = {
     'ggandor/lightspeed.nvim',
     {
       'romgrk/barbar.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
+      dependencies = { 'kyazdani42/nvim-web-devicons' },
     },
   },
   -- Disable plugins enabled by CosmicNvim
