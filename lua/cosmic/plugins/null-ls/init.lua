@@ -5,5 +5,6 @@ return {
   config = function()
     require('cosmic.plugins.null-ls.config')
   end,
+  event = 'BufEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'null_ls'),
 }

@@ -11,6 +11,10 @@ return {
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-nvim-lua' },
     { 'hrsh7th/cmp-path' },
+    -- has configs
+    { 'windwp/nvim-autopairs' },
+    { 'ray-x/lsp_signature.nvim' },
+    { 'L3MON4D3/LuaSnip' },
   },
   event = 'InsertEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'nvim-cmp'),

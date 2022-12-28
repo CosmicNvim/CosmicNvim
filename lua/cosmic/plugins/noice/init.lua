@@ -31,6 +31,7 @@ return {
 
     require('cosmic.plugins.noice.mappings')
   end,
+  event = 'BufEnter',
   dependencies = {
     'MunifTanjim/nui.nvim',
     'rcarriga/nvim-notify',

@@ -21,6 +21,6 @@ return {
       end,
     }, user_config.plugins.comment_nvim or {}))
   end,
-  event = 'BufWinEnter',
+  event = 'BufEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'comment-nvim'),
 }

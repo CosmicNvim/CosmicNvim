@@ -3,7 +3,6 @@ local u = require('cosmic.utils')
 
 return {
   'norcalli/nvim-colorizer.lua',
-  opt = true,
   cmd = { 'ColorizerToggle' },
   config = function()
     require('colorizer').setup(u.merge({}, user_config.plugins.colorizer or {}))

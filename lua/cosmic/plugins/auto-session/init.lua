@@ -11,6 +11,7 @@ local defaults = {
 
 return {
   'rmagatti/auto-session',
+  lazy = false,
   config = function()
     require('auto-session').setup(u.merge(defaults, user_config.plugins.auto_session or {}))
   end,

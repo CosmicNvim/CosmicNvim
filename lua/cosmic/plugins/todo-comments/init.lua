@@ -29,6 +29,6 @@ return {
       },
     }, user_config.plugins.todo_comments or {}))
   end,
-  event = 'BufWinEnter',
+  event = 'BufEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'todo-comments'),
 }

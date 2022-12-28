@@ -45,6 +45,7 @@ return {
     'JoosepAlviste/nvim-ts-context-commentstring',
     'nvim-treesitter/nvim-treesitter-refactor',
   },
+  event = 'BufEnter',
   build = ':TSUpdate',
   config = function()
     require('nvim-treesitter.configs').setup(u.merge(defaults, user_config.plugins.treesitter or {}))

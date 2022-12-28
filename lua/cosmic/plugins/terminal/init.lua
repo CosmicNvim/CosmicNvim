@@ -4,8 +4,9 @@ local title = vim.env.SHELL
 
 return {
   'voldikss/vim-floaterm',
-  opt = true,
-  event = 'BufWinEnter',
+  keys = {
+    { '<C-l>', '<cmd>FloatermToggle<cr>', desc = 'Floating Terminal' },
+  },
   config = function()
     g.floaterm_width = 0.7
     g.floaterm_height = 0.8
