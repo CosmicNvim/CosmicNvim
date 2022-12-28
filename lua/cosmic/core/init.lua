@@ -2,6 +2,7 @@ local cosmic_modules = {
   'cosmic.core.disabled',
   'cosmic.core.editor',
   'cosmic.core.pluginsInit',
+  'cosmic.lsp',
   'cosmic.core.commands',
   'cosmic.core.mappings',
   'cosmic.config.editor',

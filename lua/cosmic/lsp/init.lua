@@ -1,7 +1,6 @@
 local config = require('cosmic.core.user')
 
 -- set up lsp servers
-require('cosmic.lsp.providers')
 require('cosmic.lsp.diagnostics')
 require('cosmic.lsp.commands')
 
