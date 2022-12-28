@@ -6,14 +6,13 @@ return {
     require('cosmic.plugins.nvim-cmp.config')
   end,
   dependencies = {
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-nvim-lua' },
-    { 'hrsh7th/cmp-path' },
+    'hrsh7th/cmp-nvim-lsp',
+    'saadparwaiz1/cmp_luasnip',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-path',
     -- has configs
-    { 'windwp/nvim-autopairs' },
-    { 'L3MON4D3/LuaSnip' },
+    'L3MON4D3/LuaSnip',
   },
   event = 'InsertEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'nvim-cmp'),

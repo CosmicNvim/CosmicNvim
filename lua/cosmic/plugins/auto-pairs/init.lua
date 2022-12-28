@@ -14,10 +14,6 @@ return {
       disable_filetype = { 'TelescopePrompt', 'vim' },
       fast_wrap = {},
     }, user_config.plugins.nvim_autopairs or {}))
-
-    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-    local cmp = require('cmp')
-    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
   end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'autopairs'),
 }
