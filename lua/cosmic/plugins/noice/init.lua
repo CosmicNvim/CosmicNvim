@@ -1,7 +1,10 @@
+local user_config = require('cosmic.core.user')
+local u = require('cosmic.utils')
+
 return {
   'folke/noice.nvim',
   config = function()
-    require('noice').setup({
+    require('noice').setup(u.merge({
       views = {
         notify = {
           merge = true,
@@ -18,7 +21,7 @@ return {
           ['cmp.entry.get_documentation'] = true,
         },
       },
-    })
+    }, user_config.plugins.noice or {}))
 
     require('cosmic.plugins.noice.mappings')
   end,

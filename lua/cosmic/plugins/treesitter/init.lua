@@ -47,7 +47,7 @@ return {
   },
   build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter.configs').setup(u.merge(defaults, user_config.treesitter or {}))
+    require('nvim-treesitter.configs').setup(u.merge(defaults, user_config.plugins.treesitter or {}))
   end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'treesitter'),
 }

@@ -11,7 +11,7 @@ return {
       -- Update more often, :h events for more info.
       updateevents = 'TextChanged,TextChangedI',
       enable_autosnippets = true,
-    }, user_config.luasnip or {}))
+    }, user_config.plugins.luasnip or {}))
 
     ls.snippets = {
       all = {},

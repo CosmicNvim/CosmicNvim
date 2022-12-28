@@ -92,7 +92,7 @@ return {
         lualine_z = {},
       },
       extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
-    }, user_config.lualine or {}))
+    }, user_config.plugins.lualine or {}))
   end,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lualine'),

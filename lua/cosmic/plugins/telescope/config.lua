@@ -132,6 +132,6 @@ require('telescope').setup(u.merge({
       mappings = default_mappings,
     }),
   },
-}, user_config.telescope or {}))
+}, user_config.plugins.telescope or {}))
 
 require('telescope').load_extension('fzf')

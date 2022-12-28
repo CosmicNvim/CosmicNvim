@@ -27,7 +27,7 @@ return {
         hint = { 'DiagnosticHint', '#10B981' },
         default = { 'Identifier', '#7C3AED' },
       },
-    }, user_config.todo_comments or {}))
+    }, user_config.plugins.todo_comments or {}))
   end,
   event = 'BufWinEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'todo-comments'),

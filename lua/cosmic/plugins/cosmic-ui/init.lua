@@ -11,7 +11,7 @@ return {
     'MunifTanjim/nui.nvim',
   },
   config = function()
-    require('cosmic-ui').setup(u.merge(defaults, user_config.cosmic_ui or {}))
+    require('cosmic-ui').setup(u.merge(defaults, user_config.plugins.cosmic_ui or {}))
   end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'cosmic-ui'),
 }

@@ -9,7 +9,7 @@ return {
       handler_opts = {
         border = user_config.border,
       },
-    }, user_config.lsp_signature or {}))
+    }, user_config.plugins.lsp_signature or {}))
   end,
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lsp_signature'),
+  enabled = false,
 }

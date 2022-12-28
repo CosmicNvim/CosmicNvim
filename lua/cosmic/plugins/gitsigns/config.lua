@@ -65,4 +65,4 @@ require('gitsigns').setup(u.merge({
   yadm = {
     enable = false,
   },
-}, user_config.gitsigns or {}))
+}, user_config.plugins.gitsigns or {}))

@@ -19,7 +19,7 @@ return {
           location = location,
         })
       end,
-    }, user_config.comment_nvim or {}))
+    }, user_config.plugins.comment_nvim or {}))
   end,
   event = 'BufWinEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'comment-nvim'),

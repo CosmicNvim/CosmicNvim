@@ -101,7 +101,7 @@ local default_cmp_opts = {
   },
 }
 
-cmp.setup(u.merge(default_cmp_opts, user_config.nvim_cmp or {}))
+cmp.setup(u.merge(default_cmp_opts, user_config.plugins.nvim_cmp or {}))
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {

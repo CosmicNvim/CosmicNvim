@@ -56,7 +56,7 @@ return {
       nested = true,
     })
 
-    require('nvim-tree').setup(u.merge(args, user_config.nvim_tree or {}))
+    require('nvim-tree').setup(u.merge(args, user_config.plugins.nvim_tree or {}))
   end,
   cmd = {
     'NvimTreeClipboard',

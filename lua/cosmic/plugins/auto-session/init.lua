@@ -12,7 +12,7 @@ local defaults = {
 return {
   'rmagatti/auto-session',
   config = function()
-    require('auto-session').setup(u.merge(defaults, user_config.auto_session or {}))
+    require('auto-session').setup(u.merge(defaults, user_config.plugins.auto_session or {}))
   end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'auto-session'),
 }

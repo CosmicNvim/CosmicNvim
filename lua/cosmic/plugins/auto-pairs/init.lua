@@ -1,8 +1,10 @@
 local user_config = require('cosmic.core.user')
+local u = require('cosmic.utils')
+
 return {
   'windwp/nvim-autopairs',
   config = function()
-    require('nvim-autopairs').setup({
+    require('nvim-autopairs').setup(u.merge({
       check_ts = true,
       ts_config = {
         lua = { 'string', 'source' },
@@ -11,7 +13,7 @@ return {
       },
       disable_filetype = { 'TelescopePrompt', 'vim' },
       fast_wrap = {},
-    })
+    }, user_config.plugins.nvim_autopairs or {}))
 
     local cmp_autopairs = require('nvim-autopairs.completion.cmp')
     local cmp = require('cmp')
