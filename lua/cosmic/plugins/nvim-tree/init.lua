@@ -1,4 +1,4 @@
-local config = require('cosmic.core.user')
+local user_config = require('cosmic.core.user')
 local icons = require('cosmic.utils.icons')
 local u = require('cosmic.utils')
 local augroup_name = 'CosmicNvimNvimTree'
@@ -46,11 +46,25 @@ local args = {
   },
 }
 
--- Autoclose nvim is nvim-tree is only buffer open
-vim.api.nvim_create_autocmd('BufEnter', {
-  command = [[if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
-  group = group,
-  nested = true,
-})
+return {
+  'kyazdani42/nvim-tree.lua',
+  config = function()
+    -- Autoclose nvim is nvim-tree is only buffer open
+    vim.api.nvim_create_autocmd('BufEnter', {
+      command = [[if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
+      group = group,
+      nested = true,
+    })
 
-require('nvim-tree').setup(u.merge(args, config.nvim_tree or {}))
+    require('nvim-tree').setup(u.merge(args, user_config.nvim_tree or {}))
+  end,
+  cmd = {
+    'NvimTreeClipboard',
+    'NvimTreeClose',
+    'NvimTreeFindFile',
+    'NvimTreeOpen',
+    'NvimTreeRefresh',
+    'NvimTreeToggle',
+  },
+  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'nvim-tree'),
+}
