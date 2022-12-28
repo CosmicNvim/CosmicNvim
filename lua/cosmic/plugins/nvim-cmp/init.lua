@@ -13,7 +13,6 @@ return {
     { 'hrsh7th/cmp-path' },
     -- has configs
     { 'windwp/nvim-autopairs' },
-    { 'ray-x/lsp_signature.nvim' },
     { 'L3MON4D3/LuaSnip' },
   },
   event = 'InsertEnter',

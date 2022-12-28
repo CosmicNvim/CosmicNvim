@@ -1,3 +1,5 @@
+local u = require('cosmic.utils')
+local user_config = require('cosmic.core.user')
 local M = {}
 
 function M.on_attach(client, bufnr)
@@ -7,6 +9,16 @@ function M.on_attach(client, bufnr)
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  require('lsp_signature').on_attach(
+    u.merge({
+      bind = true,
+      handler_opts = {
+        border = 'rounded',
+      },
+    }, user_config.plugins.lsp_signature or {}),
+    bufnr
+  )
 
   require('cosmic.lsp.mappings').init(client, bufnr)
 end
