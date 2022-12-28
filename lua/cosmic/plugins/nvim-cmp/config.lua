@@ -3,6 +3,7 @@ local u = require('cosmic.utils')
 local luasnip = require('luasnip')
 local user_config = require('cosmic.core.user')
 local icons = require('cosmic.utils.icons')
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -100,6 +101,9 @@ local default_cmp_opts = {
     end,
   },
 }
+
+-- set up autopairs
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
 cmp.setup(u.merge(default_cmp_opts, user_config.plugins.nvim_cmp or {}))
 
