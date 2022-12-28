@@ -11,5 +11,5 @@ return {
       },
     }, user_config.plugins.lsp_signature or {}))
   end,
-  enabled = false,
+  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lsp_signature'),
 }

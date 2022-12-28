@@ -5,6 +5,9 @@ return {
   'folke/noice.nvim',
   config = function()
     require('noice').setup(u.merge({
+      presets = {
+        lsp_doc_border = true,
+      },
       views = {
         notify = {
           merge = true,
@@ -13,6 +16,9 @@ return {
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         hover = {
+          enabled = false,
+        },
+        signature = {
           enabled = false,
         },
         override = {
