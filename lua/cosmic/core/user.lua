@@ -9,6 +9,26 @@ local default_config = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     format_timeout = 3000,
     rename_notification = true,
+    -- lsp servers that should be installed
+    ensure_installed = {
+      'astro',
+      --[[ 'actionlint', ]]
+      --[[ 'eslint_d', ]]
+      --[[ 'prettierd', ]]
+      'bashls',
+      'cssls',
+      'gopls',
+      'graphql',
+      'html',
+      'jsonls',
+      'tsserver',
+      'sumneko_lua',
+      'pyright',
+      'svelte',
+      'tailwindcss',
+      'yamlls',
+    },
+    -- lsp servers that should be enabled
     servers = {
       astro = true,
       tailwindcss = true,

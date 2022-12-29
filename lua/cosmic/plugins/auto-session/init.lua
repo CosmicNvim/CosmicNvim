@@ -6,7 +6,6 @@ local defaults = {
   auto_session_enabled = false,
   auto_save_enabled = true,
   auto_restore_enabled = false,
-  auto_session_use_git_branch = true,
 }
 
 return {

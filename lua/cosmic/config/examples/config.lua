@@ -16,6 +16,25 @@ local config = {
     rename_notification = true,
     -- Enable non-default servers, use default lsp config
     -- Check here for configs that will be used by default: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
+
+    -- lsp servers that should be installed
+    ensure_installed = {
+      'astro',
+      'bashls',
+      'cssls',
+      'gopls',
+      'graphql',
+      'html',
+      'jsonls',
+      'tsserver',
+      'sumneko_lua',
+      'pyright',
+      'svelte',
+      'tailwindcss',
+      'yamlls',
+    },
+
+    -- lsp servers that should be enabled
     servers = {
       -- Enable rust_analyzer
       rust_analyzer = true,

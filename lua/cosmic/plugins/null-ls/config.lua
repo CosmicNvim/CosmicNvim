@@ -1,9 +1,9 @@
 local u = require('cosmic.utils')
 local defaults = require('cosmic.lsp.providers.defaults')
 local null_ls = require('null-ls')
-local config = require('cosmic.core.user')
+local user_config = require('cosmic.core.user')
 
-local config_opts = u.merge(config.lsp.servers.null_ls or {}, {
+local config_opts = u.merge(user_config.lsp.servers.null_ls or {}, {
   default_cosmic_sources = true,
 })
 

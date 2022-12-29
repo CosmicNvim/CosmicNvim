@@ -1,0 +1,3 @@
+return {
+  'williamboman/mason.nvim',
+}
