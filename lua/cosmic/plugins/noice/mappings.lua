@@ -1,13 +1,13 @@
 local map = require('cosmic.utils').map
 
-map('n', '<c-k>', function()
+map('n', '<c-j>', function()
   if not require('noice.lsp').scroll(4) then
-    return '<c-k>'
+    return '<c-j>'
   end
 end)
 
-map('n', '<c-j>', function()
+map('n', '<c-k>', function()
   if not require('noice.lsp').scroll(-4) then
-    return '<c-j>'
+    return '<c-k>'
   end
 end)
