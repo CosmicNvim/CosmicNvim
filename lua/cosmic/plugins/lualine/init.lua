@@ -1,4 +1,4 @@
-local config = require('cosmic.core.user')
+local user_config = require('cosmic.core.user')
 local utils = require('cosmic.utils')
 local lsp_utils = require('cosmic.utils.lsp')
 local icons = require('cosmic.utils.icons')
@@ -30,63 +30,71 @@ local custom_sections = {
   },
 }
 
-require('lualine').setup(utils.merge({
-  options = {
-    theme = 'tokyonight',
-  },
-  sections = {
-    lualine_a = { 'mode' },
-    lualine_b = {
-      {
-        'filetype',
-        icon_only = true,
-        padding = {
-          left = 1,
-          right = 0,
-        },
-        separator = '',
+return {
+  'nvim-lualine/lualine.nvim',
+  lazy = false,
+  config = function()
+    require('lualine').setup(utils.merge({
+      options = {
+        theme = 'tokyonight',
       },
-      custom_sections.shortenedFilePath,
-    },
-    lualine_c = { custom_sections.diff },
-    lualine_x = { 'diagnostics' },
-    lualine_y = { lsp_utils.get_lsp_status_str },
-    lualine_z = { 'location', 'progress' },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {
-      {
-        'filetype',
-        icon_only = true,
-        padding = {
-          left = 1,
-          right = 0,
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = {
+          {
+            'filetype',
+            icon_only = true,
+            padding = {
+              left = 1,
+              right = 0,
+            },
+            separator = '',
+          },
+          custom_sections.shortenedFilePath,
         },
-        separator = '',
+        lualine_c = { custom_sections.diff },
+        lualine_x = { 'diagnostics' },
+        lualine_y = { lsp_utils.get_lsp_status_str },
+        lualine_z = { 'location', 'progress' },
       },
-      custom_sections.shortenedFilePath,
-    },
-    lualine_c = { custom_sections.diff },
-    lualine_x = { 'diagnostics' },
-    lualine_y = { 'location', 'progress' },
-    lualine_z = {},
-  },
-  winbar = {
-    lualine_a = { utils.get_short_cwd },
-    lualine_b = { custom_sections.branch },
-    lualine_c = { custom_sections.relativeFilePath },
-    lualine_x = { 'filetype' },
-    lualine_y = {},
-    lualine_z = {},
-  },
-  inactive_winbar = {
-    lualine_a = { utils.get_short_cwd },
-    lualine_b = { custom_sections.branch },
-    lualine_c = { custom_sections.relativeFilePath },
-    lualine_x = { 'filetype' },
-    lualine_y = {},
-    lualine_z = {},
-  },
-  extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
-}, config.lualine or {}))
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {
+          {
+            'filetype',
+            icon_only = true,
+            padding = {
+              left = 1,
+              right = 0,
+            },
+            separator = '',
+          },
+          custom_sections.shortenedFilePath,
+        },
+        lualine_c = { custom_sections.diff },
+        lualine_x = { 'diagnostics' },
+        lualine_y = { 'location', 'progress' },
+        lualine_z = {},
+      },
+      winbar = {
+        lualine_a = { utils.get_short_cwd },
+        lualine_b = { custom_sections.branch },
+        lualine_c = { custom_sections.relativeFilePath },
+        lualine_x = { 'filetype' },
+        lualine_y = {},
+        lualine_z = {},
+      },
+      inactive_winbar = {
+        lualine_a = { utils.get_short_cwd },
+        lualine_b = { custom_sections.branch },
+        lualine_c = { custom_sections.relativeFilePath },
+        lualine_x = { 'filetype' },
+        lualine_y = {},
+        lualine_z = {},
+      },
+      extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
+    }, user_config.plugins.lualine or {}))
+  end,
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lualine'),
+}

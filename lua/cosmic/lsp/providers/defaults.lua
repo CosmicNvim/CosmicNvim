@@ -1,3 +1,4 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local M = {}
 
 function M.on_attach(client, bufnr)
@@ -15,7 +16,7 @@ M.flags = {
   debounce_text_changes = 150,
 }
 
-M.capabilities = {}
+M.capabilities = capabilities
 
 M.root_dir = function(fname)
   local util = require('lspconfig').util

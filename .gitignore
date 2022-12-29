@@ -2,6 +2,8 @@ pack/**
 sessions/**
 .netrwhist
 plugin/
+minimal.lua
+.repro
 lua/cosmic/compiled.lua
 lua/cosmic/config/editor.lua
 lua/cosmic/config/config.lua
