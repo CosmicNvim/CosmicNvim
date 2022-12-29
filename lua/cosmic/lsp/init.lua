@@ -1,4 +1,3 @@
--- set up lsp servers
 require('cosmic.lsp.diagnostics')
 require('cosmic.lsp.commands')
 
