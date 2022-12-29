@@ -84,8 +84,9 @@ local default_cmp_opts = {
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'buffer' },
     { name = 'path' },
+  }, {
+    { name = 'buffer' },
   }),
   formatting = {
     format = function(entry, vim_item)

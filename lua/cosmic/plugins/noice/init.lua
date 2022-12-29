@@ -4,7 +4,7 @@ local u = require('cosmic.utils')
 return {
   'folke/noice.nvim',
   config = function()
-    require('noice').setup(u.merge({
+    local config = u.merge({
       presets = {
         lsp_doc_border = true,
       },
@@ -28,8 +28,9 @@ return {
           ['cmp.entry.get_documentation'] = false,
         },
       },
-    }, user_config.plugins.noice or {}))
+    }, user_config.plugins.noice or {})
 
+    require('noice').setup(config)
     require('cosmic.plugins.noice.mappings')
   end,
   event = 'VeryLazy',
