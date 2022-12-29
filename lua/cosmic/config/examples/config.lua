@@ -19,19 +19,7 @@ local config = {
 
     -- lsp servers that should be installed
     ensure_installed = {
-      'astro',
-      'bashls',
-      'cssls',
-      'gopls',
-      'graphql',
-      'html',
-      'jsonls',
-      'tsserver',
-      'sumneko_lua',
-      'pyright',
-      'svelte',
-      'tailwindcss',
-      'yamlls',
+      'rust_analyzer',
     },
 
     -- lsp servers that should be enabled
@@ -73,10 +61,11 @@ local config = {
         end,
       },
     },
-    -- See Cosmic defaults lsp/providers/tsserver.lua
+    -- See Cosmic defaults lua/plugins/nvim-lsp-ts-utils/setup.lua
     ts_utils = {},
   },
-  -- adjust build in plugin settings
+
+  -- adjust default plugin settings
   plugins = {
     -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
     auto_session = {},
@@ -105,15 +94,8 @@ local config = {
     -- See :h nvim-tree.setup
     nvim_tree = {},
   },
-  -- Add additional plugins (lazy.nvim)
-  add_plugins = {
-    'ggandor/lightspeed.nvim',
-    {
-      'romgrk/barbar.nvim',
-      dependencies = { 'kyazdani42/nvim-web-devicons' },
-    },
-  },
-  -- Disable plugins enabled by CosmicNvim
+
+  -- Disable plugins default enabled by CosmicNvim
   disable_builtin_plugins = {
     --[[
     'auto-session',
@@ -132,6 +114,15 @@ local config = {
     'todo-comments',
     'treesitter',
     ]]
+  },
+
+  -- Add additional plugins (lazy.nvim)
+  add_plugins = {
+    'ggandor/lightspeed.nvim',
+    {
+      'romgrk/barbar.nvim',
+      dependencies = { 'kyazdani42/nvim-web-devicons' },
+    },
   },
 }
 

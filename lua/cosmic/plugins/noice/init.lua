@@ -1,5 +1,6 @@
 local user_config = require('cosmic.core.user')
 local u = require('cosmic.utils')
+local map = require('cosmic.utils').map
 
 return {
   'folke/noice.nvim',
@@ -31,7 +32,18 @@ return {
     }, user_config.plugins.noice or {})
 
     require('noice').setup(config)
-    require('cosmic.plugins.noice.mappings')
+
+    map('n', '<c-j>', function()
+      if not require('noice.lsp').scroll(4) then
+        return '<c-j>'
+      end
+    end)
+
+    map('n', '<c-k>', function()
+      if not require('noice.lsp').scroll(-4) then
+        return '<c-k>'
+      end
+    end)
   end,
   event = 'VeryLazy',
   dependencies = {

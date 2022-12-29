@@ -14,5 +14,8 @@ return {
   config = function()
     require('auto-session').setup(u.merge(defaults, user_config.plugins.auto_session or {}))
   end,
+  init = function()
+    require('cosmic.plugins.auto-session.mappings')
+  end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'auto-session'),
 }

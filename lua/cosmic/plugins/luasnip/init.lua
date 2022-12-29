@@ -5,7 +5,6 @@ return {
   'L3MON4D3/LuaSnip',
   config = function()
     local ls = require('luasnip')
-    -- Every unspecified option will be set to the default.
     ls.config.set_config(u.merge({
       history = true,
       -- Update more often, :h events for more info.

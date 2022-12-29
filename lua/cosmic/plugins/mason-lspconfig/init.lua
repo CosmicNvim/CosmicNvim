@@ -67,5 +67,8 @@ return {
       lspconfig[requested_server].setup(opts)
     end
   end,
+  dependencies = {
+    'williamboman/mason.nvim',
+  },
   event = 'BufEnter',
 }

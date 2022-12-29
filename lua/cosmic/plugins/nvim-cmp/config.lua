@@ -35,7 +35,6 @@ local default_cmp_opts = {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    -- disabled for autopairs mapping
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,

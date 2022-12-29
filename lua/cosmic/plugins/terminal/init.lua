@@ -4,9 +4,10 @@ local title = vim.env.SHELL
 
 return {
   'voldikss/vim-floaterm',
-  keys = {
-    { '<C-l>', '<cmd>FloatermToggle<cr>', desc = 'Floating Terminal' },
-  },
+  cmd = { 'FloatermToggle', 'FloatermNew' },
+  init = function()
+    require('cosmic.plugins.terminal.mappings')
+  end,
   config = function()
     g.floaterm_width = 0.7
     g.floaterm_height = 0.8
@@ -14,7 +15,6 @@ return {
     g.floaterm_borderchars = '─│─│╭╮╯╰'
     g.floaterm_opener = 'vsplit'
 
-    require('cosmic.plugins.terminal.mappings')
     require('cosmic.plugins.terminal.highlights')
   end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'terminal'),

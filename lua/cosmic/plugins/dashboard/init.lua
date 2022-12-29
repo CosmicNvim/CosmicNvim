@@ -48,5 +48,6 @@ return {
 
     g.dashboard_custom_footer = { '💫 github.com/CosmicNvim/CosmicNvim' }
   end,
+  event = 'VimEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'dashboard'),
 }

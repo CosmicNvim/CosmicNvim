@@ -49,6 +49,9 @@ return {
   config = function()
     require('nvim-tree').setup(u.merge(args, user_config.plugins.nvim_tree or {}))
   end,
+  init = function()
+    require('cosmic.plugins.nvim-tree.mappings')
+  end,
   cmd = {
     'NvimTreeClipboard',
     'NvimTreeFindFile',
