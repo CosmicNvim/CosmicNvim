@@ -1,8 +1,6 @@
 local user_config = require('cosmic.core.user')
 local icons = require('cosmic.utils.icons')
 local u = require('cosmic.utils')
-local augroup_name = 'CosmicNvimNvimTree'
-local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 -- set up args
 local args = {
@@ -51,10 +49,8 @@ return {
   config = function()
     require('nvim-tree').setup(u.merge(args, user_config.plugins.nvim_tree or {}))
   end,
-  event = 'VeryLazy',
   cmd = {
     'NvimTreeClipboard',
-    'NvimTreeClose',
     'NvimTreeFindFile',
     'NvimTreeOpen',
     'NvimTreeRefresh',
