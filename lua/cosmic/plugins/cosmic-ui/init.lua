@@ -13,6 +13,6 @@ return {
   config = function()
     require('cosmic-ui').setup(u.merge(defaults, user_config.plugins.cosmic_ui or {}))
   end,
-  event = 'BufEnter',
+  event = 'VeryLazy',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'cosmic-ui'),
 }

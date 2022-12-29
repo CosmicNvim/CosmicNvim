@@ -13,6 +13,6 @@ return {
     require('cosmic.plugins.telescope.mappings').init()
     require('cosmic.plugins.telescope.config')
   end,
-  event = 'BufEnter',
+  event = 'VeryLazy',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'telescope'),
 }

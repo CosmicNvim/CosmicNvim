@@ -4,7 +4,7 @@ return {
   'lewis6991/gitsigns.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
   opt = true,
-  event = 'BufEnter',
+  event = 'VeryLazy',
   config = function()
     require('cosmic.plugins.gitsigns.config')
   end,

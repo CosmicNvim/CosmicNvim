@@ -58,6 +58,7 @@ return {
 
     require('nvim-tree').setup(u.merge(args, user_config.plugins.nvim_tree or {}))
   end,
+  event = 'VeryLazy',
   cmd = {
     'NvimTreeClipboard',
     'NvimTreeClose',
