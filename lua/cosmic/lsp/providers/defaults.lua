@@ -28,8 +28,4 @@ M.root_dir = function(fname)
     or util.root_pattern('tsconfig.json')(fname)
 end
 
-M.autostart = true
-
-M.single_file_support = true
-
 return M
