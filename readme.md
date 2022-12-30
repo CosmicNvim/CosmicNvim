@@ -71,8 +71,12 @@ experience with any LSP supported language._
   # clone repository
   git clone git@github.com:CosmicNvim/CosmicNvim.git nvim
   # open nvim and install plugins
-  nvim +CosmicReloadSync
+  nvim
 ```
+
+By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpath('config')`, i.e. `~/.config/nvim`.
+If you are symlinking your pulled repo to `~/.config/nvim`, you must define the shell environment variable
+`COSMICNVIM_INSTALL_DIR` that points to your installation.
 
 Additional CosmicNvim installation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Installation).
 
@@ -96,28 +100,11 @@ _New documentation coming soon!_
 
 ### Update CosmicNvim
 
+Updates CosmicNvim to the latest version
+
 ```vimcommand
 :CosmicUpdate
 ```
-
-By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpath('config')`, i.e. `~/.config/nvim`.
-Otherwise, you may define the shell environment variable `COSMICNVIM_INSTALL_DIR`.
-
-### Clear cache and sync plugins
-
-```vimcommand
-:CosmicReloadSync
-```
-
-Useful for testing themes or plugins on the fly!
-
-### Reload user config
-
-```vimcommand
-:CosmicReload
-```
-
-Useful for non-plugin related changes such as editor settings or mappings.
 
 ## 🗺 Default Mappings
 
@@ -133,38 +120,6 @@ Useful for non-plugin related changes such as editor settings or mappings.
 
 ## 📷 Screenshots
 
-### Statusline
+<img width="1792" alt="dashboard" src="https://user-images.githubusercontent.com/3721204/140592730-fc512005-6060-4dd2-8b90-0afa865d61d3.png">
 
-<!--
-<img width="1762" alt="normal" src="https://user-images.githubusercontent.com/3721204/140678741-266dc883-e1bb-4729-827e-1195acd62762.png">
-<img width="1762" alt="insert" src="https://user-images.githubusercontent.com/3721204/140678744-a89b7413-383d-4d81-affd-03c3815644bc.png">
-<img width="1762" alt="visual" src="https://user-images.githubusercontent.com/3721204/140678746-3ac4396d-32f9-4988-a296-76857291baca.png">
-<img width="1774" alt="replace" src="https://user-images.githubusercontent.com/3721204/140678745-a1cb5200-f945-4cff-ae0c-2285b25f333f.png">
--->
-
-<img width="1259" alt="Screen Shot 2021-12-19 at 1 21 21 PM" src="https://user-images.githubusercontent.com/3721204/146691276-cb9bebe3-ad60-4314-aeef-bd5848dc594f.png">
-<img width="1260" alt="Screen Shot 2021-12-19 at 1 21 35 PM" src="https://user-images.githubusercontent.com/3721204/146691275-53b3c18a-f71d-4512-8f69-29e36cd6e587.png">
-<img width="1262" alt="Screen Shot 2021-12-19 at 1 22 01 PM" src="https://user-images.githubusercontent.com/3721204/146691274-e273ea5f-09ed-4507-9bbe-3ffb833e963f.png">
-<img width="1256" alt="Screen Shot 2021-12-19 at 1 22 18 PM" src="https://user-images.githubusercontent.com/3721204/146691273-1479bc96-4c32-478b-adf6-95ae2b68d4a8.png">
-
-### Autocomplete
-
-<img width="1792" alt="autocomplete" src="https://user-images.githubusercontent.com/3721204/140592713-f08c72f8-4fc5-4422-8987-2224b9425725.png">
-
-### Rename
-
-<img width="498" alt="Screen Shot 2021-12-10 at 4 22 28 PM" src="https://user-images.githubusercontent.com/3721204/145656501-e1aec4be-c8bc-4e59-8c2f-2d99d50bbea2.png">
-
-### Rename change notification
-
-<img width="1792" alt="rename notification" src="https://user-images.githubusercontent.com/3721204/140592788-27c0f02a-e31b-4af7-8f0c-a49a988e295e.png">
-
-### Code Actions
-
-<img width="613" alt="Screen Shot 2021-12-10 at 3 37 38 PM" src="https://user-images.githubusercontent.com/3721204/145654798-84c88a69-414e-457b-b595-e76b767ea5d3.png">
-
-### Hover
-
-<img width="1792" alt="hover" src="https://user-images.githubusercontent.com/3721204/140592798-b9dbbdee-8496-4998-a874-110a051a7672.png">
-
-[See more screenshots](https://github.com/CosmicNvim/CosmicNvim/wiki/Screenshots)
+[See more](https://github.com/CosmicNvim/CosmicNvim/wiki/Screenshots)
