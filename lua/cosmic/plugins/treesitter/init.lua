@@ -5,6 +5,7 @@ local defaults = {
   ensure_installed = {
     'astro',
     'css',
+    'go',
     'html',
     'javascript',
     'jsdoc',
@@ -18,6 +19,7 @@ local defaults = {
     'scss',
     'tsx',
     'typescript',
+    'yaml',
   },
   highlight = {
     enable = true,
