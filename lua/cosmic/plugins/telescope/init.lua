@@ -10,9 +10,18 @@ return {
     },
   },
   config = function()
-    require('cosmic.plugins.telescope.mappings').init()
     require('cosmic.plugins.telescope.config')
   end,
-  event = 'VeryLazy',
+  init = function()
+    require('cosmic.plugins.telescope.mappings').init()
+  end,
+  cmd = { 'Telescope' },
+  keys = {
+    {
+      '<leader>ff',
+      '<cmd>lua require("cosmic.plugins.telescope.mappings").project_files()<cr>',
+      desc = 'Project find files',
+    },
+  },
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'telescope'),
 }
