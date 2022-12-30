@@ -1,21 +1,8 @@
 local u = require('cosmic.utils')
 local icons = require('cosmic.utils.icons')
-local config = require('cosmic.core.user')
+local user_config = require('cosmic.core.user')
 
--- set up LSP signs
-local signs = {
-  Error = icons.error .. ' ',
-  Warn = icons.warn .. ' ',
-  Hint = icons.hint .. ' ',
-  Info = icons.info .. ' ',
-}
-
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-end
-
-local function format(diagnostic)
+local function format_diagnostic(diagnostic)
   local icon = icons.error
   if diagnostic.severity == vim.diagnostic.severity.WARN then
     icon = icons.warn
@@ -29,20 +16,18 @@ local function format(diagnostic)
   return message
 end
 
--- set up vim.diagnostics
--- vim.diagnostic.config opts
-vim.diagnostic.config(u.merge({
+local config = u.merge({
   underline = true,
   signs = true,
   update_in_insert = false,
   severity_sort = true,
   float = {
-    border = config.border,
+    border = user_config.border,
     focusable = false,
     header = { icons.debug .. ' Diagnostics:', 'Normal' },
     scope = 'line',
     source = false,
-    format = format,
+    format = format_diagnostic,
   },
   virtual_text = {
     prefix = '•',
@@ -51,6 +36,8 @@ vim.diagnostic.config(u.merge({
     severity = {
       min = vim.diagnostic.severity.HINT,
     },
-    format = format,
+    format = format_diagnostic,
   },
-}, config.diagnostic or {}))
+}, user_config.diagnostic or {})
+
+return config

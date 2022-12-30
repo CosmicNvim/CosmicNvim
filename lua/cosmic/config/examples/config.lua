@@ -77,6 +77,14 @@ local config = {
     diagnostic = {},
     -- See :h gitsigns-usage
     gitsigns = {},
+    -- See https://git.sr.ht/~whynothugo/lsp_lines.nvim
+    lsp_lines = {
+      -- additional flag only for CosmicNvim
+      -- true - loads plugin and is enabled at start
+      -- false - loads plugin but is not enabled at start
+      -- you may use <leader>ld to toggle
+      enable_on_start = true,
+    },
     -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
     lsp_signature = {},
     -- See https://github.com/nvim-lualine/lualine.nvim#default-configuration
