@@ -7,6 +7,5 @@ vim.api.nvim_create_autocmd('VimResized', {
 
 vim.cmd([[
   command! CosmicUpdate lua require('cosmic.utils.cosmic').update()
-  command! CosmicSync lua require('cosmic.utils.cosmic').sync_plugins(true)
   command! LspFormat lua vim.lsp.buf.format()
 ]])

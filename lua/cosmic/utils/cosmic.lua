@@ -8,10 +8,6 @@ function M.get_install_dir()
   return config_dir
 end
 
-function M.sync_plugins()
-  vim.cmd(':Lazy sync')
-end
-
 -- update instance of CosmicNvim
 function M.update()
   local Logger = require('cosmic.utils.logger')
