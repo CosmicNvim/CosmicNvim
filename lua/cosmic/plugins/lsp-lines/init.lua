@@ -1,8 +1,8 @@
+local user_config = require('cosmic.core.user')
 return {
   event = 'VeryLazy',
   url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   config = function()
-    local user_config = require('cosmic.core.user')
     local u = require('cosmic.utils')
     local map = require('cosmic.utils').map
     local vt_config = require('cosmic.lsp.diagnostics.config')
@@ -33,4 +33,5 @@ return {
       callback = toggle,
     })
   end,
+  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lsp_lines'),
 }
