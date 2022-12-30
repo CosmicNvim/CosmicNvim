@@ -1,6 +1,6 @@
 local M = {}
 
-local function get_install_dir()
+function M.get_install_dir()
   local config_dir = os.getenv('COSMICNVIM_INSTALL_DIR')
   if not config_dir then
     return vim.fn.stdpath('config')
@@ -16,7 +16,7 @@ end
 function M.update()
   local Logger = require('cosmic.utils.logger')
   local Job = require('plenary.job')
-  local path = get_install_dir()
+  local path = M.get_install_dir()
   local errors = {}
 
   Job
