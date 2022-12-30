@@ -11,7 +11,7 @@ local default_config = {
       -- true - loads plugin and is enabled at start
       -- false - loads plugin but is not enabled at start
       -- you may use <leader>ld to toggle
-      enable_on_start = true,
+      enable_on_start = false,
     },
   },
   lsp = {
