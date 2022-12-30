@@ -120,6 +120,4 @@ Updates CosmicNvim to the latest version
 
 ## 📷 Screenshots
 
-<img width="1792" alt="dashboard" src="https://user-images.githubusercontent.com/3721204/140592730-fc512005-6060-4dd2-8b90-0afa865d61d3.png">
-
 [See more](https://github.com/CosmicNvim/CosmicNvim/wiki/Screenshots)
