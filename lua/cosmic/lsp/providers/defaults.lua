@@ -16,15 +16,15 @@ function M.on_attach(client, bufnr)
     -- set up :LspFormat for clients that are capable
     vim.cmd(string.format("command! LspFormat lua require('cosmic.utils.lsp').format(%s)", bufnr))
 
+    -- set up auto format on save
     if user_config.lsp.format_on_save then
-      -- collect filetype(s)
+      -- collect filetype(s) from user config
       local format_filetypes = ''
       if vim.tbl_islist(user_config.lsp.format_on_save) then
         for _, ft in pairs(user_config.lsp.format_on_save) do
           format_filetypes = format_filetypes .. '*' .. ft
         end
-      else
-        -- any filetype
+      else -- any filetype if none set
         format_filetypes = '*'
       end
 
