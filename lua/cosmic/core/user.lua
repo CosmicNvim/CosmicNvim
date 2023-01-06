@@ -58,15 +58,22 @@ local default_config = {
 
 local u = require('cosmic.utils')
 local config = u.merge(default_config, user_config)
-local user_servers = vim.tbl_keys(config.lsp.servers)
 
-function config.lsp.can_client_format(client_name)
-  if config.lsp.servers[client_name] == true then
+function config.lsp.can_client_format(client)
+  -- formatting enabled by default if server=true
+  if config.lsp.servers[client.name] == true then
     return true
   end
 
-  if vim.tbl_contains(user_servers, client_name) and config.lsp.servers[client_name] then
-    return (config.lsp.servers[client_name].format == true)
+  -- check config server settings
+  if config.lsp.servers[client.name] then
+    -- default to true if no format flag on server settings is set
+    if config.lsp.servers[client.name].format == nil then
+      return true
+    end
+
+    -- check format flag on server settings
+    return (config.lsp.servers[client.name].format == true)
   end
 
   return true
