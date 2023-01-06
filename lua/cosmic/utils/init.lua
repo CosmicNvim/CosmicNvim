@@ -8,9 +8,16 @@ function M.map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, M.merge(defaults, opts or {}))
 end
 
-function M.create_buf_map(opts)
-  return function(mode, lhs, rhs)
-    M.map(mode, lhs, rhs, opts or {})
+function M.create_buf_map(bufnr, opts)
+  return function(mode, lhs, rhs, map_opts)
+    M.map(
+      mode,
+      lhs,
+      rhs,
+      M.merge({
+        buffer = bufnr,
+      }, opts or {}, map_opts or {})
+    )
   end
 end
 

@@ -1,10 +1,9 @@
-local u = require('cosmic.utils')
+local utils = require('cosmic.utils')
 local M = {}
 
 -- Mappings.
 function M.init(client, bufnr)
-  local buf_map = u.create_buf_map({
-    buffer = bufnr,
+  local buf_map = utils.create_buf_map(bufnr, {
     noremap = false,
   })
 
