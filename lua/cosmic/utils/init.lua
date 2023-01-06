@@ -8,6 +8,12 @@ function M.map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, M.merge(defaults, opts or {}))
 end
 
+function M.create_buf_map(opts)
+  return function(mode, lhs, rhs)
+    M.map(mode, lhs, rhs, opts or {})
+  end
+end
+
 function M.merge_list(tbl1, tbl2)
   for _, v in ipairs(tbl2) do
     table.insert(tbl1, v)

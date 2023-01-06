@@ -38,7 +38,13 @@ function M.on_attach(client, bufnr)
     end
   end
 
+  -- set up default mappings
   require('cosmic.lsp.mappings').init(client, bufnr)
+
+  -- set up any additional mappings/overrides from user config
+  for _, callback in pairs(user_config.lsp.on_attach_mappings) do
+    callback(client, bufnr)
+  end
 end
 
 M.capabilities = capabilities

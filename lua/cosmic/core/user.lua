@@ -18,6 +18,8 @@ local default_config = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     format_timeout = 3000,
     rename_notification = true,
+    -- table of callbacks pushed via plugins
+    on_attach_mappings = {},
     -- lsp servers that should be installed
     ensure_installed = {
       'astro',
@@ -58,6 +60,10 @@ local default_config = {
 
 local u = require('cosmic.utils')
 local config = u.merge(default_config, user_config)
+
+function config.lsp.add_on_attach_mapping(callback)
+  table.insert(config.lsp.on_attach_mappings, callback)
+end
 
 function config.lsp.can_client_format(client)
   -- formatting enabled by default if server=true
