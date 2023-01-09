@@ -17,24 +17,24 @@ function M.on_attach(client, bufnr)
     vim.cmd(string.format("command! LspFormat lua require('cosmic.utils.lsp').format(%s)", bufnr))
 
     -- set up auto format on save
-    if user_config.lsp.format_on_save and user_config.lsp.can_client_format(client) then
+    if user_config.lsp.format_on_save then
       -- check user config to see if we can format on save
       -- collect filetype(s) from user config
-      local format_filetypes = ''
+      local filetype_pattern = ''
       if vim.tbl_islist(user_config.lsp.format_on_save) then
         for _, ft in pairs(user_config.lsp.format_on_save) do
-          format_filetypes = format_filetypes .. '*' .. ft
+          filetype_pattern = filetype_pattern .. '*' .. ft
         end
       else -- any filetype if none set
-        format_filetypes = '*'
+        filetype_pattern = '*'
       end
 
       -- autocommand for format on save with specified filetype(s)
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = function(evt)
-          require('cosmic.utils.lsp').format(evt.buf)
+      vim.api.nvim_create_autocmd(string.format('BufWritePre %s', filetype_pattern), {
+        callback = function()
+          require('cosmic.utils.lsp').format()
         end,
-        pattern = format_filetypes,
+        buffer = bufnr,
         group = group,
       })
     end
