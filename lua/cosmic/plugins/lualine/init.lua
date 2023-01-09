@@ -52,7 +52,9 @@ return {
           },
           custom_sections.shortenedFilePath,
         },
-        lualine_c = { custom_sections.diff },
+        lualine_c = {
+          custom_sections.diff,
+        },
         lualine_x = { 'diagnostics' },
         lualine_y = { lsp_utils.get_lsp_status_str },
         lualine_z = { 'location', 'progress' },
@@ -80,7 +82,13 @@ return {
         lualine_a = { utils.get_short_cwd },
         lualine_b = { custom_sections.branch },
         lualine_c = { custom_sections.relativeFilePath },
-        lualine_x = { 'filetype' },
+        lualine_x = {
+          {
+            'macro-recording',
+            fmt = utils.show_macro_recording,
+          },
+          'filetype',
+        },
         lualine_y = {},
         lualine_z = {},
       },
