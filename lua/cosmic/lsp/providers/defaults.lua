@@ -34,6 +34,7 @@ function M.on_attach(client, bufnr)
           require('cosmic.utils.lsp').format(bufnr)
         end,
         group = group,
+        nested = true,
       })
     end
   end
