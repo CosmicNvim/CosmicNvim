@@ -36,7 +36,6 @@ function M.on_attach(client, bufnr)
         end,
         pattern = format_filetypes,
         group = group,
-        nested = true,
       })
     end
   end
