@@ -29,10 +29,14 @@ function M.on_attach(client, bufnr)
         filetype_pattern = '*'
       end
 
+      vim.api.nvim_clear_autocmds({
+        group = group,
+        buffer = bufnr,
+      })
       -- autocommand for format on save with specified filetype(s)
       vim.api.nvim_create_autocmd(string.format('BufWritePre %s', filetype_pattern), {
         callback = function()
-          require('cosmic.utils.lsp').format()
+          require('cosmic.utils.lsp').format(bufnr)
         end,
         buffer = bufnr,
         group = group,
