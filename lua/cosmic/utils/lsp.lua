@@ -2,10 +2,11 @@ local user_config = require('cosmic.core.user')
 local M = {}
 
 -- format current buffer w/user settings
-function M.format()
+function M.format(bufnr)
   vim.lsp.buf.format({
     timeout_ms = user_config.lsp.format_timeout,
     filter = user_config.lsp.can_client_format,
+    bufnr = bufnr or 0,
   })
 end
 
