@@ -26,12 +26,12 @@
   "nvim-lsp-ts-utils": { "branch": "main", "commit": "0a6a16ef292c9b61eac6dad00d52666c7f84b0e7" },
   "nvim-lspconfig": { "branch": "master", "commit": "7b98aadc6e85db4fc3af6c1ec22c4774d965506e" },
   "nvim-notify": { "branch": "master", "commit": "b005821516f1f37801a73067afd1cef2dbc4dfe8" },
-  "nvim-tree.lua": { "branch": "master", "commit": "87961d38a7b6cd799ebe193946e86a1037ba66e8" },
-  "nvim-treesitter": { "branch": "master", "commit": "ed021ac3affdfd04a26325896d221f5f519e5971" },
+  "nvim-tree.lua": { "branch": "master", "commit": "677d54afee1dfa7a30eb9e16ab7d9d1affc6484b" },
+  "nvim-treesitter": { "branch": "master", "commit": "5fb315df12a3091f241b0326aed0ec70381adbd8" },
   "nvim-treesitter-refactor": { "branch": "master", "commit": "75f5895cc662d61eb919da8050b7a0124400d589" },
   "nvim-ts-autotag": { "branch": "main", "commit": "fdefe46c6807441460f11f11a167a2baf8e4534b" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "4a42b30376c1bd625ab5016c2079631d531d797a" },
-  "nvim-web-devicons": { "branch": "master", "commit": "7f55bc36eddec87597167a97de5b690997edaf7d" },
+  "nvim-web-devicons": { "branch": "master", "commit": "6c38926351372ea87034dec26182b62c835ff3bc" },
   "plenary.nvim": { "branch": "master", "commit": "9d81624fbcedd3dd43b38d7e13a1e7b3f873d8cd" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "fab3e2212e206f4f8b3bbaa656e129443c9b802e" },
@@ -40,5 +40,6 @@
   "tokyonight.nvim": { "branch": "main", "commit": "def91651c41f6d1d43ebcb50763324d35331baee" },
   "vim-floaterm": { "branch": "master", "commit": "280b34a0760801168a67f952542b6c49292aa5f3" },
   "vim-fugitive": { "branch": "master", "commit": "99cdb88bc64063dc4656ae53496f06fb2a394cd4" },
-  "vim-hcl": { "branch": "main", "commit": "1e1116c17a5774851360ea8077f349e36fc733c1" }
+  "vim-hcl": { "branch": "main", "commit": "1e1116c17a5774851360ea8077f349e36fc733c1" },
+  "which-key.nvim": { "branch": "main", "commit": "85f69b07afce4ea77c58ae9a3aeb4e6c918b4d34" }
 }

@@ -34,6 +34,7 @@ return {
     -- map for toggling lines
     map('n', '<leader>ld', '', {
       callback = toggle,
+      desc = 'Toggle LSP Lines',
     })
   end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lsp_lines'),
