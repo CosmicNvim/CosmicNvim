@@ -14,10 +14,24 @@ return {
   end,
   init = function()
     -- normal mappings
-    require('cosmic.plugins.telescope.mappings').init()
+    local u = require('cosmic.utils')
+    local map = u.map
+
+    map('n', '<leader>ff', '', {
+      callback = require('cosmic.plugins.telescope.utils').project_files,
+      desc = 'Find file',
+    })
+    map('n', '<leader>fp', ':Telescope find_files<cr>', { desc = 'Find project file' })
+    map('n', '<leader>fk', ':Telescope buffers<cr>', { desc = 'Find buffer' })
+    map('n', '<leader>fs', ':Telescope live_grep<cr>', { desc = 'Grep string' })
+    map('n', '<leader>fw', ':Telescope grep_string<cr>', { desc = 'Grep current word' })
+
+    -- git navigation
+    map('n', '<leader>vtc', ':Telescope git_commits<cr>', { desc = 'Git commits' })
+    map('n', '<leader>vts', ':Telescope git_status<cr>', { desc = 'Git status' })
 
     user_config.lsp.add_on_attach_mapping(function(client, bufnr)
-      local buf_map = require('cosmic.utils').create_buf_map(bufnr)
+      local buf_map = u.create_buf_map(bufnr)
 
       buf_map('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', { desc = 'Go to definition' })
       buf_map('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Go to implementation' })
@@ -33,7 +47,7 @@ return {
     {
       '<leader>ff',
       '<cmd>lua require("cosmic.plugins.telescope.mappings").project_files()<cr>',
-      desc = 'Project find files',
+      desc = 'Find project file',
     },
   },
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'telescope'),
