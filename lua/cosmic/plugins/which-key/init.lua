@@ -19,7 +19,7 @@ return {
             name = '+quickfix',
           },
           f = {
-            name = '+file',
+            name = '+find',
           },
           h = {
             name = '+gitsigns',
@@ -27,14 +27,29 @@ return {
               name = '+toggle',
             },
           },
+          l = {
+            name = '+lsp',
+            t = {
+              name = '+toggle',
+            },
+          },
           g = {
-            name = '+goto',
+            name = '+goto (lsp)',
+          },
+          n = {
+            name = '+tree',
           },
           s = {
             name = '+session',
           },
           t = {
             name = '+tab',
+          },
+          v = {
+            name = '+vcs (git)',
+            t = {
+              name = '+toggle',
+            },
           },
         },
       })

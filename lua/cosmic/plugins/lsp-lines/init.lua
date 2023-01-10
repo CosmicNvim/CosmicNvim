@@ -32,7 +32,7 @@ return {
     -- run once to properly show/hide based on user config
     toggle()
     -- map for toggling lines
-    map('n', '<leader>ld', '', {
+    map('n', '<leader>ltl', '', {
       callback = toggle,
       desc = 'Toggle LSP Lines',
     })
