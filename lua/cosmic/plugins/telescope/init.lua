@@ -27,8 +27,8 @@ return {
     map('n', '<leader>fw', ':Telescope grep_string<cr>', { desc = 'Grep current word' })
 
     -- git navigation
-    map('n', '<leader>vtc', ':Telescope git_commits<cr>', { desc = 'Git commits' })
-    map('n', '<leader>vts', ':Telescope git_status<cr>', { desc = 'Git status' })
+    map('n', '<leader>vc', ':Telescope git_commits<cr>', { desc = 'Git commits' })
+    map('n', '<leader>vg', ':Telescope git_status<cr>', { desc = 'Git status' })
 
     user_config.lsp.add_on_attach_mapping(function(client, bufnr)
       local buf_map = u.create_buf_map(bufnr)
