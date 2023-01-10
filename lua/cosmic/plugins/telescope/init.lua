@@ -17,19 +17,15 @@ return {
     require('cosmic.plugins.telescope.mappings').init()
 
     user_config.lsp.add_on_attach_mapping(function(client, bufnr)
-      local map = require('cosmic.utils').map
-      local function buf_map(mode, lhs, rhs)
-        map(mode, lhs, rhs, {
-          buffer = bufnr,
-        })
-      end
+      local buf_map = require('cosmic.utils').create_buf_map(bufnr)
 
-      buf_map('n', 'gd', '<cmd>Telescope lsp_definitions<cr>')
-      buf_map('n', 'gi', '<cmd>Telescope lsp_implementations<cr>')
-      buf_map('n', 'gt', '<cmd>Telescope lsp_type_definitions<cr>')
-      buf_map('n', 'gr', '<cmd>Telescope lsp_references<cr>')
-      buf_map('n', '<leader>ge', '<cmd>Telescope diagnostics bufnr=0<cr>')
-      buf_map('n', '<leader>wd', '<cmd>Telescope diagnostics<cr>')
+      buf_map('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', { desc = 'Go to definition' })
+      buf_map('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Go to implementation' })
+      buf_map('n', 'gt', '<cmd>Telescope lsp_type_definitions<cr>', { desc = 'Go to type definition' })
+      buf_map('n', 'gr', '<cmd>Telescope lsp_references<cr>', { desc = 'Go to reference' })
+
+      buf_map('n', '<leader>ldb', '<cmd>Telescope diagnostics bufnr=0<cr>', { desc = 'Show buffer diagnostics' })
+      buf_map('n', '<leader>ldw', '<cmd>Telescope diagnostics<cr>', { desc = 'Workspace diagnostics' })
     end)
   end,
   cmd = { 'Telescope' },

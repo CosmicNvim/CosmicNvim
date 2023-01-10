@@ -29,8 +29,14 @@ return {
           },
           l = {
             name = '+lsp',
+            d = {
+              name = '+diagnostics',
+            },
             t = {
               name = '+toggle',
+            },
+            w = {
+              name = '+workspace',
             },
           },
           g = {

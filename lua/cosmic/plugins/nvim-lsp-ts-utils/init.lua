@@ -8,9 +8,9 @@ return {
       if client.name == 'tsserver' then
         local buf_map = utils.create_buf_map(bufnr)
         -- typescript helpers
-        buf_map('n', '<leader>gr', ':TSLspRenameFile<CR>')
-        buf_map('n', '<leader>go', ':TSLspOrganize<CR>')
-        buf_map('n', '<leader>gi', ':TSLspImportAll<CR>')
+        buf_map('n', '<leader>lr', ':TSLspRenameFile<CR>', { desc = 'Rename file' })
+        buf_map('n', '<leader>lo', ':TSLspOrganize<CR>', { desc = 'Organize imports' })
+        buf_map('n', '<leader>li', ':TSLspImportAll<CR>', { desc = 'Import All' })
       end
     end)
   end,

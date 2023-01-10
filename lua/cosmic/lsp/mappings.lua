@@ -25,9 +25,9 @@ function M.init(client, bufnr)
   )
   buf_map(
     'n',
-    '<leader>ge',
+    '<leader>ldb',
     '<cmd>lua vim.diagnostic.open_float(nil, { scope = "buffer", })<cr>',
-    { desc = 'Show buffer diagnostic' }
+    { desc = 'Show buffer diagnostics' }
   )
 
   -- hover
@@ -35,21 +35,21 @@ function M.init(client, bufnr)
 
   -- code actions
   buf_map('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename' })
-  buf_map('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_actions()<cr>', { desc = 'Code Actions' })
-  buf_map('v', '<leader>ga', '<cmd>lua vim.lsp.buf.range_code_actions()<cr>', { desc = 'Range Code Actions' })
+  buf_map('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_actions()<cr>', { desc = 'Code Actions' })
+  buf_map('v', '<leader>la', '<cmd>lua vim.lsp.buf.range_code_actions()<cr>', { desc = 'Range Code Actions' })
 
   -- formatting
-  buf_map('n', '<leader>gf', '', { desc = 'Format', callback = lsp_utils.format })
-  buf_map('v', '<leader>gf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', { desc = 'Range Format' })
+  buf_map('n', '<leader>lf', '', { desc = 'Format', callback = lsp_utils.format })
+  buf_map('v', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', { desc = 'Range Format' })
 
   -- lsp workspace
-  buf_map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Add workspace folder' })
-  buf_map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', {
+  buf_map('n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Add workspace folder' })
+  buf_map('n', '<leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', {
     desc = 'Remove workspace folder',
   })
   buf_map(
     'n',
-    '<leader>wl',
+    '<leader>lwl',
     '<cmd>lua require("cosmic.utils.logger"):log(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>',
     { desc = 'Show workspace folders' }
   )
