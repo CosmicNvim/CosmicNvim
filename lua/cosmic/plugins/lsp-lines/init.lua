@@ -21,7 +21,7 @@ return {
   url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   keys = {
     {
-      '<leader>ld',
+      '<leader>ltl',
       toggle,
       desc = 'Enable lsp_lines',
     },
