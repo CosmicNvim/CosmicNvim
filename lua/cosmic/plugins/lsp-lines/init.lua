@@ -23,7 +23,7 @@ return {
     {
       '<leader>ltl',
       toggle,
-      desc = 'Enable lsp_lines',
+      desc = 'Toggle LSP Lines',
     },
   },
   config = function()
