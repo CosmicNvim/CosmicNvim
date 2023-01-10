@@ -73,7 +73,7 @@ opt.shortmess = opt.shortmess + { c = true }
 
 -- perfomance
 opt.redrawtime = 1500
-opt.timeoutlen = 250
+opt.timeoutlen = 200
 opt.ttimeoutlen = 10
 opt.updatetime = 100
 
