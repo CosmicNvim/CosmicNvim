@@ -50,6 +50,7 @@ local default_config = {
       sumneko_lua = {
         format = false,
       },
+      gopls = true,
       html = true,
       tsserver = {
         format = false,

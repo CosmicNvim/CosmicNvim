@@ -46,7 +46,7 @@ return {
   keys = {
     {
       '<leader>ff',
-      '<cmd>lua require("cosmic.plugins.telescope.mappings").project_files()<cr>',
+      '<cmd>lua require("cosmic.plugins.telescope.utils").project_files()<cr>',
       desc = 'Find project file',
     },
   },
