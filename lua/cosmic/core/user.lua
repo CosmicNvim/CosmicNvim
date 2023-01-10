@@ -1,5 +1,9 @@
 -- DEFAULT USER SETTINGS
-local user_config = require('cosmic.config.config')
+local ok, user_config = pcall(require, 'cosmic.config.config')
+
+if not ok then
+  user_config = {}
+end
 
 local default_config = {
   border = 'rounded',
