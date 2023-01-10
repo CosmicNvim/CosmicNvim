@@ -11,15 +11,20 @@ end
 
 M.init = function()
   -- navigation
-  map('n', '<leader>ff', '<cmd>lua require("cosmic.plugins.telescope.mappings").project_files()<cr>')
-  map('n', '<leader>fp', ':Telescope find_files<cr>')
-  map('n', '<leader>fk', ':Telescope buffers<cr>')
-  map('n', '<leader>fs', ':Telescope live_grep<cr>')
-  map('n', '<leader>fw', ':Telescope grep_string<cr>')
+  map(
+    'n',
+    '<leader>ff',
+    '<cmd>lua require("cosmic.plugins.telescope.mappings").project_files()<cr>',
+    { desc = 'Find git files' }
+  )
+  map('n', '<leader>fp', ':Telescope find_files<cr>', { desc = 'Find file' })
+  map('n', '<leader>fk', ':Telescope buffers<cr>', { desc = 'Find buffer' })
+  map('n', '<leader>fs', ':Telescope live_grep<cr>', { desc = 'Live grep' })
+  map('n', '<leader>fw', ':Telescope grep_string<cr>', { desc = 'Grep string' })
 
   -- git navigation
-  map('n', '<leader>ggc', ':Telescope git_commits<cr>')
-  map('n', '<leader>ggs', ':Telescope git_status<cr>')
+  map('n', '<leader>ggc', ':Telescope git_commits<cr>', { desc = 'Git commits' })
+  map('n', '<leader>ggs', ':Telescope git_status<cr>', { desc = 'Git status' })
 end
 
 return M
