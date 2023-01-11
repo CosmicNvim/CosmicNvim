@@ -16,7 +16,7 @@ local function format_diagnostic(diagnostic)
   if diagnostic.code and diagnostic.source then
     message = string.format('%s [%s][%s] %s', icon, diagnostic.source, diagnostic.code, diagnostic.message)
   elseif diagnostic.code or diagnostic.source then
-    message = string.format('%s [%s] %s', icon, diagnostic.source or diagnostic.code, diagnostic.message)
+    message = string.format('%s [%s] %s', icon, diagnostic.code or diagnostic.source, diagnostic.message)
   end
 
   return message .. ' '
