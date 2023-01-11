@@ -8,12 +8,22 @@ local function format_diagnostic(diagnostic)
     icon = icons.warn
   end
 
+  if diagnostic.severity == vim.diagnostic.severity.INFO then
+    icon = icons.info
+  end
+
   if diagnostic.severity == vim.diagnostic.severity.HINT then
     icon = icons.hint
   end
 
-  local message = string.format(' %s [%s][%s] %s', icon, diagnostic.code, diagnostic.source, diagnostic.message)
-  return message
+  local message = string.format('%s %s', icon, diagnostic.message)
+  if diagnostic.code and diagnostic.source then
+    message = string.format('%s [%s][%s] %s', icon, diagnostic.source, diagnostic.code, diagnostic.message)
+  elseif diagnostic.code or diagnostic.source then
+    message = string.format('%s [%s] %s', icon, diagnostic.source or diagnostic.code, diagnostic.message)
+  end
+
+  return message .. ' '
 end
 
 local config = u.merge({
@@ -30,7 +40,7 @@ local config = u.merge({
     format = format_diagnostic,
   },
   virtual_text = {
-    prefix = '•',
+    prefix = '',
     spacing = 2,
     source = false,
     severity = {
