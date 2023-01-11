@@ -6,13 +6,9 @@ local function format_diagnostic(diagnostic)
   local icon = icons.error
   if diagnostic.severity == vim.diagnostic.severity.WARN then
     icon = icons.warn
-  end
-
-  if diagnostic.severity == vim.diagnostic.severity.INFO then
+  elseif diagnostic.severity == vim.diagnostic.severity.INFO then
     icon = icons.info
-  end
-
-  if diagnostic.severity == vim.diagnostic.severity.HINT then
+  elseif diagnostic.severity == vim.diagnostic.severity.HINT then
     icon = icons.hint
   end
 
