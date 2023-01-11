@@ -32,6 +32,7 @@ local config = u.merge({
     focusable = false,
     header = { icons.debug .. ' Diagnostics:', 'Normal' },
     scope = 'line',
+    suffix = '',
     source = false,
     format = format_diagnostic,
   },
