@@ -10,6 +10,13 @@ return {
       default_cosmic_sources = true,
     })
     if config_opts.default_cosmic_sources then
+      local function get_user_config_sources()
+        if not config_opts.get_sources then
+          return {}
+        end
+
+        return config_opts.get_sources()
+      end
       config_opts.sources = u.merge_list({
         null_ls.builtins.code_actions.eslint_d,
         null_ls.builtins.diagnostics.eslint_d,
@@ -22,7 +29,7 @@ return {
         }),
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.code_actions.gitsigns,
-      }, config_opts.get_sources() or {})
+      }, get_user_config_sources())
     end
 
     null_ls.setup(u.merge(defaults, config_opts))
