@@ -2,10 +2,10 @@ local cosmic_modules = {
   'cosmic.core.editor',
   'cosmic.core.pluginsInit',
   'cosmic.core.commands',
-  'cosmic.core.mappings',
   'cosmic.lsp',
-  -- user editor settings
   'cosmic.config.editor',
+  -- load mappings only after editor configs are loaded
+  'cosmic.core.mappings',
 }
 
 -- set up lazy.nvim to install plugins
@@ -22,10 +22,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
+-- set up cosmicnvim
 for _, mod in ipairs(cosmic_modules) do
-  local ok, err = pcall(require, mod)
-  -- cosmic.config files may or may not be present
-  if not ok and not mod:find('cosmic.config') then
-    error(('Error loading %s...\n\n%s'):format(mod, err))
-  end
+  require(mod)
 end
