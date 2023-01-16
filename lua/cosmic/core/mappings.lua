@@ -18,6 +18,16 @@ map('n', '<leader>tp', ':tabprevious<cr>', { desc = 'Prev tab' })
 map('n', '<leader>tn', ':tabnext<cr>', { desc = 'Next tab' })
 map('n', '<leader>td', ':tabclose<cr>', { desc = 'Close tab' })
 
+-- plugin management
+map('n', '<leader>pc', ':Lazy check<cr>', { desc = 'Check plugins' })
+map('n', '<leader>pu', ':Lazy update<cr>', { desc = 'Update plugins' })
+map('n', '<leader>ps', ':Lazy show<cr>', { desc = 'Show plugins' })
+map('n', '<leader>ph', ':Lazy help<cr>', { desc = 'Help' })
+map('n', '<leader>pp', ':Lazy profile<cr>', { desc = 'Profile' })
+map('n', '<leader>pl', ':Lazy logs<cr>', { desc = 'Logs' })
+map('n', '<leader>px', ':Lazy clear<cr>', { desc = 'Clear uninstalled plugins' })
+map('n', '<leader>pr', ':Lazy restore<cr>', { desc = 'Restore plugins from lockfile' })
+
 -- resize with arrows
 map('n', '<C-Up>', ':resize -2<CR>', { desc = 'Resize -2' })
 map('n', '<C-Down>', ':resize +2<CR>', { desc = 'Resize +2' })

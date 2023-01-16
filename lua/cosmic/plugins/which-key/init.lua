@@ -60,8 +60,11 @@ return {
         t = {
           name = '+tab',
         },
+        p = {
+          name = '+lazy (plugins)',
+        },
         v = {
-          name = '+vcs (git)',
+          name = '+git (vsc)',
           t = {
             name = '+toggle',
           },
