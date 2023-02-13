@@ -17,6 +17,7 @@ return {
 
         return config_opts.get_sources()
       end
+
       config_opts.sources = u.merge_list({
         null_ls.builtins.code_actions.eslint_d,
         null_ls.builtins.diagnostics.eslint_d,

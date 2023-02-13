@@ -31,8 +31,8 @@ return {
         opts = u.merge(opts, require('cosmic.lsp.providers.jsonls'))
       elseif server == 'pyright' then
         opts = u.merge(opts, require('cosmic.lsp.providers.pyright'))
-      elseif server == 'sumneko_lua' then
-        opts = u.merge(opts, require('cosmic.lsp.providers.sumneko_lua'))
+      elseif server == 'lua_ls' then
+        opts = u.merge(opts, require('cosmic.lsp.providers.lua_ls'))
       end
 
       -- override options if user definds them

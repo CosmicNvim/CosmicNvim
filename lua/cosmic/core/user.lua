@@ -37,7 +37,7 @@ local default_config = {
       'html',
       'jsonls',
       'tsserver',
-      'sumneko_lua',
+      'lua_ls',
       'pyright',
       'svelte',
       'tailwindcss',
@@ -51,7 +51,7 @@ local default_config = {
         format = false,
       },
       pyright = true,
-      sumneko_lua = {
+      lua_ls = {
         format = false,
       },
       gopls = true,
