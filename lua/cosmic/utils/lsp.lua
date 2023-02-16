@@ -1,11 +1,31 @@
 local user_config = require('cosmic.core.user')
 local M = {}
 
+local function can_client_format(client)
+  -- formatting enabled by default if server=true
+  if user_config.lsp.servers[client.name] == true or client.name == 'null-ls' then
+    return true
+  end
+
+  -- check config server settings
+  if user_config.lsp.servers[client.name] then
+    -- default to true if no format flag on server settings is set
+    if user_config.lsp.servers[client.name].format == nil then
+      return true
+    end
+
+    -- check format flag on server settings
+    return (user_config.lsp.servers[client.name].format == true)
+  end
+
+  return true
+end
+
 -- format current buffer w/user settings
 function M.format(bufnr)
   vim.lsp.buf.format({
     timeout_ms = user_config.lsp.format_timeout,
-    filter = user_config.lsp.can_client_format,
+    filter = can_client_format,
     bufnr = bufnr or 0,
   })
 end
