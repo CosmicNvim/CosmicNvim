@@ -11,11 +11,11 @@ return {
     })
     if config_opts.default_cosmic_sources then
       local function get_user_config_sources()
-        if not config_opts.get_sources then
+        if not config_opts.add_sources then
           return {}
         end
 
-        return config_opts.get_sources()
+        return config_opts.add_sources()
       end
 
       config_opts.sources = u.merge_list({
