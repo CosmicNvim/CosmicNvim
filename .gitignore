@@ -10,3 +10,4 @@ lua/cosmic/config/config.lua
 lua/cosmic/config/mappings.lua
 lua/cosmic/config/plugins.lua
 lua/cosmic/config/utils.lua
+ginit.vim
