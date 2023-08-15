@@ -7,6 +7,7 @@ local args = {
   respect_buf_cwd = true,
   diagnostics = {
     enable = true,
+    show_on_dirs = true,
     icons = {
       hint = icons.hint,
       info = icons.info,
@@ -23,7 +24,7 @@ local args = {
     enable = true,
   },
   view = {
-    width = 35,
+    width = 40,
     number = true,
     relativenumber = true,
   },
