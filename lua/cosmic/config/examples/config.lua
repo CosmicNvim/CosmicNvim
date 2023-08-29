@@ -8,6 +8,8 @@ local config = {
   border = 'rounded',
   -- LSP settings
   lsp = {
+    -- Enable/disable inlay hints
+    inlay_hint = false,
     -- True/false or table of filetypes {'.ts', '.js',}
     format_on_save = true,
     -- Time in MS before format timeout

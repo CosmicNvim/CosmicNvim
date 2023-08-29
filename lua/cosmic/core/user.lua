@@ -19,6 +19,7 @@ local default_config = {
     },
   },
   lsp = {
+    inlay_hint = false,
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     format_timeout = 2000,
     rename_notification = true,

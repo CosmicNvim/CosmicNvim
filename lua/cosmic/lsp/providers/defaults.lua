@@ -12,6 +12,10 @@ function M.on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  if user_config.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint(bufnr, true)
+  end
+
   if client.supports_method('textDocument/formatting') then
     -- set up :LspFormat for clients that are capable
     vim.cmd(string.format("command! LspFormat lua require('cosmic.utils.lsp').format(%s)", bufnr))
