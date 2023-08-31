@@ -1,7 +1,6 @@
 local utils = require('cosmic.utils')
 local lsp_utils = require('cosmic.utils.lsp')
 local user_config = require('cosmic.core.user')
-local Logger = require('cosmic.utils.logger')
 local M = {}
 
 local function toggle_inlay_hints(bufnr)
