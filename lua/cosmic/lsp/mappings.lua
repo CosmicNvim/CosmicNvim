@@ -1,14 +1,6 @@
 local utils = require('cosmic.utils')
 local lsp_utils = require('cosmic.utils.lsp')
-local user_config = require('cosmic.core.user')
 local M = {}
-
-local function toggle_inlay_hints(bufnr, enabled)
-  return function()
-    enabled = not enabled
-    vim.lsp.inlay_hint(bufnr, enabled)
-  end
-end
 
 -- Mappings.
 function M.init(client, bufnr)
