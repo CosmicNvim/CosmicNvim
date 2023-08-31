@@ -1,15 +1,6 @@
 local utils = require('cosmic.utils')
 local lsp_utils = require('cosmic.utils.lsp')
-local user_config = require('cosmic.core.user')
 local M = {}
-
-local function toggle_inlay_hints(bufnr)
-  local enabled = user_config.lsp.inlay_hint
-  return function()
-    enabled = not enabled
-    vim.lsp.inlay_hint(bufnr, enabled)
-  end
-end
 
 -- Mappings.
 function M.init(client, bufnr)
@@ -44,7 +35,7 @@ function M.init(client, bufnr)
 
   -- inlay hints
   if client.supports_method('textDocument/inlayHint') then
-    buf_map('n', '<leader>lh', toggle_inlay_hints(bufnr), { desc = 'Toggle inlay hints for buffer' })
+    buf_map('n', '<leader>lh', lsp_utils.toggle_inlay_hints(bufnr), { desc = 'Toggle inlay hints for buffer' })
   end
 
   -- code actions

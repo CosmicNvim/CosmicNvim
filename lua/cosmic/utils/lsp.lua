@@ -69,4 +69,12 @@ function M.get_lsp_status_str()
   return client_str
 end
 
+function M.toggle_inlay_hints(bufnr)
+  local enabled = user_config.lsp.inlay_hint
+  return function()
+    enabled = not enabled
+    vim.lsp.inlay_hint(bufnr, enabled)
+  end
+end
+
 return M
