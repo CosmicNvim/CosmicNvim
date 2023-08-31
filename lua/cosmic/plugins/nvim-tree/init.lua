@@ -15,11 +15,6 @@ local args = {
       error = icons.error,
     },
   },
-  ignore_ft_on_setup = {
-    'startify',
-    'dashboard',
-    'alpha',
-  },
   update_focused_file = {
     enable = true,
   },
