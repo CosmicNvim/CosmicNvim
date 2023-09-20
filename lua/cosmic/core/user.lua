@@ -29,7 +29,7 @@ local default_config = {
     ensure_installed = {
       'astro',
       'eslint_d',
-      'prettier',
+      'prettierd',
       'cssls',
       'gopls',
       'graphql',

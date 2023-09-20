@@ -24,7 +24,11 @@ return {
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.formatting.eslint_d,
-        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.prettierd.with({
+          env = {
+            PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
+          },
+        }),
         null_ls.builtins.formatting.stylua,
       }, get_user_config_sources())
     end
