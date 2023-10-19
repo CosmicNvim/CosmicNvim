@@ -41,7 +41,7 @@ function M.on_attach(client, bufnr)
       -- autocommand for format on save with specified filetype(s)
       vim.api.nvim_create_autocmd('BufWritePre', {
         callback = function(ev)
-          for pattern, _ in pairs(filetype_patterns) do
+          for _, pattern in pairs(filetype_patterns) do
             if string.match(ev.file, pattern) then
               filetype_allowed = true
             end
