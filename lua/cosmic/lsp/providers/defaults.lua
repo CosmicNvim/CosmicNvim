@@ -5,8 +5,10 @@ local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 local user_config = require('cosmic.core.user')
 
 function M.on_attach(client, bufnr)
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
+  local function buf_set_option(name, value)
+    vim.api.nvim_set_option_value(name, value, {
+      buf = bufnr,
+    })
   end
 
   -- Enable completion triggered by <c-x><c-o>
@@ -24,13 +26,15 @@ function M.on_attach(client, bufnr)
     if user_config.lsp.format_on_save then
       -- check user config to see if we can format on save
       -- collect filetype(s) from user config
-      local filetype_pattern = ''
+      local filetype_patterns = {}
+      local filetype_allowed = false
       if vim.tbl_islist(user_config.lsp.format_on_save) then
         for _, ft in pairs(user_config.lsp.format_on_save) do
-          filetype_pattern = filetype_pattern .. '*' .. ft
+          table.insert(filetype_patterns, '*' .. ft)
         end
       else -- any filetype if none set
-        filetype_pattern = '*'
+        table.insert(filetype_patterns, '*')
+        filetype_allowed = true
       end
 
       vim.api.nvim_clear_autocmds({
@@ -38,9 +42,16 @@ function M.on_attach(client, bufnr)
         buffer = bufnr,
       })
       -- autocommand for format on save with specified filetype(s)
-      vim.api.nvim_create_autocmd(string.format('BufWritePre %s', filetype_pattern), {
-        callback = function()
-          require('cosmic.utils.lsp').format(bufnr)
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = function(ev)
+          for pattern, _ in pairs(filetype_patterns) do
+            if string.match(ev.file, pattern) then
+              filetype_allowed = true
+            end
+          end
+          if filetype_allowed then
+            require('cosmic.utils.lsp').format(bufnr)
+          end
         end,
         buffer = bufnr,
         group = group,
