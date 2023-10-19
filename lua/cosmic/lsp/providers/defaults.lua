@@ -29,11 +29,8 @@ function M.on_attach(client, bufnr)
       local filetype_patterns = {}
       local filetype_allowed = false
       if vim.tbl_islist(user_config.lsp.format_on_save) then
-        for _, ft in pairs(user_config.lsp.format_on_save) do
-          table.insert(filetype_patterns, '*' .. ft)
-        end
+        filetype_patterns = user_config.lsp.format_on_save
       else -- any filetype if none set
-        table.insert(filetype_patterns, '*')
         filetype_allowed = true
       end
 
