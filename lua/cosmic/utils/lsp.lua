@@ -1,6 +1,8 @@
 local user_config = require('cosmic.core.user')
 local M = {}
 
+M.format_disabled_override = false
+
 local function can_client_format(client)
   -- formatting enabled by default if server=true
   if user_config.lsp.servers[client.name] == true or client.name == 'null-ls' then
@@ -21,11 +23,22 @@ local function can_client_format(client)
   return true
 end
 
+function M.toggle_format_on_save()
+  M.format_disabled_override = not M.format_disabled_override
+  vim.notify(string.format('Format on save disabled: %s', M.format_disabled_override))
+end
+
 -- format current buffer w/user settings
 function M.format(bufnr)
+  local filter = can_client_format
+  if M.format_disabled_override then
+    filter = function(client)
+      return false
+    end
+  end
   vim.lsp.buf.format({
     timeout_ms = user_config.lsp.format_timeout,
-    filter = can_client_format,
+    filter = filter,
     bufnr = bufnr or 0,
   })
 end
