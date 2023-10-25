@@ -35,7 +35,6 @@ function M.format(bufnr, timeout)
   else
     timeout = timeout * 1000
   end
-  timeout = user_config.lsp.format_timeout
   local filter = can_client_format
   if M.format_disabled_override then
     filter = function(client)
