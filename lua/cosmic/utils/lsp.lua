@@ -30,10 +30,10 @@ end
 
 -- format current buffer w/user settings
 function M.format(bufnr, timeout)
-  if timeout ~= '' then
-    timeout = timeout * 1000
-  else
+  if timeout == '' or timeout == nil then
     timeout = user_config.lsp.format_timeout
+  else
+    timeout = timeout * 1000
   end
   timeout = user_config.lsp.format_timeout
   local filter = can_client_format
