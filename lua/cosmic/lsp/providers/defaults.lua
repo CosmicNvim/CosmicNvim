@@ -20,7 +20,7 @@ function M.on_attach(client, bufnr)
 
   if client.supports_method('textDocument/formatting') then
     -- set up :LspFormat for clients that are capable
-    vim.cmd(string.format("command! LspFormat lua require('cosmic.utils.lsp').format(%s)", bufnr))
+    vim.cmd(string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').format(%s, <q-args>)", bufnr))
 
     -- set up auto format on save
     if user_config.lsp.format_on_save then

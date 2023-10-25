@@ -29,7 +29,13 @@ function M.toggle_format_on_save()
 end
 
 -- format current buffer w/user settings
-function M.format(bufnr)
+function M.format(bufnr, timeout)
+  if timeout ~= '' then
+    timeout = timeout * 1000
+  else
+    timeout = user_config.lsp.format_timeout
+  end
+  timeout = user_config.lsp.format_timeout
   local filter = can_client_format
   if M.format_disabled_override then
     filter = function(client)
@@ -37,7 +43,7 @@ function M.format(bufnr)
     end
   end
   vim.lsp.buf.format({
-    timeout_ms = user_config.lsp.format_timeout,
+    timeout_ms = timeout,
     filter = filter,
     bufnr = bufnr or 0,
   })
