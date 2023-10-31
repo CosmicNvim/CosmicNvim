@@ -119,7 +119,7 @@ return {
         -- still show a recording occuring because `vim.fn.reg_recording` hasn't emptied yet.
         -- So what we need to do is wait a tiny amount of time (in this instance 50 ms) to
         -- ensure `vim.fn.reg_recording` is purged before asking lualine to refresh.
-        local timer = vim.loop.new_timer()
+        local timer = vim.uv.new_timer()
         timer:start(
           50,
           0,

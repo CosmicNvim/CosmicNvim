@@ -131,7 +131,7 @@ local config = {
     'ggandor/lightspeed.nvim',
     {
       'romgrk/barbar.nvim',
-      dependencies = { 'kyazdani42/nvim-web-devicons' },
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
   },
 }
