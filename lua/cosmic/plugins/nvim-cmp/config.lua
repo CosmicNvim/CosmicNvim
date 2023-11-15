@@ -80,8 +80,8 @@ local default_cmp_opts = {
     ghost_text = true,
   },
   sources = cmp.config.sources({
-    { name = 'luasnip' },
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'nvim_lua' },
     { name = 'path' },
   }, {

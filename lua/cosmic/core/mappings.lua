@@ -33,3 +33,5 @@ map('n', '<C-Up>', ':resize -2<CR>', { desc = 'Resize -2' })
 map('n', '<C-Down>', ':resize +2<CR>', { desc = 'Resize +2' })
 map('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Vertical Resize -2' })
 map('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Vertical Resize +2' })
+
+map('n', '<leader>bo', '<cmd>%bd|e#<cr>', { desc = 'Close all buffers but the current one' }) -- https://stackoverflow.com/a/42071865/516188

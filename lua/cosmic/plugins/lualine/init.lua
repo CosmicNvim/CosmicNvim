@@ -120,15 +120,17 @@ return {
         -- So what we need to do is wait a tiny amount of time (in this instance 50 ms) to
         -- ensure `vim.fn.reg_recording` is purged before asking lualine to refresh.
         local timer = vim.uv.new_timer()
-        timer:start(
-          50,
-          0,
-          vim.schedule_wrap(function()
-            require('lualine').refresh({
-              place = { 'statusline' },
-            })
-          end)
-        )
+        if timer then
+          timer:start(
+            50,
+            0,
+            vim.schedule_wrap(function()
+              require('lualine').refresh({
+                place = { 'statusline' },
+              })
+            end)
+          )
+        end
       end,
     })
   end,

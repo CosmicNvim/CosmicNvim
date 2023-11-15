@@ -1,4 +1,4 @@
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local M = {}
 local augroup_name = 'CosmicNvimLspFormat'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
