@@ -6,7 +6,8 @@ return {
   dependencies = { 'nvim-lua/plenary.nvim' },
   event = 'VeryLazy',
   config = function()
-    require('gitsigns').setup(u.merge({
+    local gs = require('gitsigns')
+    gs.setup(u.merge({
       signs = {
         add = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
         change = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
@@ -23,7 +24,6 @@ return {
         col = 1,
       },
       on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
         local map = u.create_buf_map(bufnr)
         -- Navigation
         map('n', ']c', function()
@@ -53,26 +53,35 @@ return {
         })
 
         -- Actions
-        map({ 'n', 'v' }, '<leader>vs', ':Gitsigns stage_hunk<CR>', { desc = 'Stage hunk' })
-        map({ 'n', 'v' }, '<leader>vr', ':Gitsigns reset_hunk<CR>', { desc = 'Reset hunk' })
-        map('n', '<leader>vS', gs.stage_buffer, { desc = 'Stage buffer' })
-        map('n', '<leader>vu', gs.undo_stage_hunk, { desc = 'Under stage hunk' })
-        map('n', '<leader>vR', gs.reset_buffer, { desc = 'Reset buffer' })
-        map('n', '<leader>vp', gs.preview_hunk, { desc = 'Preview hunk' })
-        map('n', '<leader>vb', function()
+        map('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage hunk' })
+        map('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset hunk' })
+        map('v', '<leader>hs', function()
+          gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+        end, {
+          desc = 'Stage hunk selection',
+        })
+        map('v', '<leader>hr', function()
+          gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+        end, {
+          desc = 'Reset hunk selection',
+        })
+        map('n', '<leader>hS', gs.stage_buffer, { desc = 'Stage buffer' })
+        map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
+        map('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset buffer' })
+        map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview hunk' })
+        map('n', '<leader>hb', function()
           gs.blame_line({ full = true })
         end, {
-          desc = 'Blame line preview',
+          desc = 'Blame line',
         })
-        map('n', '<leader>vd', gs.diffthis, { desc = 'Diff line' })
-        map('n', '<leader>vD', function()
+        map('n', '<leader>htb', gs.toggle_current_line_blame, { desc = 'Toggle blame current line' })
+        map('n', '<leader>hd', gs.diffthis, { desc = 'Diff buffer' })
+        map('n', '<leader>hD', function()
           gs.diffthis('~')
         end, { desc = 'Diff project' })
+        map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle delete' })
 
-        map('n', '<leader>vtb', gs.toggle_current_line_blame, { desc = 'Toggle blame (virtual text)' })
-        map('n', '<leader>vtd', gs.toggle_deleted, { desc = 'Toggle deleted' })
-
-        -- Text object
+        --[[ -- Text object ]]
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
       end,
     }, user_config.plugins.gitsigns or {}))
