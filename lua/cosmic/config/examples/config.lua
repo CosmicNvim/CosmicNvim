@@ -87,8 +87,6 @@ local config = {
       -- you may use <leader>ld to toggle
       enable_on_start = true,
     },
-    -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
-    lsp_signature = {},
     -- See https://github.com/nvim-lualine/lualine.nvim#default-configuration
     lualine = {},
     -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
