@@ -2,7 +2,7 @@ local user_config = require('cosmic.core.user')
 local u = require('cosmic.utils')
 
 return {
-  'jose-elias-alvarez/null-ls.nvim',
+  'nvimtools/none-ls.nvim',
   config = function()
     local defaults = require('cosmic.lsp.providers.defaults')
     local null_ls = require('null-ls')
