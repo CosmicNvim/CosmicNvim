@@ -63,8 +63,6 @@ local config = {
         end,
       },
     },
-    -- See Cosmic defaults lua/plugins/nvim-lsp-ts-utils/setup.lua
-    ts_utils = {},
   },
 
   -- adjust default plugin settings

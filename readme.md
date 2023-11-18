@@ -41,7 +41,6 @@ Full featured native LSP functionality!
 - Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)
 - Auto LSP/formatter/linter installation via [mason.nvim](https://github.com/williamboman/mason.nvim)
 - Autocompletion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- Additional TypeScript support via [nvim-lsp-ts-utils](https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - Session management via [auto-session](https://github.com/rmagatti/auto-session)
 - Additional custom highlighting
