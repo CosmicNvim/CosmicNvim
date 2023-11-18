@@ -3,6 +3,7 @@ local M = {}
 local augroup_name = 'CosmicNvimLspFormat'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 local user_config = require('cosmic.core.user')
+local u = require('cosmic.utils')
 
 function M.on_attach(client, bufnr)
   local function buf_set_option(name, value)
@@ -65,7 +66,14 @@ function M.on_attach(client, bufnr)
   end
 end
 
-M.capabilities = capabilities
+M.capabilities = u.merge(capabilities, {
+  -- See: https://github.com/neovim/neovim/issues/23291
+  workspace = {
+    didChangeWatchedFiles = {
+      dynamicRegistration = false,
+    },
+  },
+})
 
 M.root_dir = function(fname)
   local util = require('lspconfig').util

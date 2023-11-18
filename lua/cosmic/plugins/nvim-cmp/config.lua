@@ -82,7 +82,6 @@ local default_cmp_opts = {
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'nvim_lua' },
     { name = 'path' },
   }, {
     { name = 'buffer' },
@@ -96,7 +95,6 @@ local default_cmp_opts = {
         luasnip = '[snip]',
         buffer = '[buf]',
         path = '[path]',
-        nvim_lua = '[nvim_api]',
       })[entry.source.name]
       return vim_item
     end,
