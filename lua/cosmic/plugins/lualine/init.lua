@@ -56,7 +56,7 @@ return {
           custom_sections.diff,
         },
         lualine_x = { 'diagnostics' },
-        lualine_y = { lsp_utils.get_lsp_status_str },
+        lualine_y = { lsp_utils.get_active_clients_str },
         lualine_z = { 'location', 'progress' },
       },
       inactive_sections = {
@@ -73,7 +73,9 @@ return {
           },
           custom_sections.shortenedFilePath,
         },
-        lualine_c = { custom_sections.diff },
+        lualine_c = {
+          custom_sections.diff,
+        },
         lualine_x = { 'diagnostics' },
         lualine_y = { 'location', 'progress' },
         lualine_z = {},

@@ -48,7 +48,7 @@ function M.format(bufnr, timeout)
   })
 end
 
-function M.get_active_lsp_client_names()
+function M.get_active_lsp_clients()
   local active_clients = vim.lsp.get_clients()
   local client_names = {}
   for _, client in pairs(active_clients or {}) do
@@ -65,12 +65,12 @@ function M.get_active_lsp_client_names()
   return client_names
 end
 
-function M.get_lsp_status_str()
-  local clients = M.get_active_lsp_client_names()
+function M.get_active_clients_str()
+  local clients = M.get_active_lsp_clients()
   local client_str = ''
 
   if #clients < 1 then
-    return client_str
+    return
   end
 
   for i, client in ipairs(clients) do
@@ -78,10 +78,6 @@ function M.get_lsp_status_str()
     if i < #clients then
       client_str = client_str .. ', '
     end
-  end
-
-  if client_str:len() < 1 then
-    return
   end
 
   return client_str

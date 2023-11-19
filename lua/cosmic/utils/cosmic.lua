@@ -10,7 +10,6 @@ end
 
 -- update instance of CosmicNvim
 function M.update()
-  local Logger = require('cosmic.utils.logger')
   local Job = require('plenary.job')
   local path = M.get_install_dir()
   local errors = {}
@@ -21,16 +20,16 @@ function M.update()
       args = { 'pull', '--ff-only' },
       cwd = path,
       on_start = function()
-        Logger:log('Updating...')
+        vim.notify('Updating...')
       end,
       on_exit = function()
         if vim.tbl_isempty(errors) then
-          Logger:log('Updated! Running CosmicReloadSync...')
+          vim.notify('Updated! Running CosmicReloadSync...')
           M.reload_user_config_sync()
         else
           table.insert(errors, 1, 'Something went wrong! Please pull changes manually.')
           table.insert(errors, 2, '')
-          Logger:error('Update failed!', { timeout = 30000 })
+          vim.notify('Update failed!', vim.log.levels.ERROR)
         end
       end,
       on_stderr = function(_, err)

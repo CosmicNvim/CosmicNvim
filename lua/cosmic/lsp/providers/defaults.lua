@@ -68,11 +68,11 @@ end
 
 M.capabilities = u.merge(capabilities, {
   -- See: https://github.com/neovim/neovim/issues/23291
-  --[[ workspace = { ]]
-  --[[   didChangeWatchedFiles = { ]]
-  --[[     dynamicRegistration = false, ]]
-  --[[   }, ]]
-  --[[ }, ]]
+  workspace = {
+    didChangeWatchedFiles = {
+      dynamicRegistration = false,
+    },
+  },
 })
 
 M.root_dir = function(fname)
