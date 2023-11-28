@@ -77,12 +77,9 @@ M.capabilities = u.merge(capabilities, {
 
 M.root_dir = function(fname)
   local util = require('lspconfig').util
-  return util.root_pattern('.git')(fname)
-    or util.root_pattern('tsconfig.base.json')(fname)
-    or util.root_pattern('package.json')(fname)
-    or util.root_pattern('.eslintrc.js')(fname)
-    or util.root_pattern('.eslintrc.json')(fname)
-    or util.root_pattern('tsconfig.json')(fname)
+  return util.root_pattern('.git', 'tsconfig.base.json', 'tsconfig.json', 'package.json', '.eslint.js', '.eslint.json')(
+    fname
+  )
 end
 
 return M
