@@ -54,5 +54,5 @@ return {
   dependencies = {
     'williamboman/mason.nvim',
   },
-  --[[ event = 'BufEnter', ]]
+  event = 'BufEnter',
 }
