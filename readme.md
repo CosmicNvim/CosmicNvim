@@ -107,15 +107,15 @@ Updates CosmicNvim to the latest version
 
 ## 🗺 Default Mappings
 
-[File navigation](./lua/cosmic/plugins/telescope/mappings.lua)
+[File navigation](./lua/cosmic/plugins/telescope/init.lua)
 
-[File explorer](./lua/cosmic/plugins/nvim-tree/mappings.lua)
+[File explorer](./lua/cosmic/plugins/nvim-tree/init.lua)
 
 [Terminal](./lua/cosmic/plugins/terminal/mappings.lua)
 
 [LSP](./lua/cosmic/lsp/mappings.lua)
 
-[Other](./lua/cosmic/mappings.lua)
+[Other](./lua/cosmic/core/mappings.lua)
 
 ## 📷 Screenshots
 
