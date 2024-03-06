@@ -28,7 +28,7 @@ local default_config = {
     -- lsp servers that should be installed
     ensure_installed = {
       'astro',
-      'eslint_d',
+      'eslint',
       'prettierd',
       'cssls',
       'gopls',
@@ -46,6 +46,7 @@ local default_config = {
     servers = {
       astro = true,
       tailwindcss = true,
+      eslint = true,
       jsonls = {
         format = false,
       },

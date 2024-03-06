@@ -31,6 +31,8 @@ return {
         opts = u.merge(opts, require('cosmic.lsp.providers.jsonls'))
       elseif server == 'pyright' then
         opts = u.merge(opts, require('cosmic.lsp.providers.pyright'))
+      elseif server == 'eslint' then
+        opts = u.merge(opts, require('cosmic.lsp.providers.eslint'))
       elseif server == 'lua_ls' then
         opts = u.merge(opts, require('cosmic.lsp.providers.lua_ls'))
       end
