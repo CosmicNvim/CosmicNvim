@@ -1,5 +1,5 @@
 if vim.fn.has('nvim-0.10') == 0 then
-  error('Need Neovim v0.10+ in order to run Cosmic!')
+  error('Need Neovim v0.10+ (Nightly) in order to run Cosmic!')
 end
 
 local ok, err = pcall(require, 'cosmic')
