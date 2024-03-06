@@ -55,7 +55,7 @@ experience with any LSP supported language._
 
 #### Prerequisites
 
-- Neovim (+0.10.0)
+- Neovim (+0.10.0) nightly
 - [Node.js](https://nodejs.org/en/)
 - [prettierd](https://github.com/fsouza/prettierd) (for prettier formatting w/null_ls, optional)
 - [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/null_ls, optional)
