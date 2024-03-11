@@ -25,6 +25,7 @@ return {
           env = {
             PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
           },
+          extra_filetypes = { 'astro' },
         }),
         null_ls.builtins.formatting.stylua,
       }, get_user_config_sources())
