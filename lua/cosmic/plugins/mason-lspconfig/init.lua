@@ -18,7 +18,7 @@ return {
 
     local start_server = function(server)
       -- null_ls doesn't need/can't to be started via lspconfig
-      if server == 'null_ls' then
+      if server == 'null_ls' or server == 'typescript-tools' then
         return
       end
 

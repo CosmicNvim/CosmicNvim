@@ -14,6 +14,5 @@ return {
   keys = {
     { '<leader>nx', '<cmd>Telescope nx actions<CR>', desc = 'nx actions' },
   },
-  event = 'VeryLazy',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'nx'),
 }
