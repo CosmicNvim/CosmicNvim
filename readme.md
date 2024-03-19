@@ -58,7 +58,7 @@ experience with any LSP supported language._
 - Neovim (+0.10.0) nightly
 - [Node.js](https://nodejs.org/en/)
 - [prettierd](https://github.com/fsouza/prettierd)
-- [eslint](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint)
+- [eslint_d](https://www.npmjs.com/package/eslint_d) (for eslint w/null_ls, optional)
 
 #### Install
 

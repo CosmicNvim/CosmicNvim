@@ -21,7 +21,7 @@ local default_config = {
   lsp = {
     inlay_hint = false,
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
-    format_timeout = 2000,
+    format_timeout = 500,
     rename_notification = true,
     -- table of callbacks pushed via plugins
     on_attach_mappings = {},
