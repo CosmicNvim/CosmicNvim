@@ -21,7 +21,9 @@ function M.on_attach(client, bufnr)
 
   if client.supports_method('textDocument/formatting') then
     -- set up :LspFormat for clients that are capable
-    vim.cmd(string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').format(%s, <q-args>)", bufnr))
+    vim.cmd(
+      string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').force_format(%s, <q-args>)", bufnr)
+    )
 
     -- set up auto format on save
     if user_config.lsp.format_on_save then
@@ -29,7 +31,7 @@ function M.on_attach(client, bufnr)
       -- collect filetype(s) from user config
       local filetype_patterns = {}
       local filetype_allowed = false
-      if vim.tbl_islist(user_config.lsp.format_on_save) then
+      if vim.islist(user_config.lsp.format_on_save) then
         filetype_patterns = user_config.lsp.format_on_save
       else -- any filetype if none set
         filetype_allowed = true
@@ -74,12 +76,5 @@ M.capabilities = u.merge(capabilities, {
     },
   },
 })
-
-M.root_dir = function(fname)
-  local util = require('lspconfig').util
-  return util.root_pattern('.git', 'tsconfig.base.json', 'tsconfig.json', 'package.json', '.eslint.js', '.eslint.json')(
-    fname
-  )
-end
 
 return M

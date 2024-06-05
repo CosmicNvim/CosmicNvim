@@ -9,15 +9,7 @@ local default_config = {
   border = 'rounded',
   disable_builtin_plugins = {},
   add_plugins = {},
-  plugins = {
-    lsp_lines = {
-      -- additional flag only for CosmicNvim
-      -- true - loads plugin and is enabled at start
-      -- false - loads plugin but is not enabled at start
-      -- you may use <leader>ld to toggle
-      enable_on_start = false,
-    },
-  },
+  plugins = {},
   lsp = {
     inlay_hint = false,
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}

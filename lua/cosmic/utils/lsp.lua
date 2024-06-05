@@ -28,6 +28,20 @@ function M.toggle_format_on_save()
   vim.notify(string.format('Format on save disabled: %s', M.format_disabled_override))
 end
 
+function M.force_format(bufnr, timeout)
+  if timeout == '' or timeout == nil then
+    timeout = user_config.lsp.format_timeout
+  else
+    timeout = timeout * 1000
+  end
+  local filter = can_client_format
+  vim.lsp.buf.format({
+    timeout_ms = timeout,
+    filter = filter,
+    bufnr = bufnr or 0,
+  })
+end
+
 -- format current buffer w/user settings
 function M.format(bufnr, timeout)
   if timeout == '' or timeout == nil then
