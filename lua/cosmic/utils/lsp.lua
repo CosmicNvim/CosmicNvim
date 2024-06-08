@@ -101,7 +101,9 @@ function M.toggle_inlay_hints()
   local enabled = user_config.lsp.inlay_hint
   return function()
     enabled = not enabled
-    vim.lsp.inlay_hint(vim.api.nvim_get_current_buf() or 0, enabled)
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({
+      bufnr = vim.api.nvim_get_current_buf() or 0,
+    }))
   end
 end
 

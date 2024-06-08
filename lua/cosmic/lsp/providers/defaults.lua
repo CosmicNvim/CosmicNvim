@@ -16,7 +16,7 @@ function M.on_attach(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   if user_config.lsp.inlay_hint and client.supports_method('textDocument/inlayHint') then
-    vim.lsp.inlay_hint(bufnr, true)
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
 
   if client.supports_method('textDocument/formatting') then
