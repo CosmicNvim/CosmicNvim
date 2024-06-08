@@ -17,7 +17,7 @@ return {
     local lspconfig = require('lspconfig')
 
     local start_server = function(server)
-      -- null_ls doesn't need/can't to be started via lspconfig
+      -- don't match servers not started by lspconfig
       if server == 'null_ls' or server == 'typescript-tools' then
         return
       end
@@ -37,7 +37,7 @@ return {
         opts = u.merge(opts, require('cosmic.lsp.providers.lua_ls'))
       end
 
-      -- override options if user definds them
+      -- override options if user defines them
       if type(user_config.lsp.servers[server]) == 'table' then
         if user_config.lsp.servers[server].opts ~= nil then
           opts = u.merge(opts, user_config.lsp.servers[server].opts)

@@ -25,9 +25,6 @@ return {
       config_opts.sources = u.merge_list({
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.diagnostics.markdownlint,
-        --[[ require('none-ls.diagnostics.eslint_d'), ]]
-        --[[ require('none-ls.formatting.eslint_d'), ]]
-        --[[ require('none-ls.code_actions.eslint_d'), ]]
         null_ls.builtins.formatting.prettierd.with({
           env = {
             PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
@@ -41,7 +38,6 @@ return {
     null_ls.setup(u.merge(defaults, config_opts))
   end,
   --[[ event = 'BufEnter', ]]
-  --[[ event = 'VeryLazy', ]]
   lazy = false,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'null_ls'),
 }
