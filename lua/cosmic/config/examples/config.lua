@@ -19,8 +19,8 @@ local config = {
       'rust_analyzer',
     },
 
-    -- See Cosmic defaults lsp/providers/null_ls.lua and https://github.com/jose-elias-alvarez/null-ls.nvim/
-    -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
+    -- See Cosmic defaults cosmic/plugins/null-ls/init.lua and https://github.com/jose-elias-alvarez/null-ls.nvim/
+    -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from cosmic/plugins/null-ls/init.lua
     null_ls = {
       -- Disable default list of sources provided by CosmicNvim
       default_cosmic_sources = false,

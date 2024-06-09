@@ -13,14 +13,14 @@ return {
 
     -- set up lsp servers
     local u = require('cosmic.utils')
-    local default_config = require('cosmic.lsp.providers.defaults')
+    local default_config = require('cosmic.lsp.servers.defaults')
     local lspconfig = require('lspconfig')
 
     local start_server = function(server)
       local server_config = default_config
 
       -- set up default cosmic options
-      local ok, cosmic_server_config = pcall('cosmic.lsp.providers.' .. server)
+      local ok, cosmic_server_config = pcall('cosmic.lsp.servers.' .. server)
       if ok then
         server_config = u.merge(server_config, cosmic_server_config)
       end

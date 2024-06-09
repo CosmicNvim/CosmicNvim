@@ -8,7 +8,7 @@ return {
     'gbprod/none-ls-shellcheck.nvim',
   },
   config = function()
-    local defaults = require('cosmic.lsp.providers.defaults')
+    local defaults = require('cosmic.lsp.servers.defaults')
     local null_ls = require('null-ls')
     local config_opts = u.merge({
       default_cosmic_sources = true,
