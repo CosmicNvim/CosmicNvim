@@ -1,9 +1,11 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local M = {}
 local augroup_name = 'CosmicNvimLspFormat'
-local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 local user_config = require('cosmic.core.user')
 local u = require('cosmic.utils')
+local can_format_on_save = require('cosmic.utils.lsp').can_format_on_save
+
+M.group = vim.api.nvim_create_augroup(augroup_name, {})
 
 function M.on_attach(client, bufnr)
   local function buf_set_option(name, value)
@@ -19,44 +21,24 @@ function M.on_attach(client, bufnr)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
 
-  if client.supports_method('textDocument/formatting') then
+  if client.supports_method('textDocument/formatting') and can_format_on_save(client) then
     -- set up :LspFormat for clients that are capable
     vim.cmd(
       string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').force_format(%s, <q-args>)", bufnr)
     )
 
     -- set up auto format on save
-    if user_config.lsp.format_on_save then
-      -- check user config to see if we can format on save
-      -- collect filetype(s) from user config
-      local filetype_patterns = {}
-      local filetype_allowed = false
-      if vim.islist(user_config.lsp.format_on_save) then
-        filetype_patterns = user_config.lsp.format_on_save
-      else -- any filetype if none set
-        filetype_allowed = true
-      end
-
-      vim.api.nvim_clear_autocmds({
-        group = group,
-        buffer = bufnr,
-      })
-      -- autocommand for format on save with specified filetype(s)
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = function(ev)
-          for _, pattern in pairs(filetype_patterns) do
-            if string.match(ev.file, pattern) then
-              filetype_allowed = true
-            end
-          end
-          if filetype_allowed then
-            require('cosmic.utils.lsp').format(bufnr)
-          end
-        end,
-        buffer = bufnr,
-        group = group,
-      })
-    end
+    vim.api.nvim_clear_autocmds({
+      group = M.group,
+      buffer = bufnr,
+    })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      callback = function()
+        require('cosmic.utils.lsp').format(bufnr)
+      end,
+      buffer = bufnr,
+      group = M.group,
+    })
   end
 
   -- set up default mappings

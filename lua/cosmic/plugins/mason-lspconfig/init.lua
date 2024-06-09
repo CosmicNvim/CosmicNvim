@@ -17,11 +17,6 @@ return {
     local lspconfig = require('lspconfig')
 
     local start_server = function(server)
-      -- don't match servers not started by lspconfig
-      if server == 'null_ls' or server == 'typescript-tools' then
-        return
-      end
-
       local opts = default_config
 
       -- set up default cosmic options

@@ -12,7 +12,6 @@ local default_config = {
   plugins = {},
   lsp = {
     inlay_hint = false,
-    format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     format_timeout = 500,
     rename_notification = true,
     -- table of callbacks pushed via plugins
@@ -40,16 +39,16 @@ local default_config = {
       tailwindcss = true,
       eslint = true,
       jsonls = {
-        format = false,
+        format_on_save = false,
       },
       pyright = true,
       lua_ls = {
-        format = false,
+        format_on_save = false,
       },
       gopls = true,
       html = true,
       tsserver = {
-        format = false,
+        format_on_save = false,
       },
     },
   },

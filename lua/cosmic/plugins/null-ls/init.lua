@@ -10,9 +10,9 @@ return {
   config = function()
     local defaults = require('cosmic.lsp.providers.defaults')
     local null_ls = require('null-ls')
-    local config_opts = u.merge(user_config.lsp.servers.null_ls or {}, {
+    local config_opts = u.merge({
       default_cosmic_sources = true,
-    })
+    }, user_config.lsp.null_ls or {})
     if config_opts.default_cosmic_sources then
       local function get_user_config_sources()
         if not config_opts.add_sources then
