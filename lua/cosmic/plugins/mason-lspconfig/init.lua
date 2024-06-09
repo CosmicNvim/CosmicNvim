@@ -26,10 +26,8 @@ return {
       end
 
       -- override options if user defines them
-      if type(user_config.lsp.servers[server]) == 'table' then
-        if user_config.lsp.servers[server].opts ~= nil then
-          server_config = u.merge(server_config, user_config.lsp.servers[server].opts)
-        end
+      if type(user_config.lsp.servers[server]) == 'table' and user_config.lsp.servers[server].opts ~= nil then
+        server_config = u.merge(server_config, user_config.lsp.servers[server].opts)
       end
 
       lspconfig[server].setup(server_config)
