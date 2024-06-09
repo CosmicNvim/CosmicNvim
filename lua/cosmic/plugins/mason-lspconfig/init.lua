@@ -20,7 +20,7 @@ return {
       local server_config = default_config
 
       -- set up default cosmic options
-      local ok, cosmic_server_config = pcall('cosmic.lsp.servers.' .. server)
+      local ok, cosmic_server_config = pcall(require, 'cosmic.lsp.servers.' .. server)
       if ok then
         server_config = u.merge(server_config, cosmic_server_config)
       end
