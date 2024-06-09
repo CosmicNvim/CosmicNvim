@@ -1,11 +1,11 @@
 local user_config = require('cosmic.core.user')
 local M = {}
 
-M.format_disabled_override = false
+M.format_on_save_disabled = false
 
 function M.can_format_on_save(client)
   -- formatting enabled by default if server=true
-  if user_config.lsp.servers[client.name] == true or client.name == 'null-ls' then
+  if user_config.lsp.servers[client.name] == true then
     return true
   end
 
@@ -24,11 +24,11 @@ function M.can_format_on_save(client)
 end
 
 function M.toggle_format_on_save()
-  M.format_disabled_override = not M.format_disabled_override
-  vim.notify(string.format('Format on save disabled: %s', M.format_disabled_override))
+  M.format_on_save_disabled = not M.format_on_save_disabled
+  vim.notify(string.format('Format on save disabled: %s', M.format_on_save_disabled))
 end
 
-function M.force_format(bufnr, timeout)
+function M.buf_format(bufnr, timeout)
   if timeout == '' or timeout == nil then
     timeout = user_config.lsp.format_timeout
   else
@@ -41,20 +41,17 @@ function M.force_format(bufnr, timeout)
 end
 
 -- format current buffer w/user settings
-function M.format(bufnr, timeout)
-  if M.format_disabled_override then
+function M.format_on_save(client, bufnr)
+  if M.format_on_save_disabled then
     return
   end
 
-  if timeout == '' or timeout == nil then
-    timeout = user_config.lsp.format_timeout
-  else
-    timeout = timeout * 1000
-  end
-
   vim.lsp.buf.format({
-    timeout_ms = timeout,
+    timeout_ms = user_config.lsp.format_timeout,
     bufnr = bufnr or vim.api.nvim_get_current_buf(),
+    filter = function()
+      return M.can_format_on_save(client)
+    end,
   })
 end
 

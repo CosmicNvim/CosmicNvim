@@ -3,9 +3,9 @@ local M = {}
 local augroup_name = 'CosmicNvimLspFormat'
 local user_config = require('cosmic.core.user')
 local u = require('cosmic.utils')
-local can_format_on_save = require('cosmic.utils.lsp').can_format_on_save
+local lsp_utils = require('cosmic.utils.lsp')
 
-M.group = vim.api.nvim_create_augroup(augroup_name, {})
+M.augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 function M.on_attach(client, bufnr)
   local function buf_set_option(name, value)
@@ -24,23 +24,21 @@ function M.on_attach(client, bufnr)
   if client.supports_method('textDocument/formatting') then
     -- set up :LspFormat for clients that are capable
     vim.cmd(
-      string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').force_format(%s, <q-args>)", bufnr)
+      string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').buf_format(%s, <q-args>)", bufnr)
     )
 
-    if can_format_on_save(client) then
-      -- set up auto format on save
-      vim.api.nvim_clear_autocmds({
-        group = M.group,
-        buffer = bufnr,
-      })
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = function()
-          require('cosmic.utils.lsp').format(bufnr)
-        end,
-        buffer = bufnr,
-        group = M.group,
-      })
-    end
+    -- set up auto format on save
+    vim.api.nvim_clear_autocmds({
+      group = M.augroup,
+      buffer = bufnr,
+    })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      callback = function()
+        lsp_utils.format_on_save(client, bufnr)
+      end,
+      buffer = bufnr,
+      group = M.augroup,
+    })
   end
 
   -- set up default mappings
