@@ -56,7 +56,7 @@ return {
           custom_sections.diff,
         },
         lualine_x = { 'diagnostics' },
-        lualine_y = { lsp_utils.get_active_clients_str },
+        lualine_y = { lsp_utils.buf_get_active_clients_str },
         lualine_z = { 'location', 'progress' },
       },
       inactive_sections = {

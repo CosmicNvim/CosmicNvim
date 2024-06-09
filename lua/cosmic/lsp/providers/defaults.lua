@@ -21,24 +21,26 @@ function M.on_attach(client, bufnr)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
 
-  if client.supports_method('textDocument/formatting') and can_format_on_save(client) then
+  if client.supports_method('textDocument/formatting') then
     -- set up :LspFormat for clients that are capable
     vim.cmd(
       string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').force_format(%s, <q-args>)", bufnr)
     )
 
-    -- set up auto format on save
-    vim.api.nvim_clear_autocmds({
-      group = M.group,
-      buffer = bufnr,
-    })
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      callback = function()
-        require('cosmic.utils.lsp').format(bufnr)
-      end,
-      buffer = bufnr,
-      group = M.group,
-    })
+    if can_format_on_save(client) then
+      -- set up auto format on save
+      vim.api.nvim_clear_autocmds({
+        group = M.group,
+        buffer = bufnr,
+      })
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = function()
+          require('cosmic.utils.lsp').format(bufnr)
+        end,
+        buffer = bufnr,
+        group = M.group,
+      })
+    end
   end
 
   -- set up default mappings

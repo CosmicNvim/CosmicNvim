@@ -58,15 +58,13 @@ function M.format(bufnr, timeout)
   })
 end
 
-function M.get_active_lsp_clients()
-  local active_clients = vim.lsp.get_clients()
+function M.buf_get_active_client_names(bufnr)
+  local active_clients = vim.lsp.get_clients({
+    bufnr = bufnr or vim.api.nvim_get_current_buf(),
+  })
   local client_names = {}
   for _, client in pairs(active_clients or {}) do
-    local buf = vim.api.nvim_get_current_buf()
-    -- only return attached buffers
-    if vim.lsp.buf_is_attached(buf, client.id) then
-      table.insert(client_names, client.name)
-    end
+    table.insert(client_names, client.name)
   end
 
   if not vim.tbl_isempty(client_names) then
@@ -75,17 +73,17 @@ function M.get_active_lsp_clients()
   return client_names
 end
 
-function M.get_active_clients_str()
-  local clients = M.get_active_lsp_clients()
+function M.buf_get_active_clients_str()
+  local client_names = M.buf_get_active_client_names()
   local client_str = ''
 
-  if #clients < 1 then
+  if #client_names < 1 then
     return
   end
 
-  for i, client in ipairs(clients) do
-    client_str = client_str .. client
-    if i < #clients then
+  for i, client_name in ipairs(client_names) do
+    client_str = client_str .. client_name
+    if i < #client_names then
       client_str = client_str .. ', '
     end
   end
