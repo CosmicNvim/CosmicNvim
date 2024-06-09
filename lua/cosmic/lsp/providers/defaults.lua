@@ -34,7 +34,15 @@ function M.on_attach(client, bufnr)
     })
     vim.api.nvim_create_autocmd('BufWritePre', {
       callback = function()
-        lsp_utils.format_on_save(client, bufnr)
+        if not lsp_utils.format_on_save_disabled then
+          vim.lsp.buf.format({
+            timeout_ms = user_config.lsp.format_timeout,
+            bufnr = bufnr,
+            filter = function()
+              return lsp_utils.can_format_on_save(client)
+            end,
+          })
+        end
       end,
       buffer = bufnr,
       group = M.augroup,

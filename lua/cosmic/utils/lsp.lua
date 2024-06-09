@@ -40,21 +40,6 @@ function M.buf_format(bufnr, timeout)
   })
 end
 
--- format current buffer w/user settings
-function M.format_on_save(client, bufnr)
-  if M.format_on_save_disabled then
-    return
-  end
-
-  vim.lsp.buf.format({
-    timeout_ms = user_config.lsp.format_timeout,
-    bufnr = bufnr or vim.api.nvim_get_current_buf(),
-    filter = function()
-      return M.can_format_on_save(client)
-    end,
-  })
-end
-
 function M.buf_get_active_client_names(bufnr)
   local active_clients = vim.lsp.get_clients({
     bufnr = bufnr or vim.api.nvim_get_current_buf(),
