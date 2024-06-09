@@ -17,29 +17,22 @@ return {
     local lspconfig = require('lspconfig')
 
     local start_server = function(server)
-      local opts = default_config
+      local server_config = default_config
 
       -- set up default cosmic options
-      if server == 'tsserver' then
-        opts = u.merge(opts, require('cosmic.lsp.providers.tsserver'))
-      elseif server == 'jsonls' then
-        opts = u.merge(opts, require('cosmic.lsp.providers.jsonls'))
-      elseif server == 'pyright' then
-        opts = u.merge(opts, require('cosmic.lsp.providers.pyright'))
-      elseif server == 'eslint' then
-        opts = u.merge(opts, require('cosmic.lsp.providers.eslint'))
-      elseif server == 'lua_ls' then
-        opts = u.merge(opts, require('cosmic.lsp.providers.lua_ls'))
+      local ok, cosmic_server_config = pcall('cosmic.lsp.providers.' .. server)
+      if ok then
+        server_config = u.merge(server_config, cosmic_server_config)
       end
 
       -- override options if user defines them
       if type(user_config.lsp.servers[server]) == 'table' then
         if user_config.lsp.servers[server].opts ~= nil then
-          opts = u.merge(opts, user_config.lsp.servers[server].opts)
+          server_config = u.merge(server_config, user_config.lsp.servers[server].opts)
         end
       end
 
-      lspconfig[server].setup(opts)
+      lspconfig[server].setup(server_config)
     end
 
     for config_server, config_opt in pairs(user_config.lsp.servers) do

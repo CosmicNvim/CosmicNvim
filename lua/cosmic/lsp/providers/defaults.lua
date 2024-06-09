@@ -1,9 +1,9 @@
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local M = {}
 local augroup_name = 'CosmicNvimLspFormat'
 local user_config = require('cosmic.core.user')
 local u = require('cosmic.utils')
 local lsp_utils = require('cosmic.utils.lsp')
+local lsp_mappings = require('cosmic.lsp.mappings')
 
 M.augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
@@ -42,7 +42,7 @@ function M.on_attach(client, bufnr)
   end
 
   -- set up default mappings
-  require('cosmic.lsp.mappings').init(client, bufnr)
+  lsp_mappings.init(client, bufnr)
 
   -- set up any additional mappings/overrides from user config
   for _, callback in pairs(user_config.lsp.on_attach_mappings) do
@@ -50,7 +50,7 @@ function M.on_attach(client, bufnr)
   end
 end
 
-M.capabilities = u.merge(capabilities, {
+M.capabilities = u.merge(require('cmp_nvim_lsp').default_capabilities(), {
   -- See: https://github.com/neovim/neovim/issues/23291
   workspace = {
     didChangeWatchedFiles = {
