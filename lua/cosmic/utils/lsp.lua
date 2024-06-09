@@ -5,19 +5,20 @@ M.format_on_save_disabled = false
 
 function M.can_format_on_save(client)
   -- formatting enabled by default if server=true
-  if user_config.lsp.servers[client.name] == true then
+  local user_server_config = user_config.lsp.servers[client.name]
+  if user_server_config == true then
     return true
   end
 
   -- check config server settings
-  if user_config.lsp.servers[client.name] then
+  if user_server_config then
     -- default to true if no format flag on server settings is set
-    if user_config.lsp.servers[client.name].format_on_save == nil then
+    if user_server_config.format_on_save == nil then
       return true
     end
 
     -- check format flag on server settings
-    return (user_config.lsp.servers[client.name].format_on_save == true)
+    return user_server_config.format_on_save == true
   end
 
   return true
