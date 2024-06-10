@@ -1,4 +1,4 @@
-local map = require('cosmic.utils').map
+local map = require('cosmic.utils').set_keymap
 
 map('n', '<C-l>', ':FloatermToggle<CR>', { desc = 'Toggle Floaterm' })
 map('t', '<C-l>', [[<C-\><C-n>]], { desc = 'Close Floaterm' })

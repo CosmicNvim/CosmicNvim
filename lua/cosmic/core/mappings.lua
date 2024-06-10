@@ -1,4 +1,4 @@
-local map = require('cosmic.utils').map
+local map = require('cosmic.utils').set_keymap
 
 -- Quickfix mappings
 map('n', '<leader>ck', ':cexpr []<cr>', { desc = 'Clear list' })
@@ -33,5 +33,14 @@ map('n', '<C-Up>', ':resize -2<CR>', { desc = 'Resize -2' })
 map('n', '<C-Down>', ':resize +2<CR>', { desc = 'Resize +2' })
 map('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Vertical Resize -2' })
 map('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Vertical Resize +2' })
+
+-- map('n', '<C-h>', [[<Cmd>wincmd h<CR>]], {})
+-- map('n', '<C-j>', [[<Cmd>wincmd j<CR>]], {})
+-- map('n', '<C-k>', [[<Cmd>wincmd k<CR>]], {})
+-- map('n', '<C-l>', [[<Cmd>wincmd l<CR>]], {})
+--[[ map('n', '<C-h>', '<C-w>h', {}) ]]
+--[[ map('n', '<C-j>', '<C-w>j', {}) ]]
+--[[ map('n', '<C-k>', '<C-w>k', {}) ]]
+--[[ map('n', '<C-l>', '<C-w>l', {}) ]]
 
 map('n', '<leader>bo', '<cmd>%bd|e#<cr>', { desc = 'Close all buffers but the current one' }) -- https://stackoverflow.com/a/42071865/516188

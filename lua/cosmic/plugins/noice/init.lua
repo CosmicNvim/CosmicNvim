@@ -1,6 +1,6 @@
 local user_config = require('cosmic.core.user')
 local u = require('cosmic.utils')
-local map = require('cosmic.utils').map
+local map = require('cosmic.utils').set_keymap
 
 return {
   'folke/noice.nvim',

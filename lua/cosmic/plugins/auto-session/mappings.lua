@@ -1,4 +1,4 @@
-local map = require('cosmic.utils').map
+local map = require('cosmic.utils').set_keymap
 
 -- session
 map('n', '<leader>sl', '<cmd>silent RestoreSession<cr>', { desc = 'Restore session' })

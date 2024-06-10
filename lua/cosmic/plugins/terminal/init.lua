@@ -3,9 +3,9 @@ local user_config = require('cosmic.core.user')
 return {
   'voldikss/vim-floaterm',
   cmd = { 'FloatermToggle', 'FloatermNew' },
-  keys = {
-    { '<C-l>', '<cmd>FloatermToggle<cr>', desc = 'Floating Terminal' },
-  },
+  --[[ keys = { ]]
+  --[[   { '<C-l>', '<cmd>FloatermToggle<cr>', desc = 'Floating Terminal' }, ]]
+  --[[ }, ]]
   config = function()
     local g = vim.g
     local title = vim.env.SHELL

@@ -15,7 +15,7 @@ return {
   init = function()
     -- normal mappings
     local u = require('cosmic.utils')
-    local map = u.map
+    local map = u.set_keymap
 
     map('n', '<leader>ff', '', {
       callback = require('cosmic.plugins.telescope.utils').project_files,

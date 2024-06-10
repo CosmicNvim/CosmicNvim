@@ -1,6 +1,6 @@
 local M = {}
 
-function M.map(mode, lhs, rhs, opts)
+function M.set_keymap(mode, lhs, rhs, opts)
   local defaults = {
     silent = true,
     noremap = true,
@@ -10,7 +10,7 @@ end
 
 function M.create_buf_map(bufnr, opts)
   return function(mode, lhs, rhs, map_opts)
-    M.map(
+    M.set_keymap(
       mode,
       lhs,
       rhs,
