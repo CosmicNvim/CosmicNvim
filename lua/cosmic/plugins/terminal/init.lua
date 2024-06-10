@@ -17,7 +17,7 @@ return {
     g.floaterm_opener = 'vsplit'
 
     require('cosmic.plugins.terminal.highlights')
-    require('cosmic.plugins.terminal.mappings')
+    --[[ require('cosmic.plugins.terminal.mappings') ]]
   end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'terminal'),
 }
