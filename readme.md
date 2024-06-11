@@ -38,7 +38,7 @@ Full featured native LSP functionality!
 - Custom statusline via [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - Explore files via [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
 - Fuzzy finder via [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-- Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)
+- Floating terminal with [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 - Auto LSP/formatter/linter installation via [mason.nvim](https://github.com/williamboman/mason.nvim)
 - Autocompletion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
