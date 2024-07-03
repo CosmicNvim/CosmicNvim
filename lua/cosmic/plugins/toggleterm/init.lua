@@ -17,19 +17,19 @@ return {
     })
     local terminal_utils = require('cosmic.plugins.toggleterm.utils')
 
-    map('t', '<esc>', [[<C-\><C-n>]], { desc = 'Visual mode' })
+    map('t', '<leader>k', [[<C-\><C-n>]], { desc = 'Visual mode' })
 
     -- toggle terminals
-    map('n', '<leader>k', ':ToggleTerm<CR>', { desc = 'Toggle Terminal' })
-    map('t', '<leader>k', [[<C-\><C-n>]] .. ':ToggleTerm<CR>', { desc = 'Toggle Terminal' })
+    map('n', '<leader>kk', ':ToggleTerm<CR>', { desc = 'Toggle Terminal' })
+    map('t', '<leader>kk', [[<C-\><C-n>]] .. ':ToggleTerm<CR>', { desc = 'Toggle Terminal' })
 
     -- new terminal
     map('n', '<leader>kn', terminal_utils.new_terminal, { desc = 'New terminal' })
     map('t', '<leader>kn', terminal_utils.new_terminal, { desc = 'New terminal' })
 
     -- select terminal to open
-    map('n', '<leader>kk', ':TermSelect<CR>', { desc = 'Choose open terminal' })
-    map('t', '<leader>kk', [[<C-\><C-n>]] .. ':TermSelect<CR>', { desc = 'Choose open terminal' })
+    map('n', '<leader>kf', ':TermSelect<CR>', { desc = 'Choose open terminal' })
+    map('t', '<leader>kf', [[<C-\><C-n>]] .. ':TermSelect<CR>', { desc = 'Choose open terminal' })
 
     -- rename terminal
     map('n', '<leader>kr', ':ToggleTermSetName<CR>', { desc = 'Rename terminal', buffer = 0 })
@@ -37,8 +37,6 @@ return {
 
     -- terminal only mappings
     vim.cmd("autocmd! TermOpen term://* lua require('cosmic.plugins.toggleterm.utils').set_terminal_keymaps()")
-
-    -- @TODO: close all
   end,
   lazy = false,
 }

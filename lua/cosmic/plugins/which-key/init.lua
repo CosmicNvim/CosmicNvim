@@ -36,6 +36,9 @@ return {
             name = '+toggle',
           },
         },
+        k = {
+          name = '+terminal',
+        },
         l = {
           name = '+lsp',
           d = {
@@ -61,10 +64,10 @@ return {
           name = '+tab',
         },
         p = {
-          name = '+lazy (plugins)',
+          name = '+plugins',
         },
         v = {
-          name = '+git (vsc)',
+          name = '+git',
           t = {
             name = '+toggle',
           },
