@@ -1,6 +1,5 @@
 local user_config = require('cosmic.core.user')
 local map = require('cosmic.utils').set_keymap
-local create_buf_map = require('cosmic.utils').create_buf_map
 return {
   'akinsho/toggleterm.nvim',
   config = function()

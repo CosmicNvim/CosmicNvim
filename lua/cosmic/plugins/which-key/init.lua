@@ -4,12 +4,11 @@ return {
   config = function()
     local wk = require('which-key')
     wk.setup({
-      window = {
+      win = {
         border = user_config.border,
-        position = 'bottom',
-        margin = { 1, 0, 1, 0 },
-        padding = { 3, 2, 3, 2 },
-        winblend = 20,
+        wo = {
+          winblend = 20,
+        },
       },
       layout = {
         height = { min = 4, max = 25 },
@@ -19,60 +18,25 @@ return {
       },
     })
 
-    wk.register({
-      ['<leader>'] = {
-        b = {
-          name = '+buffer',
-        },
-        c = {
-          name = '+quickfix',
-        },
-        f = {
-          name = '+find',
-        },
-        h = {
-          name = '+gitsigns',
-          t = {
-            name = '+toggle',
-          },
-        },
-        k = {
-          name = '+terminal',
-        },
-        l = {
-          name = '+lsp',
-          d = {
-            name = '+diagnostics',
-          },
-          t = {
-            name = '+toggle',
-          },
-          w = {
-            name = '+workspace',
-          },
-        },
-        g = {
-          name = '+goto',
-        },
-        n = {
-          name = '+tree',
-        },
-        s = {
-          name = '+session',
-        },
-        t = {
-          name = '+tab',
-        },
-        p = {
-          name = '+plugins',
-        },
-        v = {
-          name = '+git',
-          t = {
-            name = '+toggle',
-          },
-        },
-      },
+    wk.add({
+      { '<leader>b',  group = 'buffer' },
+      { '<leader>c',  group = 'quickfix' },
+      { '<leader>f',  group = 'find' },
+      { '<leader>h',  group = 'gitsigns' },
+      { '<leader>h',  group = 'gitsigns' },
+      { '<leader>ht', group = 'toggle' },
+      { '<leader>k',  group = 'terminal' },
+      { '<leader>l',  group = 'lsp' },
+      { '<leader>ld', group = 'diagnostics' },
+      { '<leader>lt', group = 'toggle' },
+      { '<leader>lw', group = 'workspace' },
+      { '<leader>g',  group = 'goto' },
+      { '<leader>n',  group = 'tree' },
+      { '<leader>s',  group = 'session' },
+      { '<leader>t',  group = 'tab' },
+      { '<leader>p',  group = 'plugins' },
+      { '<leader>v',  group = 'git' },
+      { '<leader>vt', group = 'toggle' },
     })
   end,
   event = 'VeryLazy',
