@@ -9,9 +9,11 @@ map('n', '<leader>cp', ':cprev<cr>zz', { desc = 'Prev Item' })
 map('n', '<leader>cn', ':cnext<cr>zz', { desc = 'Next Item' })
 
 -- buffer navigation
-map('n', '<leader>bp', ':bprev<cr>', { desc = 'Prev buffer' })
-map('n', '<leader>bn', ':bnext<cr>', { desc = 'Next buffer' })
-map('n', '<leader>bd', ':bdelete<cr>', { desc = 'Delete buffer' })
+map('n', '<leader>kp', ':bprev<cr>', { desc = 'Prev buffer' })
+map('n', '<leader>kn', ':bnext<cr>', { desc = 'Next buffer' })
+map('n', '<leader>kd', ':bdelete<cr>', { desc = 'Delete buffer' })
+map('n', '<leader>kc', ':new<cr>', { desc = 'New buffer' })
+map('n', '<leader>ko', '<cmd>%bd|e#<cr>', { desc = 'Close all buffers but the current one' }) -- https://stackoverflow.com/a/42071865/516188
 
 -- tab navigation
 map('n', '<leader>tp', ':tabprevious<cr>', { desc = 'Prev tab' })
@@ -33,14 +35,3 @@ map('n', '<C-Up>', ':resize -2<CR>', { desc = 'Resize -2' })
 map('n', '<C-Down>', ':resize +2<CR>', { desc = 'Resize +2' })
 map('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Vertical Resize -2' })
 map('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Vertical Resize +2' })
-
--- map('n', '<C-h>', [[<Cmd>wincmd h<CR>]], {})
--- map('n', '<C-j>', [[<Cmd>wincmd j<CR>]], {})
--- map('n', '<C-k>', [[<Cmd>wincmd k<CR>]], {})
--- map('n', '<C-l>', [[<Cmd>wincmd l<CR>]], {})
---[[ map('n', '<C-h>', '<C-w>h', {}) ]]
---[[ map('n', '<C-j>', '<C-w>j', {}) ]]
---[[ map('n', '<C-k>', '<C-w>k', {}) ]]
---[[ map('n', '<C-l>', '<C-w>l', {}) ]]
-
-map('n', '<leader>bo', '<cmd>%bd|e#<cr>', { desc = 'Close all buffers but the current one' }) -- https://stackoverflow.com/a/42071865/516188
