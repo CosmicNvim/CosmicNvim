@@ -20,12 +20,12 @@ return {
     })
 
     wk.add({
-      { '<leader>b', group = 'buffer' },
       { '<leader>c', group = 'quickfix' },
       { '<leader>f', group = 'find' },
       { '<leader>g', group = 'goto' },
       { '<leader>h', group = 'gitsigns' },
       { '<leader>ht', group = 'toggle' },
+      { '<leader>k', group = 'buffer' },
       { '<leader>l', group = 'lsp' },
       { '<leader>ld', group = 'diagnostics' },
       { '<leader>lt', group = 'toggle' },
@@ -36,6 +36,7 @@ return {
       { '<leader>t', group = 'tab' },
       { '<leader>v', group = 'git (vsc)' },
       { '<leader>vt', group = 'toggle' },
+      { '<leader>x', group = 'terminal' },
     })
   end,
   event = 'VeryLazy',
