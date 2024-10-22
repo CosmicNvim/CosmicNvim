@@ -8,11 +8,11 @@ return {
     'gbprod/none-ls-shellcheck.nvim',
   },
   config = function()
-    local defaults = require('cosmic.lsp.providers.defaults')
+    local defaults = require('cosmic.lsp.servers.defaults')
     local null_ls = require('null-ls')
-    local config_opts = u.merge(user_config.lsp.servers.null_ls or {}, {
+    local config_opts = u.merge({
       default_cosmic_sources = true,
-    })
+    }, user_config.lsp.null_ls or {})
     if config_opts.default_cosmic_sources then
       local function get_user_config_sources()
         if not config_opts.add_sources then
@@ -25,9 +25,6 @@ return {
       config_opts.sources = u.merge_list({
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.diagnostics.markdownlint,
-        --[[ require('none-ls.diagnostics.eslint_d'), ]]
-        --[[ require('none-ls.formatting.eslint_d'), ]]
-        --[[ require('none-ls.code_actions.eslint_d'), ]]
         null_ls.builtins.formatting.prettierd.with({
           env = {
             PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
@@ -40,6 +37,7 @@ return {
 
     null_ls.setup(u.merge(defaults, config_opts))
   end,
-  event = 'BufReadPre',
+  --[[ event = 'BufEnter', ]]
+  lazy = false,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'null_ls'),
 }

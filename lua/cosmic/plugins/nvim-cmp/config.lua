@@ -1,14 +1,25 @@
 local cmp = require('cmp')
 local u = require('cosmic.utils')
-local luasnip = require('luasnip')
 local user_config = require('cosmic.core.user')
 local icons = require('cosmic.utils.icons')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
+local user_has_luasnip = not vim.tbl_contains(user_config.disable_builtin_plugins, 'luasnip')
+local _, luasnip = pcall(require, 'luasnip')
 
 local has_words_before = function()
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+end
+
+local snippet = {}
+if user_has_luasnip then
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  }
 end
 
 local default_cmp_opts = {
@@ -22,11 +33,7 @@ local default_cmp_opts = {
       return not context.in_treesitter_capture('comment') and not context.in_syntax_group('Comment')
     end
   end,
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
+  snippet = snippet,
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -42,7 +49,7 @@ local default_cmp_opts = {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
+      elseif user_has_luasnip and luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
@@ -56,7 +63,7 @@ local default_cmp_opts = {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      elseif user_has_luasnip and luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()

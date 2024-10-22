@@ -12,7 +12,7 @@ return {
         --[[ winblend = 20, ]]
       },
       layout = {
-        height = { min = 4, max = 25 },
+        height = { min = 10, max = 25 },
         width = { min = 20, max = 50 },
         spacing = 8,
         align = 'center',

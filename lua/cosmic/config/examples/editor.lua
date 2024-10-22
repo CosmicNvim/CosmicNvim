@@ -1,7 +1,7 @@
 -- Override Cosmic editor options
 
 local g = vim.g
-local map = require('cosmic.utils').map
+local map = require('cosmic.utils').set_keymap
 local opt = vim.opt
 
 -- Default leader is <space>

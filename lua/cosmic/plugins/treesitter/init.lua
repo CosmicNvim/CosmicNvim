@@ -16,6 +16,7 @@ local defaults = {
     'php',
     'python',
     'regex',
+    'styled',
     'scss',
     'tsx',
     'typescript',

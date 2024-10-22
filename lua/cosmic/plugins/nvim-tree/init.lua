@@ -46,7 +46,7 @@ return {
     require('nvim-tree').setup(u.merge(args, user_config.plugins.nvim_tree or {}))
   end,
   init = function()
-    local map = require('cosmic.utils').map
+    local map = require('cosmic.utils').set_keymap
 
     map('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle Tree' })
     map('n', '<leader>nt', ':NvimTreeToggle<CR>', { desc = 'Toggle Tree' })

@@ -1,8 +1,5 @@
 -- Override Cosmic configuration options
 
--- You can require null-ls if needed
--- local null_ls = require('null-ls')
-
 local config = {
   -- See :h nvim_open_win for possible border options
   border = 'rounded',
@@ -10,8 +7,6 @@ local config = {
   lsp = {
     -- Enable/disable inlay hints
     inlay_hint = false,
-    -- True/false or table of filetypes {'.ts', '.js',}
-    format_on_save = true,
     -- Time in MS before format timeout
     format_timeout = 3000,
     -- Set to false to disable rename notification
@@ -24,6 +19,28 @@ local config = {
       'rust_analyzer',
     },
 
+    -- See Cosmic defaults cosmic/plugins/null-ls/init.lua and https://github.com/jose-elias-alvarez/null-ls.nvim/
+    -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from cosmic/plugins/null-ls/init.lua
+    null_ls = {
+      -- Disable default list of sources provided by CosmicNvim
+      default_cosmic_sources = false,
+      --disable formatting
+      format_on_save = false,
+      -- Add additional sources here
+      get_sources = function()
+        local null_ls = require('null-ls')
+        return {
+          null_ls.builtins.diagnostics.shellcheck,
+          null_ls.builtins.diagnostics.actionlint.with({
+            condition = function()
+              local cwd = vim.fn.expand('%:p:.')
+              return cwd:find('.github/workflows')
+            end,
+          }),
+        }
+      end,
+    },
+
     -- lsp servers that should be enabled
     servers = {
       -- Enable rust_analyzer
@@ -32,35 +49,15 @@ local config = {
       -- Enable ts_ls w/custom settings
       ts_ls = {
         -- Disable formatting (defaults to true)
-        format = false,
+        format_on_save = false,
         -- OR add/override server options
         opts = {
           on_attach = function(client, bufnr) end,
           flags = {
             debounce_text_changes = 150,
           },
+          settings = {},
         },
-      },
-      -- See Cosmic defaults lsp/providers/null_ls.lua and https://github.com/jose-elias-alvarez/null-ls.nvim/
-      -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
-      null_ls = {
-        -- Disable default list of sources provided by CosmicNvim
-        default_cosmic_sources = false,
-        --disable formatting
-        format = false,
-        -- Add additional sources here
-        get_sources = function()
-          local null_ls = require('null-ls')
-          return {
-            null_ls.builtins.diagnostics.shellcheck,
-            null_ls.builtins.diagnostics.actionlint.with({
-              condition = function()
-                local cwd = vim.fn.expand('%:p:.')
-                return cwd:find('.github/workflows')
-              end,
-            }),
-          }
-        end,
       },
     },
   },
@@ -77,14 +74,6 @@ local config = {
     diagnostic = {},
     -- See :h gitsigns-usage
     gitsigns = {},
-    -- See https://git.sr.ht/~whynothugo/lsp_lines.nvim
-    lsp_lines = {
-      -- additional flag only for CosmicNvim
-      -- true - loads plugin and is enabled at start
-      -- false - loads plugin but is not enabled at start
-      -- you may use <leader>ld to toggle
-      enable_on_start = true,
-    },
     -- See https://github.com/nvim-lualine/lualine.nvim#default-configuration
     lualine = {},
     -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
