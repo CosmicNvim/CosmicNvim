@@ -28,18 +28,19 @@ local default_config = {
     -- lsp servers that should be installed
     ensure_installed = {
       'astro',
-      'eslint',
-      'prettierd',
       'cssls',
+      'eslint',
+      'eslint',
       'gopls',
       'graphql',
       'html',
       'jsonls',
-      'ts_ls',
       'lua_ls',
+      'prettierd',
       'pyright',
       'svelte',
       'tailwindcss',
+      'ts_ls',
       'yamlls',
     },
     -- lsp servers that should be enabled
@@ -56,13 +57,8 @@ local default_config = {
       },
       gopls = true,
       html = true,
-<<<<<<< Updated upstream
-      tsserver = {
-        format = false,
-=======
       ts_ls = {
         format_on_save = false,
->>>>>>> Stashed changes
       },
     },
   },
