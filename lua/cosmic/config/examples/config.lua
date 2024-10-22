@@ -29,8 +29,8 @@ local config = {
       -- Enable rust_analyzer
       rust_analyzer = true,
 
-      -- Enable tsserver w/custom settings
-      tsserver = {
+      -- Enable ts_ls w/custom settings
+      ts_ls = {
         -- Disable formatting (defaults to true)
         format = false,
         -- OR add/override server options

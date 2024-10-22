@@ -35,7 +35,7 @@ local default_config = {
       'graphql',
       'html',
       'jsonls',
-      'tsserver',
+      'ts_ls',
       'lua_ls',
       'pyright',
       'svelte',
@@ -56,8 +56,13 @@ local default_config = {
       },
       gopls = true,
       html = true,
+<<<<<<< Updated upstream
       tsserver = {
         format = false,
+=======
+      ts_ls = {
+        format_on_save = false,
+>>>>>>> Stashed changes
       },
     },
   },

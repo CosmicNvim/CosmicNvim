@@ -79,7 +79,7 @@ if found then
         end
 
         -- print(vim.inspect(externalFiles))
-        -- send configuration request of monodon plugin to tsserver
+        -- send configuration request of monodon plugin to ts_ls
         local constants = require('typescript-tools.protocol.constants')
         local method = constants.CustomMethods.ConfigurePlugin
         local args = {
@@ -91,7 +91,7 @@ if found then
 
         ---@diagnostic disable-next-line: missing-parameter
         tsclient.request(method, args, function()
-          print('tsserver handled configuration request', method)
+          print('ts_ls handled configuration request', method)
         end)
         print('NX Plugin initialized!')
       end
