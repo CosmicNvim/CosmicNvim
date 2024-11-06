@@ -1,5 +1,6 @@
 return {
   'williamboman/mason-lspconfig.nvim',
+  event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local user_config = require('cosmic.core.user')
     require('mason').setup({
@@ -18,6 +19,20 @@ return {
 
     local start_server = function(server)
       local server_config = default_config
+
+      -- Add performance-related settings to default config
+      server_config = u.merge(server_config, {
+        flags = {
+          debounce_text_changes = 150,  -- Debounce LSP updates
+        },
+        capabilities = {
+          textDocument = {
+            completion = {
+              dynamicRegistration = false,  -- Disable dynamic registration
+            }
+          }
+        }
+      })
 
       -- set up default cosmic options
       local ok, cosmic_server_config = pcall(require, 'cosmic.lsp.servers.' .. server)
@@ -42,6 +57,4 @@ return {
   dependencies = {
     'williamboman/mason.nvim',
   },
-  lazy = false,
-  --[[ event = 'BufEnter', ]]
 }

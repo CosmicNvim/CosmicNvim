@@ -21,33 +21,33 @@ function M.on_attach(client, bufnr)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
 
-  if client.supports_method('textDocument/formatting') then
-    -- set up :LspFormat for clients that are capable
-    vim.cmd(
-      string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').buf_format(%s, <q-args>)", bufnr)
-    )
-
-    -- set up auto format on save
-    vim.api.nvim_clear_autocmds({
-      group = M.augroup,
-      buffer = bufnr,
-    })
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      callback = function()
-        if lsp_utils.format_on_save_enabled then
-          vim.lsp.buf.format({
-            timeout_ms = user_config.lsp.format_timeout,
-            bufnr = bufnr,
-            filter = function()
-              return lsp_utils.can_client_format_on_save(client)
-            end,
-          })
-        end
-      end,
-      buffer = bufnr,
-      group = M.augroup,
-    })
-  end
+  --[[ if client.supports_method('textDocument/formatting') then ]]
+  --[[   -- set up :LspFormat for clients that are capable ]]
+  --[[   vim.cmd( ]]
+  --[[     string.format("command! -nargs=? LspFormat lua require('cosmic.utils.lsp').buf_format(%s, <q-args>)", bufnr) ]]
+  --[[   ) ]]
+  --[[]]
+  --[[   -- set up auto format on save ]]
+  --[[   vim.api.nvim_clear_autocmds({ ]]
+  --[[     group = M.augroup, ]]
+  --[[     buffer = bufnr, ]]
+  --[[   }) ]]
+  --[[   vim.api.nvim_create_autocmd('BufWritePre', { ]]
+  --[[     callback = function() ]]
+  --[[       if lsp_utils.format_on_save_enabled then ]]
+  --[[         vim.lsp.buf.format({ ]]
+  --[[           timeout_ms = user_config.lsp.format_timeout, ]]
+  --[[           bufnr = bufnr, ]]
+  --[[           filter = function() ]]
+  --[[             return lsp_utils.can_client_format_on_save(client) ]]
+  --[[           end, ]]
+  --[[         }) ]]
+  --[[       end ]]
+  --[[     end, ]]
+  --[[     buffer = bufnr, ]]
+  --[[     group = M.augroup, ]]
+  --[[   }) ]]
+  --[[ end ]]
 
   -- set up default mappings
   lsp_mappings.init(client, bufnr)

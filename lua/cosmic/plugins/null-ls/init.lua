@@ -23,15 +23,15 @@ return {
       end
 
       config_opts.sources = u.merge_list({
-        null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.diagnostics.markdownlint,
-        null_ls.builtins.formatting.prettierd.with({
-          env = {
-            PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
-          },
-          extra_filetypes = { 'astro' },
-        }),
-        null_ls.builtins.formatting.stylua,
+        --[[ null_ls.builtins.code_actions.gitsigns, ]]
+        --[[ null_ls.builtins.formatting.prettierd.with({ ]]
+        --[[   env = { ]]
+        --[[     PRETTIERD_LOCAL_PRETTIER_ONLY = 1, ]]
+        --[[   }, ]]
+        --[[   extra_filetypes = { 'astro' }, ]]
+        --[[ }), ]]
+        --[[ null_ls.builtins.formatting.stylua, ]]
       }, get_user_config_sources())
     end
 

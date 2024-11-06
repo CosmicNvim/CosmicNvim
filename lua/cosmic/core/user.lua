@@ -21,7 +21,6 @@ local default_config = {
       'astro',
       'cssls',
       'eslint',
-      'eslint',
       'gopls',
       'graphql',
       'html',
