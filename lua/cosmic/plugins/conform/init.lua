@@ -1,3 +1,4 @@
+local user_config = require('cosmic.core.user')
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -18,6 +19,10 @@ return {
       javascriptreact = { 'prettierd' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
+      --[[ javascript = { 'deno_fmt' }, ]]
+      --[[ javascriptreact = { 'deno_fmt' }, ]]
+      --[[ typescript = { 'deno_fmt' }, ]]
+      --[[ typescriptreact = { 'deno_fmt' }, ]]
     },
     -- Set default options
     format_on_save = {
@@ -36,4 +41,5 @@ return {
       },
     },
   },
+  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'conform'),
 }

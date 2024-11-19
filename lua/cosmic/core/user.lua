@@ -23,6 +23,7 @@ local default_config = {
       'eslint',
       'gopls',
       'graphql',
+      'denols',
       'html',
       'jsonls',
       'lua_ls',
@@ -38,18 +39,13 @@ local default_config = {
       astro = true,
       tailwindcss = true,
       eslint = true,
-      jsonls = {
-        format_on_save = false,
-      },
+      jsonls = true,
       pyright = true,
-      lua_ls = {
-        format_on_save = false,
-      },
+      lua_ls = true,
       gopls = true,
       html = true,
-      ts_ls = {
-        format_on_save = false,
-      },
+      denols = false,
+      ts_ls = true,
     },
   },
 }
