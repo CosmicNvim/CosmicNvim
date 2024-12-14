@@ -19,6 +19,10 @@ return {
       javascriptreact = { 'prettierd' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
+      --[[ javascript = { 'prettier' }, ]]
+      --[[ javascriptreact = { 'prettier' }, ]]
+      --[[ typescript = { 'prettier' }, ]]
+      --[[ typescriptreact = { 'prettier' }, ]]
       --[[ javascript = { 'deno_fmt' }, ]]
       --[[ javascriptreact = { 'deno_fmt' }, ]]
       --[[ typescript = { 'deno_fmt' }, ]]
@@ -28,16 +32,16 @@ return {
     format_on_save = {
       -- I recommend these options. See :help conform.format for details.
       lsp_format = 'fallback',
-      timeout_ms = 500,
+      timeout_ms = 1500,
     },
     formatters = {
       prettierd = {
         command = 'prettierd', -- Use system prettierd
         args = { '$FILENAME' }, -- Simplify args to just filename
         extra_filetypes = { 'astro' },
-        --[[ env = { ]]
-        --[[   PRETTIERD_LOCAL_PRETTIER_ONLY = 1, ]]
-        --[[ }, ]]
+        env = {
+          PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
+        },
       },
     },
   },
