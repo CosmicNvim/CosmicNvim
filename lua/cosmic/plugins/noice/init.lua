@@ -7,7 +7,7 @@ return {
   config = function()
     local config = u.merge({
       presets = {
-        lsp_doc_border = true,
+        --[[ lsp_doc_border = true, ]]
         long_message_to_split = true,
       },
       views = {
@@ -31,7 +31,7 @@ return {
           enabled = true,
         },
         signature = {
-          enabled = true,
+          enabled = false,
         },
         message = {
           -- Messages shown by lsp servers
@@ -39,11 +39,11 @@ return {
           view = 'mini',
           opts = {},
         },
-        override = {
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true,
-        },
+        --[[ override = { ]]
+        --[[   ['vim.lsp.util.convert_input_to_markdown_lines'] = true, ]]
+        --[[   ['vim.lsp.util.stylize_markdown'] = true, ]]
+        --[[   ['cmp.entry.get_documentation'] = true, ]]
+        --[[ }, ]]
       },
     }, user_config.plugins.noice or {})
 

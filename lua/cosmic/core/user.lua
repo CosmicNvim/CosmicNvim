@@ -32,6 +32,7 @@ local default_config = {
       'svelte',
       'tailwindcss',
       'ts_ls',
+      'vtsls',
       'yamlls',
     },
     -- lsp servers that should be enabled
@@ -45,7 +46,8 @@ local default_config = {
       gopls = true,
       html = true,
       denols = false,
-      ts_ls = true,
+      ts_ls = false,
+      vtsls = true,
     },
   },
 }

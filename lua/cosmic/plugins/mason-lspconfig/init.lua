@@ -23,15 +23,16 @@ return {
       -- Add performance-related settings to default config
       server_config = u.merge(server_config, {
         flags = {
-          debounce_text_changes = 150,  -- Debounce LSP updates
+          debounce_text_changes = 150, -- Debounce LSP updates
         },
-        capabilities = {
-          textDocument = {
-            completion = {
-              dynamicRegistration = false,  -- Disable dynamic registration
-            }
-          }
-        }
+        --[[ capabilities = require('blink.cmp').get_lsp_capabilities(server_config.capabilities or {}), ]]
+        --[[ capabilities = { ]]
+        --[[   textDocument = { ]]
+        --[[     completion = { ]]
+        --[[       dynamicRegistration = false,  -- Disable dynamic registration ]]
+        --[[     } ]]
+        --[[   } ]]
+        --[[ } ]]
       })
 
       -- set up default cosmic options
