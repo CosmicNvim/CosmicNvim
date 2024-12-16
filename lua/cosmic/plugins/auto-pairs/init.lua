@@ -14,5 +14,6 @@ return {
       fast_wrap = {},
     }, user_config.plugins.nvim_autopairs or {}))
   end,
+  event = 'VeryLazy',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'autopairs'),
 }
