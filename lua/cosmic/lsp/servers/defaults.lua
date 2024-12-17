@@ -1,7 +1,6 @@
 local M = {}
 local augroup_name = 'CosmicNvimLspFormat'
 local user_config = require('cosmic.core.user')
-local u = require('cosmic.utils')
 local lsp_mappings = require('cosmic.lsp.mappings')
 
 M.augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })

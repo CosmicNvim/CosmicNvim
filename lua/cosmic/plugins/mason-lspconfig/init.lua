@@ -20,21 +20,6 @@ return {
     local start_server = function(server)
       local server_config = default_config
 
-      -- Add performance-related settings to default config
-      server_config = u.merge(server_config, {
-        flags = {
-          debounce_text_changes = 150, -- Debounce LSP updates
-        },
-        --[[ capabilities = require('blink.cmp').get_lsp_capabilities(server_config.capabilities or {}), ]]
-        --[[ capabilities = { ]]
-        --[[   textDocument = { ]]
-        --[[     completion = { ]]
-        --[[       dynamicRegistration = false,  -- Disable dynamic registration ]]
-        --[[     } ]]
-        --[[   } ]]
-        --[[ } ]]
-      })
-
       -- set up default cosmic options
       local ok, cosmic_server_config = pcall(require, 'cosmic.lsp.servers.' .. server)
       if ok then
