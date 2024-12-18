@@ -32,10 +32,6 @@ local defaults = {
   autotag = {
     enable = true,
   },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
   refactor = {
     highlight_definitions = { enable = true },
     highlight_current_scope = { enable = false },
@@ -53,6 +49,13 @@ return {
   build = ':TSUpdate',
   config = function()
     require('nvim-treesitter.configs').setup(u.merge(defaults, user_config.plugins.treesitter or {}))
+    require('ts_context_commentstring').setup({
+      enable_autocmd = false,
+      languages = {
+        typescript = '// %s',
+        python = '# %s',
+      },
+    })
   end,
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'treesitter'),
 }
