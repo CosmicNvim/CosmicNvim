@@ -53,30 +53,30 @@ return {
         })
 
         -- Actions
-        map('n', '<leader>vs', gs.stage_hunk, { desc = 'Stage hunk' })
-        map('n', '<leader>vr', gs.reset_hunk, { desc = 'Reset hunk' })
-        map('v', '<leader>vs', function()
+        map('n', '<leader>ghs', gs.stage_hunk, { desc = 'Stage hunk' })
+        map('n', '<leader>ghr', gs.reset_hunk, { desc = 'Reset hunk' })
+        map('v', '<leader>ghs', function()
           gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
         end, {
           desc = 'Stage hunk selection',
         })
-        map('v', '<leader>vr', function()
+        map('v', '<leader>gr', function()
           gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
         end, {
           desc = 'Reset hunk selection',
         })
-        map('n', '<leader>vS', gs.stage_buffer, { desc = 'Stage buffer' })
-        map('n', '<leader>vu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
-        map('n', '<leader>vR', gs.reset_buffer, { desc = 'Reset buffer' })
-        map('n', '<leader>vp', gs.preview_hunk, { desc = 'Preview hunk' })
-        map('n', '<leader>vb', function()
+        map('n', '<leader>gS', gs.stage_buffer, { desc = 'Stage buffer' })
+        map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
+        map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset buffer' })
+        map('n', '<leader>gp', gs.preview_hunk, { desc = 'Preview hunk' })
+        map('n', '<leader>gb', function()
           gs.blame_line({ full = true })
         end, {
           desc = 'Blame line',
         })
-        map('n', '<leader>vtb', gs.toggle_current_line_blame, { desc = 'Toggle blame current line' })
-        map('n', '<leader>vd', gs.diffthis, { desc = 'Diff buffer' })
-        map('n', '<leader>vD', function()
+        map('n', '<leader>gtb', gs.toggle_current_line_blame, { desc = 'Toggle blame current line' })
+        map('n', '<leader>gd', gs.diffthis, { desc = 'Diff buffer' })
+        map('n', '<leader>gD', function()
           gs.diffthis('~')
         end, { desc = 'Diff project' })
         map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle delete' })

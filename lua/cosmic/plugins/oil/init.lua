@@ -24,13 +24,13 @@ return {
     map('n', '<leader>od', function()
       require('oil').toggle_float(vim.uv.cwd())
     end, {
-      desc = 'Open current working directory',
+      desc = 'Current working directory',
     })
 
     map('n', '<leader>of', function()
       require('oil').toggle_float()
     end, {
-      desc = 'Open current file directory',
+      desc = 'Current file directory',
     })
   end,
   dependencies = { 'nvim-tree/nvim-web-devicons' },

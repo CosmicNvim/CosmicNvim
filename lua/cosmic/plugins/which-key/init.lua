@@ -27,6 +27,7 @@ return {
       { '<leader>ht', group = 'toggle' },
       { '<leader>k', group = 'buffer' },
       { '<leader>l', group = 'lsp' },
+      { '<leader>o', group = 'open' },
       { '<leader>ld', group = 'diagnostics' },
       { '<leader>lt', group = 'toggle' },
       { '<leader>lw', group = 'workspace' },
