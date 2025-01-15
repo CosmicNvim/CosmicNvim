@@ -11,6 +11,9 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     },
+    gitbrowse = {},
+    indent = {},
+    --[[ dashboard = require('cosmic.plugins.snacks.dashboard'), ]]
   },
 
   keys = {
@@ -58,6 +61,13 @@ return {
       desc = 'Todo/Fix/Fixme',
     },
     -- git
+    {
+      '<leader>go',
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = 'Git Browse',
+    },
     {
       '<leader>gl',
       function()
