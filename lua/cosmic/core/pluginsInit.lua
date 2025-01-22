@@ -1,4 +1,4 @@
----@diagnostic disable: missing-fields, duplicate-set-field
+---@diagnostic disable: missing-fields
 local u = require('cosmic.utils.cosmic')
 local user_config = require('cosmic.core.user')
 
@@ -34,14 +34,3 @@ require('lazy').setup('cosmic.plugins', {
     },
   },
 })
-
--- ignore banned messages
-local banned_messages = { 'No information available' }
-vim.notify = function(msg, ...)
-  for _, banned in ipairs(banned_messages) do
-    if msg == banned then
-      return
-    end
-  end
-  return require('notify')(msg, ...)
-end

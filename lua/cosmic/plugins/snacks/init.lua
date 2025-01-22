@@ -14,7 +14,21 @@ return {
         },
       },
     },
-    notifier = {},
+    ---@class snacks.notifier.Config
+    ---@field enabled? boolean
+    ---@field keep? fun(notif: snacks.notifier.Notif): boolean # global keep function
+    ---@field filter? fun(notif: snacks.notifier.Notif): boolean # filter our unwanted notifications (return false to hide)
+    notifier = {
+      filter = function(notif)
+        local banned_msgs = { 'No information available' }
+        for _, banned_msg in ipairs(banned_msgs) do
+          if banned_msg == notif.msg then
+            return false
+          end
+        end
+        return true
+      end,
+    },
     gitbrowse = {},
     indent = {},
     --[[ dashboard = require('cosmic.plugins.snacks.dashboard'), ]]
