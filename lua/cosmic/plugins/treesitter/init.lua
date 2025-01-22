@@ -41,9 +41,9 @@ local defaults = {
 return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
-    'windwp/nvim-ts-autotag',
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    'nvim-treesitter/nvim-treesitter-refactor',
+    { 'windwp/nvim-ts-autotag', lazy = true },
+    { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
+    { 'nvim-treesitter/nvim-treesitter-refactor', lazy = true },
   },
   event = 'BufReadPre',
   build = ':TSUpdate',

@@ -53,14 +53,11 @@ return {
       ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
       ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
     },
-
     snippets = { preset = 'luasnip' },
-
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
       cmdline = {},
     },
-
     completion = {
       accept = {
         -- Experimental auto-brackets support
@@ -76,7 +73,6 @@ return {
           columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind', gap = 1 } },
         },
       },
-
       documentation = {
         auto_show_delay_ms = 0,
         auto_show = true,
@@ -86,7 +82,6 @@ return {
         },
       },
     },
-
     -- experimental signature help support
     signature = {
       enabled = true,
@@ -96,6 +91,5 @@ return {
       },
     },
   },
-
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'blink.cmp'),
 }

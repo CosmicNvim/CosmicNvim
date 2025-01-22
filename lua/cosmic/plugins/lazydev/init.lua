@@ -9,10 +9,8 @@ return {
       { path = 'luvit-meta/library', words = { 'vim%.uv' } },
       'lazy.nvim',
       'toggleterm.nvim',
-      --[[ { path = 'plenary.nvim/lua/plenary', words = { 'plenary' } }, ]]
     },
   },
   dependencies = { { 'Bilal2453/luvit-meta', lazy = true } },
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lazydev'),
-  event = 'VeryLazy',
 }

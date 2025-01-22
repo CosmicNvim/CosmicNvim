@@ -1,1 +1,1 @@
-return { 'b0o/SchemaStore.nvim' }
+return { 'b0o/SchemaStore.nvim', lazy = true }

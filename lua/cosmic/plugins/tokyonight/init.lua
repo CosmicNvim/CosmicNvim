@@ -2,6 +2,7 @@ local user_config = require('cosmic.core.user')
 return {
   { -- color scheme
     'folke/tokyonight.nvim',
+    priority = 1000,
     lazy = false,
     opts = {
       -- use the night style

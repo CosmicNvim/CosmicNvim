@@ -12,6 +12,7 @@ return {
       },
     },
   },
+  cmd = { 'ToggleTerm' },
   keys = {
     {
       '<leader>xx',
@@ -38,5 +39,4 @@ return {
       desc = 'Rename terminal',
     },
   },
-  lazy = false,
 }

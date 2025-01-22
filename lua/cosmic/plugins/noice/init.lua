@@ -64,6 +64,6 @@ return {
   },
   event = 'VeryLazy',
   dependencies = {
-    'MunifTanjim/nui.nvim',
+    { 'MunifTanjim/nui.nvim', lazy = true },
   },
 }

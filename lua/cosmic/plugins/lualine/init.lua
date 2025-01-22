@@ -32,7 +32,7 @@ local custom_sections = {
 
 return {
   'nvim-lualine/lualine.nvim',
-  event = 'VeryLazy',
+  lazy = false,
   opts = {
     options = {
       theme = 'tokyonight',
@@ -135,6 +135,6 @@ return {
       end,
     })
   end,
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lualine'),
 }

@@ -1,5 +1,4 @@
 local user_config = require('cosmic.core.user')
-local u = require('cosmic.utils')
 
 return {
   'windwp/nvim-autopairs',
@@ -12,6 +11,6 @@ return {
     disable_filetype = { 'TelescopePrompt', 'vim' },
     fast_wrap = {},
   },
-  event = 'VeryLazy',
+  event = 'InsertEnter',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'autopairs'),
 }

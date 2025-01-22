@@ -1,5 +1,4 @@
 return {
-  event = 'VeryLazy',
   'stevearc/oil.nvim',
   ---@module 'oil'
   ---@type oil.SetupOpts
@@ -19,6 +18,7 @@ return {
       max_width = 180,
     },
   },
+  cmd = 'Oil',
   keys = {
     {
       '<leader>od',
@@ -35,5 +35,5 @@ return {
       desc = 'Current file directory',
     },
   },
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
 }

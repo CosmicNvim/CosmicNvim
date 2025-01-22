@@ -4,12 +4,13 @@ local utils = require('cosmic.utils')
 return {
   'CosmicNvim/cosmic-ui',
   dependencies = {
-    'MunifTanjim/nui.nvim',
+    { 'MunifTanjim/nui.nvim', lazy = true },
   },
   opts = {
     border_style = 'rounded',
   },
   init = function()
+    -- @TODO: can use LspAttach event?
     user_config.lsp.add_on_attach_mapping(function(client, bufnr)
       local buf_map = utils.create_buf_map(bufnr)
 

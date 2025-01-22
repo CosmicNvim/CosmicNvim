@@ -3,7 +3,7 @@ local u = require('cosmic.utils')
 
 return {
   'lewis6991/gitsigns.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = { { 'nvim-lua/plenary.nvim', lazy = true } },
   event = 'VeryLazy',
   opts = {
     preview_config = {

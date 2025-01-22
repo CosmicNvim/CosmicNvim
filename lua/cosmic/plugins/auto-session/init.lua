@@ -4,8 +4,7 @@ return {
   'rmagatti/auto-session',
   lazy = false,
   opts = {
-
-    pre_save_cmds = { 'cclose', 'lua vim.notify.dismiss()' },
+    pre_save_cmds = { 'cclose' },
     auto_session_enabled = true,
     auto_restore_enabled = true,
     auto_save_enabled = true,
