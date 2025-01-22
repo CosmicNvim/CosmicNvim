@@ -7,9 +7,12 @@ return {
   ---@type snacks.Config
   opts = {
     picker = {
-      -- your picker configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+      ---@class snacks.picker.formatters.Config
+      formatters = {
+        file = {
+          filename_first = false, -- display filename before the file path
+        },
+      },
     },
     gitbrowse = {},
     indent = {},
@@ -91,7 +94,7 @@ return {
       desc = 'Grep',
     },
     {
-      '<leader>sb',
+      '<leader>fl',
       function()
         Snacks.picker.lines()
       end,
@@ -100,18 +103,12 @@ return {
     {
       '<leader>fw',
       function()
-        Snacks.picker.grep_word()
+        Snacks.picker.grep_word({
+          hidden = true,
+        })
       end,
       desc = 'Visual selection or word',
       mode = { 'n', 'x' },
-    },
-    -- search
-    {
-      '<leader>:',
-      function()
-        Snacks.picker.command_history()
-      end,
-      desc = 'Command History',
     },
     {
       '<leader>fc',
@@ -121,11 +118,19 @@ return {
       desc = 'Commands',
     },
     {
-      '<leader>sd',
+      '<leader>fd',
       function()
         Snacks.picker.diagnostics()
       end,
       desc = 'Diagnostics',
+    },
+    -- search
+    {
+      '<leader>:',
+      function()
+        Snacks.picker.command_history()
+      end,
+      desc = 'Command History',
     },
     {
       '<leader>r',
