@@ -1,17 +1,13 @@
+local user_config = require('cosmic.core.user')
 return {
   'williamboman/mason-lspconfig.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
-  config = function()
-    local user_config = require('cosmic.core.user')
-    require('mason').setup({
-      ui = {
-        border = user_config.border,
-      },
-    })
-    require('mason-lspconfig').setup({
-      ensure_installed = user_config.lsp.ensure_installed,
-    })
-
+  opts = {
+    ui = {
+      border = user_config.border,
+    },
+  },
+  init = function()
     -- set up lsp servers
     local u = require('cosmic.utils')
     local default_config = require('cosmic.lsp.servers.defaults')
@@ -41,6 +37,11 @@ return {
     end
   end,
   dependencies = {
-    'williamboman/mason.nvim',
+    {
+      'williamboman/mason.nvim',
+      opts = {
+        ensure_installed = user_config.lsp.ensure_installed,
+      },
+    },
   },
 }

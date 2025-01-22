@@ -33,78 +33,77 @@ local custom_sections = {
 return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
-  config = function()
-    require('lualine').setup(utils.merge({
-      options = {
-        theme = 'tokyonight',
-      },
-      sections = {
-        lualine_a = { 'mode' },
-        lualine_b = {
-          {
-            'filetype',
-            icon_only = true,
-            padding = {
-              left = 1,
-              right = 0,
-            },
-            separator = '',
-          },
-          custom_sections.shortenedFilePath,
-        },
-        lualine_c = {
-          custom_sections.diff,
-        },
-        lualine_x = { 'diagnostics' },
-        lualine_y = { lsp_utils.buf_get_active_clients_str },
-        lualine_z = { 'location', 'progress' },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {
-          {
-            'filetype',
-            icon_only = true,
-            padding = {
-              left = 1,
-              right = 0,
-            },
-            separator = '',
-          },
-          custom_sections.shortenedFilePath,
-        },
-        lualine_c = {
-          custom_sections.diff,
-        },
-        lualine_x = { 'diagnostics' },
-        lualine_y = { 'location', 'progress' },
-        lualine_z = {},
-      },
-      winbar = {
-        lualine_a = { utils.get_short_cwd },
-        lualine_b = { custom_sections.branch },
-        lualine_c = { custom_sections.relativeFilePath },
-        lualine_x = {
-          {
-            'macro-recording',
-            fmt = utils.show_macro_recording,
-          },
+  opts = {
+    options = {
+      theme = 'tokyonight',
+    },
+    sections = {
+      lualine_a = { 'mode' },
+      lualine_b = {
+        {
           'filetype',
+          icon_only = true,
+          padding = {
+            left = 1,
+            right = 0,
+          },
+          separator = '',
         },
-        lualine_y = {},
-        lualine_z = {},
+        custom_sections.shortenedFilePath,
       },
-      inactive_winbar = {
-        lualine_a = { utils.get_short_cwd },
-        lualine_b = { custom_sections.branch },
-        lualine_c = { custom_sections.relativeFilePath },
-        lualine_x = { 'filetype' },
-        lualine_y = {},
-        lualine_z = {},
+      lualine_c = {
+        custom_sections.diff,
       },
-      extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
-    }, user_config.plugins.lualine or {}))
-
+      lualine_x = { 'diagnostics' },
+      lualine_y = { lsp_utils.buf_get_active_clients_str },
+      lualine_z = { 'location', 'progress' },
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {
+        {
+          'filetype',
+          icon_only = true,
+          padding = {
+            left = 1,
+            right = 0,
+          },
+          separator = '',
+        },
+        custom_sections.shortenedFilePath,
+      },
+      lualine_c = {
+        custom_sections.diff,
+      },
+      lualine_x = { 'diagnostics' },
+      lualine_y = { 'location', 'progress' },
+      lualine_z = {},
+    },
+    winbar = {
+      lualine_a = { utils.get_short_cwd },
+      lualine_b = { custom_sections.branch },
+      lualine_c = { custom_sections.relativeFilePath },
+      lualine_x = {
+        {
+          'macro-recording',
+          fmt = utils.show_macro_recording,
+        },
+        'filetype',
+      },
+      lualine_y = {},
+      lualine_z = {},
+    },
+    inactive_winbar = {
+      lualine_a = { utils.get_short_cwd },
+      lualine_b = { custom_sections.branch },
+      lualine_c = { custom_sections.relativeFilePath },
+      lualine_x = { 'filetype' },
+      lualine_y = {},
+      lualine_z = {},
+    },
+    extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
+  },
+  init = function()
     vim.api.nvim_create_autocmd('RecordingEnter', {
       callback = function()
         require('lualine').refresh({

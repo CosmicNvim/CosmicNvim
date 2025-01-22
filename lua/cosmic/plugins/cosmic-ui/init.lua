@@ -1,14 +1,13 @@
 local user_config = require('cosmic.core.user')
 local utils = require('cosmic.utils')
 
-local defaults = {
-  border_style = 'rounded',
-}
-
 return {
   'CosmicNvim/cosmic-ui',
   dependencies = {
     'MunifTanjim/nui.nvim',
+  },
+  opts = {
+    border_style = 'rounded',
   },
   init = function()
     user_config.lsp.add_on_attach_mapping(function(client, bufnr)
@@ -23,9 +22,6 @@ return {
         { desc = 'Range Code Actions' }
       )
     end)
-  end,
-  config = function()
-    require('cosmic-ui').setup(utils.merge(defaults, user_config.plugins.cosmic_ui or {}))
   end,
   event = 'VeryLazy',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'cosmic-ui'),

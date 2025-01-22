@@ -1,22 +1,27 @@
 local user_config = require('cosmic.core.user')
-local u = require('cosmic.utils')
-
-local defaults = {
-  pre_save_cmds = { 'cclose', 'lua vim.notify.dismiss()' },
-  auto_session_enabled = true,
-  auto_restore_enabled = true,
-  auto_save_enabled = true,
-  use_git_branch = true,
-}
 
 return {
   'rmagatti/auto-session',
   lazy = false,
-  config = function()
-    require('auto-session').setup(u.merge(defaults, user_config.plugins.auto_session or {}))
-  end,
-  init = function()
-    require('cosmic.plugins.auto-session.mappings')
-  end,
+  opts = {
+
+    pre_save_cmds = { 'cclose', 'lua vim.notify.dismiss()' },
+    auto_session_enabled = true,
+    auto_restore_enabled = true,
+    auto_save_enabled = true,
+    use_git_branch = true,
+  },
+  keys = {
+    {
+      '<leader>sl',
+      '<cmd>silent RestoreSession<cr>',
+      desc = 'Restore session',
+    },
+    {
+      '<leader>ss',
+      '<cmd>SaveSession<cr>',
+      desc = 'Save session',
+    },
+  },
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'auto-session'),
 }

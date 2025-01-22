@@ -10,16 +10,13 @@ return {
     {
       'L3MON4D3/LuaSnip',
       version = 'v2.*',
-      config = function()
-        local ls = require('luasnip')
-        local u = require('cosmic.utils')
-        ls.config.set_config(u.merge({
-          history = true,
-          -- Update more often, :h events for more info.
-          updateevents = 'TextChanged,TextChangedI',
-          enable_autosnippets = true,
-        }, user_config.plugins.luasnip or {}))
-
+      opts = {
+        history = true,
+        -- Update more often, :h events for more info.
+        updateevents = 'TextChanged,TextChangedI',
+        enable_autosnippets = true,
+      },
+      init = function()
         -- extend html snippets to react files
         require('luasnip').filetype_extend('javascriptreact', { 'html' })
         require('luasnip').filetype_extend('typescriptreact', { 'html' })
@@ -99,10 +96,6 @@ return {
       },
     },
   },
-
-  -- allows extending the providers array elsewhere in your config
-  -- without having to redefine it
-  --[[ opts_extend = { 'sources.default' }, ]]
 
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'blink.cmp'),
 }
