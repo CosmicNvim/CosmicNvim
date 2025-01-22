@@ -25,7 +25,7 @@ return {
         view_history = 'messages', -- view for :messages
         view_search = 'virtualtext', -- view for search count messages. Set to `false` to disable
       },
-      -- notifications done via snacks
+      -- notifications handled via snacks
       notify = {
         enabled = false,
       },
@@ -33,6 +33,7 @@ return {
         hover = {
           enabled = true,
         },
+        -- signature handled via blink.cmp
         signature = {
           enabled = false,
         },

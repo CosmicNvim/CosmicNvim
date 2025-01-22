@@ -6,11 +6,12 @@ return {
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'snacks'),
   ---@type snacks.Config
   opts = {
+    input = {},
     picker = {
       ---@class snacks.picker.formatters.Config
       formatters = {
         file = {
-          filename_first = false, -- display filename before the file path
+          filename_first = false,
         },
       },
     },
