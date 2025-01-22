@@ -26,24 +26,22 @@ Full featured native LSP functionality!
 - 🔍 Find references/type def/declaration
 - 💡 Code actions
 - 🚨 Statusline diagnostics
-- 🔧 Formatting/linting thanks to [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- 🔧 Formatting thanks to [conform.nvim](https://github.com/stevearc/conform.nvim)
 
 #### Additional features
 
 - Custom rename and code action popups via [Cosmic-UI](https://github.com/CosmicNvim/cosmic-ui)
 - Amazing default theme via [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-- UI enhancements via [noice](https://github.com/folke/noice.nvim)
+- UI enhancements via [snacks.nvim](https://github.com/folke/snacks.nvim) and [noice.nvim](https://github.com/folke/noice.nvim)
 - Enhanced syntax highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- Dashboard via [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 - Custom statusline via [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - File editor via [oil.nvim](https://github.com/stevearc/oil.nvim)
-- Fuzzy finder via [snacks](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md)
 - Floating terminal with [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 - Auto LSP/formatter/linter installation via [mason.nvim](https://github.com/williamboman/mason.nvim)
 - Autocompletion via [blink.cmp](https://github.com/Saghen/blink.cmp)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - Session management via [auto-session](https://github.com/rmagatti/auto-session)
-- Additional custom highlighting
+- Easy to find keybindings via [which-key.nvim](https://github.com/folke/which-key.nvim)
 - Floating windows for references, renaming, diagnostics, code actions and more!
 
 _While CosmicNvim is geared specifically toward TypeScript/JavaScript development, it should be able to provide a great
@@ -103,18 +101,6 @@ Updates CosmicNvim to the latest version
 ```vimcommand
 :CosmicUpdate
 ```
-
-## 🗺 Default Mappings
-
-[File navigation](./lua/cosmic/plugins/telescope/init.lua)
-
-[File explorer](./lua/cosmic/plugins/nvim-tree/init.lua)
-
-[Terminal](./lua/cosmic/plugins/terminal/mappings.lua)
-
-[LSP](./lua/cosmic/lsp/mappings.lua)
-
-[Other](./lua/cosmic/core/mappings.lua)
 
 ## 📷 Screenshots
 
