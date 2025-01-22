@@ -7,6 +7,9 @@ return {
       ---@module 'oil'
       ---@type oil.SetupOpts
       {
+        view_options = {
+          show_hidden = true,
+        },
         keymaps = {
           ['<C-j>'] = { 'actions.preview_scroll_down', mode = 'n' },
           ['<C-k>'] = { 'actions.preview_scroll_up', mode = 'n' },

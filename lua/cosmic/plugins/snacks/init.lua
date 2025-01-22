@@ -14,12 +14,28 @@ return {
         },
       },
     },
+    notifier = {},
     gitbrowse = {},
     indent = {},
     --[[ dashboard = require('cosmic.plugins.snacks.dashboard'), ]]
   },
 
   keys = {
+    -- notifications
+    {
+      '<leader>nh',
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = 'Show history',
+    },
+    {
+      '<leader>nc',
+      function()
+        Snacks.notifier.hide()
+      end,
+      desc = 'Close notifications',
+    },
     -- find
     {
       '<leader>fp',

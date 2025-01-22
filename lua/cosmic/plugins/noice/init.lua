@@ -25,8 +25,10 @@ return {
         view_history = 'messages', -- view for :messages
         view_search = 'virtualtext', -- view for search count messages. Set to `false` to disable
       },
+      notify = {
+        enabled = false,
+      },
       lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         hover = {
           enabled = true,
         },
@@ -63,9 +65,5 @@ return {
   event = 'VeryLazy',
   dependencies = {
     'MunifTanjim/nui.nvim',
-    { 'rcarriga/nvim-notify', opts = {
-      timeout = 1000,
-      fps = 60,
-    } },
   },
 }
