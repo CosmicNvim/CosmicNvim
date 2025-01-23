@@ -12,6 +12,7 @@ return {
       formatters = {
         file = {
           filename_first = false,
+          truncate = 80,
         },
       },
     },
