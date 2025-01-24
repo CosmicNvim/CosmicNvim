@@ -2,12 +2,12 @@ return {
   settings = {
     javascript = {
       preferences = {
-        importModuleSpecifier = 'non-relative',
+        importModuleSpecifier = 'project-relative',
       },
     },
     typescript = {
       preferences = {
-        importModuleSpecifier = 'non-relative',
+        importModuleSpecifier = 'project-relative',
         preferTypeOnlyAutoImports = true,
       },
     },
