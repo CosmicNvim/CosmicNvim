@@ -19,7 +19,7 @@ return {
       { '<leader>c', group = 'quickfix' },
       { '<leader>f', group = 'find', mode = { 'n', 'x' } },
       { '<leader>g', group = 'git', mode = { 'n', 'v' } },
-      { '<leader>gh', group = 'hunks' },
+      { '<leader>h', group = 'git hunks' },
       { '<leader>gt', group = 'toggle' },
       { '<leader>h', group = 'gitsigns' },
       { '<leader>ht', group = 'toggle' },
