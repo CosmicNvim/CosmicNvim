@@ -45,6 +45,7 @@ return {
       })
 
       -- Actions
+      map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview hunk' })
       map('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage hunk' })
       map('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset hunk' })
       map('v', '<leader>hs', function()
@@ -60,7 +61,6 @@ return {
 
       map('n', '<leader>gS', gs.stage_buffer, { desc = 'Stage buffer' })
       map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset buffer' })
-      map('n', '<leader>gp', gs.preview_hunk, { desc = 'Preview hunk' })
       map('n', '<leader>gb', function()
         gs.blame_line({ full = true })
       end, {
