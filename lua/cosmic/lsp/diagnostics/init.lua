@@ -58,7 +58,7 @@ local config = u.merge({
     },
     format = format_diagnostic,
   },
-}, user_config.diagnostic or {})
+}, user_config.diagnostics or {})
 
 -- set up diagnostics
 vim.diagnostic.config(config)
