@@ -9,6 +9,7 @@ return {
       { path = 'luvit-meta/library', words = { 'vim%.uv' } },
       'lazy.nvim',
       'toggleterm.nvim',
+      'snacks.nvim',
     },
   },
   dependencies = { { 'Bilal2453/luvit-meta', lazy = true } },

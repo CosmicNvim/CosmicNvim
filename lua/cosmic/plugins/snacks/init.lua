@@ -8,7 +8,6 @@ return {
   opts = {
     input = {},
     picker = {
-      ---@class snacks.picker.formatters.Config
       formatters = {
         file = {
           filename_first = false,
@@ -16,10 +15,6 @@ return {
         },
       },
     },
-    ---@class snacks.notifier.Config
-    ---@field enabled? boolean
-    ---@field keep? fun(notif: snacks.notifier.Notif): boolean # global keep function
-    ---@field filter? fun(notif: snacks.notifier.Notif): boolean # filter our unwanted notifications (return false to hide)
     notifier = {
       filter = function(notif)
         local banned_msgs = { 'No information available' }
@@ -33,7 +28,6 @@ return {
     },
     gitbrowse = {},
     indent = {},
-    --[[ dashboard = require('cosmic.plugins.snacks.dashboard'), ]]
   },
 
   keys = {

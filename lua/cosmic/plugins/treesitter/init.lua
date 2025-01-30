@@ -4,8 +4,10 @@ local u = require('cosmic.utils')
 local defaults = {
   ensure_installed = {
     'astro',
+    'bash',
     'css',
     'go',
+    'graphql',
     'html',
     'javascript',
     'jsdoc',
@@ -16,10 +18,11 @@ local defaults = {
     'php',
     'python',
     'regex',
-    'styled',
     'scss',
+    'styled',
     'tsx',
     'typescript',
+    'vim',
     'yaml',
   },
   highlight = {

@@ -66,8 +66,6 @@ local config = {
   plugins = {
     -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
     auto_session = {},
-    -- https://github.com/numToStr/Comment.nvim#configuration-optional
-    comment_nvim = {},
     -- See https://github.com/CosmicNvim/cosmic-ui#%EF%B8%8F-configuration
     cosmic_ui = {},
     -- See :h vim.diagnostic.config for all diagnostic configuration options
@@ -95,8 +93,6 @@ local config = {
     --[[
     'auto-session',
     'colorizer',
-    'comment-nvim',
-    'dashboard',
     'fugitive',
     'gitsigns',
     'lualine',
