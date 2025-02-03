@@ -51,7 +51,6 @@ local function prefer_bin_from_venv(executable_name)
     return executable_name
   end
   local mason_path = mason_registry.get_package(executable_name):get_install_path() .. '/venv/bin/' .. executable_name
-  -- vim.api.nvim_echo({ { "Using path for " .. executable_name .. ": " .. mason_path, "None" } }, false, {})
   return mason_path
 end
 
