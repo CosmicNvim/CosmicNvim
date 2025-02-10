@@ -39,4 +39,5 @@ return {
       desc = 'Rename terminal',
     },
   },
+  --[[ enabled = false, ]]
 }
