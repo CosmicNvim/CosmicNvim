@@ -6,8 +6,9 @@ return {
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'snacks'),
   ---@type snacks.Config
   opts = {
-    input = {},
     explorer = {},
+    image = {},
+    input = {},
     picker = {
       formatters = {
         file = {
@@ -100,6 +101,13 @@ return {
       desc = 'Buffers',
     },
     {
+      '<leader>fm',
+      function()
+        Snacks.picker.smart()
+      end,
+      desc = 'Smart Finder',
+    },
+    {
       '<leader>ff',
       function()
         Snacks.picker.git_files()
@@ -181,13 +189,6 @@ return {
       end,
       desc = 'Commands',
     },
-    {
-      '<leader>fd',
-      function()
-        Snacks.picker.diagnostics()
-      end,
-      desc = 'Diagnostics',
-    },
     -- search
     {
       '<leader>:',
@@ -212,7 +213,21 @@ return {
     },
     -- LSP
     {
-      '<leader>fy',
+      '<leader>ldd',
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = 'Project Diagnostics',
+    },
+    {
+      '<leader>ldk',
+      function()
+        Snacks.picker.diagnostics_buffer()
+      end,
+      desc = 'Buffer Diagnostics',
+    },
+    {
+      '<leader>ly',
       function()
         Snacks.picker.lsp_symbols()
       end,

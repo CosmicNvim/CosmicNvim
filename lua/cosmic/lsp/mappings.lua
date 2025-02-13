@@ -23,12 +23,6 @@ function M.init(client, bufnr)
     '<cmd>lua vim.diagnostic.open_float(nil, { scope = "line", })<cr>',
     { desc = 'Show current line diagnostic' }
   )
-  buf_map(
-    'n',
-    '<leader>ldb',
-    '<cmd>lua vim.diagnostic.open_float(nil, { scope = "buffer", })<cr>',
-    { desc = 'Show buffer diagnostics' }
-  )
 
   -- hover
   buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = 'Show documentation' })

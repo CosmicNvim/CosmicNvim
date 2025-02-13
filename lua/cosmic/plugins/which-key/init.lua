@@ -6,12 +6,11 @@ return {
     preset = 'modern',
     win = {
       border = user_config.border,
-      padding = { 3, 2, 3, 2 },
+      padding = { 3, 2 },
     },
     layout = {
-      height = { min = 10, max = 25 },
       width = { min = 20, max = 50 },
-      spacing = 8,
+      spacing = 5,
       align = 'center',
     },
     ---@type wk.Spec

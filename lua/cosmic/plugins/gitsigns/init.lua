@@ -66,7 +66,7 @@ return {
       end, {
         desc = 'Blame line',
       })
-      map('n', '<leader>gtb', gs.toggle_current_line_blame, { desc = 'Toggle blame current line' })
+      map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'Toggle blame current line' })
       map('n', '<leader>gd', gs.diffthis, { desc = 'Diff buffer' })
       map('n', '<leader>gD', function()
         gs.diffthis('~')
