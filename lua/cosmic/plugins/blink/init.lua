@@ -56,7 +56,9 @@ return {
     snippets = { preset = 'luasnip' },
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
-      cmdline = {},
+    },
+    cmdline = {
+      sources = {},
     },
     completion = {
       accept = {
