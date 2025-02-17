@@ -89,28 +89,36 @@ return {
     {
       '<leader>fp',
       function()
-        Snacks.picker.files()
+        Snacks.picker.files({
+          hidden = true,
+        })
       end,
       desc = 'Find Files',
     },
     {
       '<leader>fk',
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers({
+          hidden = true,
+        })
       end,
       desc = 'Buffers',
     },
     {
       '<leader>fm',
       function()
-        Snacks.picker.smart()
+        Snacks.picker.smart({
+          hidden = true,
+        })
       end,
       desc = 'Smart Finder',
     },
     {
       '<leader>ff',
       function()
-        Snacks.picker.git_files()
+        Snacks.picker.git_files({
+          hidden = true,
+        })
       end,
       desc = 'Find Git Files',
     },
@@ -161,7 +169,9 @@ return {
     {
       '<leader>fs',
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep({
+          hidden = true,
+        })
       end,
       desc = 'Grep',
     },
