@@ -58,7 +58,14 @@ return {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
     cmdline = {
-      sources = {},
+      completion = {
+        ghost_text = { enabled = true },
+        menu = {
+          auto_show = function(ctx)
+            return vim.fn.getcmdtype() == ':'
+          end,
+        },
+      },
     },
     completion = {
       accept = {

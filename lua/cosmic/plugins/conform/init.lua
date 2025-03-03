@@ -19,10 +19,6 @@ return {
       javascriptreact = { 'prettierd' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
-      --[[ javascript = { 'prettier' }, ]]
-      --[[ javascriptreact = { 'prettier' }, ]]
-      --[[ typescript = { 'prettier' }, ]]
-      --[[ typescriptreact = { 'prettier' }, ]]
       --[[ javascript = { 'deno_fmt' }, ]]
       --[[ javascriptreact = { 'deno_fmt' }, ]]
       --[[ typescript = { 'deno_fmt' }, ]]
