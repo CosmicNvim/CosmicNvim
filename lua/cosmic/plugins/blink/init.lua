@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 local user_config = require('cosmic.core.user')
 
 return {
