@@ -55,14 +55,16 @@ end
 
 return {
   settings = {
-    python = {
+    basedpyright = {
       analysis = {
-        typeCheckingMode = 'off',
-        diagnosticMode = 'off',
+        autoSearchPaths = true,
+        diagnostic_mode = 'workspace',
+        typeCheckingMode = "off",
         useLibraryCodeForTypes = true,
-        completeFunctionParens = true,
       },
-      pythonPath = prefer_bin_from_venv('python'),
     },
-  },
+    python = {
+      pythonPath = prefer_bin_from_venv('python'),
+    }
+  }
 }
