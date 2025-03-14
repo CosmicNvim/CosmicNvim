@@ -57,7 +57,6 @@ return {
   settings = {
     basedpyright = {
       analysis = {
-        autoSearchPaths = true,
         diagnostic_mode = 'workspace',
         typeCheckingMode = "off",
         useLibraryCodeForTypes = true,
