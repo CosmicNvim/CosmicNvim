@@ -30,38 +30,9 @@ return {
     },
     gitbrowse = {},
     indent = {},
-    --[[ terminal = { ]]
-    --[[   win = { ]]
-    --[[     border = user_config.border, ]]
-    --[[     position = 'float', ]]
-    --[[   }, ]]
-    --[[ }, ]]
   },
 
   keys = {
-    -- terminal
-    --[[ { ]]
-    --[[   '<leader>xx', ]]
-    --[[   function() ]]
-    --[[     Snacks.terminal.toggle() ]]
-    --[[   end, ]]
-    --[[   desc = 'Toggle Terminal', ]]
-    --[[ }, ]]
-    --[[ { ]]
-    --[[   '<leader>xn', ]]
-    --[[   function() ]]
-    --[[     Snacks.terminal.open(nil, { auto_insert = false, start_insert = false }) ]]
-    --[[   end, ]]
-    --[[   desc = 'New terminal', ]]
-    --[[ }, ]]
-    --[[ { ]]
-    --[[   '<leader>fx', ]]
-    --[[   function() ]]
-    --[[     local wins = Snacks.terminal.list() ]]
-    --[[     print(vim.inspect(wins)) ]]
-    --[[   end, ]]
-    --[[   desc = 'Find open terminal', ]]
-    --[[ }, ]]
     -- notifications
     {
       '<leader>nh',

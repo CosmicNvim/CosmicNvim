@@ -12,5 +12,5 @@ return {
     fast_wrap = {},
   },
   event = 'InsertEnter',
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'autopairs'),
+  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'auto-pairs'),
 }

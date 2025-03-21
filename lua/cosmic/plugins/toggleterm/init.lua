@@ -39,5 +39,5 @@ return {
       desc = 'Rename terminal',
     },
   },
-  --[[ enabled = false, ]]
+  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'toggleterm'),
 }

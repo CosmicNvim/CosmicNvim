@@ -9,27 +9,12 @@ local default_config = {
   border = 'rounded',
   disable_builtin_plugins = {},
   add_plugins = {},
-  plugins = {},
   lsp = {
     inlay_hint = false,
     format_timeout = 500,
     rename_notification = true,
     -- table of callbacks pushed via plugins
     on_attach_mappings = {},
-    -- lsp servers that should be installed
-    ensure_installed = {
-      'astro',
-      'cssls',
-      'eslint',
-      'gopls',
-      'html',
-      'jsonls',
-      'lua_ls',
-      'prettierd',
-      'pyright',
-      'tailwindcss',
-      'vtsls',
-    },
     -- lsp servers that should be enabled
     servers = {
       astro = true,
@@ -39,7 +24,7 @@ local default_config = {
       html = true,
       jsonls = true,
       lua_ls = true,
-      pyright = true,
+      basedpyright = true,
       tailwindcss = true,
       vtsls = { format_on_save = false },
     },

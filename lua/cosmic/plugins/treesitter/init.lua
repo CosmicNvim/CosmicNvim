@@ -1,5 +1,4 @@
 local user_config = require('cosmic.core.user')
-local u = require('cosmic.utils')
 
 local defaults = {
   ensure_installed = {
@@ -44,14 +43,14 @@ local defaults = {
 return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
-    { 'windwp/nvim-ts-autotag', lazy = true },
+    { 'windwp/nvim-ts-autotag',                      lazy = true },
     { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
-    { 'nvim-treesitter/nvim-treesitter-refactor', lazy = true },
+    { 'nvim-treesitter/nvim-treesitter-refactor',    lazy = true },
   },
   event = 'BufReadPre',
   build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter.configs').setup(u.merge(defaults, user_config.plugins.treesitter or {}))
+    require('nvim-treesitter.configs').setup(defaults)
     require('ts_context_commentstring').setup({
       enable_autocmd = false,
       languages = {

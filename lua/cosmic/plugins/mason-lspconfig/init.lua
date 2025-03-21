@@ -1,6 +1,7 @@
 local user_config = require('cosmic.core.user')
 return {
   'williamboman/mason-lspconfig.nvim',
+  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'mason-lspconfig'),
   event = { 'BufReadPre', 'BufNewFile' },
   init = function()
     -- set up lsp servers
@@ -36,7 +37,6 @@ return {
     {
       'williamboman/mason.nvim',
       opts = {
-        ensure_installed = user_config.lsp.ensure_installed,
         ui = {
           border = user_config.border,
         },
