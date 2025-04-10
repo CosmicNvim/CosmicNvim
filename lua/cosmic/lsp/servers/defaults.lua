@@ -15,7 +15,7 @@ function M.on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  if user_config.lsp.inlay_hint and client.supports_method('textDocument/inlayHint') then
+  if user_config.lsp.inlay_hint and client:supports_method('textDocument/inlayHint') then
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
 
@@ -29,15 +29,6 @@ function M.on_attach(client, bufnr)
     callback(client, bufnr)
   end
 end
-
---[[ M.capabilities = u.merge(require('cmp_nvim_lsp').default_capabilities(), { ]]
---[[   -- See: https://github.com/neovim/neovim/issues/23291 ]]
---[[   workspace = { ]]
---[[     didChangeWatchedFiles = { ]]
---[[       dynamicRegistration = false, ]]
---[[     }, ]]
---[[   }, ]]
---[[ }) ]]
 
 M.capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
 

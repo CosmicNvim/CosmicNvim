@@ -25,6 +25,7 @@ local default_config = {
       jsonls = true,
       lua_ls = true,
       basedpyright = true,
+      ruff = true,
       tailwindcss = true,
       vtsls = { format_on_save = false },
     },

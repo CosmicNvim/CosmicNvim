@@ -57,10 +57,12 @@ return {
   settings = {
     basedpyright = {
       analysis = {
-        diagnostic_mode = 'workspace',
-        typeCheckingMode = "off",
-        useLibraryCodeForTypes = true,
+        --[[ diagnosticMode = 'workspace', ]]
+        --[[ typeCheckingMode = "basic", ]]
+        --[[ useLibraryCodeForTypes = true, ]]
+        ignore = { '*' },
       },
+      disableOrganizeImports = true,
     },
     python = {
       pythonPath = prefer_bin_from_venv('python'),

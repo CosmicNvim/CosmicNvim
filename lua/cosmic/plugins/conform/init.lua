@@ -14,11 +14,18 @@ return {
       go = { 'goimports', 'gofmt' },
       json = { 'prettierd' },
       lua = { 'stylua' },
-      python = { 'isort', 'black' },
       javascript = { 'prettierd' },
       javascriptreact = { 'prettierd' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
+      python = {
+        -- To fix auto-fixable lint errors.
+        "ruff_fix",
+        -- To run the Ruff formatter.
+        "ruff_format",
+        -- To organize the imports.
+        "ruff_organize_imports",
+      },
       --[[ javascript = { 'deno_fmt' }, ]]
       --[[ javascriptreact = { 'deno_fmt' }, ]]
       --[[ typescript = { 'deno_fmt' }, ]]
@@ -32,7 +39,7 @@ return {
     },
     formatters = {
       prettierd = {
-        command = 'prettierd', -- Use system prettierd
+        command = 'prettierd',  -- Use system prettierd
         args = { '$FILENAME' }, -- Simplify args to just filename
         extra_filetypes = { 'astro' },
         env = {
