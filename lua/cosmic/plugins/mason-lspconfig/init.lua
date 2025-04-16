@@ -31,6 +31,23 @@ return {
         start_server(config_server)
       end
     end
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup('cosmic_lsp_attach_disable_format', { clear = true }),
+      callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client == nil then
+          return
+        end
+        local disable = type(user_config.lsp.servers[client.name]) == 'table' and
+            user_config.lsp.servers[client.name].format_on_save == false
+        if disable then
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end
+      end,
+      desc = 'LSP: disable formatting for user specified lsps',
+    })
   end,
   dependencies = {
     { 'neovim/nvim-lspconfig', lazy = true },

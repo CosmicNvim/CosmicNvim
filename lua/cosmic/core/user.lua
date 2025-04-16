@@ -24,8 +24,14 @@ local default_config = {
       html = true,
       jsonls = true,
       lua_ls = true,
-      basedpyright = true,
-      ruff = true,
+      -- Disable in favor of conform ruff
+      basedpyright = {
+        format_on_save = false
+      },
+      -- Disable in favor of conform ruff
+      ruff = {
+        format_on_save = false
+      },
       tailwindcss = true,
       vtsls = { format_on_save = false },
     },
