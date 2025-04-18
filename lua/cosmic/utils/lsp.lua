@@ -4,28 +4,38 @@ local M = {}
 M.format_on_save_enabled = true
 
 function M.can_client_format_on_save(client)
-  local user_server_config = user_config.lsp.servers[client.name]
-  -- formatting enabled by default if server=true
-  if user_server_config == true then
-    return true
+  local cfg = user_config.lsp.servers[client.name]
+  if type(cfg) == "table" and cfg.format_on_save == false then
+    return false
   end
-
-  -- check config server settings
-  if user_server_config then
-    -- default to true if no format flag on server settings is set
-    if user_server_config.format_on_save == nil then
-      return true
-    end
-    -- check format flag on server settings
-    return user_server_config.format_on_save == true
-  end
-
   return true
 end
 
 function M.toggle_format_on_save()
   M.format_on_save_enabled = not M.format_on_save_enabled
-  vim.notify(string.format('Format on save: %s', M.format_on_save_enabled))
+
+  local clients = vim.lsp.get_clients({
+    bufnr = vim.api.nvim_get_current_buf(),
+  })
+  local touched = {}
+
+  for _, client in ipairs(clients) do
+    if M.can_client_format_on_save(client) then
+      client.server_capabilities.documentFormattingProvider = M.format_on_save_enabled
+      client.server_capabilities.documentRangeFormattingProvider = M.format_on_save_enabled
+      table.insert(touched, client.name)
+    end
+  end
+
+  if #touched > 0 then
+    vim.notify(string.format(
+      "Format on save: [%s] for [%s]",
+      tostring(M.format_on_save_enabled),
+      table.concat(touched, ", ")
+    ))
+  else
+    vim.notify('Format on save: [No LSP formatting to toggle]')
+  end
 end
 
 function M.buf_format(bufnr, timeout)
