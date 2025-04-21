@@ -1,14 +1,31 @@
 local user_config = require('cosmic.core.user')
 local M = {}
 
+-- global var for format on save
 vim.g.format_on_save_enabled = true
 
+-- checks if user config allows lsp to format on save
 function M.can_client_format_on_save(client)
-  local cfg = user_config.lsp.servers[client.name]
-  if type(cfg) == "table" and cfg.format_on_save == false then
+  local server_config = user_config.lsp.servers[client.name]
+  if type(server_config) == "table" and server_config.format_on_save == false then
     return false
   end
   return true
+end
+
+local function get_conform_formatters()
+  local formatters = {}
+  local ok, conform = pcall(require, 'conform')
+  if not ok then
+    return formatters
+  end
+
+  for _, formatter in pairs(conform.list_formatters_to_run()) do
+    table.insert(formatters, formatter.name)
+  end
+
+  table.sort(formatters)
+  return formatters
 end
 
 local function append_formatters_to_str(prefix, msg, formatters)
@@ -22,7 +39,17 @@ local function append_formatters_to_str(prefix, msg, formatters)
   return msg
 end
 
-local function notify_format_on_save(msg)
+local function notify_format_on_save(lsp_formatters)
+  local msg = ''
+  msg = append_formatters_to_str('LSP', msg, lsp_formatters)
+
+  -- also notify about any conform formatters that are now toggled via global var
+  local conform_formatters = get_conform_formatters()
+  if #conform_formatters > 0 then
+    msg = msg .. '\n\n'
+    msg = append_formatters_to_str('Conform', msg, conform_formatters)
+  end
+
   local subtitle = "Format on save: [disabled]\n\n"
   if vim.g.format_on_save_enabled then
     subtitle = "Format on save: [enabled]\n\n"
@@ -30,26 +57,6 @@ local function notify_format_on_save(msg)
   vim.notify(subtitle .. msg, "info", {
     title = "Format on save"
   })
-end
-
-function M.get_conform_formatters()
-  local ok, conform = pcall(require, 'conform')
-  if not ok then
-    return {}
-  end
-
-  local formatters = {}
-
-  for _, formatter in pairs(conform.list_formatters_to_run()) do
-    table.insert(formatters, formatter.name)
-  end
-
-  if #formatters > 0 then
-    table.sort(formatters)
-    return formatters
-  end
-
-  return {}
 end
 
 function M.toggle_format_on_save()
@@ -68,17 +75,8 @@ function M.toggle_format_on_save()
     end
   end
 
-  local conform_formatters = M.get_conform_formatters()
-
-  local msg = ''
-  msg = append_formatters_to_str('LSP', msg, lsp_formatters)
-
-  if #conform_formatters > 0 then
-    msg = msg .. '\n\n'
-    msg = append_formatters_to_str('Conform', msg, conform_formatters)
-  end
-
-  notify_format_on_save(msg)
+  table.sort(lsp_formatters)
+  notify_format_on_save(lsp_formatters)
 end
 
 function M.buf_format(bufnr, timeout)
