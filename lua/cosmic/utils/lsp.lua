@@ -11,6 +11,30 @@ function M.can_client_format_on_save(client)
   return true
 end
 
+function M.toggle_conform_formatters()
+  local ok, conform = pcall(require, 'conform')
+  if not ok then
+    return
+  end
+
+  local formatters = {}
+
+  for _, formatter in pairs(conform.list_formatters_to_run()) do
+    table.insert(formatters, formatter.name)
+  end
+
+  if #formatters > 0 then
+    table.sort(formatters)
+    vim.notify(string.format(
+      "Format on save: [%s] for [%s]",
+      tostring(M.format_on_save_enabled),
+      table.concat(formatters, ", ")
+    ), "info", {
+      title = "Conform"
+    })
+  end
+end
+
 function M.toggle_format_on_save()
   M.format_on_save_enabled = not M.format_on_save_enabled
 
@@ -33,10 +57,14 @@ function M.toggle_format_on_save()
       "Format on save: [%s] for [%s]",
       tostring(M.format_on_save_enabled),
       table.concat(touched, ", ")
-    ))
+    ), "info", {
+      title = "LSP"
+    })
   else
     vim.notify('Format on save: [No LSP formatting to toggle]')
   end
+
+  M.toggle_conform_formatters()
 end
 
 function M.buf_format(bufnr, timeout)

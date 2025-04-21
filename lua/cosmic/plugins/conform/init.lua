@@ -1,4 +1,5 @@
 local user_config = require('cosmic.core.user')
+local lsp_utils = require('cosmic.utils.lsp')
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -31,11 +32,16 @@ return {
       --[[ typescript = { 'deno_fmt' }, ]]
       --[[ typescriptreact = { 'deno_fmt' }, ]]
     },
-    -- Set default options
-    format_on_save = {
-      lsp_format = 'fallback',
-      timeout_ms = 1500,
-    },
+    format_on_save = function(bufnr)
+      if not lsp_utils.format_on_save_enabled then
+        return
+      end
+
+      return {
+        lsp_format = 'fallback',
+        timeout_ms = 1500,
+      }
+    end,
     formatters = {
       prettierd = {
         command = 'prettierd',  -- Use system prettierd
