@@ -11,7 +11,11 @@ return {
     if can_format_on_save(client) then
       vim.api.nvim_create_autocmd('BufWritePre', {
         buffer = bufnr,
-        command = 'EslintFixAll',
+        callback = function()
+          if vim.g.format_on_save_enabled then
+            vim.cmd('EslintFixAll')
+          end
+        end,
         group = defaults.augroup,
       })
     end
