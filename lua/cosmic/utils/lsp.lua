@@ -11,7 +11,28 @@ function M.can_client_format_on_save(client)
   return true
 end
 
-function M.toggle_conform_formatters()
+local function append_formatters_to_str(prefix, msg, formatters)
+  if #formatters > 0 then
+    table.sort(formatters)
+    msg = msg .. string.format('[%s] \n' .. table.concat(formatters, "\n"), prefix)
+  else
+    msg = msg .. string.format('[%s] \nNo formatters to toggle', prefix)
+  end
+
+  return msg
+end
+
+local function notify_format_on_save(msg)
+  local subtitle = "Format on save: [disabled]\n\n"
+  if vim.g.format_on_save_enabled then
+    subtitle = "Format on save: [enabled]\n\n"
+  end
+  vim.notify(subtitle .. msg, "info", {
+    title = "Format on save"
+  })
+end
+
+function M.get_conform_formatters()
   local ok, conform = pcall(require, 'conform')
   if not ok then
     return {}
@@ -47,36 +68,17 @@ function M.toggle_format_on_save()
     end
   end
 
-  local conform_formatters = M.toggle_conform_formatters()
+  local conform_formatters = M.get_conform_formatters()
 
   local msg = ''
-  if #lsp_formatters > 0 then
-    table.sort(lsp_formatters)
-    msg = msg .. string.format('[LSP] \n' .. table.concat(lsp_formatters, "\n"))
-  else
-    msg = msg .. string.format('[LSP] \nNo formatters to toggle')
-  end
-
-  if #conform_formatters > 0 and #msg then
-    msg = msg .. '\n\n'
-  end
+  msg = append_formatters_to_str('LSP', msg, lsp_formatters)
 
   if #conform_formatters > 0 then
-    table.sort(conform_formatters)
-    msg = msg .. string.format('[Conform] \n' .. table.concat(conform_formatters, "\n"))
-  else
-    msg = msg .. string.format('[Conform] \nNo formatters to toggle')
+    msg = msg .. '\n\n'
+    msg = append_formatters_to_str('Conform', msg, conform_formatters)
   end
 
-  local subtitle = "Format on save: [disabled]\n\n"
-  if vim.g.format_on_save_enabled then
-    subtitle = "Format on save: [enabled]\n\n"
-  end
-  if #msg then
-    vim.notify(subtitle .. msg, "info", {
-      title = "Format on save"
-    })
-  end
+  notify_format_on_save(msg)
 end
 
 function M.buf_format(bufnr, timeout)
