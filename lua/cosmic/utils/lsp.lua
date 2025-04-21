@@ -1,7 +1,7 @@
 local user_config = require('cosmic.core.user')
 local M = {}
 
-M.format_on_save_enabled = true
+vim.g.format_on_save_enabled = true
 
 function M.can_client_format_on_save(client)
   local cfg = user_config.lsp.servers[client.name]
@@ -27,7 +27,7 @@ function M.toggle_conform_formatters()
     table.sort(formatters)
     vim.notify(string.format(
       "Format on save: [%s] for [%s]",
-      tostring(M.format_on_save_enabled),
+      tostring(vim.g.format_on_save_enabled),
       table.concat(formatters, ", ")
     ), "info", {
       title = "Conform"
@@ -36,7 +36,7 @@ function M.toggle_conform_formatters()
 end
 
 function M.toggle_format_on_save()
-  M.format_on_save_enabled = not M.format_on_save_enabled
+  vim.g.format_on_save_enabled = not vim.g.format_on_save_enabled
 
   local clients = vim.lsp.get_clients({
     bufnr = vim.api.nvim_get_current_buf(),
@@ -45,8 +45,8 @@ function M.toggle_format_on_save()
 
   for _, client in ipairs(clients) do
     if M.can_client_format_on_save(client) then
-      client.server_capabilities.documentFormattingProvider = M.format_on_save_enabled
-      client.server_capabilities.documentRangeFormattingProvider = M.format_on_save_enabled
+      client.server_capabilities.documentFormattingProvider = vim.g.format_on_save_enabled
+      client.server_capabilities.documentRangeFormattingProvider = vim.g.format_on_save_enabled
       table.insert(touched, client.name)
     end
   end
@@ -55,7 +55,7 @@ function M.toggle_format_on_save()
     table.sort(touched)
     vim.notify(string.format(
       "Format on save: [%s] for [%s]",
-      tostring(M.format_on_save_enabled),
+      tostring(vim.g.format_on_save_enabled),
       table.concat(touched, ", ")
     ), "info", {
       title = "LSP"

@@ -1,5 +1,4 @@
 local user_config = require('cosmic.core.user')
-local lsp_utils = require('cosmic.utils.lsp')
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -33,7 +32,7 @@ return {
       --[[ typescriptreact = { 'deno_fmt' }, ]]
     },
     format_on_save = function(bufnr)
-      if not lsp_utils.format_on_save_enabled then
+      if not vim.g.format_on_save_enabled then
         return
       end
 
