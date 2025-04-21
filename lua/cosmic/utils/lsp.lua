@@ -28,6 +28,7 @@ function M.toggle_format_on_save()
   end
 
   if #touched > 0 then
+    table.sort(touched)
     vim.notify(string.format(
       "Format on save: [%s] for [%s]",
       tostring(M.format_on_save_enabled),
@@ -60,24 +61,12 @@ function M.buf_get_active_clients_str()
     table.insert(client_names, client.name)
   end
 
-  if not vim.tbl_isempty(client_names) then
+  if #client_names > 0 then
     table.sort(client_names)
+    return table.concat(client_names, ", ")
   end
 
-  local client_str = ''
-
-  if #client_names < 1 then
-    return
-  end
-
-  for i, client_name in ipairs(client_names) do
-    client_str = client_str .. client_name
-    if i < #client_names then
-      client_str = client_str .. ', '
-    end
-  end
-
-  return client_str
+  return ''
 end
 
 function M.toggle_inlay_hints()

@@ -42,6 +42,7 @@ function M.init(client, bufnr)
     buf_map('n', '<leader>lf', '', { desc = 'Format', callback = lsp_utils.buf_format })
     buf_map('v', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', { desc = 'Range Format' })
   end
+  buf_map('n', '<leader>lx', lsp_utils.toggle_format_on_save, { desc = 'Toggle format on save' })
 
   -- lsp workspace
   buf_map('n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Add workspace folder' })
