@@ -9,8 +9,6 @@ local config = {
     inlay_hint = false,
     -- Time in MS before format timeout
     format_timeout = 1000,
-    -- Set to false to disable rename notification
-    rename_notification = true,
     -- Enable non-default servers, use default lsp config
     -- Check here for configs that will be used by default: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
 

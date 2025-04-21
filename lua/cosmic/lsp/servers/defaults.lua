@@ -24,10 +24,14 @@ function M.on_attach(client, bufnr)
   -- set up default mappings
   lsp_mappings.init(client, bufnr)
 
-  -- set up any additional mappings/overrides from user config
-  for _, callback in pairs(user_config.lsp.on_attach_mappings) do
-    callback(client, bufnr)
-  end
+  -- set up any custom mappings from plugins
+  vim.api.nvim_exec_autocmds('User', {
+    pattern = 'CosmicLspAttach',
+    data = {
+      client_id = client.id,
+      buf = bufnr
+    }
+  })
 end
 
 M.capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())

@@ -12,9 +12,6 @@ local default_config = {
   lsp = {
     inlay_hint = false,
     format_timeout = 500,
-    rename_notification = true,
-    -- table of callbacks pushed via plugins
-    on_attach_mappings = {},
     -- lsp servers that should be enabled
     servers = {
       astro = true,
@@ -40,9 +37,5 @@ local default_config = {
 
 local u = require('cosmic.utils')
 local config = u.merge(default_config, user_config)
-
-function config.lsp.add_on_attach_mapping(callback)
-  table.insert(config.lsp.on_attach_mappings, callback)
-end
 
 return config

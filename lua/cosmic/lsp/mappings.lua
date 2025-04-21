@@ -8,8 +8,9 @@ function M.init(client, bufnr)
     noremap = false,
   })
 
-  --[[ buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to definition' }) ]]
   buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Go to declaration' })
+  -- Commented out mappings are controlled by Snacks
+  --[[ buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to definition' }) ]]
   --[[ buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Go to implementation' }) ]]
   --[[ buf_map('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = 'Go to type definition' }) ]]
   --[[ buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'Go to reference' }) ]]
