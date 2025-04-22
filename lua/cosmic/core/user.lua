@@ -5,6 +5,23 @@ if not ok then
   user_config = {}
 end
 
+--- @class CosmicUserConfigLspSever
+--- @field format_on_save? boolean
+--- @field opts? vim.lsp.ClientConfig
+
+--- @class CosmicUserConfigLsp
+--- @field format_timeout number
+--- @field inlay_hint boolean
+--- @field servers table<string, CosmicUserConfigLspSever|boolean>
+
+--- @class CosmicUserConfig
+--- @field add_plugins LazySpec[]
+--- @field border string
+--- @field diagnostics? vim.diagnostic.Opts
+--- @field disable_builtin_plugins string[]
+--- @field lsp CosmicUserConfigLsp
+
+--- @type CosmicUserConfig
 local default_config = {
   border = 'rounded',
   disable_builtin_plugins = {},
@@ -36,6 +53,7 @@ local default_config = {
 }
 
 local u = require('cosmic.utils')
-local config = u.merge(default_config, user_config)
 
+--- @type CosmicUserConfig
+local config = u.merge(default_config, user_config)
 return config
