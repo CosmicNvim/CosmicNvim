@@ -4,7 +4,9 @@ local M = {}
 -- global var for format on save
 vim.g.format_on_save_enabled = true
 
--- checks if user config allows lsp to format on save
+--- Checks if user config allows lsp to format on save
+--- @param client vim.lsp.Client  # the LSP client object
+--- @return boolean               # true if formatting on save is allowed
 function M.can_client_format_on_save(client)
   local server_config = user_config.lsp.servers[client.name]
   if type(server_config) == "table" and server_config.format_on_save == false then
@@ -13,6 +15,8 @@ function M.can_client_format_on_save(client)
   return true
 end
 
+--- Get list of formatter names that will run for current buffer
+--- @return string[]
 local function get_conform_formatters()
   local formatters = {}
   local ok, conform = pcall(require, 'conform')
@@ -28,6 +32,11 @@ local function get_conform_formatters()
   return formatters
 end
 
+--- Helper to build output string for formatters.
+--- @param prefix string       Prefix prepended to message
+--- @param msg string          Message to append to
+--- @param formatters string[] List of formatter names
+--- @return string             The combined message
 local function append_formatters_to_str(prefix, msg, formatters)
   if #formatters > 0 then
     table.sort(formatters)
@@ -39,6 +48,9 @@ local function append_formatters_to_str(prefix, msg, formatters)
   return msg
 end
 
+--- Notify user of formatters toggled
+--- @param lsp_formatters string[]  List of lsp formatters
+--- @return nil
 local function notify_format_on_save(lsp_formatters)
   local msg = ''
   msg = append_formatters_to_str('LSP', msg, lsp_formatters)
@@ -59,6 +71,8 @@ local function notify_format_on_save(lsp_formatters)
   })
 end
 
+--- Toggle formatting on save
+--- @return nil
 function M.toggle_format_on_save()
   vim.g.format_on_save_enabled = not vim.g.format_on_save_enabled
 
@@ -79,7 +93,10 @@ function M.toggle_format_on_save()
   notify_format_on_save(lsp_formatters)
 end
 
-function M.buf_format(bufnr, timeout)
+--- Format a buffer
+--- @param bufnr number buffer to format
+--- @param timeout number number in seconds to wait for formatting
+function M.format_buf(bufnr, timeout)
   if timeout == '' or timeout == nil then
     timeout = user_config.lsp.format_timeout
   else
@@ -91,6 +108,8 @@ function M.buf_format(bufnr, timeout)
   })
 end
 
+--- Get comma seperated string of active lsp clients for current buffer
+--- @return string
 function M.buf_get_active_clients_str()
   local active_clients = vim.lsp.get_clients({
     bufnr = vim.api.nvim_get_current_buf(),
@@ -109,6 +128,8 @@ function M.buf_get_active_clients_str()
   return ''
 end
 
+--- Toggle inlay hints
+--- @return nil
 function M.toggle_inlay_hints()
   local enabled = user_config.lsp.inlay_hint
   return function()

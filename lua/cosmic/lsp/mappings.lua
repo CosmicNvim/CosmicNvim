@@ -40,7 +40,7 @@ function M.init(client, bufnr)
 
   -- formatting
   if client:supports_method('textDocument/formatting') then
-    buf_map('n', '<leader>lf', '', { desc = 'Format', callback = lsp_utils.buf_format })
+    buf_map('n', '<leader>lf', '', { desc = 'Format', callback = lsp_utils.format_buf })
     buf_map('v', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', { desc = 'Range Format' })
   end
   buf_map('n', '<leader>lx', lsp_utils.toggle_format_on_save, { desc = 'Toggle format on save' })
