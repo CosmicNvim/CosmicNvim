@@ -22,7 +22,8 @@ local function format_diagnostic(diagnostic)
   return message .. ' '
 end
 
-local config = u.merge({
+--- @type vim.diagnostic.Opts
+local defaults = {
   underline = true,
   update_in_insert = false,
   severity_sort = true,
@@ -58,7 +59,10 @@ local config = u.merge({
     },
     format = format_diagnostic,
   },
-}, user_config.diagnostics or {})
+}
+
+--- @type vim.diagnostic.Opts
+local config = u.merge(defaults, user_config.diagnostics or {})
 
 -- set up diagnostics
 vim.diagnostic.config(config)

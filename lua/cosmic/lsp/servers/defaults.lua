@@ -1,3 +1,5 @@
+---@diagnostic disable: missing-fields
+---@type vim.lsp.ClientConfig
 local M = {}
 local augroup_name = 'CosmicNvimLspFormat'
 local user_config = require('cosmic.core.user')

@@ -1,3 +1,5 @@
+---@diagnostic disable: missing-fields
+---@type vim.lsp.ClientConfig
 local M = {}
 
 M.root_dir = function(fname)

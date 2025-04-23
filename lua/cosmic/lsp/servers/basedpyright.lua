@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 -- FIXED but credit: https://github.com/jack-michaud/nvim/blob/33aefa8055aedc8d0dd592292aba903d9fb9ee2d/lua/plugins/editor.lua#L1
 local function prefer_bin_from_venv(executable_name)
   -- Return the path to the executable if $VIRTUAL_ENV is set and the binary exists somewhere beneath the $VIRTUAL_ENV path, otherwise get it from Mason
@@ -53,6 +54,7 @@ local function prefer_bin_from_venv(executable_name)
   return mason_path
 end
 
+---@type vim.lsp.ClientConfig
 return {
   settings = {
     basedpyright = {

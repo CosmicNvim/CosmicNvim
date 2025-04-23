@@ -11,7 +11,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if not lsp_utils.can_client_format_on_save(client) then
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
-      vim.notify(string.format('Disabled LSP formatting based on config: [%s]', client.name))
     end
   end,
   desc = 'LSP: disable formatting for user specified lsps',

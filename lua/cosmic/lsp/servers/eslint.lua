@@ -1,5 +1,7 @@
+---@diagnostic disable: missing-fields
 local defaults = require('cosmic.lsp.servers.defaults')
 local can_format_on_save = require('cosmic.utils.lsp').can_client_format_on_save
+---@type vim.lsp.ClientConfig
 return {
   flags = {
     allow_incremental_sync = false,
