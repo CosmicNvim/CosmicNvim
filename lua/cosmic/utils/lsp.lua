@@ -1,4 +1,5 @@
 local user_config = require('cosmic.core.user')
+local icons = require('cosmic.utils.icons')
 local M = {}
 
 -- global var for format on save
@@ -28,7 +29,6 @@ local function get_conform_formatters()
     table.insert(formatters, formatter.name)
   end
 
-  table.sort(formatters)
   return formatters
 end
 
@@ -40,34 +40,47 @@ end
 local function append_formatters_to_str(prefix, msg, formatters)
   if #formatters > 0 then
     table.sort(formatters)
-    msg = msg .. string.format('[%s] \n' .. table.concat(formatters, "\n"), prefix)
+    msg = msg .. string.format('%s \n%s', prefix, table.concat(formatters, "\n"))
   else
-    msg = msg .. string.format('[%s] \nNo formatters to toggle', prefix)
+    msg = msg .. string.format('%s \nNone', prefix)
   end
 
   return msg
 end
 
 --- Notify user of formatters toggled
+--- @param clients vim.lsp.Client[]
 --- @param lsp_formatters string[]  List of lsp formatters
 --- @return nil
-local function notify_format_on_save(lsp_formatters)
+local function notify_format_on_save(clients, lsp_formatters)
   local msg = ''
-  msg = append_formatters_to_str('LSP', msg, lsp_formatters)
+  local toggle_str = 'enabled'
+  if vim.g.format_on_save_enabled then
+    toggle_str = 'disabled'
+  end
+  msg = append_formatters_to_str(string.format('[LSP: %s]', toggle_str), msg, lsp_formatters)
+
+  -- get always disabled lsp formatters
+  local always_disabled = {}
+  for _, client in ipairs(clients) do
+    if not lsp_formatters[client.name] and not M.can_client_format_on_save(client) then
+      table.insert(always_disabled, client.name)
+    end
+  end
+
+  if #always_disabled > 0 then
+    msg = msg .. '\n'
+    msg = append_formatters_to_str('[' .. icons.warn .. ' Always disabled by config]', msg, always_disabled)
+  end
 
   -- also notify about any conform formatters that are now toggled via global var
   local conform_formatters = get_conform_formatters()
   if #conform_formatters > 0 then
     msg = msg .. '\n\n'
-    msg = append_formatters_to_str('Conform', msg, conform_formatters)
+    msg = append_formatters_to_str(string.format('[Conform: %s]', toggle_str), msg, conform_formatters)
   end
-
-  local subtitle = "Format on save: [disabled]\n\n"
-  if vim.g.format_on_save_enabled then
-    subtitle = "Format on save: [enabled]\n\n"
-  end
-  vim.notify(subtitle .. msg, "info", {
-    title = "Format on save"
+  vim.notify(msg, "info", {
+    title = string.format('Format on save: [%s]', toggle_str)
   })
 end
 
@@ -89,8 +102,7 @@ function M.toggle_format_on_save()
     end
   end
 
-  table.sort(lsp_formatters)
-  notify_format_on_save(lsp_formatters)
+  notify_format_on_save(clients, lsp_formatters)
 end
 
 --- Format a buffer
