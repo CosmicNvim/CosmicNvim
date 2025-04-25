@@ -2,9 +2,10 @@ local user_config = require('cosmic.core.user')
 
 return {
   'saghen/blink.cmp',
-  lazy = false, -- lazy loading handled internally
+  lazy = false,
   -- optional: provides snippets for the snippet source
   dependencies = {
+    { "xzbdmw/colorful-menu.nvim", lazy = true },
     {
       'L3MON4D3/LuaSnip',
       version = 'v2.*',
@@ -79,7 +80,13 @@ return {
       menu = {
         draw = {
           columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind', gap = 1 } },
-          treesitter = { 'lsp' }
+          components = {
+            label = {
+              highlight = function(ctx)
+                return require("colorful-menu").blink_components_highlight(ctx)
+              end,
+            },
+          },
         },
       },
       documentation = {
