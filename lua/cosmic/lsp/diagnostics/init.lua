@@ -42,7 +42,6 @@ local defaults = {
     },
   },
   float = {
-    border = user_config.border,
     focusable = false,
     header = { icons.debug .. ' Diagnostics:', 'DiagnosticInfo' },
     scope = 'line',
@@ -61,8 +60,5 @@ local defaults = {
   },
 }
 
---- @type vim.diagnostic.Opts
-local config = u.merge(defaults, user_config.diagnostics or {})
-
 -- set up diagnostics
-vim.diagnostic.config(config)
+vim.diagnostic.config(u.merge(defaults, user_config.diagnostics or {}))

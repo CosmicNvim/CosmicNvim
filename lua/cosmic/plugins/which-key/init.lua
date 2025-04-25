@@ -5,7 +5,6 @@ return {
   opts = {
     preset = 'modern',
     win = {
-      border = user_config.border,
       padding = { 3, 2 },
     },
     layout = {

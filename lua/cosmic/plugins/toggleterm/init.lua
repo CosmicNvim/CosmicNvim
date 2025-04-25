@@ -3,8 +3,9 @@ return {
   'akinsho/toggleterm.nvim',
   opts = {
     direction = 'float',
+    -- toggleterm doesn't respect default winborder or highlights
     float_opts = {
-      border = user_config.border,
+      border = vim.opt.winborder:get(),
     },
     highlights = {
       FloatBorder = {

@@ -41,7 +41,6 @@ opt.wildmenu = true
 -- ui
 opt.cursorline = true
 opt.laststatus = 2
---[[ opt.lazyredraw = true ]]
 opt.list = true
 opt.listchars = {
   tab = '❘-',
@@ -71,11 +70,8 @@ opt.writebackup = false
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.shortmess = opt.shortmess + { c = true }
 
--- perfomance
---[[ opt.redrawtime = 1500 ]]
---[[ opt.timeoutlen = 200 ]]
---[[ opt.ttimeoutlen = 10 ]]
---[[ opt.updatetime = 100 ]]
-
 -- theme
 opt.termguicolors = true
+
+-- set border for all windows
+opt.winborder = 'rounded'

@@ -16,14 +16,12 @@ end
 
 --- @class CosmicUserConfig
 --- @field add_plugins LazySpec[]
---- @field border string
 --- @field diagnostics? vim.diagnostic.Opts
 --- @field disable_builtin_plugins string[]
 --- @field lsp CosmicUserConfigLsp
 
 --- @type CosmicUserConfig
 local default_config = {
-  border = 'rounded',
   disable_builtin_plugins = {},
   add_plugins = {},
   lsp = {

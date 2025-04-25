@@ -8,7 +8,6 @@ return {
   opts = {
     preview_config = {
       -- Options passed to nvim_open_win
-      border = user_config.border,
       style = 'minimal',
       relative = 'cursor',
       row = 0,

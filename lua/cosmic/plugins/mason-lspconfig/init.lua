@@ -37,9 +37,6 @@ return {
     {
       'williamboman/mason.nvim',
       opts = {
-        ui = {
-          border = user_config.border,
-        },
       },
     },
   },

@@ -5,7 +5,6 @@ return {
   lazy = false, -- lazy loading handled internally
   -- optional: provides snippets for the snippet source
   dependencies = {
-
     {
       'L3MON4D3/LuaSnip',
       version = 'v2.*',
@@ -31,7 +30,7 @@ return {
   },
 
   -- use a release tag to download pre-built binaries
-  version = 'v0.*',
+  version = 'v1.*',
   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   -- build = 'cargo build --release',
   -- If you use nix, you can build from source using latest nightly rust with:
@@ -54,7 +53,7 @@ return {
     },
     snippets = { preset = 'luasnip' },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lsp', 'snippets', 'path', 'buffer' },
     },
     cmdline = {
       completion = {
@@ -75,28 +74,19 @@ return {
         },
       },
       menu = {
-        border = 'rounded',
-        winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
         draw = {
           columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind', gap = 1 } },
+          treesitter = { 'lsp' }
         },
       },
       documentation = {
         auto_show_delay_ms = 0,
         auto_show = true,
-        window = {
-          border = 'rounded',
-          winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None',
-        },
       },
     },
     -- experimental signature help support
     signature = {
       enabled = true,
-      window = {
-        border = 'rounded',
-        winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None',
-      },
     },
   },
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'blink.cmp'),
