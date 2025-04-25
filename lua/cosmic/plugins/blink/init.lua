@@ -28,6 +28,9 @@ return {
       enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'luasnip'),
     },
   },
+  init = function()
+    vim.api.nvim_set_hl(0, 'BlinkCmpLabelDescription', { link = 'Comment' })
+  end,
 
   -- use a release tag to download pre-built binaries
   version = 'v1.*',
