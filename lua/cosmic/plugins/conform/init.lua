@@ -26,10 +26,6 @@ return {
         -- To organize the imports.
         "ruff_organize_imports",
       },
-      --[[ javascript = { 'deno_fmt' }, ]]
-      --[[ javascriptreact = { 'deno_fmt' }, ]]
-      --[[ typescript = { 'deno_fmt' }, ]]
-      --[[ typescriptreact = { 'deno_fmt' }, ]]
     },
     format_on_save = function(bufnr)
       if not vim.g.format_on_save_enabled then
