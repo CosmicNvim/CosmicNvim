@@ -5,7 +5,7 @@ local M = {}
 -- Mappings.
 function M.init(client, bufnr)
   local buf_map = utils.create_buf_map(bufnr, {
-    noremap = false,
+    noremap = true,
   })
 
   buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Go to declaration' })
