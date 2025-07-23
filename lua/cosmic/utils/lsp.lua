@@ -55,7 +55,7 @@ end
 local function notify_format_on_save(clients, lsp_formatters)
   local msg = ''
   local toggle_str = 'enabled'
-  if vim.g.format_on_save_enabled then
+  if not vim.g.format_on_save_enabled then
     toggle_str = 'disabled'
   end
   msg = append_formatters_to_str(string.format('[LSP: %s]', toggle_str), msg, lsp_formatters)
