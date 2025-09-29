@@ -1,6 +1,6 @@
 local user_config = require('cosmic.core.user')
 return {
-  'echasnovski/mini.nvim',
+  'nvim-mini/mini.nvim',
   version = false,
   init = function()
     require('mini.ai').setup()
