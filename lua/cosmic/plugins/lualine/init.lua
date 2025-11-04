@@ -7,7 +7,6 @@ local custom_sections = {
   branch = { 'b:gitsigns_head', icon = icons.branch },
   diff = {
     'diff',
-    source = utils.diff_source(),
     symbols = {
       added = icons.diff_add .. ' ',
       modified = icons.diff_modified .. ' ',
@@ -38,60 +37,59 @@ return {
       theme = 'tokyonight',
     },
     sections = {
-      lualine_a = { 'mode' },
+      lualine_a = {
+        'mode',
+      },
       lualine_b = {
-        {
-          'filetype',
-          icon_only = true,
-          padding = {
-            left = 1,
-            right = 0,
-          },
-          separator = '',
-        },
-        custom_sections.shortenedFilePath,
-      },
-      lualine_c = {
         custom_sections.diff,
+        'diagnostics',
       },
-      lualine_x = { 'diagnostics' },
-      lualine_y = { lsp_utils.buf_get_active_clients_str },
-      lualine_z = { 'location', 'progress' },
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {
+        'lsp_status',
+        'filetype',
+      },
+      lualine_z = {
+        {
+          'location',
+          padding = 0,
+        },
+        'progress',
+      },
     },
     inactive_sections = {
-      lualine_a = {},
+      lualine_a = { 'mode' },
       lualine_b = {
-        {
-          'filetype',
-          icon_only = true,
-          padding = {
-            left = 1,
-            right = 0,
-          },
-          separator = '',
-        },
-        custom_sections.shortenedFilePath,
-      },
-      lualine_c = {
         custom_sections.diff,
+        'diagnostics',
       },
-      lualine_x = { 'diagnostics' },
-      lualine_y = { 'location', 'progress' },
-      lualine_z = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {
+        'lsp_status',
+        'filetype',
+      },
+      lualine_z = { 'location', 'progress' },
     },
     winbar = {
-      lualine_a = { utils.get_short_cwd },
-      lualine_b = { custom_sections.branch },
-      lualine_c = { custom_sections.relativeFilePath },
-      lualine_x = {
+      lualine_a = {
+        utils.get_short_cwd,
+      },
+      lualine_b = {
+        custom_sections.relativeFilePath,
+      },
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {
         {
           'macro-recording',
           fmt = utils.show_macro_recording,
         },
-        'filetype',
       },
-      lualine_y = {},
-      lualine_z = {},
+      lualine_z = {
+        custom_sections.branch,
+      },
     },
     inactive_winbar = {
       lualine_a = { utils.get_short_cwd },
@@ -99,9 +97,11 @@ return {
       lualine_c = { custom_sections.relativeFilePath },
       lualine_x = { 'filetype' },
       lualine_y = {},
-      lualine_z = {},
+      lualine_z = {
+        custom_sections.branch,
+      },
     },
-    extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
+    extensions = { 'quickfix', 'fugitive', 'oil', 'mason', 'toggleterm', 'lazy' },
   },
   init = function()
     vim.api.nvim_create_autocmd('RecordingEnter', {

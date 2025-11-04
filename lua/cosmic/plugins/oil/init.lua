@@ -19,7 +19,6 @@ return {
       max_width = 180,
     },
   },
-  cmd = 'Oil',
   keys = {
     {
       '<leader>od',
@@ -36,6 +35,7 @@ return {
       desc = 'Current file directory',
     },
   },
+  lazy = false,
   dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'oil'),
 }

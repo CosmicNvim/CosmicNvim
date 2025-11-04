@@ -9,6 +9,11 @@ return {
       style = 'night',
       light_style = 'moon',
       sidebars = { 'qf', 'packer', 'help' },
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
     init = function()
       vim.cmd('color tokyonight')
