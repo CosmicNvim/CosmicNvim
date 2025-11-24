@@ -22,6 +22,7 @@ return {
       { '<leader>h',  group = 'gitsigns' },
       { '<leader>ht', group = 'toggle' },
       { '<leader>k',  group = 'buffer' },
+      { '<leader>kg', group = 'git' },
       { '<leader>l',  group = 'lsp',           mode = { 'n', 'v' } },
       { '<leader>ld', group = 'diagnostics' },
       { '<leader>lt', group = 'toggle' },

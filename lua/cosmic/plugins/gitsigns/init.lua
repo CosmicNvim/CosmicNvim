@@ -60,18 +60,14 @@ return {
         desc = 'Reset hunk selection',
       })
 
-      map('n', '<leader>gS', gs.stage_buffer, { desc = 'Stage buffer' })
-      map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset buffer' })
-      map('n', '<leader>gb', function()
+      map('n', '<leader>kgS', gs.stage_buffer, { desc = 'Stage buffer' })
+      map('n', '<leader>kgR', gs.reset_buffer, { desc = 'Reset buffer' })
+      map('n', 'B', function()
         gs.blame_line({ full = true })
       end, {
         desc = 'Blame line',
       })
-      map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'Toggle blame current line' })
-      map('n', '<leader>gd', gs.diffthis, { desc = 'Diff buffer' })
-      map('n', '<leader>gD', function()
-        gs.diffthis('~')
-      end, { desc = 'Diff project' })
+      map('n', '<leader>gtb', gs.toggle_current_line_blame, { desc = 'Toggle blame current line' })
 
       --[[ -- Text object ]]
       map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
