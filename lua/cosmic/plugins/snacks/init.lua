@@ -34,214 +34,38 @@ return {
 
   keys = {
     -- notifications
-    {
-      '<leader>nh',
-      function()
-        Snacks.notifier.show_history()
-      end,
-      desc = 'Show history',
-    },
-    {
-      '<leader>nc',
-      function()
-        Snacks.notifier.hide()
-      end,
-      desc = 'Close notifications',
-    },
-
-    {
-      '<leader>e',
-      function()
-        Snacks.explorer()
-      end,
-      desc = 'File Explorer',
-    },
+    { '<leader>nh',  function() Snacks.notifier.show_history() end,                                         desc = 'Show history', },
+    { '<leader>nc',  function() Snacks.notifier.hide() end,                                                 desc = 'Close notifications', },
+    { '<leader>e',   function() Snacks.explorer() end,                                                      desc = 'File Explorer', },
     -- find
-    {
-      '<leader>fp',
-      function()
-        Snacks.picker.files({
-          hidden = true,
-        })
-      end,
-      desc = 'Find Files',
-    },
-    {
-      '<leader>fk',
-      function()
-        Snacks.picker.buffers({
-          hidden = true,
-        })
-      end,
-      desc = 'Buffers',
-    },
-    {
-      '<leader>fm',
-      function()
-        Snacks.picker.smart({
-          hidden = true,
-        })
-      end,
-      desc = 'Smart Finder',
-    },
-    {
-      '<leader>ff',
-      function()
-        Snacks.picker.git_files({
-          hidden = true,
-        })
-      end,
-      desc = 'Find Git Files',
-    },
-    {
-      '<leader>fr',
-      function()
-        Snacks.picker.recent()
-      end,
-      desc = 'Recent',
-    },
-    {
-      '<leader>ft',
-      function()
-        Snacks.picker.todo_comments()
-      end,
-      desc = 'Todo',
-    },
-    {
-      '<leader>fT',
-      function()
-        Snacks.picker.todo_comments({ keywords = { 'TODO', 'FIX', 'FIXME' } })
-      end,
-      desc = 'Todo/Fix/Fixme',
-    },
+    { '<leader>fp',  function() Snacks.picker.files({ hidden = true, }) end,                                desc = 'Find Files', },
+    { '<leader>fk',  function() Snacks.picker.buffers({ hidden = true, }) end,                              desc = 'Buffers', },
+    { '<leader>fm',  function() Snacks.picker.smart({ hidden = true, }) end,                                desc = 'Smart Finder', },
+    { '<leader>ff',  function() Snacks.picker.git_files({ hidden = true, }) end,                            desc = 'Find Git Files', },
+    { '<leader>fr',  function() Snacks.picker.recent() end,                                                 desc = 'Recent', },
+    { '<leader>ft',  function() Snacks.picker.todo_comments() end,                                          desc = 'Todo', },
+    { '<leader>fT',  function() Snacks.picker.todo_comments({ keywords = { 'TODO', 'FIX', 'FIXME' } }) end, desc = 'Todo/Fix/Fixme', },
     -- git
-    {
-      '<leader>go',
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = 'Git Browse',
-    },
-    {
-      '<leader>gl',
-      function()
-        Snacks.picker.git_log()
-      end,
-      desc = 'Git Log',
-    },
-    {
-      '<leader>gs',
-      function()
-        Snacks.picker.git_status()
-      end,
-      desc = 'Git Status',
-    },
+    { '<leader>go',  function() Snacks.gitbrowse() end,                                                     desc = 'Git Browse', },
+    { '<leader>gl',  function() Snacks.picker.git_log() end,                                                desc = 'Git Log', },
+    { '<leader>gs',  function() Snacks.picker.git_status() end,                                             desc = 'Git Status', },
     -- Grep
-    {
-      '<leader>fs',
-      function()
-        Snacks.picker.grep({
-          hidden = true,
-        })
-      end,
-      desc = 'Grep',
-    },
-    {
-      '<leader>fl',
-      function()
-        Snacks.picker.lines()
-      end,
-      desc = 'Buffer Lines',
-    },
-    {
-      '<leader>fw',
-      function()
-        Snacks.picker.grep_word({
-          hidden = true,
-        })
-      end,
-      desc = 'Visual selection or word',
-      mode = { 'n', 'x' },
-    },
-    {
-      '<leader>fc',
-      function()
-        Snacks.picker.commands()
-      end,
-      desc = 'Commands',
-    },
+    { '<leader>fs',  function() Snacks.picker.grep({ hidden = true, }) end,                                 desc = 'Grep', },
+    { '<leader>fl',  function() Snacks.picker.lines() end,                                                  desc = 'Buffer Lines', },
+    { '<leader>fw',  function() Snacks.picker.grep_word({ hidden = true, }) end,                            desc = 'Visual selection or word', mode = { 'n', 'x' }, },
+    { '<leader>fc',  function() Snacks.picker.commands() end,                                               desc = 'Commands', },
     -- search
-    {
-      '<leader>:',
-      function()
-        Snacks.picker.command_history()
-      end,
-      desc = 'Command History',
-    },
-    {
-      '<leader>r',
-      function()
-        Snacks.picker.resume()
-      end,
-      desc = 'Resume',
-    },
-    {
-      '<leader>fq',
-      function()
-        Snacks.picker.qflist()
-      end,
-      desc = 'Quickfix List',
-    },
+    { '<leader>:',   function() Snacks.picker.command_history() end,                                        desc = 'Command History', },
+    { '<leader>r',   function() Snacks.picker.resume() end,                                                 desc = 'Resume', },
+    { '<leader>fq',  function() Snacks.picker.qflist() end,                                                 desc = 'Quickfix List', },
     -- LSP
-    {
-      '<leader>ldd',
-      function()
-        Snacks.picker.diagnostics()
-      end,
-      desc = 'Project Diagnostics',
-    },
-    {
-      '<leader>ldk',
-      function()
-        Snacks.picker.diagnostics_buffer()
-      end,
-      desc = 'Buffer Diagnostics',
-    },
-    {
-      '<leader>ly',
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = 'LSP Symbols',
-    },
-    {
-      'gd',
-      function()
-        Snacks.picker.lsp_definitions()
-      end,
-      desc = 'Goto Definition',
-    },
-    {
-      'gr',
-      function()
-        Snacks.picker.lsp_references()
-      end,
-      nowait = true,
-      desc = 'References',
-    },
-    {
-      'gi',
-      function()
-        Snacks.picker.lsp_implementations()
-      end,
-      desc = 'Goto Implementation',
-    },
-    {
-      'gt',
-      function()
-        Snacks.picker.lsp_type_definitions()
-      end,
-      desc = 'Goto Type Definition',
-    },
+    { '<leader>ldd', function() Snacks.picker.diagnostics() end,                                            desc = 'Project Diagnostics', },
+    { '<leader>ldk', function() Snacks.picker.diagnostics_buffer() end,                                     desc = 'Buffer Diagnostics', },
+    { '<leader>ly',  function() Snacks.picker.lsp_symbols() end,                                            desc = 'LSP Symbols', },
+    { 'gd',          function() Snacks.picker.lsp_definitions() end,                                        desc = 'Goto Definition', },
+    { "gD",          function() Snacks.picker.lsp_declarations() end,                                       desc = "Goto Declaration" },
+    { 'gr',          function() Snacks.picker.lsp_references() end,                                         nowait = true,                     desc = 'References', },
+    { 'gi',          function() Snacks.picker.lsp_implementations() end,                                    desc = 'Goto Implementation', },
+    { 'gt',          function() Snacks.picker.lsp_type_definitions() end,                                   desc = 'Goto Type Definition', },
   },
 }
