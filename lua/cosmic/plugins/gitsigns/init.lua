@@ -60,8 +60,8 @@ return {
         desc = 'Reset hunk selection',
       })
 
-      map('n', '<leader>kgS', gs.stage_buffer, { desc = 'Stage buffer' })
-      map('n', '<leader>kgR', gs.reset_buffer, { desc = 'Reset buffer' })
+      map('n', '<leader>ks', gs.stage_buffer, { desc = 'Stage buffer' })
+      map('n', '<leader>kr', gs.reset_buffer, { desc = 'Reset buffer' })
       map('n', 'B', function()
         gs.blame_line({ full = true })
       end, {
