@@ -35,8 +35,8 @@ function M.init(client, bufnr)
 
   -- code actions
   buf_map('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename' })
-  buf_map('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_actions()<cr>', { desc = 'Code Actions' })
-  buf_map('v', '<leader>la', '<cmd>lua vim.lsp.buf.range_code_actions()<cr>', { desc = 'Range Code Actions' })
+  buf_map('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Code Actions' })
+  buf_map('v', '<leader>la', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', { desc = 'Range Code Actions' })
 
   -- formatting
   if client:supports_method('textDocument/formatting') then

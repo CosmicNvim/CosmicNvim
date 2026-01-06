@@ -12,10 +12,13 @@ return {
     formatters_by_ft = {
       css = { 'prettierd' },
       go = { 'goimports', 'gofmt' },
-      json = { 'prettierd' },
-      lua = { 'stylua' },
+      html = { 'prettierd' },
       javascript = { 'prettierd' },
       javascriptreact = { 'prettierd' },
+      json = { 'prettierd' },
+      lua = { 'stylua' },
+      markdown = { 'prettierd' },
+      scss = { 'prettierd' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
       python = {
