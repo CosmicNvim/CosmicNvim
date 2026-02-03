@@ -17,7 +17,7 @@ return {
       javascriptreact = { 'prettierd' },
       json = { 'prettierd' },
       lua = { 'stylua' },
-      markdown = { 'prettierd' },
+      --[[ markdown = { 'prettierd' }, ]]
       scss = { 'prettierd' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },

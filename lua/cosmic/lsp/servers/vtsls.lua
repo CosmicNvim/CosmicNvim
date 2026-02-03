@@ -4,12 +4,12 @@ return {
   settings = {
     javascript = {
       preferences = {
-        --[[ importModuleSpecifier = 'project-relative', ]]
+        importModuleSpecifier = 'project-relative',
       },
     },
     typescript = {
       preferences = {
-        --[[ importModuleSpecifier = 'project-relative', ]]
+        importModuleSpecifier = 'project-relative',
         preferTypeOnlyAutoImports = true,
       },
     },
