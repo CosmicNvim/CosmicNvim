@@ -1,13 +1,13 @@
 local user_config = require('cosmic.core.user')
+local u = require('cosmic.utils')
+local default_config = require('cosmic.lsp.servers.defaults')
+
+-- set up lsp servers
 return {
   'williamboman/mason-lspconfig.nvim',
   enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'mason-lspconfig'),
   event = { 'BufReadPre', 'BufNewFile' },
   init = function()
-    -- set up lsp servers
-    local u = require('cosmic.utils')
-    local default_config = require('cosmic.lsp.servers.defaults')
-
     for user_server, config_opt in pairs(user_config.lsp.servers) do
       if not config_opt == false then
         local server_config = default_config
@@ -29,7 +29,7 @@ return {
     end
   end,
   dependencies = {
-    { 'neovim/nvim-lspconfig',  lazy = true },
-    { 'williamboman/mason.nvim' , lazy = true, opts = {} },
+    { 'neovim/nvim-lspconfig',   lazy = true },
+    { 'williamboman/mason.nvim', lazy = true, opts = {} },
   },
 }
