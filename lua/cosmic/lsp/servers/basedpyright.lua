@@ -1,56 +1,56 @@
--- FIXED but credit: https://github.com/jack-michaud/nvim/blob/33aefa8055aedc8d0dd592292aba903d9fb9ee2d/lua/plugins/editor.lua#L1
-local function prefer_bin_from_venv(executable_name)
-  -- Return the path to the executable if $VIRTUAL_ENV is set and the binary exists somewhere beneath the $VIRTUAL_ENV path, otherwise get it from Mason
+local function get_poetry_python(executable_name)
+  if vim.fn.executable('poetry') == 0 then
+    return nil
+  end
+
+  local poetry_lock = vim.fs.find('poetry.lock', { upward = true, type = 'file' })[1]
+  if not poetry_lock then
+    return nil
+  end
+
+  local project_dir = vim.fs.dirname(poetry_lock)
+  local result = vim.system({ 'poetry', 'env', 'info', '-p' }, { cwd = project_dir, text = true }):wait()
+  if result.code ~= 0 then
+    return nil
+  end
+
+  local env_path = vim.trim(result.stdout or '')
+  if env_path == '' then
+    return nil
+  end
+
+  local poetry_python = vim.fs.joinpath(env_path, 'bin', executable_name)
+  if vim.fn.executable(poetry_python) == 1 then
+    return poetry_python
+  end
+
+  return nil
+end
+
+local function resolve_python_path()
   if vim.env.VIRTUAL_ENV then
-    local paths = vim.fn.glob(vim.env.VIRTUAL_ENV .. '/**/bin/' .. executable_name, true, true)
-    local executable_path = table.concat(paths, ', ')
-    if executable_path ~= '' then
-      --vim.api.nvim_echo({ { "Using path for " .. executable_name .. ": " .. executable_path, "None" } }, false, {})
-      return executable_path
+    local venv_python = vim.fs.joinpath(vim.env.VIRTUAL_ENV, 'bin', 'python')
+    if vim.fn.executable(venv_python) == 1 then
+      return venv_python
     end
   end
 
-  -- find poetry.lock file in current directory or parent directories
-  local poetry_lock = vim.fn.findfile('poetry.lock', '.;')
-  if poetry_lock ~= '' then
-    -- use `poetry env info -p -C <path of folder containing poetry.lock>` to get the virtualenv path
-    local poetry_env_path =
-        vim.fn.systemlist('poetry env list --full-path -C ' .. vim.fn.fnamemodify(poetry_lock, ':h'))
-
-    if #poetry_env_path > 0 then
-      local candidate_paths = {}
-      for _, env_path in ipairs(poetry_env_path) do
-        if env_path ~= '' then
-          if string.sub(env_path, 0, 1) == '/' then
-            table.insert(candidate_paths, 0, env_path)
-          end
-        end
-      end
-      local selected_poetry_env_path = candidate_paths[0]
-      if #poetry_env_path > 0 then
-        for _, env_path in ipairs(poetry_env_path) do
-          if string.find(env_path, 'Activated') then
-            -- Must strip the word "(Activated)" from the string
-
-            selected_poetry_env_path = string.gsub(env_path, ' %(Activated%)', '')
-            selected_poetry_env_path = vim.fn.trim(selected_poetry_env_path)
-            break
-          end
-        end
-      end
-      local venv_path_to_python = selected_poetry_env_path .. '/bin/' .. executable_name
-      if vim.fn.filereadable(venv_path_to_python) == 1 then
-        return venv_path_to_python
-      end
-    end
+  local poetry_python = get_poetry_python('python')
+  if poetry_python then
+    return poetry_python
   end
 
-  local mason_registry = require('mason-registry')
-  if mason_registry.has_package(executable_name) == false then
-    return executable_name
+  local python3 = vim.fn.exepath('python3')
+  if python3 ~= '' then
+    return python3
   end
-  local mason_path = mason_registry.get_package(executable_name):get_install_path() .. '/venv/bin/' .. executable_name
-  return mason_path
+
+  local python = vim.fn.exepath('python')
+  if python ~= '' then
+    return python
+  end
+
+  return 'python'
 end
 
 ---@diagnostic disable: missing-fields
@@ -67,7 +67,7 @@ return {
       disableOrganizeImports = true,
     },
     python = {
-      pythonPath = prefer_bin_from_venv('python'),
-    }
-  }
+      pythonPath = resolve_python_path(),
+    },
+  },
 }
