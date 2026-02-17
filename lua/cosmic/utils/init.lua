@@ -1,5 +1,9 @@
 local M = {}
 
+---@param mode string|string[]
+---@param lhs string
+---@param rhs string|function
+---@param opts? vim.keymap.set.Opts
 function M.set_keymap(mode, lhs, rhs, opts)
   local defaults = {
     silent = true,
@@ -8,6 +12,9 @@ function M.set_keymap(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, M.merge(defaults, opts or {}))
 end
 
+---@param bufnr number
+---@param opts? vim.keymap.set.Opts
+---@return fun(mode:string|string[], lhs:string, rhs:string|function, map_opts?:vim.keymap.set.Opts)
 function M.create_buf_map(bufnr, opts)
   return function(mode, lhs, rhs, map_opts)
     M.set_keymap(
@@ -21,32 +28,62 @@ function M.create_buf_map(bufnr, opts)
   end
 end
 
+---Append items from `tbl2` into `tbl1` in place.
+---@param tbl1 table
+---@param tbl2? table
+---@return table
 function M.merge_list(tbl1, tbl2)
+  if tbl2 == nil then
+    return tbl1
+  end
+
   for _, v in ipairs(tbl2) do
     table.insert(tbl1, v)
   end
   return tbl1
 end
 
+---@param ... table
+---@return table
 function M.merge(...)
   return vim.tbl_deep_extend('force', ...)
 end
 
+---@param str? string
+---@param sep? string
+---@return string[]
 function M.split(str, sep)
+  if type(str) ~= 'string' or str == '' then
+    return {}
+  end
+
+  if type(sep) ~= 'string' or sep == '' then
+    return { str }
+  end
+
+  local parts = vim.split(str, sep, {
+    plain = true,
+    trimempty = false,
+  })
+
   local res = {}
-  for w in str:gmatch('([^' .. sep .. ']*)') do
-    if w ~= '' then
-      table.insert(res, w)
+  for _, part in ipairs(parts) do
+    if part ~= '' then
+      table.insert(res, part)
     end
   end
+
   return res
 end
 
+---@param path? string
+---@return string
 function M.get_short_file_path(path)
-  local dirs = {}
-  for dir in string.gmatch(path, '([^/]+)') do
-    table.insert(dirs, dir)
+  if type(path) ~= 'string' or path == '' then
+    return ''
   end
+
+  local dirs = vim.split(path, '/', { plain = true, trimempty = true })
 
   local n = #dirs
   if n > 3 then
@@ -56,11 +93,16 @@ function M.get_short_file_path(path)
   return path
 end
 
+---@return string
 function M.get_short_cwd()
   local parts = vim.split(vim.fn.getcwd(), '/')
+  if #parts == 0 then
+    return ''
+  end
   return parts[#parts]
 end
 
+---@return {added: integer, modified: integer, removed: integer}|nil
 function M.diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
   if gitsigns then
@@ -72,13 +114,14 @@ function M.diff_source()
   end
 end
 
+---@return string
 function M.show_macro_recording()
   local recording_register = vim.fn.reg_recording()
   if recording_register == '' then
     return ''
-  else
-    return 'Recording @' .. recording_register
   end
+
+  return 'Recording @' .. recording_register
 end
 
 return M
