@@ -16,12 +16,18 @@ return {
         enable_autosnippets = true,
       },
       init = function()
-        -- extend html snippets to react files
-        require('luasnip').filetype_extend('javascriptreact', { 'html' })
-        require('luasnip').filetype_extend('typescriptreact', { 'html' })
+        vim.api.nvim_create_autocmd('InsertEnter', {
+          once = true,
+          callback = function()
+            local luasnip = require('luasnip')
+            -- extend html snippets to react files
+            luasnip.filetype_extend('javascriptreact', { 'html' })
+            luasnip.filetype_extend('typescriptreact', { 'html' })
 
-        -- load snippets (friendly-snippets)
-        require('luasnip.loaders.from_vscode').load()
+            -- load snippets lazily on first insert to avoid startup parse cost
+            require('luasnip.loaders.from_vscode').lazy_load()
+          end,
+        })
       end,
       dependencies = {
         'rafamadriz/friendly-snippets',

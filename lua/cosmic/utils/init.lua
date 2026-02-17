@@ -1,4 +1,18 @@
 local M = {}
+local short_cwd_cache = ''
+
+local function refresh_short_cwd_cache()
+  local parts = vim.split(vim.fn.getcwd(), '/')
+  short_cwd_cache = parts[#parts] or ''
+end
+
+refresh_short_cwd_cache()
+
+local cwd_cache_augroup = vim.api.nvim_create_augroup('CosmicNvimCwdCache', { clear = true })
+vim.api.nvim_create_autocmd('DirChanged', {
+  group = cwd_cache_augroup,
+  callback = refresh_short_cwd_cache,
+})
 
 ---@param mode string|string[]
 ---@param lhs string
@@ -95,11 +109,7 @@ end
 
 ---@return string
 function M.get_short_cwd()
-  local parts = vim.split(vim.fn.getcwd(), '/')
-  if #parts == 0 then
-    return ''
-  end
-  return parts[#parts]
+  return short_cwd_cache
 end
 
 ---@return {added: integer, modified: integer, removed: integer}|nil

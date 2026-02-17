@@ -2,7 +2,7 @@ local user_config = require('cosmic.core.user')
 
 return {
   'rmagatti/auto-session',
-  lazy = false,
+  event = 'VimEnter',
   opts = {
     pre_save_cmds = { 'cclose' },
     auto_session_enabled = true,
