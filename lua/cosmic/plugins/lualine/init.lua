@@ -1,38 +1,36 @@
 local user_config = require('cosmic.core.user')
-local utils = require('cosmic.utils')
-local lsp_utils = require('cosmic.utils.lsp')
-local icons = require('cosmic.utils.icons')
 
-local custom_sections = {
-  branch = { 'b:gitsigns_head', icon = icons.branch },
-  diff = {
-    'diff',
-    symbols = {
-      added = icons.diff_add .. ' ',
-      modified = icons.diff_modified .. ' ',
-      removed = icons.diff_remove .. ' ',
-    },
-  },
-  shortenedFilePath = {
-    'filename',
-    path = 0,
-    symbols = {
-      modified = icons.diff_modified,
-    },
-  },
-  relativeFilePath = {
-    'filename',
-    path = 1,
-    symbols = {
-      modified = icons.diff_modified,
-    },
-  },
-}
+local function get_opts()
+  local utils = require('cosmic.utils')
+  local icons = require('cosmic.utils.icons')
 
-return {
-  'nvim-lualine/lualine.nvim',
-  lazy = false,
-  opts = {
+  local custom_sections = {
+    branch = { 'b:gitsigns_head', icon = icons.branch },
+    diff = {
+      'diff',
+      symbols = {
+        added = icons.diff_add .. ' ',
+        modified = icons.diff_modified .. ' ',
+        removed = icons.diff_remove .. ' ',
+      },
+    },
+    shortened_file_path = {
+      'filename',
+      path = 0,
+      symbols = {
+        modified = icons.diff_modified,
+      },
+    },
+    relative_file_path = {
+      'filename',
+      path = 1,
+      symbols = {
+        modified = icons.diff_modified,
+      },
+    },
+  }
+
+  return {
     options = {
       theme = 'tokyonight',
     },
@@ -77,7 +75,7 @@ return {
         utils.get_short_cwd,
       },
       lualine_b = {
-        custom_sections.relativeFilePath,
+        custom_sections.relative_file_path,
       },
       lualine_c = {},
       lualine_x = {},
@@ -94,7 +92,7 @@ return {
     inactive_winbar = {
       lualine_a = { utils.get_short_cwd },
       lualine_b = { custom_sections.branch },
-      lualine_c = { custom_sections.relativeFilePath },
+      lualine_c = { custom_sections.relative_file_path },
       lualine_x = { 'filetype' },
       lualine_y = {},
       lualine_z = {
@@ -102,9 +100,19 @@ return {
       },
     },
     extensions = { 'quickfix', 'fugitive', 'oil', 'mason', 'toggleterm', 'lazy' },
-  },
-  init = function()
+  }
+end
+
+return {
+  'nvim-lualine/lualine.nvim',
+  event = 'VeryLazy',
+  opts = get_opts,
+  config = function(_, opts)
+    require('lualine').setup(opts)
+
+    local lualine_augroup = vim.api.nvim_create_augroup('CosmicNvimLualine', { clear = true })
     vim.api.nvim_create_autocmd('RecordingEnter', {
+      group = lualine_augroup,
       callback = function()
         require('lualine').refresh({
           place = { 'statusline' },
@@ -113,6 +121,7 @@ return {
     })
 
     vim.api.nvim_create_autocmd('RecordingLeave', {
+      group = lualine_augroup,
       callback = function()
         -- This is going to seem really weird!
         -- Instead of just calling refresh we need to wait a moment because of the nature of

@@ -2,7 +2,7 @@ local user_config = require('cosmic.core.user')
 
 return {
   'saghen/blink.cmp',
-  lazy = false,
+  event = { 'InsertEnter', 'CmdlineEnter' },
   -- optional: provides snippets for the snippet source
   dependencies = {
     { "xzbdmw/colorful-menu.nvim", lazy = true },
