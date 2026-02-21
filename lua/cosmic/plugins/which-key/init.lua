@@ -1,4 +1,3 @@
-local user_config = require('cosmic.core.user')
 return {
   'folke/which-key.nvim',
   ---@class wk.Opts
@@ -37,5 +36,4 @@ return {
     },
   },
   event = 'VeryLazy',
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'which-key'),
 }

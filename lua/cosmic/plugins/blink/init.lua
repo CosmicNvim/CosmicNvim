@@ -1,5 +1,3 @@
-local user_config = require('cosmic.core.user')
-
 return {
   'saghen/blink.cmp',
   event = { 'InsertEnter', 'CmdlineEnter' },
@@ -32,7 +30,6 @@ return {
       dependencies = {
         'rafamadriz/friendly-snippets',
       },
-      enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'luasnip'),
     },
   },
   init = function()
@@ -105,5 +102,4 @@ return {
       enabled = true,
     },
   },
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'blink.cmp'),
 }

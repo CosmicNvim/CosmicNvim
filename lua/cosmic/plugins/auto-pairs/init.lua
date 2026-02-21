@@ -1,5 +1,3 @@
-local user_config = require('cosmic.core.user')
-
 return {
   'windwp/nvim-autopairs',
   opts = {
@@ -12,5 +10,4 @@ return {
     fast_wrap = {},
   },
   event = 'InsertEnter',
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'auto-pairs'),
 }

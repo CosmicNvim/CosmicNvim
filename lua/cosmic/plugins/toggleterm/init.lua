@@ -1,4 +1,3 @@
-local user_config = require('cosmic.core.user')
 return {
   'akinsho/toggleterm.nvim',
   opts = {
@@ -40,5 +39,4 @@ return {
       desc = 'Rename terminal',
     },
   },
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'toggleterm'),
 }

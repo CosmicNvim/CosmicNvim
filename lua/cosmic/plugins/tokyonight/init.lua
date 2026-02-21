@@ -1,4 +1,3 @@
-local user_config = require('cosmic.core.user')
 return {
   { -- color scheme
     'folke/tokyonight.nvim',
@@ -18,6 +17,5 @@ return {
     init = function()
       vim.cmd('color tokyonight')
     end,
-    enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'tokyonight'),
   },
 }

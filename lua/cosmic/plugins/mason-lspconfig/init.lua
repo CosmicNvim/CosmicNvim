@@ -17,7 +17,6 @@ end
 -- set up lsp servers
 return {
   'williamboman/mason-lspconfig.nvim',
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'mason-lspconfig'),
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local default_config = require('cosmic.lsp.servers.defaults')

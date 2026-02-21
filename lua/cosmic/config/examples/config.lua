@@ -37,27 +37,37 @@ local config = {
   -- See ./lua/cosmic/lsp/diagnostics.lua for default options
   diagnostics = {},
 
-  -- Disable plugins default enabled by CosmicNvim
-  -- See ./lua/cosmic/plugins for list of default plugins
-  disable_builtin_plugins = {
-    --[[
-    'auto-session',
-    'colorizer',
-    'fugitive',
-    'gitsigns',
-    'lualine',
-    'noice',
-    'todo-comments',
-    'treesitter',
-    ]]
-  },
+  -- Plugin management (lazy.nvim)
+  plugins = {
+    -- Add additional plugins
+    add = {
+      'ggandor/lightspeed.nvim',
+      {
+        'romgrk/barbar.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+      },
+    },
 
-  -- Add additional plugins (lazy.nvim)
-  add_plugins = {
-    'ggandor/lightspeed.nvim',
-    {
-      'romgrk/barbar.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' },
+    -- Disable built-in plugins by repo path
+    disable = {
+      -- 'nvim-lualine/lualine.nvim',
+      -- 'nvim-treesitter/nvim-treesitter',
+    },
+
+    -- Override opts for built-ins or any plugin using lazy.nvim opts
+    opts = {
+      -- ['nvim-lualine/lualine.nvim'] = {
+      --   options = { theme = 'catppuccin' },
+      -- },
+    },
+
+    -- Full lazy.nvim spec overrides (for advanced cases)
+    override = {
+      -- ['nvim-treesitter/nvim-treesitter'] = {
+      --   opts = {
+      --     ensure_installed = { 'lua', 'go', 'rust' },
+      --   },
+      -- },
     },
   },
 }

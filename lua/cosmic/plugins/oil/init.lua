@@ -1,4 +1,3 @@
-local user_config = require('cosmic.core.user')
 return {
   'stevearc/oil.nvim',
   ---@module 'oil'
@@ -36,5 +35,4 @@ return {
     },
   },
   dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'oil'),
 }

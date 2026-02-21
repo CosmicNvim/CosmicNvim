@@ -1,4 +1,3 @@
-local user_config = require('cosmic.core.user')
 return {
   'folke/lazydev.nvim',
   ft = 'lua', -- only load on lua files
@@ -13,5 +12,4 @@ return {
     },
   },
   dependencies = { { 'Bilal2453/luvit-meta', lazy = true } },
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'lazydev'),
 }

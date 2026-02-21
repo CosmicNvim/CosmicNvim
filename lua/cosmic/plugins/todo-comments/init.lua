@@ -1,4 +1,3 @@
-local user_config = require('cosmic.core.user')
 local icons = require('cosmic.utils.icons')
 
 return {
@@ -27,5 +26,4 @@ return {
     },
   },
   event = 'VeryLazy',
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'todo-comments'),
 }

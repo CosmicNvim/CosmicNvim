@@ -1,4 +1,3 @@
-local user_config = require('cosmic.core.user')
 local u = require('cosmic.utils')
 
 return {
@@ -20,5 +19,4 @@ return {
     end,
   },
   event = 'VeryLazy',
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'comment-nvim'),
 }

@@ -1,4 +1,3 @@
-local user_config = require('cosmic.core.user')
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -51,5 +50,4 @@ return {
       },
     },
   },
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'conform'),
 }
