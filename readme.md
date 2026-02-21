@@ -1,7 +1,9 @@
 <h1 align="center">💫 CosmicNvim</h1>
 
 <p align="center">
-  <img alt="Neovim Minimum Version" src="https://img.shields.io/badge/Neovim-0.11.0+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim">
+  <a href="https://github.com/neovim/neovim">
+    <img alt="Neovim Minimum Version" src="https://img.shields.io/badge/Neovim-0.11.0+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white">
+  </a>
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/CosmicNvim/CosmicNvim?style=flat-square&logo=Github">
   <a href="https://discord.gg/EwdrKzVbvJ">
     <img alt="Discord" src="https://img.shields.io/discord/901609359291854899?style=flat-square&logo=Discord">
@@ -37,7 +39,7 @@ Full featured native LSP functionality!
 - Custom statusline via [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - File editor via [oil.nvim](https://github.com/stevearc/oil.nvim)
 - Floating terminal with [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
-- Auto LSP/formatter/linter installation via [mason.nvim](https://github.com/williamboman/mason.nvim)
+- LSP server management via [mason.nvim](https://github.com/williamboman/mason.nvim)
 - Autocompletion via [blink.cmp](https://github.com/Saghen/blink.cmp)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - Session management via [auto-session](https://github.com/rmagatti/auto-session)
@@ -53,9 +55,9 @@ experience with any LSP supported language._
 
 #### Prerequisites
 
-- Neovim (+0.11.0) nightly
-- [Node.js](https://nodejs.org/en/)
-- [prettierd](https://github.com/fsouza/prettierd)
+- Neovim 0.11.0+
+- [Node.js](https://nodejs.org/en/) (recommended for JS/TS tooling)
+- [prettierd](https://github.com/fsouza/prettierd) (required for default JS/TS/CSS/HTML/JSON formatting)
 
 #### Install
 
@@ -65,7 +67,7 @@ experience with any LSP supported language._
   # back up current config
   cp -r nvim nvim.backup
   # clone repository
-  git clone git@github.com:CosmicNvim/CosmicNvim.git nvim
+  git clone https://github.com/CosmicNvim/CosmicNvim.git nvim
   # open nvim and install plugins
   nvim
 ```
@@ -91,6 +93,15 @@ _New documentation coming soon!_
 [Cosmic configurations](./lua/cosmic/config/examples/config.lua)
 
 [Add additional vim options](./lua/cosmic/config/examples/editor.lua)
+
+Plugin customization in `lua/cosmic/config/config.lua` uses:
+
+- `plugins.add` to add plugins
+- `plugins.disable` to disable plugins by repository ID (for example `nvim-lualine/lualine.nvim`)
+- `plugins.opts` to merge `opts`
+- `plugins.override` for full lazy.nvim spec overrides
+
+`disable_builtin_plugins` has been removed.
 
 ## ✨ Cosmic Commands
 
