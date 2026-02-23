@@ -1,5 +1,6 @@
 return {
   'folke/snacks.nvim',
+  lazy = false,
   priority = 1000,
   ---@type snacks.Config
   opts = {
@@ -27,7 +28,12 @@ return {
     },
     gitbrowse = {},
     indent = {},
-    scroll = {},
+    scroll = {
+      animate = {
+        duration = { step = 10, total = 100 },
+        easing = 'linear',
+      },
+    },
   },
 
   keys = {
