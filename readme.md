@@ -82,10 +82,6 @@ Additional LSP server installation [details](https://github.com/CosmicNvim/Cosmi
 
 CosmicNvim uninstallation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Uninstalling-CosmicNvim).
 
-## 🎨 Theming
-
-_New documentation coming soon!_
-
 ## ⚙️ Configuration
 
 [General Info](./lua/cosmic/config/examples/readme.md)
