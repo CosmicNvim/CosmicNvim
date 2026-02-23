@@ -40,10 +40,10 @@ function M.init(client, bufnr)
 
   -- formatting
   if client:supports_method('textDocument/formatting') then
-    buf_map('n', '<leader>lf', '', { desc = 'Format', callback = lsp_utils.format_buf })
-    buf_map('v', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', { desc = 'Range Format' })
+    buf_map('n', '<leader>lf', '', { desc = 'Format', callback = lsp_utils.format_buf, noremap = false })
+    buf_map('v', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', { desc = 'Range Format', noremap = false })
   end
-  buf_map('n', '<leader>lx', lsp_utils.toggle_format_on_save, { desc = 'Toggle format on save' })
+  buf_map('n', '<leader>lx', lsp_utils.toggle_format_on_save, { desc = 'Toggle format on save', noremap = false })
 
   -- lsp workspace
   buf_map('n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Add workspace folder' })
