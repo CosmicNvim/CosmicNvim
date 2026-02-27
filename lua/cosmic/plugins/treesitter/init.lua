@@ -40,10 +40,11 @@ local defaults = {
 
 return {
   'nvim-treesitter/nvim-treesitter',
+  commit = '42fc28ba918343ebfd5565147a42a26580579482',
   dependencies = {
-    { 'windwp/nvim-ts-autotag',                      lazy = true },
+    { 'windwp/nvim-ts-autotag', lazy = true },
     { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
-    { 'nvim-treesitter/nvim-treesitter-refactor',    lazy = true },
+    { 'nvim-treesitter/nvim-treesitter-refactor', lazy = true },
   },
   event = 'BufReadPre',
   build = ':TSUpdate',
