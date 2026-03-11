@@ -57,7 +57,7 @@ return {
       end
 
       return {
-        timeout_ms = 500,
+        timeout_ms = 1000,
         formatters = enabled,
         lsp_format = 'fallback',
       }
