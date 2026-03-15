@@ -39,7 +39,7 @@ end
 local function append_formatters_to_str(prefix, msg, formatters)
   if #formatters > 0 then
     table.sort(formatters)
-    msg = msg .. string.format('%s \n%s', prefix, table.concat(formatters, "\n"))
+    msg = msg .. string.format('%s \n%s', prefix, table.concat(formatters, '\n'))
   else
     msg = msg .. string.format('%s \nNone', prefix)
   end
@@ -78,8 +78,8 @@ local function notify_format_on_save(clients, lsp_formatters)
     msg = msg .. '\n\n'
     msg = append_formatters_to_str(string.format('[Conform: %s]', toggle_str), msg, conform_formatters)
   end
-  vim.notify(msg, "info", {
-    title = string.format('Format on save: [%s]', toggle_str)
+  vim.notify(msg, 'info', {
+    title = string.format('Format on save: [%s]', toggle_str),
   })
 end
 
@@ -133,7 +133,7 @@ function M.buf_get_active_clients_str()
 
   if #client_names > 0 then
     table.sort(client_names)
-    return table.concat(client_names, ", ")
+    return table.concat(client_names, ', ')
   end
 
   return ''
