@@ -2,8 +2,6 @@
 ---@type vim.lsp.ClientConfig
 local M = {}
 local augroup_name = 'CosmicNvimLspFormat'
-local user_config = require('cosmic.core.user')
-local lsp_mappings = require('cosmic.lsp.mappings')
 
 M.augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
@@ -17,6 +15,7 @@ function M.on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  local user_config = require('cosmic.core.user')
   if user_config.lsp.inlay_hint and client:supports_method('textDocument/inlayHint') then
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
@@ -24,6 +23,7 @@ function M.on_attach(client, bufnr)
   -- Formatting is done by conform.nvim (with the exception of eslint)
 
   -- set up default mappings
+  local lsp_mappings = require('cosmic.lsp.mappings')
   lsp_mappings.init(client, bufnr)
 
   -- set up any custom mappings from plugins

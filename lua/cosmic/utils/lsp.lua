@@ -9,8 +9,7 @@ vim.g.format_on_save_enabled = true
 --- @param client vim.lsp.Client  # the LSP client object
 --- @return boolean               # true if formatting on save is allowed
 function M.can_client_format_on_save(client)
-  local server_config = user_config.lsp.servers[client.name]
-  if type(server_config) == "table" and server_config.format_on_save == false then
+  if user_config.lsp.format_on_save_disabled[client.name] then
     return false
   end
   return true
@@ -63,7 +62,7 @@ local function notify_format_on_save(clients, lsp_formatters)
   -- get always disabled lsp formatters
   local always_disabled = {}
   for _, client in ipairs(clients) do
-    if not lsp_formatters[client.name] and not M.can_client_format_on_save(client) then
+    if not vim.tbl_contains(lsp_formatters, client.name) and not M.can_client_format_on_save(client) then
       table.insert(always_disabled, client.name)
     end
   end

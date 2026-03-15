@@ -97,7 +97,7 @@ local function get_opts()
         custom_sections.branch,
       },
     },
-    extensions = { 'quickfix', 'fugitive', 'oil', 'mason', 'toggleterm', 'lazy' },
+    extensions = { 'quickfix', 'fugitive', 'oil', 'mason', 'toggleterm', 'lazy', 'oil' },
   }
 end
 

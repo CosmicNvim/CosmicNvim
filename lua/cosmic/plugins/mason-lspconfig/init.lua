@@ -1,14 +1,13 @@
 local user_config = require('cosmic.core.user')
-local u = require('cosmic.utils')
 
-local function get_server_filetypes(server_name, config_opt)
-  if type(config_opt) == 'table' and type(config_opt.opts) == 'table' and type(config_opt.opts.filetypes) == 'table' then
-    return config_opt.opts.filetypes
+local function get_server_filetypes(server_name, server_config)
+  if type(server_config) == 'table' and type(server_config.filetypes) == 'table' then
+    return server_config.filetypes
   end
 
-  local server_config = vim.lsp.config[server_name]
-  if server_config and type(server_config.filetypes) == 'table' then
-    return server_config.filetypes
+  local registered_config = vim.lsp.config[server_name]
+  if registered_config and type(registered_config.filetypes) == 'table' then
+    return registered_config.filetypes
   end
 
   return nil
@@ -19,32 +18,24 @@ return {
   'williamboman/mason-lspconfig.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    local default_config = require('cosmic.lsp.servers.defaults')
     local configured_servers = {}
     local pending_servers = {}
+    local resolved_servers = user_config.lsp.resolved_servers
 
-    local function setup_server(user_server)
-      if configured_servers[user_server] then
+    local function setup_server(server_name)
+      if configured_servers[server_name] then
         return
       end
 
-      local server_config = vim.deepcopy(default_config)
-
-      -- set up default cosmic options
-      local ok, cosmic_server_config = pcall(require, 'cosmic.lsp.servers.' .. user_server)
-      if ok then
-        server_config = u.merge(server_config, cosmic_server_config)
+      local server_config = resolved_servers[server_name]
+      if server_config == nil then
+        return
       end
 
-      -- override options if user defines them
-      if type(user_config.lsp.servers[user_server]) == 'table' and user_config.lsp.servers[user_server].opts ~= nil then
-        server_config = u.merge(server_config, user_config.lsp.servers[user_server].opts)
-      end
-
-      vim.lsp.config(user_server, server_config)
-      vim.lsp.enable(user_server)
-      configured_servers[user_server] = true
-      pending_servers[user_server] = nil
+      vim.lsp.config(server_name, vim.deepcopy(server_config))
+      vim.lsp.enable(server_name)
+      configured_servers[server_name] = true
+      pending_servers[server_name] = nil
     end
 
     local function setup_servers_for_filetype(filetype)
@@ -53,25 +44,23 @@ return {
       end
 
       local servers_to_setup = {}
-      for user_server, filetypes in pairs(pending_servers) do
+      for server_name, filetypes in pairs(pending_servers) do
         if type(filetypes) == 'table' and vim.tbl_contains(filetypes, filetype) then
-          table.insert(servers_to_setup, user_server)
+          table.insert(servers_to_setup, server_name)
         end
       end
 
-      for _, user_server in ipairs(servers_to_setup) do
-        setup_server(user_server)
+      for _, server_name in ipairs(servers_to_setup) do
+        setup_server(server_name)
       end
     end
 
-    for user_server, config_opt in pairs(user_config.lsp.servers) do
-      if config_opt ~= false then
-        local filetypes = get_server_filetypes(user_server, config_opt)
-        if filetypes == nil or vim.tbl_isempty(filetypes) then
-          setup_server(user_server)
-        else
-          pending_servers[user_server] = filetypes
-        end
+    for server_name, server_config in pairs(resolved_servers) do
+      local filetypes = get_server_filetypes(server_name, server_config)
+      if filetypes == nil or vim.tbl_isempty(filetypes) then
+        setup_server(server_name)
+      else
+        pending_servers[server_name] = filetypes
       end
     end
 
@@ -100,7 +89,7 @@ return {
     end
   end,
   dependencies = {
-    { 'neovim/nvim-lspconfig',   lazy = true },
+    { 'neovim/nvim-lspconfig', lazy = true },
     { 'williamboman/mason.nvim', lazy = true, opts = {} },
   },
 }

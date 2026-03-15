@@ -9,12 +9,12 @@ Please look at the examples in this directory in order to get started.
 
 Plugin customization lives in `lua/cosmic/config/config.lua`:
 
-- `plugins.add`
-- `plugins.disable` (repository IDs, e.g. `nvim-lualine/lualine.nvim`)
-- `plugins.opts`
-- `plugins.override`
+- `plugins = { ... }` for direct lazy.nvim specs
+- disable built-in plugins with `{ 'repo/name', enabled = false }`
+- override built-in plugins by adding another spec for the same repository ID
+- configure LSP servers directly under `lsp.servers.NAME`
 
-`disable_builtin_plugins` has been removed.
+`disable_builtin_plugins`, `plugins.add`, `plugins.disable`, `plugins.opts`, `plugins.override`, and `lsp.servers.NAME.opts` have been removed.
 
 ## Quick Start
 

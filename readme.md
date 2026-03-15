@@ -92,12 +92,12 @@ CosmicNvim uninstallation [details](https://github.com/CosmicNvim/CosmicNvim/wik
 
 Plugin customization in `lua/cosmic/config/config.lua` uses:
 
-- `plugins.add` to add plugins
-- `plugins.disable` to disable plugins by repository ID (for example `nvim-lualine/lualine.nvim`)
-- `plugins.opts` to merge `opts`
-- `plugins.override` for full lazy.nvim spec overrides
+- `plugins = { ... }` for direct lazy.nvim specs
+- `{ 'repo/name', enabled = false }` to disable a built-in plugin
+- another spec with the same repository ID to override a built-in plugin
+- `lsp.servers.NAME = true | false | { ... }` for direct LSP server config
 
-`disable_builtin_plugins` has been removed.
+`disable_builtin_plugins`, `plugins.add`, `plugins.disable`, `plugins.opts`, `plugins.override`, and `lsp.servers.NAME.opts` have been removed.
 
 ## ✨ Cosmic Commands
 
