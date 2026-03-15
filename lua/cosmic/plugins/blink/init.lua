@@ -3,7 +3,7 @@ return {
   event = { 'InsertEnter', 'CmdlineEnter' },
   -- optional: provides snippets for the snippet source
   dependencies = {
-    { "xzbdmw/colorful-menu.nvim", lazy = true },
+    { 'xzbdmw/colorful-menu.nvim', lazy = true },
     {
       'L3MON4D3/LuaSnip',
       version = 'v2.*',
@@ -86,7 +86,7 @@ return {
           components = {
             label = {
               highlight = function(ctx)
-                return require("colorful-menu").blink_components_highlight(ctx)
+                return require('colorful-menu').blink_components_highlight(ctx)
               end,
             },
           },

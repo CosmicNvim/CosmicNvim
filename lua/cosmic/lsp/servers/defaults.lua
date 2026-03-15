@@ -31,8 +31,8 @@ function M.on_attach(client, bufnr)
     pattern = 'CosmicLspAttach',
     data = {
       client_id = client.id,
-      buf = bufnr
-    }
+      buf = bufnr,
+    },
   })
 end
 

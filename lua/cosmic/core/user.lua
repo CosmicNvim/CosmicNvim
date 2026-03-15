@@ -132,9 +132,7 @@ end
 ---@param server_config CosmicUserConfigLspServerSetting
 local function validate_server_config(server_name, server_config)
   if type(server_config) ~= 'boolean' and type(server_config) ~= 'table' then
-    config_error(
-      ('`lsp.servers.%s` must be `true`, `false`, or a table of LSP config fields.'):format(server_name)
-    )
+    config_error(('`lsp.servers.%s` must be `true`, `false`, or a table of LSP config fields.'):format(server_name))
   end
 
   if type(server_config) == 'table' and server_config.opts ~= nil then

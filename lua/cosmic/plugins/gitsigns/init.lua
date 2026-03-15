@@ -15,7 +15,7 @@ return {
     on_attach = function(bufnr)
       local gs = require('gitsigns')
       local map = u.create_buf_map(bufnr, {
-        noremap = true
+        noremap = true,
       })
       -- Navigation
       map('n', ']c', function()
