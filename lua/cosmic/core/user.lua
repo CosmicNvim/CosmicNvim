@@ -1,5 +1,6 @@
 local diagnostics_defaults = require('cosmic.lsp.diagnostics.defaults')
 local u = require('cosmic.utils')
+local modules = require('cosmic.utils.modules')
 
 ---@diagnostic disable: missing-fields
 ---@class CosmicUserConfigLspServer : vim.lsp.ClientConfig
@@ -69,26 +70,9 @@ local function config_error(message)
   error('[CosmicNvim] ' .. message, 0)
 end
 
-local function module_not_found(err, module_name)
-  return type(err) == 'string' and err:find(("module '%s' not found"):format(module_name), 1, true) ~= nil
-end
-
-local function optional_require(module_name)
-  local ok, value = pcall(require, module_name)
-  if ok then
-    return value
-  end
-
-  if module_not_found(value, module_name) then
-    return nil
-  end
-
-  error(value, 0)
-end
-
 ---@return CosmicRawUserConfig
 local function load_user_config()
-  local config = optional_require('cosmic.config.config')
+  local config = modules.optional_require('cosmic.config.config')
   if config == nil then
     return {}
   end
@@ -155,7 +139,7 @@ local function resolve_lsp_servers(servers)
   for server_name, server_config in pairs(servers) do
     if server_config ~= false then
       local resolved_config = vim.deepcopy(base_server_config)
-      local cosmic_server_config = optional_require('cosmic.lsp.servers.' .. server_name)
+      local cosmic_server_config = modules.optional_require('cosmic.lsp.servers.' .. server_name)
 
       if type(cosmic_server_config) == 'table' then
         resolved_config = u.merge(resolved_config, cosmic_server_config)
