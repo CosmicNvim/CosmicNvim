@@ -48,7 +48,6 @@ function M.init(client, bufnr)
       { desc = 'Range Format', noremap = false }
     )
   end
-  buf_map('n', '<leader>lx', lsp_utils.toggle_format_on_save, { desc = 'Toggle format on save', noremap = false })
 
   -- lsp workspace
   buf_map('n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Add workspace folder' })

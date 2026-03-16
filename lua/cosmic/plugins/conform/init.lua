@@ -33,12 +33,7 @@ return {
       lsp_format = 'fallback',
     },
 
-    -- @TODO: make this simpler
     format_on_save = function(bufnr)
-      if not vim.g.format_on_save_enabled then
-        return
-      end
-
       local ok, cosmic = pcall(require, 'cosmic-ui')
       if not (ok and cosmic.is_setup and cosmic.is_setup()) then
         return { timeout_ms = 500, lsp_format = 'fallback' }
