@@ -40,13 +40,13 @@ return {
           require('cosmic-ui').codeactions.range()
         end, { desc = 'Range codeactions' })
 
-        buf_map('n', '<leader>lx', function()
+        buf_map('n', '<leader>ltx', function()
           require('cosmic-ui').formatters.open()
-        end, { silent = true })
+        end, { silent = true, desc = 'Open formatters toggle' })
 
         buf_map('n', '<leader>lf', function()
           require('cosmic-ui').formatters.format()
-        end, { silent = true })
+        end, { silent = true, desc = 'Format' })
       end,
       desc = 'LSP: disable formatting for user specified lsps',
     })

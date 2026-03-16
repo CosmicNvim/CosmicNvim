@@ -36,4 +36,10 @@ map('n', '<C-Down>', ':resize +2<CR>', { desc = 'Resize +2' })
 map('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Vertical Resize -2' })
 map('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Vertical Resize +2' })
 
+-- terminal
 map('t', '<C-n>', [[<C-\><C-n>]], { desc = 'Visual mode' })
+
+-- toggle rnu for buffer
+map('n', '<leader>ktl', function()
+  vim.wo.relativenumber = not vim.wo.relativenumber
+end, { desc = 'Toggle relative line numbers' })

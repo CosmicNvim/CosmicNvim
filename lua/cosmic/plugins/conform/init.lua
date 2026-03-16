@@ -2,12 +2,10 @@ return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
-  -- This will provide type hinting with LuaLS
   ---@module "conform"
   ---@type conform.setupOpts
   opts = {
     log_level = vim.log.levels.DEBUG,
-    -- Define your formatters
     formatters_by_ft = {
       css = { 'prettierd' },
       go = { 'goimports', 'gofmt' },
@@ -34,12 +32,12 @@ return {
     },
 
     format_on_save = function(bufnr)
-      local ok, cosmic = pcall(require, 'cosmic-ui')
-      if not (ok and cosmic.is_setup and cosmic.is_setup()) then
+      local ok, cosmic_ui = pcall(require, 'cosmic-ui')
+      if not (ok and cosmic_ui.is_setup and cosmic_ui.is_setup()) then
         return { timeout_ms = 500, lsp_format = 'fallback' }
       end
 
-      local st = cosmic.formatters.status({ scope = 'buffer', bufnr = bufnr })
+      local st = cosmic_ui.formatters.status({ scope = 'buffer', bufnr = bufnr })
       local enabled = {}
       for _, f in ipairs((st and st.conform and st.conform.formatters) or {}) do
         if f.enabled then
