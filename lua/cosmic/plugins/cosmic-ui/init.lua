@@ -22,9 +22,8 @@ return {
     },
   },
   init = function()
-    vim.api.nvim_create_autocmd('User', {
+    vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('cosmic_lsp_attach_cosmic_ui_mappings', { clear = true }),
-      pattern = 'CosmicLspAttach',
       callback = function(args)
         local buf_map = utils.create_buf_map(args.buf)
 
@@ -48,7 +47,7 @@ return {
           require('cosmic-ui').formatters.format()
         end, { silent = true, desc = 'Format' })
       end,
-      desc = 'LSP: disable formatting for user specified lsps',
+      desc = 'LSP: register cosmic-ui mappings on attach',
     })
   end,
   event = 'VeryLazy',

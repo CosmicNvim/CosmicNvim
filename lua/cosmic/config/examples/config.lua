@@ -10,12 +10,12 @@ local config = {
     inlay_hint = false,
     -- Time in MS before format timeout
     format_timeout = 1000,
-    -- Enable non-default servers or override server options
+    -- Enable non-default servers or override lspconfig/after/lsp server options
     servers = {
-      -- Enable rust_analyzer with Cosmic defaults
+      -- Enable rust_analyzer with its lspconfig and after/lsp defaults
       rust_analyzer = true,
 
-      -- Override vtsls defaults directly
+      -- Override vtsls defaults from lspconfig and after/lsp
       vtsls = {
         -- Disable formatting for this server
         format_on_save = false,

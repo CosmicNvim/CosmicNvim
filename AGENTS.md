@@ -134,26 +134,22 @@ return {
       -- config
     })
   end,
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, 'plugin-name'),
+  enabled = true,
 }
 ```
 
 ### LSP Server Configuration
 
 ```lua
-local defaults = require('cosmic.lsp.servers.defaults')
-
 return {
-  on_attach = function(client, bufnr)
-    defaults.on_attach(client, bufnr)
-    -- server-specific on_attach
-  end,
-  capabilities = defaults.capabilities,
   settings = {
     -- server-specific settings
   },
 }
 ```
+
+Built-in server config belongs in `after/lsp/<server>.lua`. User enablement and overrides belong in
+`lua/cosmic/config/config.lua` under `lsp.servers.NAME`.
 
 ### Type Annotations
 

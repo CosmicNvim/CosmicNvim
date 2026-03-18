@@ -95,7 +95,10 @@ Plugin customization in `lua/cosmic/config/config.lua` uses:
 - `plugins = { ... }` for direct lazy.nvim specs
 - `{ 'repo/name', enabled = false }` to disable a built-in plugin
 - another spec with the same repository ID to override a built-in plugin
-- `lsp.servers.NAME = true | false | { ... }` for direct LSP server config
+- `lsp.servers.NAME = true | false | { ... }` to enable, disable, or override an LSP server
+
+Built-in LSP defaults come from `nvim-lspconfig` and are extended by `after/lsp/*.lua`. User config under
+`lsp.servers.NAME` is merged on top of those defaults when the server is enabled.
 
 `disable_builtin_plugins`, `plugins.add`, `plugins.disable`, `plugins.opts`, `plugins.override`, and `lsp.servers.NAME.opts` have been removed.
 

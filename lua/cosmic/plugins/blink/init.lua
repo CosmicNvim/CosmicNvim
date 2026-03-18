@@ -1,6 +1,6 @@
 return {
   'saghen/blink.cmp',
-  event = { 'InsertEnter', 'CmdlineEnter' },
+  event = { 'BufReadPre', 'BufNewFile', 'InsertEnter', 'CmdlineEnter' },
   -- optional: provides snippets for the snippet source
   dependencies = {
     { 'xzbdmw/colorful-menu.nvim', lazy = true },

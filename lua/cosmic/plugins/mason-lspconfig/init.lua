@@ -89,6 +89,7 @@ return {
     end
   end,
   dependencies = {
+    { 'saghen/blink.cmp', lazy = true },
     { 'neovim/nvim-lspconfig', lazy = true },
     { 'williamboman/mason.nvim', lazy = true, opts = {} },
   },

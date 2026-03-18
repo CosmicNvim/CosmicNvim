@@ -33,16 +33,15 @@ local modules = require('cosmic.utils.modules')
 ---@type table<string, CosmicUserConfigLspServerSetting>
 local default_lsp_servers = {
   astro = true,
+  basedpyright = {
+    format_on_save = false,
+  },
   cssls = true,
   eslint = true,
   gopls = true,
   html = true,
   jsonls = true,
   lua_ls = true,
-  -- Disable in favor of conform ruff
-  basedpyright = {
-    format_on_save = false,
-  },
   -- Disable in favor of conform ruff
   ruff = {
     format_on_save = false,
@@ -91,7 +90,7 @@ local function normalize_plugins(plugins)
     return {}
   end
 
-  if type(plugins) ~= 'table' or not vim.tbl_islist(plugins) then
+  if type(plugins) ~= 'table' or not vim.islist(plugins) then
     config_error('`plugins` must be a list of lazy.nvim specs.')
   end
 
@@ -134,16 +133,10 @@ end
 local function resolve_lsp_servers(servers)
   local resolved_servers = {}
   local format_on_save_disabled = {}
-  local base_server_config = require('cosmic.lsp.servers.defaults')
 
   for server_name, server_config in pairs(servers) do
     if server_config ~= false then
-      local resolved_config = vim.deepcopy(base_server_config)
-      local cosmic_server_config = modules.optional_require('cosmic.lsp.servers.' .. server_name)
-
-      if type(cosmic_server_config) == 'table' then
-        resolved_config = u.merge(resolved_config, cosmic_server_config)
-      end
+      local resolved_config = {}
 
       if type(server_config) == 'table' then
         local user_server_config = vim.deepcopy(server_config)
@@ -151,7 +144,7 @@ local function resolve_lsp_servers(servers)
           format_on_save_disabled[server_name] = true
         end
         user_server_config.format_on_save = nil
-        resolved_config = u.merge(resolved_config, user_server_config)
+        resolved_config = user_server_config
       end
 
       resolved_servers[server_name] = resolved_config
