@@ -16,7 +16,7 @@ end
 -- set up lsp servers
 return {
   'williamboman/mason-lspconfig.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  lazy = false,
   config = function()
     local configured_servers = {}
     local pending_servers = {}
