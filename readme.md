@@ -90,6 +90,8 @@ CosmicNvim uninstallation [details](https://github.com/CosmicNvim/CosmicNvim/wik
 
 [Add additional vim options](./lua/cosmic/config/examples/editor.lua)
 
+[LSP config merging](./docs/lsp-config-merging.md)
+
 Plugin customization in `lua/cosmic/config/config.lua` uses:
 
 - `plugins = { ... }` for direct lazy.nvim specs
@@ -99,6 +101,9 @@ Plugin customization in `lua/cosmic/config/config.lua` uses:
 
 Built-in LSP defaults come from `nvim-lspconfig` and are extended by `after/lsp/*.lua`. User config under
 `lsp.servers.NAME` is merged on top of those defaults when the server is enabled.
+
+Enabled servers are installed through Mason automatically.
+Enabled servers are enabled by Cosmic with `vim.lsp.enable()`.
 
 `disable_builtin_plugins`, `plugins.add`, `plugins.disable`, `plugins.opts`, `plugins.override`, and `lsp.servers.NAME.opts` have been removed.
 

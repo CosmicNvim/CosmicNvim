@@ -10,6 +10,7 @@ local config = {
     inlay_hint = false,
     -- Time in MS before format timeout
     format_timeout = 1000,
+    -- Enabled servers are installed through Mason automatically
     -- Enable non-default servers or override lspconfig/after/lsp server options
     servers = {
       -- Enable rust_analyzer with its lspconfig and after/lsp defaults
