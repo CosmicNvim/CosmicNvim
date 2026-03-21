@@ -25,27 +25,36 @@ return {
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('cosmic_lsp_attach_cosmic_ui_mappings', { clear = true }),
       callback = function(args)
-        local buf_map = utils.create_buf_map(args.buf)
+        local bufnr = args.buf
 
-        buf_map('n', 'gn', function()
-          require('cosmic-ui').rename.open()
-        end, { desc = 'Rename' })
+        -- Reapply after the core LspAttach handler so cosmic-ui owns the overlapping maps.
+        vim.schedule(function()
+          if not vim.api.nvim_buf_is_valid(bufnr) then
+            return
+          end
 
-        buf_map('n', '<leader>la', function()
-          require('cosmic-ui').codeactions.open()
-        end, { desc = 'Code actions' })
+          local buf_map = utils.create_buf_map(bufnr)
 
-        buf_map('v', '<leader>la', function()
-          require('cosmic-ui').codeactions.range()
-        end, { desc = 'Range codeactions' })
+          buf_map('n', 'gn', function()
+            require('cosmic-ui').rename.open()
+          end, { desc = 'Rename' })
 
-        buf_map('n', '<leader>ltx', function()
-          require('cosmic-ui').formatters.open()
-        end, { silent = true, desc = 'Open formatters toggle' })
+          buf_map('n', '<leader>la', function()
+            require('cosmic-ui').codeactions.open()
+          end, { desc = 'Code actions' })
 
-        buf_map('n', '<leader>lf', function()
-          require('cosmic-ui').formatters.format()
-        end, { silent = true, desc = 'Format' })
+          buf_map('v', '<leader>la', function()
+            require('cosmic-ui').codeactions.range()
+          end, { desc = 'Range codeactions' })
+
+          buf_map('n', '<leader>ltx', function()
+            require('cosmic-ui').formatters.open()
+          end, { silent = true, desc = 'Open formatters toggle' })
+
+          buf_map('n', '<leader>lf', function()
+            require('cosmic-ui').formatters.format()
+          end, { silent = true, desc = 'Format' })
+        end)
       end,
       desc = 'LSP: register cosmic-ui mappings on attach',
     })
