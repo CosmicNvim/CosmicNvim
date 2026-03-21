@@ -7,17 +7,17 @@ return {
   opts = {
     log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
-      css = { 'prettierd' },
+      css = { 'prettierd', 'oxfmt' },
       go = { 'goimports', 'gofmt' },
-      html = { 'prettierd' },
-      javascript = { 'eslint_d', 'prettierd' },
-      javascriptreact = { 'eslint_d', 'prettierd' },
-      json = { 'prettierd' },
+      html = { 'prettierd', 'oxfmt' },
+      javascript = { 'eslint_d', 'prettierd', 'oxlint', 'oxfmt' },
+      javascriptreact = { 'eslint_d', 'prettierd', 'oxlint', 'oxfmt' },
+      json = { 'prettierd', 'oxfmt' },
       lua = { 'stylua' },
       --[[ markdown = { 'prettierd' }, ]]
-      scss = { 'prettierd' },
-      typescript = { 'eslint_d', 'prettierd' },
-      typescriptreact = { 'eslint_d', 'prettierd' },
+      scss = { 'prettierd', 'oxfmt' },
+      typescript = { 'eslint_d', 'prettierd', 'oxlint', 'oxfmt' },
+      typescriptreact = { 'eslint_d', 'prettierd', 'oxlint', 'oxfmt' },
       python = {
         -- To fix auto-fixable lint errors.
         'ruff_fix',
@@ -52,7 +52,6 @@ return {
       return {
         timeout_ms = 500,
         formatters = enabled,
-        lsp_format = 'fallback',
       }
     end,
     formatters = {
