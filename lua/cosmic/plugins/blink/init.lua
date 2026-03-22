@@ -34,6 +34,13 @@ return {
   },
   init = function()
     vim.api.nvim_set_hl(0, 'BlinkCmpLabelDescription', { link = 'Comment' })
+
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = 'cosmicui-rename',
+      callback = function()
+        vim.b.completion = false
+      end,
+    })
   end,
 
   -- use a release tag to download pre-built binaries
