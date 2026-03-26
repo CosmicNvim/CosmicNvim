@@ -7,17 +7,17 @@ return {
   opts = {
     log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
-      css = { 'prettierd', 'oxfmt' },
+      css = { 'oxfmt' },
       go = { 'goimports', 'gofmt' },
-      html = { 'prettierd', 'oxfmt' },
-      javascript = { 'eslint_d', 'prettierd', 'oxlint', 'oxfmt' },
-      javascriptreact = { 'eslint_d', 'prettierd', 'oxlint', 'oxfmt' },
-      json = { 'prettierd', 'oxfmt' },
+      html = { 'oxfmt' },
+      javascript = { 'eslint_d', 'oxlint', 'oxfmt' },
+      javascriptreact = { 'eslint_d', 'oxlint', 'oxfmt' },
+      json = { 'oxfmt' },
       lua = { 'stylua' },
-      --[[ markdown = { 'prettierd' }, ]]
-      scss = { 'prettierd', 'oxfmt' },
-      typescript = { 'eslint_d', 'prettierd', 'oxlint', 'oxfmt' },
-      typescriptreact = { 'eslint_d', 'prettierd', 'oxlint', 'oxfmt' },
+      markdown = { 'oxfmt' },
+      scss = { 'oxfmt' },
+      typescript = { 'eslint_d', 'oxlint', 'oxfmt' },
+      typescriptreact = { 'eslint_d', 'oxlint', 'oxfmt' },
       python = {
         -- To fix auto-fixable lint errors.
         'ruff_fix',
@@ -54,15 +54,5 @@ return {
         formatters = enabled,
       }
     end,
-    formatters = {
-      prettierd = {
-        command = 'prettierd', -- Use system prettierd
-        args = { '$FILENAME' }, -- Simplify args to just filename
-        extra_filetypes = { 'astro' },
-        env = {
-          PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
-        },
-      },
-    },
   },
 }
