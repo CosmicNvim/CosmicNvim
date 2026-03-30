@@ -39,9 +39,6 @@ return {
   'nvim-treesitter/nvim-treesitter',
   branch = 'main',
   lazy = false,
-  dependencies = {
-    { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
-  },
   build = ':TSUpdate',
   config = function()
     local treesitter = require('nvim-treesitter')
@@ -59,14 +56,6 @@ return {
         end
       end,
       desc = 'Enable Tree-sitter features for supported buffers',
-    })
-
-    require('ts_context_commentstring').setup({
-      enable_autocmd = false,
-      languages = {
-        python = '# %s',
-        typescript = '// %s',
-      },
     })
   end,
 }
