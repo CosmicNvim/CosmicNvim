@@ -41,7 +41,6 @@ return {
   branch = 'main',
   lazy = false,
   dependencies = {
-    { 'windwp/nvim-ts-autotag', lazy = true },
     { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
   },
   build = ':TSUpdate',
@@ -66,8 +65,6 @@ return {
       end,
       desc = 'Enable Tree-sitter features for supported buffers',
     })
-
-    require('nvim-ts-autotag').setup({})
 
     require('ts_context_commentstring').setup({
       enable_autocmd = false,
