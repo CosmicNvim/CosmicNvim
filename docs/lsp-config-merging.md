@@ -1,6 +1,6 @@
 # LSP Config Merging
 
-CosmicNvim uses Neovim 0.11's `vim.lsp.config()` and `vim.lsp.enable()` APIs.
+CosmicNvim uses Neovim 0.13's `vim.lsp.config()` and `vim.lsp.enable()` APIs.
 That means LSP setup is driven by named configs on `runtimepath`, not by calling
 `require('lspconfig').SERVER.setup(...)`.
 

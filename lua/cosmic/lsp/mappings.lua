@@ -2,6 +2,24 @@ local utils = require('cosmic.utils')
 local lsp_utils = require('cosmic.utils.lsp')
 local M = {}
 
+---@param count integer
+local function jump_diagnostic(count)
+  vim.diagnostic.jump({
+    count = count,
+    on_jump = function(diagnostic, bufnr)
+      if diagnostic == nil then
+        return
+      end
+
+      vim.diagnostic.open_float({
+        bufnr = bufnr,
+        focus = false,
+        scope = 'cursor',
+      })
+    end,
+  })
+end
+
 -- Mappings.
 function M.init(client, bufnr)
   local buf_map = utils.create_buf_map(bufnr, {
@@ -16,14 +34,15 @@ function M.init(client, bufnr)
   --[[ buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'Go to reference' }) ]]
 
   -- diagnostics
-  buf_map('n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<cr>', { desc = 'Prev diagnostic' })
-  buf_map('n', ']g', '<cmd>lua vim.diagnostic.goto_next()<cr>', { desc = 'Next diagnostic' })
-  buf_map(
-    'n',
-    'ge',
-    '<cmd>lua vim.diagnostic.open_float(nil, { scope = "line", })<cr>',
-    { desc = 'Show current line diagnostic' }
-  )
+  buf_map('n', '[g', function()
+    jump_diagnostic(-1)
+  end, { desc = 'Prev diagnostic' })
+  buf_map('n', ']g', function()
+    jump_diagnostic(1)
+  end, { desc = 'Next diagnostic' })
+  buf_map('n', 'ge', function()
+    vim.diagnostic.open_float({ scope = 'line' })
+  end, { desc = 'Show current line diagnostic' })
 
   -- hover
   buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = 'Show documentation' })
@@ -36,17 +55,16 @@ function M.init(client, bufnr)
   -- code actions
   buf_map('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename' })
   buf_map('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Code Actions' })
-  buf_map('v', '<leader>la', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', { desc = 'Range Code Actions' })
+  buf_map('v', '<leader>la', function()
+    vim.lsp.buf.code_action()
+  end, { desc = 'Range Code Actions' })
 
   -- formatting
   if client:supports_method('textDocument/formatting') then
-    buf_map('n', '<leader>lf', '', { desc = 'Format', callback = lsp_utils.format_buf, noremap = false })
-    buf_map(
-      'v',
-      '<leader>lf',
-      '<cmd>lua vim.lsp.buf.range_formatting()<cr>',
-      { desc = 'Range Format', noremap = false }
-    )
+    buf_map('n', '<leader>lf', lsp_utils.format_buf, { desc = 'Format', noremap = false })
+    buf_map('v', '<leader>lf', function()
+      vim.lsp.buf.format()
+    end, { desc = 'Range Format', noremap = false })
   end
 
   -- lsp workspace

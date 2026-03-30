@@ -6,7 +6,7 @@ require('lazy').setup('cosmic.plugins', {
   defaults = { lazy = true },
   ui = {
     size = { width = 0.7, height = 0.7 },
-    border = vim.opt.winborder:get(),
+    border = vim.o.winborder,
   },
   performance = {
     rtp = {

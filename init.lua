@@ -1,5 +1,5 @@
-if vim.fn.has('nvim-0.11') == 0 then
-  error('Need Neovim v0.11+ (Nightly) in order to run Cosmic!')
+if vim.fn.has('nvim-0.13') == 0 then
+  error('Need Neovim v0.13 in order to run Cosmic!')
 end
 
 if vim.loader and vim.loader.enable then

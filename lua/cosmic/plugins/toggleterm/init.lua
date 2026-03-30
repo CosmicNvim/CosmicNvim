@@ -4,7 +4,7 @@ return {
     direction = 'float',
     -- toggleterm doesn't respect default winborder or highlights
     float_opts = {
-      border = vim.opt.winborder:get(),
+      border = vim.o.winborder,
     },
     highlights = {
       FloatBorder = {

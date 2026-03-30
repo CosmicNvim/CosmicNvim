@@ -23,6 +23,7 @@ markdownlint *.md
 ### Testing
 
 This project has no automated test suite. Testing is done by:
+
 1. Opening Neovim: `nvim`
 2. Checking for Lua syntax errors on startup
 3. Verifying plugin functionality manually
@@ -225,4 +226,4 @@ local config = vim.tbl_deep_extend('force', defaults, user_config or {})
 
 - **stylua**: Lua formatter (required for contributions)
 - **markdownlint**: Markdown linter
-- **Neovim 0.11+**: Required version
+- **Neovim 0.13+** (nightly): Required version

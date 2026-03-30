@@ -36,7 +36,7 @@ function M.create_buf_map(bufnr, opts)
       lhs,
       rhs,
       M.merge({
-        buffer = bufnr,
+        buf = bufnr,
       }, opts or {}, map_opts or {})
     )
   end
