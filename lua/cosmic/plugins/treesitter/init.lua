@@ -34,7 +34,6 @@ local defaults = {
 }
 
 local group = vim.api.nvim_create_augroup('CosmicNvimTreesitter', { clear = true })
-local install_dir = vim.fs.joinpath(vim.fn.stdpath('data') --[[@as string]], 'site')
 
 return {
   'nvim-treesitter/nvim-treesitter',
@@ -44,14 +43,10 @@ return {
     { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
   },
   build = ':TSUpdate',
-  config = function(plugin)
+  config = function()
     local treesitter = require('nvim-treesitter')
 
-    vim.opt.runtimepath:prepend(plugin.dir .. '/runtime')
-
-    treesitter.setup({
-      install_dir = install_dir,
-    })
+    treesitter.setup({})
     treesitter.install(defaults.ensure_installed)
 
     vim.api.nvim_create_autocmd('FileType', {
