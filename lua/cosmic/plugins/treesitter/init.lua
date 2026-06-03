@@ -22,13 +22,7 @@ local defaults = {
     'vim',
     'yaml',
   },
-  highlight = {
-    enable = true,
-  },
   indent = {
-    enable = true,
-  },
-  autotag = {
     enable = true,
   },
 }
@@ -40,18 +34,19 @@ return {
   branch = 'main',
   lazy = false,
   build = ':TSUpdate',
-  config = function()
+  opts = defaults,
+  config = function(_, opts)
     local treesitter = require('nvim-treesitter')
 
     treesitter.setup({})
-    treesitter.install(defaults.ensure_installed)
+    treesitter.install(opts.ensure_installed)
 
     vim.api.nvim_create_autocmd('FileType', {
       group = group,
       callback = function(args)
         local ok = pcall(vim.treesitter.start, args.buf)
 
-        if ok and defaults.indent.enable then
+        if ok and opts.indent.enable then
           vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end
       end,

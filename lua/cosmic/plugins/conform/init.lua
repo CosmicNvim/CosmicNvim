@@ -1,3 +1,5 @@
+local lsp_utils = require('cosmic.utils.lsp')
+
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -34,7 +36,7 @@ return {
     format_on_save = function(bufnr)
       local ok, cosmic_ui = pcall(require, 'cosmic-ui')
       if not (ok and cosmic_ui.is_setup and cosmic_ui.is_setup()) then
-        return { timeout_ms = 500, lsp_format = 'fallback' }
+        return { timeout_ms = 500, lsp_format = 'fallback', filter = lsp_utils.can_client_format_on_save }
       end
 
       local st = cosmic_ui.formatters.status({ scope = 'buffer', bufnr = bufnr })
@@ -52,6 +54,7 @@ return {
       return {
         timeout_ms = 500,
         formatters = enabled,
+        filter = lsp_utils.can_client_format_on_save,
       }
     end,
   },

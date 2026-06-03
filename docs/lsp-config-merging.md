@@ -36,7 +36,7 @@ does three things:
 This means `lsp.servers.NAME` controls all of the following:
 
 - whether a server is enabled
-- whether Mason installs it
+- whether Mason installs it, unless `mason = false` is set
 - which user overrides get merged in
 
 ## Where Base Server Config Comes From
@@ -146,6 +146,27 @@ This means:
 - the default config from `nvim-lspconfig` and `after/lsp` is still used
 - your table is merged on top of that config
 
+Cosmic also supports a few metadata fields that are stripped before calling
+`vim.lsp.config()`:
+
+- `format_on_save = false` disables only automatic LSP formatting on save for that server.
+- `formatting = false` disables all LSP formatting from that server, including manual formatting.
+- `mason = false` enables the server without passing it to Mason for installation.
+
+For example, a local/custom server can opt out of Mason:
+
+```lua
+lsp = {
+  servers = {
+    my_custom_lsp = {
+      mason = false,
+      cmd = { 'my-custom-lsp' },
+      filetypes = { 'foo' },
+    },
+  },
+}
+```
+
 ## Merge Example
 
 If all of these exist:
@@ -170,14 +191,14 @@ The user table wins over Cosmic defaults, and Cosmic defaults win over plain
 
 ## Mason Installation
 
-Cosmic treats Mason as the automatic installation path for enabled LSP servers.
-`mason-lspconfig` expects `lspconfig` server names in `ensure_installed`, so the
-same names used under `lsp.servers` are passed through to Mason.
+Cosmic treats Mason as the automatic installation path for enabled LSP servers by default.
+`mason-lspconfig` expects `lspconfig` server names in `ensure_installed`, so enabled
+servers are passed through to Mason unless their config has `mason = false`.
 
-That keeps the model simple:
+That keeps the default model simple:
 
 - enable a server in `lsp.servers`
-- Mason installs it
+- Mason installs it, unless `mason = false`
 - Cosmic registers the merged config
 - Cosmic enables it
 

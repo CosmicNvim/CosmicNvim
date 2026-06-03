@@ -5,6 +5,8 @@ local modules = require('cosmic.utils.modules')
 ---@diagnostic disable: missing-fields
 ---@class CosmicUserConfigLspServer : vim.lsp.ClientConfig
 ---@field format_on_save? boolean
+---@field formatting? boolean
+---@field mason? boolean
 
 ---@alias CosmicUserConfigLspServerSetting CosmicUserConfigLspServer|boolean
 
@@ -21,7 +23,9 @@ local modules = require('cosmic.utils.modules')
 ---@class CosmicUserConfigLsp
 ---@field format_timeout number
 ---@field format_on_save_disabled table<string, boolean>
+---@field formatting_disabled table<string, boolean>
 ---@field inlay_hint boolean
+---@field mason_servers table<string, boolean>
 ---@field resolved_servers table<string, vim.lsp.ClientConfig>
 ---@field servers table<string, CosmicUserConfigLspServerSetting>
 
@@ -119,11 +123,13 @@ local function validate_server_config(server_name, server_config)
 end
 
 ---@param user_servers table<string, CosmicUserConfigLspServerSetting>|nil
----@return table<string, CosmicUserConfigLspServerSetting>, table<string, vim.lsp.ClientConfig>, table<string, boolean>
+---@return table<string, CosmicUserConfigLspServerSetting>, table<string, vim.lsp.ClientConfig>, table<string, boolean>, table<string, boolean>, table<string, boolean>
 local function normalize_servers(user_servers)
   local servers = u.merge(vim.deepcopy(default_lsp_servers), vim.deepcopy(user_servers or {}))
   local resolved_servers = {}
   local format_on_save_disabled = {}
+  local formatting_disabled = {}
+  local mason_servers = {}
 
   for server_name, server_config in pairs(servers) do
     validate_server_config(server_name, server_config)
@@ -134,15 +140,24 @@ local function normalize_servers(user_servers)
         if user_server_config.format_on_save == false then
           format_on_save_disabled[server_name] = true
         end
+        if user_server_config.formatting == false then
+          formatting_disabled[server_name] = true
+        end
+        if user_server_config.mason ~= false then
+          mason_servers[server_name] = true
+        end
         user_server_config.format_on_save = nil
+        user_server_config.formatting = nil
+        user_server_config.mason = nil
         resolved_servers[server_name] = user_server_config
       else
+        mason_servers[server_name] = true
         resolved_servers[server_name] = {}
       end
     end
   end
 
-  return servers, resolved_servers, format_on_save_disabled
+  return servers, resolved_servers, format_on_save_disabled, formatting_disabled, mason_servers
 end
 
 ---@param lsp CosmicRawUserConfigLsp|nil
@@ -160,12 +175,15 @@ local function normalize_lsp(lsp)
     config_error('`lsp.servers` must be a table.')
   end
 
-  local servers, resolved_servers, format_on_save_disabled = normalize_servers(lsp.servers)
+  local servers, resolved_servers, format_on_save_disabled, formatting_disabled, mason_servers =
+    normalize_servers(lsp.servers)
 
   return {
     format_timeout = lsp.format_timeout == nil and default_lsp_format_timeout or lsp.format_timeout,
     format_on_save_disabled = format_on_save_disabled,
+    formatting_disabled = formatting_disabled,
     inlay_hint = lsp.inlay_hint == nil and default_lsp_inlay_hint or lsp.inlay_hint,
+    mason_servers = mason_servers,
     resolved_servers = resolved_servers,
     servers = servers,
   }

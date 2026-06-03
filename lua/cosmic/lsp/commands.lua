@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       return
     end
 
-    if not lsp_utils.can_client_format_on_save(client) then
+    if not lsp_utils.can_client_format(client) then
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
     end
@@ -33,5 +33,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local lsp_mappings = require('cosmic.lsp.mappings')
     lsp_mappings.init(client, bufnr)
   end,
-  desc = 'LSP: disable formatting for user specified lsps',
+  desc = 'LSP: attach Cosmic defaults',
 })
