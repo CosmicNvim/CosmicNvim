@@ -12,15 +12,6 @@ local opts = {
     new_config.settings.json = new_config.settings.json or {}
     new_config.settings.json.schemas = schemastore.json.schemas()
   end,
-  setup = {
-    commands = {
-      Format = {
-        function()
-          vim.lsp.buf.format()
-        end,
-      },
-    },
-  },
 }
 
 return opts

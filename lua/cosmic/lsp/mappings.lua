@@ -72,12 +72,9 @@ function M.init(client, bufnr)
   buf_map('n', '<leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', {
     desc = 'Remove workspace folder',
   })
-  buf_map(
-    'n',
-    '<leader>lwl',
-    '<cmd>lua require("cosmic.utils.logger"):log(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>',
-    { desc = 'Show workspace folders' }
-  )
+  buf_map('n', '<leader>lwl', function()
+    vim.print(vim.lsp.buf.list_workspace_folders())
+  end, { desc = 'Show workspace folders' })
 end
 
 return M

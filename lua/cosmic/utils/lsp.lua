@@ -1,14 +1,18 @@
 local user_config = require('cosmic.core.user')
 local M = {}
 
---- Checks if user config allows lsp to format on save
---- @param client vim.lsp.Client  # the LSP client object
---- @return boolean               # true if formatting on save is allowed
+--- Checks if user config allows this LSP client to format at all.
+---@param client vim.lsp.Client
+---@return boolean
+function M.can_client_format(client)
+  return not user_config.lsp.formatting_disabled[client.name]
+end
+
+--- Checks if user config allows this LSP client to format on save.
+---@param client vim.lsp.Client
+---@return boolean
 function M.can_client_format_on_save(client)
-  if user_config.lsp.format_on_save_disabled[client.name] then
-    return false
-  end
-  return true
+  return M.can_client_format(client) and not user_config.lsp.format_on_save_disabled[client.name]
 end
 
 --- Format a buffer

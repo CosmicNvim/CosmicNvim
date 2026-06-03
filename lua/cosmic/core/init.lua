@@ -1,3 +1,5 @@
+local modules = require('cosmic.utils.modules')
+
 local cosmic_modules = {
   'cosmic.core.editor',
   'cosmic.core.pluginsInit',
@@ -24,9 +26,12 @@ vim.opt.runtimepath:prepend(lazypath)
 
 -- set up cosmicnvim
 for _, mod in ipairs(cosmic_modules) do
-  local ok, err = pcall(require, mod)
-  -- cosmic.config files may or may not be present
-  if not ok and not mod:find('cosmic.config') then
-    error(('Error loading %s...\n\n%s'):format(mod, err))
+  if mod:find('^cosmic%.config%.') then
+    modules.optional_require(mod)
+  else
+    local ok, err = pcall(require, mod)
+    if not ok then
+      error(('Error loading %s...\n\n%s'):format(mod, err))
+    end
   end
 end

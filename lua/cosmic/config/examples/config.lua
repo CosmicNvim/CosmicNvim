@@ -18,14 +18,23 @@ local config = {
 
       -- Override vtsls defaults from lspconfig and after/lsp
       vtsls = {
-        -- Disable formatting for this server
+        -- Disable only automatic formatting on save for this server
         format_on_save = false,
+        -- Disable all formatting from this server, including manual formatting
+        -- formatting = false,
         flags = {
           debounce_text_changes = 150,
         },
         on_attach = function(client, bufnr) end,
         settings = {},
       },
+
+      -- Enable a custom/local server without asking Mason to install it
+      -- my_custom_lsp = {
+      --   mason = false,
+      --   cmd = { 'my-custom-lsp' },
+      --   filetypes = { 'foo' },
+      -- },
 
       -- Disable a default server completely
       -- eslint = false,
