@@ -72,6 +72,14 @@ return {
     cmdline = {
       completion = {
         ghost_text = { enabled = true },
+        list = {
+          selection = {
+            -- When `true`, will automatically select the first item in the completion list
+            preselect = false,
+            -- When `true`, inserts the completion item automatically when selecting it
+            auto_insert = true,
+          },
+        },
         menu = {
           auto_show = function(ctx)
             return vim.fn.getcmdtype() == ':'
