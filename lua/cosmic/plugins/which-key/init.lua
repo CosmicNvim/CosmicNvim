@@ -28,7 +28,6 @@ return {
       { '<leader>lt', group = 'toggle' },
       { '<leader>lw', group = 'workspace' },
       { '<leader>n', group = 'notifications' },
-      { '<leader>n', group = 'tree' },
       { '<leader>o', group = 'open' },
       { '<leader>p', group = 'lazy (plugins)' },
       { '<leader>s', group = 'session' },

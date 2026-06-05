@@ -26,7 +26,7 @@ return {
         local terminal = Terminal:new()
         terminal:toggle()
       end,
-      desc = 'Toggle Terminal',
+      desc = 'New Terminal',
     },
     {
       '<leader>fx',

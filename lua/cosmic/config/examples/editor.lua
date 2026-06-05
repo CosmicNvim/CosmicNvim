@@ -13,7 +13,7 @@ opt.softtabstop = 4
 opt.tabstop = 4
 
 -- Add additional keymaps or disable existing ones
--- To view maps set, use `:Telescope keymaps`
+-- To view maps set, use `:lua Snacks.picker.keymaps()`
 -- or `:map`, `:map <leader>`
 
 -- Example: Additional insert mapping:
