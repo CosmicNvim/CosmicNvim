@@ -70,6 +70,9 @@ return {
       default = { 'lsp', 'snippets', 'path', 'buffer' },
     },
     cmdline = {
+      keymap = {
+        preset = 'inherit',
+      },
       completion = {
         ghost_text = { enabled = true },
         list = {
