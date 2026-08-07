@@ -8,6 +8,24 @@ return {
     image = {},
     input = {},
     picker = {
+      win = {
+        input = {
+          keys = {
+            ['<c-d>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },
+            ['<c-u>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
+            ['<c-b>'] = false,
+            ['<c-f>'] = false,
+          },
+        },
+        list = {
+          keys = {
+            ['<c-d>'] = 'preview_scroll_down',
+            ['<c-u>'] = 'preview_scroll_up',
+            ['<c-b>'] = false,
+            ['<c-f>'] = false,
+          },
+        },
+      },
       formatters = {
         file = {
           filename_first = false,
