@@ -42,5 +42,8 @@ return {
   opts = {
     pre_hook = get_commentstring,
   },
-  lazy = false,
+  keys = {
+    { 'gc', mode = { 'n', 'x' } },
+    { 'gb', mode = { 'n', 'x' } },
+  },
 }

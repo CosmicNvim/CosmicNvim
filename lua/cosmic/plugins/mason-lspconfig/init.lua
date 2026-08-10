@@ -10,7 +10,8 @@ end
 -- set up lsp servers
 return {
   'williamboman/mason-lspconfig.nvim',
-  lazy = false,
+  event = { 'BufReadPre', 'BufNewFile' },
+  cmd = { 'Mason', 'MasonInstall', 'MasonUpdate' },
   config = function()
     local mason_servers = get_mason_servers()
 
