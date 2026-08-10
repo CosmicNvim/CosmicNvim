@@ -1,7 +1,8 @@
 return {
   'nvim-mini/mini.nvim',
   version = false,
-  init = function()
+  event = 'VeryLazy',
+  config = function()
     require('mini.ai').setup()
   end,
 }
