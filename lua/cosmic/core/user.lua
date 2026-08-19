@@ -51,6 +51,7 @@ local default_lsp_servers = {
     format_on_save = false,
   },
   tailwindcss = true,
+  -- @TODO: replace with tsc
   vtsls = {
     format_on_save = false,
   },
