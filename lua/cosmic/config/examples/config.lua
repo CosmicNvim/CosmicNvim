@@ -16,8 +16,8 @@ local config = {
       -- Enable rust_analyzer with its lspconfig and after/lsp defaults
       rust_analyzer = true,
 
-      -- Override vtsls defaults from lspconfig and after/lsp
-      vtsls = {
+      -- Override tsc defaults from lspconfig and after/lsp
+      tsc = {
         -- Disable only automatic formatting on save for this server
         format_on_save = false,
         -- Disable all formatting from this server, including manual formatting
