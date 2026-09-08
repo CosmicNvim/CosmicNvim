@@ -12,14 +12,14 @@ return {
       css = { 'oxfmt' },
       go = { 'goimports', 'gofmt' },
       html = { 'oxfmt' },
-      javascript = { 'eslint_d', 'oxlint', 'oxfmt' },
-      javascriptreact = { 'eslint_d', 'oxlint', 'oxfmt' },
+      javascript = { 'oxlint', 'oxfmt' },
+      javascriptreact = { 'oxlint', 'oxfmt' },
       json = { 'oxfmt' },
       lua = { 'stylua' },
       markdown = { 'oxfmt' },
       scss = { 'oxfmt' },
-      typescript = { 'eslint_d', 'oxlint', 'oxfmt' },
-      typescriptreact = { 'eslint_d', 'oxlint', 'oxfmt' },
+      typescript = { 'oxlint', 'oxfmt' },
+      typescriptreact = { 'oxlint', 'oxfmt' },
       python = {
         -- To fix auto-fixable lint errors.
         'ruff_fix',
