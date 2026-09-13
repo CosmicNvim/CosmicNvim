@@ -37,7 +37,7 @@ map('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Vertical Resize -2' })
 map('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Vertical Resize +2' })
 
 -- terminal
-map('t', '<C-n>', [[<C-\><C-n>]], { desc = 'Visual mode' })
+map('t', '<C-n>', [[<C-\><C-n>]], { desc = 'Normal mode' })
 
 -- toggle rnu for buffer
 map('n', '<leader>ktl', function()

@@ -61,7 +61,7 @@ return {
 
       map('n', '<leader>ks', gs.stage_buffer, { desc = 'Stage buffer' })
       map('n', '<leader>kr', gs.reset_buffer, { desc = 'Reset buffer' })
-      map('n', 'B', function()
+      map('n', '<leader>hb', function()
         gs.blame_line({ full = true })
       end, {
         desc = 'Blame line',

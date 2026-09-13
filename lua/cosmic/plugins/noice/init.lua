@@ -52,6 +52,8 @@ return {
           return '<c-j>'
         end
       end,
+      expr = true,
+      desc = 'Scroll documentation down',
     },
     {
       '<c-k>',
@@ -60,6 +62,8 @@ return {
           return '<c-k>'
         end
       end,
+      expr = true,
+      desc = 'Scroll documentation up',
     },
   },
   event = 'VeryLazy',

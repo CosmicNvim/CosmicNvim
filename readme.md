@@ -56,25 +56,64 @@ experience with any LSP supported language._
 #### Prerequisites
 
 - Neovim 0.13.0+ (Nightly)
-- [Node.js](https://nodejs.org/en/) (recommended for JS/TS tooling)
-- [prettierd](https://github.com/fsouza/prettierd) (required for default JS/TS/CSS/HTML/JSON formatting)
+- Git to clone CosmicNvim and install plugins
+- [Node.js](https://nodejs.org/en/) with npm for JS/TS tooling
+- External formatters for the languages you use, listed below
 
 #### Install
 
 ```bash
-  # move to config dir
-  cd ~/.config
-  # back up current config
-  cp -r nvim nvim.backup
-  # clone repository
-  git clone https://github.com/CosmicNvim/CosmicNvim.git nvim
-  # open nvim and install plugins
-  nvim
+# Create and enter Neovim's config parent directory.
+mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}" && cd "${XDG_CONFIG_HOME:-$HOME/.config}" || exit 1
+# Move an existing config or symlink into a unique backup directory.
+if [ -e nvim ] || [ -L nvim ]; then
+  backup_dir=$(mktemp -d "$PWD/nvim.backup.XXXXXX") || exit 1
+  mv nvim "$backup_dir/nvim" || exit 1
+  printf 'Previous config saved to %s/nvim\n' "$backup_dir"
+fi
+# Clone into the now-empty destination, then install plugins on first launch.
+git clone https://github.com/CosmicNvim/CosmicNvim.git nvim && nvim
 ```
 
 By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpath('config')`, i.e. `~/.config/nvim`.
 If you are symlinking your pulled repo to `~/.config/nvim`, you must define the shell environment variable
 `COSMICNVIM_INSTALL_DIR` that points to your installation.
+
+After plugins finish installing, run `:checkhealth cosmic` to check the installation and external tools.
+
+#### Formatters
+
+Conform uses the following tools from `lua/cosmic/plugins/conform/init.lua`.
+Install the tools for your filetypes and make sure Neovim can find their executables on `PATH`.
+LSP server installation through Mason does not install all of these formatters.
+
+| Filetypes | Configured formatters, in order |
+| --- | --- |
+| JavaScript, TypeScript, JSX, TSX | `eslint_d`, `oxlint`, `oxfmt` |
+| CSS, SCSS, HTML, JSON, Markdown | `oxfmt` |
+| Lua | `stylua` |
+| Go | `goimports`, `gofmt` |
+| Python | `ruff_fix`, `ruff_format`, `ruff_organize_imports`, all using the `ruff` executable |
+
+For web tooling, install Node.js and npm, then run:
+
+```bash
+npm install -g eslint_d oxlint oxfmt
+```
+
+Use your project's ESLint dependency and configuration with `eslint_d`.
+`prettierd` is not part of the default formatter configuration.
+
+For other languages, install only what you need:
+
+- Lua: install Rust/Cargo, then run `cargo install stylua --locked`. Put `~/.cargo/bin` on `PATH`.
+- Go: install Go, which includes `gofmt`, then run `go install golang.org/x/tools/cmd/goimports@latest`.
+  Add `$(go env GOPATH)/bin` to `PATH`, or your `GOBIN` directory if you set one.
+- Python: install [pipx](https://pipx.pypa.io/stable/installation/), then run `pipx install ruff` and `pipx ensurepath`.
+
+Restart your shell and Neovim after changing `PATH`.
+Open a source file and run `:ConformInfo` to see which formatters are available and inspect the formatter log.
+Use `:checkhealth cosmic` for broader setup checks.
 
 Additional CosmicNvim installation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Installation).
 

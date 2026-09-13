@@ -10,7 +10,14 @@ cmd([[
 local augroup_name = 'CosmicNvimEditor'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
-  command = [[%s/\s\+$//e]],
+  callback = function()
+    local view = vim.fn.winsaveview()
+    local ok, err = pcall(cmd, [[keepjumps keeppatterns %s/\s\+$//e]])
+    vim.fn.winrestview(view)
+    if not ok then
+      error(err)
+    end
+  end,
   group = group,
 })
 

@@ -1,33 +1,28 @@
--- Override Cosmic configuration options
+-- Copying this file preserves Cosmic defaults. Uncomment only the options you want to change.
 
 local config = {
-  -- See :h nvim_open_win for possible border options
-  border = 'rounded',
-
   -- LSP settings
   lsp = {
-    -- Enable/disable inlay hints
-    inlay_hint = false,
-    -- Time in MS before format timeout
-    format_timeout = 1000,
+    -- Enable inlay hints (default: false)
+    -- inlay_hint = true,
+    -- LSP format timeout in milliseconds (default: 500)
+    -- format_timeout = 1000,
     -- Enabled servers are installed through Mason automatically
     -- Enable non-default servers or override lspconfig/after/lsp server options
     servers = {
       -- Enable rust_analyzer with its lspconfig and after/lsp defaults
-      rust_analyzer = true,
+      -- rust_analyzer = true,
 
       -- Override tsc defaults from lspconfig and after/lsp
-      tsc = {
-        -- Disable only automatic formatting on save for this server
-        format_on_save = false,
-        -- Disable all formatting from this server, including manual formatting
-        -- formatting = false,
-        flags = {
-          debounce_text_changes = 150,
-        },
-        on_attach = function(client, bufnr) end,
-        settings = {},
-      },
+      -- tsc = {
+      --   -- Disable only automatic LSP formatting on save for this server
+      --   format_on_save = false,
+      --   -- Disable all LSP formatting from this server, including manual formatting
+      --   formatting = false,
+      --   flags = {
+      --     debounce_text_changes = 150,
+      --   },
+      -- },
 
       -- Enable a custom/local server without asking Mason to install it
       -- my_custom_lsp = {
@@ -47,18 +42,26 @@ local config = {
   -- Plugin management (lazy.nvim)
   plugins = {
     -- Add an extra plugin
-    'ggandor/lightspeed.nvim',
+    -- 'ggandor/lightspeed.nvim',
 
     -- Add a plugin with dependencies
-    {
-      'romgrk/barbar.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' },
-    },
+    -- {
+    --   'romgrk/barbar.nvim',
+    --   dependencies = { 'nvim-tree/nvim-web-devicons' },
+    -- },
 
     -- Disable a built-in plugin
     -- {
     --   'nvim-lualine/lualine.nvim',
     --   enabled = false,
+    -- },
+
+    -- Disable the Snacks Find Files mapping using lazy.nvim's keys override
+    -- {
+    --   'folke/snacks.nvim',
+    --   keys = {
+    --     { '<leader>fp', false },
+    --   },
     -- },
 
     -- Override a built-in plugin

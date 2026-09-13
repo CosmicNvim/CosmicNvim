@@ -1,23 +1,27 @@
--- Override Cosmic editor options
+-- Copying this file preserves Cosmic defaults. Uncomment only the options you want to change.
 
 local g = vim.g
 local map = require('cosmic.utils').set_keymap
 local opt = vim.opt
 
 -- Default leader is <space>
-g.mapleader = ','
+-- g.mapleader = ','
 
--- Default indent = 2
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.tabstop = 4
+-- Default indent is 2 spaces
+-- opt.shiftwidth = 4
+-- opt.softtabstop = 4
+-- opt.tabstop = 4
 
--- Add additional keymaps or disable existing ones
--- To view maps set, use `:Telescope keymaps`
--- or `:map`, `:map <leader>`
+-- Default floating-window border is 'rounded'. Plugins may set their own borders.
+-- See :h 'winborder' for supported styles.
+-- opt.winborder = 'single'
 
--- Example: Additional insert mapping:
-map('i', 'jj', '<esc>')
+-- Browse keymaps with :lua Snacks.picker.keymaps()
+-- or use :map and :map <leader>
+-- Snacks uses <leader>fp for files, <leader>ff for Git files, and <leader>fs for grep.
+
+-- Example: Additional insert mapping
+-- map('i', 'jj', '<esc>', { desc = 'Exit insert mode' })
 
 -- Mapping options:
 -- map('n', ...)
@@ -25,7 +29,7 @@ map('i', 'jj', '<esc>')
 -- map('i', ...)
 -- map('t', ...)
 
--- Example: Disable find files keymap
--- vim.keymap.del('n', '<leader>f')
+-- Disable plugin keymaps through the plugin's keys spec in config.lua.
+-- See the Snacks <leader>fp example there, rather than deleting lazy-managed keymaps here.
 
 -- See :h vim.keymap for more info
