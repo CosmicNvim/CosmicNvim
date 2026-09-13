@@ -89,7 +89,7 @@ LSP server installation through Mason does not install all of these formatters.
 
 | Filetypes | Configured formatters, in order |
 | --- | --- |
-| JavaScript, TypeScript, JSX, TSX | `eslint_d`, `oxlint`, `oxfmt` |
+| JavaScript, TypeScript, JSX, TSX | `oxlint`, `oxfmt` |
 | CSS, SCSS, HTML, JSON, Markdown | `oxfmt` |
 | Lua | `stylua` |
 | Go | `goimports`, `gofmt` |
@@ -98,10 +98,9 @@ LSP server installation through Mason does not install all of these formatters.
 For web tooling, install Node.js and npm, then run:
 
 ```bash
-npm install -g eslint_d oxlint oxfmt
+npm install -g oxlint oxfmt
 ```
 
-Use your project's ESLint dependency and configuration with `eslint_d`.
 `prettierd` is not part of the default formatter configuration.
 
 For other languages, install only what you need:
@@ -150,11 +149,14 @@ Enabled servers are enabled by Cosmic with `vim.lsp.enable()`.
 
 ### Update CosmicNvim
 
-Updates CosmicNvim to the latest version
+Pulls CosmicNvim updates with `git pull --ff-only` without blocking the editor.
+Failures report Git's exit code and error output.
 
 ```vimcommand
 :CosmicUpdate
 ```
+
+After a successful update, restart Neovim to load the changes.
 
 ## 📷 Screenshots
 

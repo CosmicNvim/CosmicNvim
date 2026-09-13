@@ -8,33 +8,35 @@ function M.get_install_dir()
   return config_dir
 end
 
--- update instance of CosmicNvim
+-- Update CosmicNvim without blocking the editor or reloading live configuration.
 function M.update()
-  local Job = require('plenary.job')
   local path = M.get_install_dir()
-  local errors = {}
+  vim.notify('Updating CosmicNvim...')
 
-  Job:new({
-    command = 'git',
-    args = { 'pull', '--ff-only' },
-    cwd = path,
-    on_start = function()
-      vim.notify('Updating...')
-    end,
-    on_exit = function()
-      if vim.tbl_isempty(errors) then
-        vim.notify('Updated! Running CosmicReloadSync...')
-        M.reload_user_config_sync()
-      else
-        table.insert(errors, 1, 'Something went wrong! Please pull changes manually.')
-        table.insert(errors, 2, '')
-        vim.notify('Update failed!', vim.log.levels.ERROR)
+  local ok, err = pcall(
+    vim.system,
+    { 'git', 'pull', '--ff-only' },
+    { cwd = path, text = true },
+    vim.schedule_wrap(function(result)
+      if result.code == 0 then
+        vim.notify('CosmicNvim updated. Restart Neovim to load the changes.')
+        return
       end
-    end,
-    on_stderr = function(_, err)
-      table.insert(errors, err)
-    end,
-  }):sync()
+
+      local details = vim.trim(result.stderr or '')
+      if details == '' then
+        details = vim.trim(result.stdout or '')
+      end
+      local message = ('CosmicNvim update failed in %s (exit code %s).'):format(path, result.code)
+      if details ~= '' then
+        message = message .. '\n' .. details
+      end
+      vim.notify(message, vim.log.levels.ERROR)
+    end)
+  )
+  if not ok then
+    vim.notify(('Could not start CosmicNvim update in %s:\n%s'):format(path, err), vim.log.levels.ERROR)
+  end
 end
 
 return M

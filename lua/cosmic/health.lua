@@ -72,7 +72,6 @@ function M.check()
     { 'tar', 'archive extraction used by parser/package installers' },
     { 'oxfmt', 'default web/JSON/Markdown formatting' },
     { 'oxlint', 'default JavaScript/TypeScript lint fixes' },
-    { 'eslint_d', 'default JavaScript/TypeScript ESLint fixes' },
     { 'stylua', 'default Lua formatting' },
     { 'ruff', 'default Python fixes, formatting and import organization' },
     { 'goimports', 'default Go import formatting' },
