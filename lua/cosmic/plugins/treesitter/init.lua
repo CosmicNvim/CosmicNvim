@@ -45,8 +45,13 @@ return {
       group = group,
       callback = function(args)
         local ok = pcall(vim.treesitter.start, args.buf)
+        if not (ok and opts.indent.enable) then
+          return
+        end
 
-        if ok and opts.indent.enable then
+        -- Without indent queries the Tree-sitter indentexpr returns -1, which is worse than the filetype's own.
+        local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+        if lang and vim.treesitter.query.get(lang, 'indents') then
           vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end
       end,
