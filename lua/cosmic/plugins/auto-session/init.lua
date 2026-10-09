@@ -3,10 +3,10 @@ return {
   event = 'VimEnter',
   opts = {
     pre_save_cmds = { 'cclose' },
-    auto_session_enabled = true,
-    auto_restore_enabled = true,
-    auto_save_enabled = true,
-    use_git_branch = true,
+    enabled = true,
+    auto_restore = true,
+    auto_save = true,
+    git_use_branch_name = true,
   },
   keys = {
     {
