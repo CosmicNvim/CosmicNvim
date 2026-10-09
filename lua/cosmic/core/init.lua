@@ -47,7 +47,13 @@ vim.opt.runtimepath:prepend(lazypath)
 -- set up cosmicnvim
 for _, mod in ipairs(cosmic_modules) do
   if mod:find('^cosmic%.config%.') then
-    modules.optional_require(mod)
+    -- report user config errors without stopping the rest of Cosmic from loading
+    local ok, err = pcall(modules.optional_require, mod)
+    if not ok then
+      vim.schedule(function()
+        vim.notify(('[CosmicNvim] Error loading %s:\n%s'):format(mod, err), vim.log.levels.ERROR)
+      end)
+    end
   else
     local ok, err = pcall(require, mod)
     if not ok then

@@ -227,13 +227,29 @@ local function normalize_lsp(lsp)
   }
 end
 
-local raw_user_config = load_user_config()
+---@param raw_user_config CosmicRawUserConfig
+---@return CosmicUserConfig
+local function normalize(raw_user_config)
+  return {
+    diagnostics = normalize_diagnostics(raw_user_config.diagnostics),
+    lsp = normalize_lsp(raw_user_config.lsp),
+    plugins = normalize_plugins(raw_user_config.plugins),
+  }
+end
 
----@type CosmicUserConfig
-local config = {
-  diagnostics = normalize_diagnostics(raw_user_config.diagnostics),
-  lsp = normalize_lsp(raw_user_config.lsp),
-  plugins = normalize_plugins(raw_user_config.plugins),
-}
+-- A broken user config should not disable formatting, LSP and mappings: report it and use the defaults.
+local ok, config = pcall(function()
+  return normalize(load_user_config())
+end)
+if not ok then
+  local err = tostring(config):gsub('^%[CosmicNvim%] ', '')
+  vim.schedule(function()
+    vim.notify(
+      ('[CosmicNvim] Error in lua/cosmic/config/config.lua: %s\nUsing default settings until it is fixed.'):format(err),
+      vim.log.levels.ERROR
+    )
+  end)
+  config = normalize({})
+end
 
 return config
