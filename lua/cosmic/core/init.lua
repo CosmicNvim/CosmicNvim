@@ -2,10 +2,11 @@ local modules = require('cosmic.utils.modules')
 
 local cosmic_modules = {
   'cosmic.core.editor',
+  -- load user editor config before lazy.nvim so plugin keymaps and specs see the user's leader and options
+  'cosmic.config.editor',
   'cosmic.core.pluginsInit',
   'cosmic.core.commands',
   'cosmic.lsp',
-  'cosmic.config.editor',
   -- load mappings only after editor configs are loaded
   'cosmic.core.mappings',
 }

@@ -9,6 +9,8 @@ Both files are optional. Copying the examples unchanged preserves Cosmic's defau
 Uncomment the examples you want to use. Rust, extra plugins, leader changes, and indentation changes are opt-in.
 Set floating-window borders with `vim.opt.winborder` in `editor.lua`, not a `border` field in `config.lua`.
 Plugins may override the global border option.
+`editor.lua` loads before plugins, so its leader and options also apply to plugin keymaps and settings.
+Require plugins inside mapping callbacks or autocmds there, not at the top level.
 
 Plugin customization lives in `lua/cosmic/config/config.lua`:
 

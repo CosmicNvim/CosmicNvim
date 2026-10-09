@@ -1,4 +1,6 @@
 -- Copying this file preserves Cosmic defaults. Uncomment only the options you want to change.
+-- This file loads before plugins, so the leader and options set here also apply to plugin keymaps.
+-- Plugins are not available yet: require them inside mapping callbacks or autocmds, not at the top level.
 
 local g = vim.g
 local map = require('cosmic.utils').set_keymap
