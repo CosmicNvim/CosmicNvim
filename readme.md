@@ -149,12 +149,17 @@ Enabled servers are enabled by Cosmic with `vim.lsp.enable()`.
 
 ### Update CosmicNvim
 
-Pulls CosmicNvim updates with `git pull --ff-only` without blocking the editor.
-Failures report Git's exit code and error output.
+Fetches CosmicNvim updates and fast-forwards your checkout without blocking the editor.
 
 ```vimcommand
 :CosmicUpdate
 ```
+
+- Lists the incoming commits after a successful update.
+- If the update changes `lazy-lock.json` and your copy has local plugin updates, for example from `:Lazy update`,
+  asks before discarding them.
+- If the lockfile changed, offers to restore plugins to the updated versions.
+- Failures report Git's exit code and error output.
 
 After a successful update, restart Neovim to load the changes.
 
