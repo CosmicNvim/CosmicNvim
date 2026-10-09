@@ -64,12 +64,13 @@ local config = {
     --   },
     -- },
 
-    -- Override a built-in plugin
+    -- Override a built-in plugin. lazy.nvim replaces lists in `opts` tables,
+    -- so extend list options such as Tree-sitter parsers in an `opts` function.
     -- {
     --   'nvim-treesitter/nvim-treesitter',
-    --   opts = {
-    --     ensure_installed = { 'lua', 'go', 'rust' },
-    --   },
+    --   opts = function(_, opts)
+    --     vim.list_extend(opts.ensure_installed, { 'rust' })
+    --   end,
     -- },
   },
 }
