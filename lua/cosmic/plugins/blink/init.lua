@@ -7,6 +7,8 @@ return {
     {
       'L3MON4D3/LuaSnip',
       version = 'v2.*',
+      -- jsregexp enables regex transformations used by VS Code-style snippets
+      build = 'make install_jsregexp',
       opts = {
         history = true,
         -- Update more often, :h events for more info.

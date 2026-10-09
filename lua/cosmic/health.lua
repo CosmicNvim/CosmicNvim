@@ -80,10 +80,13 @@ function M.check()
     check_tool(tool[1], tool[2], false)
   end
   if vim.fn.executable('cc') == 1 or vim.fn.executable('gcc') == 1 or vim.fn.executable('clang') == 1 then
-    vim.health.ok('C compiler available for Tree-sitter parsers')
+    vim.health.ok('C compiler available for Tree-sitter parsers and LuaSnip jsregexp')
   else
-    vim.health.warn('No cc, gcc or clang in PATH; Tree-sitter parser installation needs a C compiler.')
+    vim.health.warn(
+      'No cc, gcc or clang in PATH; Tree-sitter parser installation and LuaSnip jsregexp need a C compiler.'
+    )
   end
+  check_tool('make', 'builds LuaSnip jsregexp for snippet regex transformations', false)
   vim.health.info('Use :checkhealth lazy, :checkhealth mason and :ConformInfo for plugin-specific diagnostics.')
 
   vim.health.start('User configuration')
