@@ -50,16 +50,10 @@ function M.buf_get_active_clients_str()
   return ''
 end
 
---- Toggle inlay hints
---- @return nil
+--- Toggle inlay hints for the current buffer
 function M.toggle_inlay_hints()
-  local enabled = user_config.lsp.inlay_hint
-  return function()
-    enabled = not enabled
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({
-      bufnr = vim.api.nvim_get_current_buf(),
-    }))
-  end
+  local filter = { bufnr = vim.api.nvim_get_current_buf() }
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(filter), filter)
 end
 
 return M
