@@ -39,7 +39,7 @@ Full featured native LSP functionality!
 - Custom statusline via [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - File editor via [oil.nvim](https://github.com/stevearc/oil.nvim)
 - Floating terminal with [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
-- LSP server management via [mason.nvim](https://github.com/williamboman/mason.nvim)
+- LSP server management via [mason.nvim](https://github.com/mason-org/mason.nvim)
 - Autocompletion via [blink.cmp](https://github.com/Saghen/blink.cmp)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - Session management via [auto-session](https://github.com/rmagatti/auto-session)

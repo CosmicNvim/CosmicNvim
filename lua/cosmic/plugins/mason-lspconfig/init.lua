@@ -9,7 +9,7 @@ end
 
 -- set up lsp servers
 return {
-  'williamboman/mason-lspconfig.nvim',
+  'mason-org/mason-lspconfig.nvim',
   lazy = false,
   config = function()
     local mason_servers = get_mason_servers()
@@ -31,6 +31,6 @@ return {
   end,
   dependencies = {
     { 'neovim/nvim-lspconfig', lazy = true },
-    { 'williamboman/mason.nvim', lazy = true, opts = {} },
+    { 'mason-org/mason.nvim', lazy = true, opts = {} },
   },
 }
