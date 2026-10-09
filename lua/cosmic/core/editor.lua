@@ -25,9 +25,11 @@ g.mapleader = ' '
 
 -- misc
 opt.backspace = { 'eol', 'start', 'indent' }
--- defer clipboard provider detection off the startup path
+-- defer clipboard provider detection off the startup path, keeping any clipboard set by user config
 vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
+  if not vim.api.nvim_get_option_info2('clipboard', {}).was_set then
+    vim.o.clipboard = 'unnamedplus'
+  end
 end)
 opt.encoding = 'utf-8'
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
