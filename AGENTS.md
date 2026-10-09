@@ -31,12 +31,17 @@ This project has no automated test suite. Testing is done by:
 ### Validation
 
 ```bash
-# Validate Lua syntax without running
-lua -c lua/cosmic/core/init.lua
+# Check a file's Lua syntax without running it; exits 1 and prints the error on failure
+nvim --headless --clean \
+  -c "lua _, Err = loadfile('lua/cosmic/core/init.lua')" \
+  -c "lua if Err then io.stderr:write(Err .. '\n') vim.cmd('cquit 1') end" \
+  -c "qall!"
 
-# Or use Neovim's built-in Lua parser
-nvim --headless -c "luafile lua/cosmic/core/init.lua" -c "q"
+# Start the installed config headlessly; startup errors are printed to stderr
+nvim --headless -c "qall"
 ```
+
+Inside Neovim, `:checkhealth cosmic` reports missing tools and user config problems.
 
 ## Code Style Guidelines
 
@@ -196,27 +201,33 @@ local config = vim.tbl_deep_extend('force', defaults, user_config or {})
 - Use `vim.tbl_deep_extend('force', ...)` for merging config tables
 - Check for feature support before using (e.g., `client:supports_method()`)
 - Use autocmds with named augroups for cleanup
-- Keep plugin configs modular (one file per plugin in `lua/cosmic/plugins/`)
+- Keep plugin configs modular (one `init.lua` per plugin directory in `lua/cosmic/plugins/`)
 - User overrides go in `lua/cosmic/config/` (gitignored, user-created)
 
 ## Project Structure
 
-```
+```text
 .
 ├── init.lua                 # Entry point
+├── after/lsp/               # Built-in LSP server overrides, merged over nvim-lspconfig
+├── docs/                    # Additional documentation
+├── lazy-lock.json           # Pinned plugin revisions
 ├── lua/cosmic/
 │   ├── init.lua            # Core loader
+│   ├── health.lua          # :checkhealth cosmic
 │   ├── core/               # Core functionality
-│   │   ├── commands.lua    # User commands
+│   │   ├── init.lua        # Bootstraps lazy.nvim and loads modules in order
+│   │   ├── commands.lua    # User commands and autocmds
 │   │   ├── editor.lua      # Editor settings
 │   │   ├── mappings.lua    # Key mappings
 │   │   ├── pluginsInit.lua # Plugin setup
 │   │   └── user.lua        # User config loader
 │   ├── config/             # User configuration (examples/)
-│   ├── lsp/                # LSP configuration
-│   │   ├── servers/        # Per-server configs
-│   │   └── diagnostics.lua # Diagnostic settings
-│   ├── plugins/            # Plugin specs (lazy.nvim)
+│   ├── lsp/                # LSP setup
+│   │   ├── commands.lua    # LspAttach handling
+│   │   ├── diagnostics/    # Diagnostic defaults
+│   │   └── mappings.lua    # Buffer-local LSP mappings
+│   ├── plugins/            # Plugin specs (lazy.nvim), one directory per plugin
 │   └── utils/              # Utility functions
 ├── .stylua.toml            # Lua formatter config
 └── .markdownlint.yaml      # Markdown linter config

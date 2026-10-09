@@ -143,7 +143,8 @@ Built-in LSP defaults come from `nvim-lspconfig` and are extended by `after/lsp/
 Enabled servers are installed through Mason automatically.
 Enabled servers are enabled by Cosmic with `vim.lsp.enable()`.
 
-`disable_builtin_plugins`, `plugins.add`, `plugins.disable`, `plugins.opts`, `plugins.override`, and `lsp.servers.NAME.opts` have been removed.
+`disable_builtin_plugins`, `plugins.add`, `plugins.disable`, `plugins.opts`, `plugins.override`,
+and `lsp.servers.NAME.opts` have been removed.
 
 ## ✨ Cosmic Commands
 
