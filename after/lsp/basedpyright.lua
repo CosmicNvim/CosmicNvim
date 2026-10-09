@@ -49,6 +49,17 @@ local function resolve_python_path(root_dir)
     end
   end
 
+  -- Project-local environments, such as uv's default .venv, are often not activated in the shell.
+  if not resolved_python and root_dir then
+    for _, venv in ipairs({ '.venv', 'venv' }) do
+      local venv_python = vim.fs.joinpath(root_dir, venv, 'bin', 'python')
+      if vim.fn.executable(venv_python) == 1 then
+        resolved_python = venv_python
+        break
+      end
+    end
+  end
+
   if not resolved_python then
     local poetry_python = get_poetry_python('python', root_dir)
     if poetry_python then
