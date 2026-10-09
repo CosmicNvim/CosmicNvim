@@ -34,8 +34,8 @@ return {
     },
     numhl = {
       [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-      [vim.diagnostic.severity.HINT] = 'DiagnosticsSignHint',
-      [vim.diagnostic.severity.INFO] = 'DiagnosticsSignInfo',
+      [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+      [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
       [vim.diagnostic.severity.WARN] = 'WarningMsg',
     },
   },
