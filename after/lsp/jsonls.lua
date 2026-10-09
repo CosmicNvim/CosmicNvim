@@ -15,8 +15,9 @@ local opts = {
     end
 
     config.settings.json = config.settings.json or {}
-    -- User-provided schemas come last so they can extend SchemaStore's catalog.
-    config.settings.json.schemas = vim.list_extend(schemastore.json.schemas(), config.settings.json.schemas or {})
+    -- Copy SchemaStore's cached catalog before appending user-provided schemas so they can extend it.
+    local schemas = vim.list_extend({}, schemastore.json.schemas())
+    config.settings.json.schemas = vim.list_extend(schemas, config.settings.json.schemas or {})
   end,
 }
 
