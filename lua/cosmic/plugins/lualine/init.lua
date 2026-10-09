@@ -6,17 +6,12 @@ local function get_opts()
     branch = { 'b:gitsigns_head', icon = icons.branch },
     diff = {
       'diff',
+      -- reuse gitsigns' hunk counts instead of running git diff again
+      source = utils.diff_source,
       symbols = {
         added = icons.diff_add .. ' ',
         modified = icons.diff_modified .. ' ',
         removed = icons.diff_remove .. ' ',
-      },
-    },
-    shortened_file_path = {
-      'filename',
-      path = 0,
-      symbols = {
-        modified = icons.diff_modified,
       },
     },
     relative_file_path = {
@@ -97,7 +92,7 @@ local function get_opts()
         custom_sections.branch,
       },
     },
-    extensions = { 'quickfix', 'fugitive', 'oil', 'mason', 'toggleterm', 'lazy', 'oil' },
+    extensions = { 'quickfix', 'fugitive', 'oil', 'mason', 'toggleterm', 'lazy' },
   }
 end
 

@@ -42,69 +42,10 @@ function M.create_buf_map(bufnr, opts)
   end
 end
 
----Append items from `tbl2` into `tbl1` in place.
----@param tbl1 table
----@param tbl2? table
----@return table
-function M.merge_list(tbl1, tbl2)
-  if tbl2 == nil then
-    return tbl1
-  end
-
-  for _, v in ipairs(tbl2) do
-    table.insert(tbl1, v)
-  end
-  return tbl1
-end
-
 ---@param ... table
 ---@return table
 function M.merge(...)
   return vim.tbl_deep_extend('force', ...)
-end
-
----@param str? string
----@param sep? string
----@return string[]
-function M.split(str, sep)
-  if type(str) ~= 'string' or str == '' then
-    return {}
-  end
-
-  if type(sep) ~= 'string' or sep == '' then
-    return { str }
-  end
-
-  local parts = vim.split(str, sep, {
-    plain = true,
-    trimempty = false,
-  })
-
-  local res = {}
-  for _, part in ipairs(parts) do
-    if part ~= '' then
-      table.insert(res, part)
-    end
-  end
-
-  return res
-end
-
----@param path? string
----@return string
-function M.get_short_file_path(path)
-  if type(path) ~= 'string' or path == '' then
-    return ''
-  end
-
-  local dirs = vim.split(path, '/', { plain = true, trimempty = true })
-
-  local n = #dirs
-  if n > 3 then
-    return '../' .. dirs[n - 2] .. '/' .. dirs[n - 1] .. '/' .. dirs[n]
-  end
-
-  return path
 end
 
 ---@return string
