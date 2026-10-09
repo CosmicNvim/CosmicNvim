@@ -7,10 +7,18 @@ cmd([[
 	filetype plugin indent on
 ]])
 
+-- Trailing whitespace is meaningful here: Markdown hard line breaks and diff context lines.
+local keep_trailing_whitespace = { markdown = true, diff = true }
+
 local augroup_name = 'CosmicNvimEditor'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
-  callback = function()
+  callback = function(args)
+    local bo = vim.bo[args.buf]
+    if keep_trailing_whitespace[bo.filetype] or bo.binary or not bo.modifiable then
+      return
+    end
+
     local view = vim.fn.winsaveview()
     local ok, err = pcall(cmd, [[keepjumps keeppatterns %s/\s\+$//e]])
     vim.fn.winrestview(view)
