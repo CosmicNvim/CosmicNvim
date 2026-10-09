@@ -105,6 +105,7 @@ This means:
 - Mason installs `rust_analyzer`
 - Neovim resolves the named config from `nvim-lspconfig` and `after/lsp`
 - Cosmic enables the server with no extra user overrides
+- Cosmic keeps its own defaults for built-in servers, such as `format_on_save = false` for `tsc`
 
 ### `false`
 

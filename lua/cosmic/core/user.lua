@@ -108,11 +108,19 @@ end
 ---@param server_name string
 ---@param server_config CosmicUserConfigLspServerSetting
 local function validate_server_config(server_name, server_config)
+  if type(server_name) ~= 'string' then
+    config_error('`lsp.servers` must map server names to settings, for example `rust_analyzer = true`.')
+  end
+
   if type(server_config) ~= 'boolean' and type(server_config) ~= 'table' then
     config_error(('`lsp.servers.%s` must be `true`, `false`, or a table of LSP config fields.'):format(server_name))
   end
 
-  if type(server_config) == 'table' and server_config.opts ~= nil then
+  if type(server_config) ~= 'table' then
+    return
+  end
+
+  if server_config.opts ~= nil then
     config_error(
       ('`lsp.servers.%s.opts` is not supported. Put LSP config fields directly under `lsp.servers.%s`.'):format(
         server_name,
@@ -120,12 +128,34 @@ local function validate_server_config(server_name, server_config)
       )
     )
   end
+
+  for _, flag in ipairs({ 'format_on_save', 'formatting', 'mason' }) do
+    if server_config[flag] ~= nil and type(server_config[flag]) ~= 'boolean' then
+      config_error(('`lsp.servers.%s.%s` must be `true` or `false`.'):format(server_name, flag))
+    end
+  end
+end
+
+---@param user_servers table<string, CosmicUserConfigLspServerSetting>|nil
+---@return table<string, CosmicUserConfigLspServerSetting>
+local function merge_servers(user_servers)
+  local servers = vim.deepcopy(default_lsp_servers)
+  for server_name, server_config in pairs(vim.deepcopy(user_servers or {})) do
+    local default = servers[server_name]
+    if type(default) == 'table' and type(server_config) == 'table' then
+      servers[server_name] = u.merge(default, server_config)
+    elseif not (server_config == true and type(default) == 'table') then
+      -- `true` enables a server with Cosmic's defaults for it, so only other values replace them
+      servers[server_name] = server_config
+    end
+  end
+  return servers
 end
 
 ---@param user_servers table<string, CosmicUserConfigLspServerSetting>|nil
 ---@return table<string, CosmicUserConfigLspServerSetting>, table<string, vim.lsp.ClientConfig>, table<string, boolean>, table<string, boolean>, table<string, boolean>
 local function normalize_servers(user_servers)
-  local servers = u.merge(vim.deepcopy(default_lsp_servers), vim.deepcopy(user_servers or {}))
+  local servers = merge_servers(user_servers)
   local resolved_servers = {}
   local format_on_save_disabled = {}
   local formatting_disabled = {}
@@ -173,6 +203,14 @@ local function normalize_lsp(lsp)
 
   if lsp.servers ~= nil and type(lsp.servers) ~= 'table' then
     config_error('`lsp.servers` must be a table.')
+  end
+
+  if lsp.format_timeout ~= nil and (type(lsp.format_timeout) ~= 'number' or lsp.format_timeout <= 0) then
+    config_error('`lsp.format_timeout` must be a positive number of milliseconds.')
+  end
+
+  if lsp.inlay_hint ~= nil and type(lsp.inlay_hint) ~= 'boolean' then
+    config_error('`lsp.inlay_hint` must be `true` or `false`.')
   end
 
   local servers, resolved_servers, format_on_save_disabled, formatting_disabled, mason_servers =
