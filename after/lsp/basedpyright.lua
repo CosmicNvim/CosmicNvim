@@ -90,9 +90,6 @@ return {
   before_init = function(_, config)
     set_python_path(config, config.root_dir)
   end,
-  on_new_config = function(new_config, root_dir)
-    set_python_path(new_config, root_dir)
-  end,
   settings = {
     basedpyright = {
       analysis = {

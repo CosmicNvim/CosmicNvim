@@ -1,16 +1,22 @@
 ---@diagnostic disable: missing-fields
 ---@type vim.lsp.ClientConfig
 local opts = {
-  settings = {},
-  on_new_config = function(new_config)
+  settings = {
+    json = {
+      validate = { enable = true },
+    },
+  },
+  -- Resolve SchemaStore schemas when the client starts so the plugin only loads for JSON buffers.
+  -- Mutate the existing settings table: the client sends this same table to the server.
+  before_init = function(_, config)
     local ok, schemastore = pcall(require, 'schemastore')
     if not ok then
       return
     end
 
-    new_config.settings = new_config.settings or {}
-    new_config.settings.json = new_config.settings.json or {}
-    new_config.settings.json.schemas = schemastore.json.schemas()
+    config.settings.json = config.settings.json or {}
+    -- User-provided schemas come last so they can extend SchemaStore's catalog.
+    config.settings.json.schemas = vim.list_extend(schemastore.json.schemas(), config.settings.json.schemas or {})
   end,
 }
 
