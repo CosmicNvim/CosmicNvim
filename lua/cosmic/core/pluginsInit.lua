@@ -1,5 +1,5 @@
 ---@diagnostic disable: missing-fields
-local install_dir = vim.env.COSMICNVIM_INSTALL_DIR or vim.fn.stdpath('config')
+local install_dir = require('cosmic.utils.cosmic').get_install_dir()
 
 require('lazy').setup('cosmic.plugins', {
   lockfile = install_dir .. '/lazy-lock.json',

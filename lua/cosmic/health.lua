@@ -90,8 +90,7 @@ function M.check()
   vim.health.info('Use :checkhealth lazy, :checkhealth mason and :ConformInfo for plugin-specific diagnostics.')
 
   vim.health.start('User configuration')
-  local install_dir = vim.env.COSMICNVIM_INSTALL_DIR or vim.fn.stdpath('config')
-  local config_dir = install_dir .. '/lua/cosmic/config/'
+  local config_dir = require('cosmic.utils.cosmic').get_install_dir() .. '/lua/cosmic/config/'
   for _, name in ipairs({ 'config', 'editor' }) do
     local path = config_dir .. name .. '.lua'
     if vim.uv.fs_stat(path) then
