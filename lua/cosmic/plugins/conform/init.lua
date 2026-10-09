@@ -7,7 +7,6 @@ return {
   ---@module "conform"
   ---@type conform.setupOpts
   opts = {
-    log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
       css = { 'oxfmt' },
       go = { 'goimports', 'gofmt' },
