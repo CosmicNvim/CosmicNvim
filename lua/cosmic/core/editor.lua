@@ -3,9 +3,7 @@ local opt = vim.opt
 local g = vim.g
 local indent = 2
 
-cmd([[
-	filetype plugin indent on
-]])
+-- Options that match Neovim's defaults (filetype plugins, syntax, hlsearch, ...) are left unset.
 
 -- Trailing whitespace is meaningful here: Markdown hard line breaks and diff context lines.
 local keep_trailing_whitespace = { markdown = true, diff = true }
@@ -39,19 +37,15 @@ g.loaded_python3_provider = 0
 g.loaded_ruby_provider = 0
 
 -- misc
-opt.backspace = { 'eol', 'start', 'indent' }
 -- defer clipboard provider detection off the startup path, keeping any clipboard set by user config
 vim.schedule(function()
   if not vim.api.nvim_get_option_info2('clipboard', {}).was_set then
     vim.o.clipboard = 'unnamedplus'
   end
 end)
-opt.encoding = 'utf-8'
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
-opt.syntax = 'enable'
 
 -- indention
-opt.autoindent = true
 opt.expandtab = true
 opt.shiftwidth = indent
 opt.smartindent = true
@@ -59,15 +53,12 @@ opt.softtabstop = indent
 opt.tabstop = indent
 
 -- search
-opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
-opt.wildmenu = true
 
 -- ui
 opt.cursorline = true
-opt.laststatus = 2
 opt.list = true
 opt.listchars = {
   tab = '❘-',
@@ -89,7 +80,6 @@ opt.splitright = true -- Open new split to the right
 opt.wrap = false
 
 -- backups
-opt.backup = false
 opt.swapfile = false
 opt.writebackup = false
 
