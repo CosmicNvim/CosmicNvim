@@ -26,7 +26,7 @@ Enabled servers end up in `user_config.lsp.resolved_servers`.
 
 Then
 [`lua/cosmic/plugins/mason-lspconfig/init.lua`](../lua/cosmic/plugins/mason-lspconfig/init.lua)
-does three things:
+does four things:
 
 1. Collects the enabled server names
 2. Registers user overrides with `vim.lsp.config(server_name, user_override)`

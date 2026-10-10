@@ -164,6 +164,12 @@ Fetches CosmicNvim updates and fast-forwards your checkout without blocking the 
 
 After a successful update, restart Neovim to load the changes.
 
+## 🧪 Contributing
+
+Run the test suite with `nvim -l tests/run.lua`. It installs plugins into an isolated `.tests/` directory, so your own
+setup is not touched. Format Lua with `stylua .` and lint Markdown with `markdownlint`; CI runs all three on pull
+requests. See [AGENTS.md](./AGENTS.md) for project conventions.
+
 ## 📷 Screenshots
 
 [See more](https://github.com/CosmicNvim/CosmicNvim/wiki/Screenshots)
