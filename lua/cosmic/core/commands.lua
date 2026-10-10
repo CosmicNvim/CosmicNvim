@@ -9,6 +9,6 @@ vim.api.nvim_create_autocmd('VimResized', {
   desc = 'Automatically resize windows when adding/removing window',
 })
 
-vim.cmd([[
-  command! CosmicUpdate lua require('cosmic.utils.cosmic').update()
-]])
+vim.api.nvim_create_user_command('CosmicUpdate', function()
+  require('cosmic.utils.cosmic').update()
+end, { desc = 'Update CosmicNvim and optionally restore plugins to its lockfile' })
