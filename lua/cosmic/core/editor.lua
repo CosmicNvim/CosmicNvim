@@ -31,6 +31,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 
 g.mapleader = ' '
 
+-- Cosmic's plugins don't use Neovim's remote-plugin hosts, so skip detecting them.
+-- Re-enable one in lua/cosmic/config/editor.lua if a plugin needs it, e.g. `vim.g.loaded_python3_provider = nil`.
+g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_ruby_provider = 0
+
 -- misc
 opt.backspace = { 'eol', 'start', 'indent' }
 -- defer clipboard provider detection off the startup path, keeping any clipboard set by user config

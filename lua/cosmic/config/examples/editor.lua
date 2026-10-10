@@ -9,6 +9,9 @@ local opt = vim.opt
 -- Default leader is <space>
 -- g.mapleader = ','
 
+-- Cosmic disables Neovim's Python, Node, Perl and Ruby providers. Re-enable one if a plugin needs it:
+-- g.loaded_python3_provider = nil
+
 -- Default indent is 2 spaces
 -- opt.shiftwidth = 4
 -- opt.softtabstop = 4
