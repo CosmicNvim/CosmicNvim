@@ -24,6 +24,39 @@ function M.check()
   end
   check_tool('git', 'required for lazy.nvim bootstrap and plugin updates', true)
 
+  -- Installs that link individual files into ~/.config/nvim can miss Cosmic's after/ directory.
+  -- Match Cosmic's own directory: plugins such as mason-lspconfig ship after/lsp/ files too.
+  local after_lsp = vim.uv.fs_realpath(vim.fn.stdpath('config') .. '/after/lsp')
+  local after_loaded = after_lsp ~= nil
+    and vim.iter(vim.api.nvim_get_runtime_file('lsp/*.lua', true)):any(function(path)
+      return vim.uv.fs_realpath(vim.fs.dirname(path)) == after_lsp
+    end)
+  if after_loaded then
+    vim.health.ok("Cosmic's after/lsp/ server settings are on the runtimepath")
+  else
+    vim.health.warn(
+      "Cosmic's after/lsp/ server settings are not on the runtimepath, so they won't load.",
+      ('If %s links individual files from CosmicNvim, link its after/ directory too.'):format(vim.fn.stdpath('config'))
+    )
+  end
+
+  local install_dir = require('cosmic.utils.cosmic').get_install_dir()
+  local toplevel = vim.system({ 'git', 'rev-parse', '--show-toplevel' }, { cwd = install_dir, text = true }):wait()
+  local advice = 'Set COSMICNVIM_INSTALL_DIR to the CosmicNvim git checkout.'
+  if toplevel.code ~= 0 then
+    vim.health.warn(install_dir .. ' is not a git checkout, so :CosmicUpdate cannot update CosmicNvim.', advice)
+  elseif vim.uv.fs_realpath(vim.trim(toplevel.stdout)) ~= vim.uv.fs_realpath(install_dir) then
+    vim.health.warn(
+      ('%s is inside the git repository %s, so :CosmicUpdate would update that repository.'):format(
+        install_dir,
+        vim.trim(toplevel.stdout)
+      ),
+      advice
+    )
+  else
+    vim.health.ok(':CosmicUpdate updates the git checkout in ' .. install_dir)
+  end
+
   vim.health.start('Optional tools')
   vim.health.info(
     'Missing tools below affect specific features, not core startup. Project-local tools may not be in PATH.'
