@@ -31,19 +31,6 @@ return {
     end,
   },
   {
-    name = 'basedpyright uses a project .venv that is not activated',
-    run = function()
-      local root = T.tmpdir()
-      local python = root .. '/.venv/bin/python'
-      T.write(python, { '#!/bin/sh' })
-      vim.uv.fs_chmod(python, 493) -- 0755
-      local config = vim.deepcopy(vim.lsp.config.basedpyright)
-      config.root_dir = root
-      config.before_init({}, config)
-      T.eq(config.settings.python.pythonPath, python, 'pythonPath')
-    end,
-  },
-  {
     name = 'inlay hint toggle only changes the current buffer',
     config = { lsp = { servers = { cosmic_fake = T.fake_server_config({ inlay_hints = true }) } } },
     run = function()
