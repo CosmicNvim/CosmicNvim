@@ -83,25 +83,38 @@ After plugins finish installing, run `:checkhealth cosmic` to check the installa
 
 #### Formatters
 
-Conform uses the following tools from `lua/cosmic/plugins/conform/init.lua`.
+Conform formats on save with the tools configured in `lua/cosmic/plugins/conform/init.lua`.
 Install the tools for your filetypes and make sure Neovim can find their executables on `PATH`.
-LSP server installation through Mason does not install all of these formatters.
+LSP server installation through Mason does not install these formatters.
 
-| Filetypes | Configured formatters, in order |
+JavaScript and web files follow each project's own tooling:
+
+| Project uses | Lint fixes on save | Formats JS/TS, CSS, SCSS, HTML, JSON, Markdown with | Diagnostics from |
+| --- | --- | --- | --- |
+| oxlint and/or oxfmt | `oxlint` | `oxfmt` | oxlint server |
+| ESLint and Prettier | `eslint_d` | `prettierd`, or the project's `prettier` | ESLint server |
+| ESLint only | `eslint_d` | nothing; ESLint enforces style | ESLint server |
+| none of these | `oxlint` | `oxfmt` | oxlint server |
+
+A project uses a tool when it has the tool's config file, such as `.prettierrc` or `eslint.config.js`, configures it in
+`package.json`, or lists oxlint, oxfmt or Prettier as a dependency. Binaries in the project's `node_modules/.bin` are
+preferred, so formatting matches the project's pinned versions.
+
+| Other filetypes | Formatters, in order |
 | --- | --- |
-| JavaScript, TypeScript, JSX, TSX | `oxlint`, `oxfmt` |
-| CSS, SCSS, HTML, JSON, Markdown | `oxfmt` |
 | Lua | `stylua` |
 | Go | `goimports`, `gofmt` |
 | Python | `ruff_fix`, `ruff_format`, `ruff_organize_imports`, all using the `ruff` executable |
 
-For web tooling, install Node.js and npm, then run:
+For web tooling, install Node.js and npm, then install the tools globally or with Mason:
 
 ```bash
-npm install -g oxlint oxfmt
+npm install -g oxlint oxfmt eslint_d @fsouza/prettierd
 ```
 
-`prettierd` is not part of the default formatter configuration.
+```vimcommand
+:MasonInstall oxlint oxfmt eslint_d prettierd
+```
 
 For other languages, install only what you need:
 

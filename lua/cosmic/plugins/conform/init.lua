@@ -1,5 +1,29 @@
+local js = require('cosmic.utils.js')
 local lsp_utils = require('cosmic.utils.lsp')
 local user_config = require('cosmic.core.user')
+
+-- Fresh lists per filetype, so extending one filetype in user opts doesn't change the others.
+local function web_formatters()
+  return { 'oxfmt', 'prettierd', 'prettier' }
+end
+
+local function js_formatters()
+  return { 'oxlint', 'eslint_d', 'oxfmt', 'prettierd', 'prettier' }
+end
+
+---@param linter 'eslint'|'oxlint'
+local function uses_linter(linter)
+  return function(_, ctx)
+    return js.linters(ctx.dirname)[linter]
+  end
+end
+
+---@param formatter 'oxfmt'|'prettier'
+local function uses_formatter(formatter)
+  return function(_, ctx)
+    return js.formatter(ctx.dirname) == formatter
+  end
+end
 
 ---@param bufnr integer
 ---@return conform.FormatOpts|nil
@@ -67,18 +91,19 @@ return {
   ---@module "conform"
   ---@type conform.setupOpts
   opts = {
+    -- Web formatters are picked per project by the conditions below: lint fixes first, then formatting.
     formatters_by_ft = {
-      css = { 'oxfmt' },
+      css = web_formatters(),
       go = { 'goimports', 'gofmt' },
-      html = { 'oxfmt' },
-      javascript = { 'oxlint', 'oxfmt' },
-      javascriptreact = { 'oxlint', 'oxfmt' },
-      json = { 'oxfmt' },
+      html = web_formatters(),
+      javascript = js_formatters(),
+      javascriptreact = js_formatters(),
+      json = web_formatters(),
       lua = { 'stylua' },
-      markdown = { 'oxfmt' },
-      scss = { 'oxfmt' },
-      typescript = { 'oxlint', 'oxfmt' },
-      typescriptreact = { 'oxlint', 'oxfmt' },
+      markdown = web_formatters(),
+      scss = web_formatters(),
+      typescript = js_formatters(),
+      typescriptreact = js_formatters(),
       python = {
         -- To fix auto-fixable lint errors.
         'ruff_fix',
@@ -86,6 +111,18 @@ return {
         'ruff_format',
         -- To organize the imports.
         'ruff_organize_imports',
+      },
+    },
+    formatters = {
+      eslint_d = { condition = uses_linter('eslint') },
+      oxlint = { condition = uses_linter('oxlint') },
+      oxfmt = { condition = uses_formatter('oxfmt') },
+      prettierd = { condition = uses_formatter('prettier') },
+      -- Prettier projects use prettierd, falling back to plain prettier when prettierd isn't installed.
+      prettier = {
+        condition = function(self, ctx)
+          return uses_formatter('prettier')(self, ctx) and vim.fn.executable('prettierd') == 0
+        end,
       },
     },
     default_format_opts = {

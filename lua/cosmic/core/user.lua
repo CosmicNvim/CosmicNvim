@@ -46,6 +46,8 @@ local default_lsp_servers = {
   html = true,
   jsonls = true,
   lua_ls = true,
+  -- Starts only in projects that use oxlint or no linter; see after/lsp/oxlint.lua
+  oxlint = true,
   -- Disable in favor of conform ruff
   ruff = {
     format_on_save = false,
