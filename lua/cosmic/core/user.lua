@@ -27,10 +27,10 @@ local modules = require('cosmic.utils.modules')
 ---@field inlay_hint boolean
 ---@field mason_servers table<string, boolean>
 ---@field resolved_servers table<string, vim.lsp.ClientConfig>
----@field servers table<string, CosmicUserConfigLspServerSetting>
 
 ---@class CosmicUserConfig
 ---@field diagnostics vim.diagnostic.Opts
+---@field load_error? string Why config.lua was replaced with defaults, for :checkhealth
 ---@field lsp CosmicUserConfigLsp
 ---@field plugins LazySpec[]
 
@@ -153,7 +153,7 @@ local function merge_servers(user_servers)
 end
 
 ---@param user_servers table<string, CosmicUserConfigLspServerSetting>|nil
----@return table<string, CosmicUserConfigLspServerSetting>, table<string, vim.lsp.ClientConfig>, table<string, boolean>, table<string, boolean>, table<string, boolean>
+---@return table<string, vim.lsp.ClientConfig>, table<string, boolean>, table<string, boolean>, table<string, boolean>
 local function normalize_servers(user_servers)
   local servers = merge_servers(user_servers)
   local resolved_servers = {}
@@ -187,7 +187,7 @@ local function normalize_servers(user_servers)
     end
   end
 
-  return servers, resolved_servers, format_on_save_disabled, formatting_disabled, mason_servers
+  return resolved_servers, format_on_save_disabled, formatting_disabled, mason_servers
 end
 
 ---@param lsp CosmicRawUserConfigLsp|nil
@@ -213,8 +213,7 @@ local function normalize_lsp(lsp)
     config_error('`lsp.inlay_hint` must be `true` or `false`.')
   end
 
-  local servers, resolved_servers, format_on_save_disabled, formatting_disabled, mason_servers =
-    normalize_servers(lsp.servers)
+  local resolved_servers, format_on_save_disabled, formatting_disabled, mason_servers = normalize_servers(lsp.servers)
 
   return {
     format_timeout = lsp.format_timeout == nil and default_lsp_format_timeout or lsp.format_timeout,
@@ -223,7 +222,6 @@ local function normalize_lsp(lsp)
     inlay_hint = lsp.inlay_hint == nil and default_lsp_inlay_hint or lsp.inlay_hint,
     mason_servers = mason_servers,
     resolved_servers = resolved_servers,
-    servers = servers,
   }
 end
 
@@ -250,6 +248,7 @@ if not ok then
     )
   end)
   config = normalize({})
+  config.load_error = err
 end
 
 return config

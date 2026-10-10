@@ -15,47 +15,6 @@ local function check_tool(names, purpose, required)
   report(table.concat(names, ' or ') .. ' not found in PATH: ' .. purpose)
 end
 
--- Inspect already-loaded values only: requiring user config can execute arbitrary code.
-local function validate_config(config)
-  local errors = {}
-  local function expect(value, kind, field)
-    if value ~= nil and type(value) ~= kind then
-      errors[#errors + 1] = field .. ' must be a ' .. kind
-      return false
-    end
-    return true
-  end
-
-  if not expect(config, 'table', 'config.lua return value') then
-    return errors
-  end
-  expect(config.diagnostics, 'table', 'diagnostics')
-  if expect(config.plugins, 'table', 'plugins') and config.plugins and not vim.islist(config.plugins) then
-    errors[#errors + 1] = 'plugins must be a list of lazy.nvim specs'
-  end
-  if expect(config.lsp, 'table', 'lsp') and config.lsp then
-    local lsp = config.lsp
-    expect(lsp.format_timeout, 'number', 'lsp.format_timeout')
-    expect(lsp.inlay_hint, 'boolean', 'lsp.inlay_hint')
-    if expect(lsp.servers, 'table', 'lsp.servers') and lsp.servers then
-      for name, server in pairs(lsp.servers) do
-        local field = 'lsp.servers.' .. tostring(name)
-        if type(name) ~= 'string' or (type(server) ~= 'boolean' and type(server) ~= 'table') then
-          errors[#errors + 1] = field .. ' must have a string name and a boolean or table value'
-        elseif type(server) == 'table' then
-          if server.opts ~= nil then
-            errors[#errors + 1] = field .. '.opts is unsupported; put LSP fields directly under ' .. field
-          end
-          for _, flag in ipairs({ 'format_on_save', 'formatting', 'mason' }) do
-            expect(server[flag], 'boolean', field .. '.' .. flag)
-          end
-        end
-      end
-    end
-  end
-  return errors
-end
-
 function M.check()
   vim.health.start('CosmicNvim runtime')
   if vim.fn.has('nvim-0.13') == 1 then
@@ -110,20 +69,14 @@ function M.check()
       vim.health.info(path .. ' is absent; this override is optional')
     end
   end
-  local config = package.loaded['cosmic.config.config']
-  if config ~= nil then
-    local ok, errors = pcall(validate_config, config)
-    if not ok then
-      vim.health.error('Cannot inspect loaded user configuration: ' .. tostring(errors))
-    elseif #errors == 0 then
-      vim.health.ok('Loaded user configuration passes basic schema checks')
-    else
-      for _, err in ipairs(errors) do
-        vim.health.error(err)
-      end
-    end
+  -- Report what Cosmic found when it loaded config.lua at startup, without running user code again.
+  local user_config = package.loaded['cosmic.core.user']
+  if user_config == nil then
+    vim.health.info('Cosmic has not loaded the user configuration; only syntax was checked.')
+  elseif user_config.load_error then
+    vim.health.error(user_config.load_error, 'Cosmic is using default settings until config.lua is fixed.')
   else
-    vim.health.info('User config is not loaded; only syntax was checked. No user code or plugins were executed.')
+    vim.health.ok('User configuration loaded without errors')
   end
 end
 
