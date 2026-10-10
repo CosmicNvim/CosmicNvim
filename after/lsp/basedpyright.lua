@@ -129,8 +129,10 @@ return {
   -- Same project root as nvim-lspconfig's root_markers, but the server only starts once a Poetry
   -- environment lookup has finished, so `poetry env info` never blocks the editor.
   root_dir = function(bufnr, on_dir)
-    local root = vim.fs.root(bufnr, vim.lsp.config.basedpyright.root_markers or { '.git' })
-    local project_dir = not python_path_cache[root or vim.uv.cwd()]
+    local server = vim.lsp.config.basedpyright
+    local root = vim.fs.root(bufnr, server.root_markers or { '.git' })
+    local project_dir = not vim.tbl_get(server, 'settings', 'python', 'pythonPath')
+      and not python_path_cache[root or vim.uv.cwd()]
       and not find_local_python(root)
       and find_poetry_project(root)
     if not project_dir then
@@ -138,13 +140,17 @@ return {
     end
 
     lookup_poetry_python(project_dir, function()
-      on_dir(root)
+      -- Don't start a server for a buffer that was closed while Poetry was answering.
+      if vim.api.nvim_buf_is_loaded(bufnr) then
+        on_dir(root)
+      end
     end)
   end,
   before_init = function(_, config)
     config.settings = config.settings or {}
     config.settings.python = config.settings.python or {}
-    config.settings.python.pythonPath = resolve_python_path(config.root_dir)
+    -- Keep a pythonPath set in lsp.servers.basedpyright.settings.
+    config.settings.python.pythonPath = config.settings.python.pythonPath or resolve_python_path(config.root_dir)
   end,
   settings = {
     basedpyright = {
