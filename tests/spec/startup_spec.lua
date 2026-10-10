@@ -39,7 +39,7 @@ return {
       T.eq(#notes, 1, 'notification count')
       T.eq(notes[1].level, vim.log.levels.ERROR, 'notification level')
       T.truthy(notes[1].msg:find('`lsp.format_timeout` must be a positive number', 1, true), notes[1].msg)
-      T.eq(require('cosmic.core.user').lsp.format_timeout, 500, 'default format_timeout')
+      T.eq(require('cosmic.core.user').lsp.format_timeout, 3000, 'default format_timeout')
       T.eq(vim.lsp.is_enabled('rust_analyzer'), false, 'user servers ignored until fixed')
       assert_cosmic_loaded()
     end,

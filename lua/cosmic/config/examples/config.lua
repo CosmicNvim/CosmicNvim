@@ -5,8 +5,8 @@ local config = {
   lsp = {
     -- Enable inlay hints (default: false)
     -- inlay_hint = true,
-    -- LSP format timeout in milliseconds (default: 500)
-    -- format_timeout = 1000,
+    -- Format timeout in milliseconds (default: 3000)
+    -- format_timeout = 5000,
     -- Enabled servers are installed through Mason automatically
     -- Enable non-default servers or override lspconfig/after/lsp server options
     servers = {

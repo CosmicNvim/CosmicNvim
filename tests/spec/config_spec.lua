@@ -67,7 +67,7 @@ return {
         vim.wait(100)
         T.eq(#notes, 1, 'notification count for ' .. case[2])
         T.truthy(notes[1].msg:find(case[2], 1, true), notes[1].msg)
-        T.eq(user.lsp.format_timeout, 500, 'defaults used for ' .. case[2])
+        T.eq(user.lsp.format_timeout, 3000, 'defaults used for ' .. case[2])
       end
     end,
   },

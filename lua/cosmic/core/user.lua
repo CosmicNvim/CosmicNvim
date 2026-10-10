@@ -56,7 +56,8 @@ local default_lsp_servers = {
   },
 }
 
-local default_lsp_format_timeout = 500
+-- Daemons like eslint_d and prettierd need time to start on the first save in a project.
+local default_lsp_format_timeout = 3000
 local default_lsp_inlay_hint = false
 
 local function config_error(message)
