@@ -50,8 +50,10 @@ return {
         end
 
         -- Without indent queries the Tree-sitter indentexpr returns -1, which is worse than the filetype's own.
+        -- query.get() raises when the queries don't match the installed parser.
         local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
-        if lang and vim.treesitter.query.get(lang, 'indents') then
+        local has_query, query = pcall(vim.treesitter.query.get, lang, 'indents')
+        if lang and has_query and query then
           vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end
       end,
