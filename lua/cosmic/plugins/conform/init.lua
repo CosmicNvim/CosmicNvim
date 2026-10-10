@@ -21,9 +21,18 @@ local function format_on_save(bufnr)
     return opts
   end
 
-  local formatters = {}
+  local enabled = {}
   for _, formatter in ipairs(status.conform.formatters) do
     if formatter.effective_enabled then
+      enabled[formatter.name] = true
+    end
+  end
+
+  -- cosmic-ui lists formatters alphabetically, so take the configured order from conform.
+  local configured = require('conform').list_formatters(bufnr)
+  local formatters = {}
+  for _, formatter in ipairs(configured) do
+    if enabled[formatter.name] then
       table.insert(formatters, formatter.name)
     end
   end
@@ -40,7 +49,11 @@ local function format_on_save(bufnr)
     return nil
   end
 
-  opts.formatters = formatters
+  -- An explicit list skips per-filetype conform options such as stop_after_first,
+  -- so only pass one when cosmic-ui has turned some formatters off.
+  if #formatters < #configured then
+    opts.formatters = formatters
+  end
   opts.filter = function(client)
     return lsp_clients[client.id] == true and lsp_utils.can_client_format_on_save(client)
   end
