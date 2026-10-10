@@ -14,3 +14,4 @@ ginit.vim
 .nvimlog
 nvim.log
 .pi
+.tests/

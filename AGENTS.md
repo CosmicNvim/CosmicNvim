@@ -16,17 +16,27 @@ stylua --check .
 # Format a specific file
 stylua lua/cosmic/core/init.lua
 
-# Lint markdown files
-markdownlint *.md
+# Lint markdown files (the same globs CI uses)
+markdownlint '*.md' 'docs/*.md' 'lua/**/*.md'
 ```
 
 ### Testing
 
-This project has no automated test suite. Testing is done by:
+```bash
+# Run the test suite
+nvim -l tests/run.lua
 
-1. Opening Neovim: `nvim`
-2. Checking for Lua syntax errors on startup
-3. Verifying plugin functionality manually
+# Run only cases whose "spec: case name" contains the filter
+nvim -l tests/run.lua 'format:'
+```
+
+The first run installs plugins from `lazy-lock.json` into `.tests/` (gitignored); your own Neovim setup is not used.
+Each case in `tests/spec/*_spec.lua` starts the full config in its own headless Neovim, with `config` and `editor`
+fields standing in for `lua/cosmic/config/config.lua` and `editor.lua`. Mason and Tree-sitter parser installs are
+stubbed out; `T.fake_server_config()` in `tests/harness.lua` provides an in-process language server for LSP cases.
+
+Add a case when fixing a bug, and check that it fails without the fix. CI runs stylua, markdownlint and the test
+suite on pushes to `main` and on pull requests.
 
 ### Validation
 
@@ -209,6 +219,7 @@ local config = vim.tbl_deep_extend('force', defaults, user_config or {})
 ```text
 .
 ├── init.lua                 # Entry point
+├── .github/workflows/       # CI: stylua, markdownlint and the test suite
 ├── after/lsp/               # Built-in LSP server overrides, merged over nvim-lspconfig
 ├── docs/                    # Additional documentation
 ├── lazy-lock.json           # Pinned plugin revisions
@@ -229,6 +240,10 @@ local config = vim.tbl_deep_extend('force', defaults, user_config or {})
 │   │   └── mappings.lua    # Buffer-local LSP mappings
 │   ├── plugins/            # Plugin specs (lazy.nvim), one directory per plugin
 │   └── utils/              # Utility functions
+├── tests/
+│   ├── run.lua             # Test runner: nvim -l tests/run.lua [filter]
+│   ├── harness.lua         # Isolated environment, child Neovims and assertion helpers
+│   └── spec/               # Test cases, one file per area
 ├── .stylua.toml            # Lua formatter config
 └── .markdownlint.yaml      # Markdown linter config
 ```
