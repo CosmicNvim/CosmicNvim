@@ -93,8 +93,24 @@ end
 ---@param args string[]
 ---@return vim.SystemCompleted
 local function git(path, args)
-  -- Fail instead of prompting for credentials on the editor's terminal.
-  return run(vim.list_extend({ 'git' }, args), { cwd = path, text = true, env = { GIT_TERMINAL_PROMPT = '0' } })
+  -- Fail instead of prompting on the editor's terminal: GIT_TERMINAL_PROMPT covers git's credential prompts,
+  -- and detaching from the terminal covers ssh host key and passphrase prompts.
+  return run(
+    vim.list_extend({ 'git' }, args),
+    { cwd = path, text = true, detach = true, env = { GIT_TERMINAL_PROMPT = '0' } }
+  )
+end
+
+---@param file string
+---@return string|nil
+local function read_file(file)
+  local handle = io.open(file, 'rb')
+  if not handle then
+    return nil
+  end
+  local content = handle:read('*a')
+  handle:close()
+  return content
 end
 
 --- `git diff --quiet` exits 1 when files differ and higher on errors.
@@ -153,6 +169,8 @@ local function update(path)
   end
 
   -- `:Lazy update` rewrites the tracked lockfile, which blocks fast-forwarding when upstream changed it too.
+  local lockfile_path = vim.fs.joinpath(path, lockfile)
+  local discarded_lockfile
   if lockfile_updated then
     local lockfile_dirty, status = git_changed(path, { 'HEAD', '--', lockfile })
     if lockfile_dirty == nil then
@@ -171,6 +189,7 @@ local function update(path)
         return
       end
 
+      discarded_lockfile = read_file(lockfile_path)
       local reset = git(path, { 'checkout', 'HEAD', '--', lockfile })
       if reset.code ~= 0 then
         return notify_failure(('Could not discard local changes to %s'):format(lockfile), reset)
@@ -180,7 +199,17 @@ local function update(path)
 
   local merge = git(path, { 'merge', '--ff-only', '@{upstream}' })
   if merge.code ~= 0 then
-    return notify_failure(('CosmicNvim update failed in %s'):format(path), merge)
+    local message = ('CosmicNvim update failed in %s'):format(path)
+    -- Without the update, keep the lockfile changes the user agreed to discard for it.
+    if discarded_lockfile then
+      local handle = io.open(lockfile_path, 'wb')
+      if handle then
+        handle:write(discarded_lockfile)
+        handle:close()
+        message = ('%s; local %s changes were restored'):format(message, lockfile)
+      end
+    end
+    return notify_failure(message, merge)
   end
 
   vim.notify(('CosmicNvim updated:\n%s\n\nRestart Neovim to load the changes.'):format(summarize_commits(commits)))
