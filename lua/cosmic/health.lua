@@ -1,12 +1,18 @@
 local M = {}
 
-local function check_tool(name, purpose, required)
-  if vim.fn.executable(name) == 1 then
-    vim.health.ok(name .. ': ' .. purpose)
-  else
-    local report = required and vim.health.error or vim.health.warn
-    report(name .. ' not found in PATH: ' .. purpose)
+---@param names string|string[] executable name, or alternative names for the same tool
+---@param purpose string
+---@param required boolean
+local function check_tool(names, purpose, required)
+  names = type(names) == 'table' and names or { names }
+  for _, name in ipairs(names) do
+    if vim.fn.executable(name) == 1 then
+      vim.health.ok(name .. ': ' .. purpose)
+      return
+    end
   end
+  local report = required and vim.health.error or vim.health.warn
+  report(table.concat(names, ' or ') .. ' not found in PATH: ' .. purpose)
 end
 
 -- Inspect already-loaded values only: requiring user config can execute arbitrary code.
@@ -65,7 +71,7 @@ function M.check()
   )
   for _, tool in ipairs({
     { 'rg', 'ripgrep for picker text searches' },
-    { 'fd', 'faster picker file searches; other file-finder backends may be available' },
+    { { 'fd', 'fdfind' }, 'fd 8.4+ is required to search in the file explorer (<leader>e) and speeds up file pickers' },
     { 'node', 'Node.js for JavaScript/TypeScript language tools' },
     { 'tree-sitter', 'Tree-sitter CLI for parser installation' },
     { 'curl', 'downloads used by parser/package installers' },
