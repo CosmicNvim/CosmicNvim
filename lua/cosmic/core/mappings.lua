@@ -4,7 +4,8 @@ local map = require('cosmic.utils').set_keymap
 map('n', '<leader>ck', ':cexpr []<cr>', { desc = 'Clear list' })
 map('n', '<leader>cc', ':cclose <cr>', { desc = 'Close list' })
 map('n', '<leader>co', ':copen <cr>', { desc = 'Open list' })
-map('n', '<leader>cf', ':cfdo %s/', { desc = 'Search & Replace' })
+-- Not silent: the mapping leaves `:cfdo %s/` on the command line for you to finish.
+map('n', '<leader>cf', ':cfdo %s/', { desc = 'Search & Replace', silent = false })
 map('n', '<leader>cp', ':cprev<cr>zz', { desc = 'Prev Item' })
 map('n', '<leader>cn', ':cnext<cr>zz', { desc = 'Next Item' })
 
