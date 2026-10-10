@@ -26,6 +26,10 @@ local function get_opts()
   return {
     options = {
       theme = 'tokyonight',
+      disabled_filetypes = {
+        -- the Snacks explorer sidebar
+        winbar = { 'snacks_layout_box' },
+      },
     },
     sections = {
       lualine_a = {
