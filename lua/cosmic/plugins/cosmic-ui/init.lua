@@ -1,5 +1,4 @@
-local utils = require('cosmic.utils')
-
+-- Rename, code action and formatter mappings live in lua/cosmic/lsp/mappings.lua.
 return {
   --[[ dir = '~/dev/cosmic-ui/', ]]
   'CosmicNvim/cosmic-ui',
@@ -21,43 +20,5 @@ return {
       enabled = true, -- optional (defaults to true when table exists)
     },
   },
-  init = function()
-    vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup('cosmic_lsp_attach_cosmic_ui_mappings', { clear = true }),
-      callback = function(args)
-        local bufnr = args.buf
-
-        -- Reapply after the core LspAttach handler so cosmic-ui owns the overlapping maps.
-        vim.schedule(function()
-          if not vim.api.nvim_buf_is_valid(bufnr) then
-            return
-          end
-
-          local buf_map = utils.create_buf_map(bufnr)
-
-          buf_map('n', 'gn', function()
-            require('cosmic-ui').rename.open()
-          end, { desc = 'Rename' })
-
-          buf_map('n', '<leader>la', function()
-            require('cosmic-ui').codeactions.open()
-          end, { desc = 'Code actions' })
-
-          buf_map('v', '<leader>la', function()
-            require('cosmic-ui').codeactions.range()
-          end, { desc = 'Range codeactions' })
-
-          buf_map('n', '<leader>ltx', function()
-            require('cosmic-ui').formatters.open()
-          end, { silent = true, desc = 'Open formatters toggle' })
-
-          buf_map('n', '<leader>lf', function()
-            require('cosmic-ui').formatters.format()
-          end, { silent = true, desc = 'Format' })
-        end)
-      end,
-      desc = 'LSP: register cosmic-ui mappings on attach',
-    })
-  end,
   event = 'VeryLazy',
 }

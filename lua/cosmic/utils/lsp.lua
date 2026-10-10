@@ -15,41 +15,6 @@ function M.can_client_format_on_save(client)
   return M.can_client_format(client) and not user_config.lsp.format_on_save_disabled[client.name]
 end
 
---- Format a buffer
---- @param bufnr number buffer to format
---- @param timeout number number in seconds to wait for formatting
-function M.format_buf(bufnr, timeout)
-  if timeout == '' or timeout == nil then
-    timeout = user_config.lsp.format_timeout
-  else
-    timeout = timeout * 1000
-  end
-  vim.lsp.buf.format({
-    timeout_ms = timeout,
-    bufnr = bufnr or vim.api.nvim_get_current_buf(),
-  })
-end
-
---- Get comma seperated string of active lsp clients for current buffer
---- @return string
-function M.buf_get_active_clients_str()
-  local active_clients = vim.lsp.get_clients({
-    bufnr = vim.api.nvim_get_current_buf(),
-  })
-  local client_names = {}
-
-  for _, client in pairs(active_clients or {}) do
-    table.insert(client_names, client.name)
-  end
-
-  if #client_names > 0 then
-    table.sort(client_names)
-    return table.concat(client_names, ', ')
-  end
-
-  return ''
-end
-
 --- Toggle inlay hints for the current buffer
 function M.toggle_inlay_hints()
   local filter = { bufnr = vim.api.nvim_get_current_buf() }

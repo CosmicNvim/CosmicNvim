@@ -20,18 +20,18 @@ local function jump_diagnostic(count)
   })
 end
 
--- Mappings.
-function M.init(client, bufnr)
-  local buf_map = utils.create_buf_map(bufnr, {
-    noremap = true,
-  })
+local function format()
+  local ok, conform = pcall(require, 'conform')
+  if ok then
+    conform.format({ lsp_format = 'fallback' })
+  else
+    vim.lsp.buf.format()
+  end
+end
 
-  --[[ buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Go to declaration' }) ]]
-  -- Commented out mappings are controlled by Snacks
-  --[[ buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to definition' }) ]]
-  --[[ buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Go to implementation' }) ]]
-  --[[ buf_map('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = 'Go to type definition' }) ]]
-  --[[ buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'Go to reference' }) ]]
+-- Mappings. gd, gr and the other go-to mappings come from Snacks; Neovim maps K to hover.
+function M.init(client, bufnr)
+  local buf_map = utils.create_buf_map(bufnr)
 
   -- diagnostics
   buf_map('n', '[g', function()
@@ -44,34 +44,38 @@ function M.init(client, bufnr)
     vim.diagnostic.open_float({ scope = 'line' })
   end, { desc = 'Show current line diagnostic' })
 
-  -- hover
-  buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = 'Show documentation' })
-
   -- inlay hints
   if client:supports_method('textDocument/inlayHint') then
     buf_map('n', '<leader>lh', lsp_utils.toggle_inlay_hints, { desc = 'Toggle inlay hints for buffer' })
   end
 
-  -- code actions
-  buf_map('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename' })
-  buf_map('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Code Actions' })
-  buf_map('v', '<leader>la', function()
-    vim.lsp.buf.code_action()
-  end, { desc = 'Range Code Actions' })
-
-  -- formatting
-  if client:supports_method('textDocument/formatting') then
-    buf_map('n', '<leader>lf', lsp_utils.format_buf, { desc = 'Format', noremap = false })
-    buf_map('v', '<leader>lf', function()
-      vim.lsp.buf.format()
-    end, { desc = 'Range Format', noremap = false })
+  -- rename, code actions and formatting, through cosmic-ui's UI when it is enabled
+  if require('lazy.core.config').plugins['cosmic-ui'] then
+    buf_map('n', 'gn', function()
+      require('cosmic-ui').rename.open()
+    end, { desc = 'Rename' })
+    buf_map('n', '<leader>la', function()
+      require('cosmic-ui').codeactions.open()
+    end, { desc = 'Code actions' })
+    buf_map('v', '<leader>la', function()
+      require('cosmic-ui').codeactions.range()
+    end, { desc = 'Range code actions' })
+    buf_map('n', '<leader>lf', function()
+      require('cosmic-ui').formatters.format()
+    end, { desc = 'Format' })
+    buf_map('n', '<leader>ltx', function()
+      require('cosmic-ui').formatters.open()
+    end, { desc = 'Open formatters toggle' })
+  else
+    buf_map('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename' })
+    buf_map({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, { desc = 'Code actions' })
+    buf_map('n', '<leader>lf', format, { desc = 'Format' })
   end
+  buf_map('v', '<leader>lf', format, { desc = 'Range format' })
 
   -- lsp workspace
-  buf_map('n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Add workspace folder' })
-  buf_map('n', '<leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', {
-    desc = 'Remove workspace folder',
-  })
+  buf_map('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, { desc = 'Add workspace folder' })
+  buf_map('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, { desc = 'Remove workspace folder' })
   buf_map('n', '<leader>lwl', function()
     vim.print(vim.lsp.buf.list_workspace_folders())
   end, { desc = 'Show workspace folders' })
