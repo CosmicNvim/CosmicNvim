@@ -16,7 +16,9 @@
 CosmicNvim is a lightweight and opinionated Neovim config for web development,
 specifically designed to provide a 💫 COSMIC programming experience!
 
-<img width="2531" alt="Screen Shot 2021-12-19 at 1 25 24 PM" src="https://user-images.githubusercontent.com/3721204/146691358-82a6ff64-1942-4351-ac53-e710a3e48700.png">
+<img width="2531" alt="Historical CosmicNvim screenshot from December 2021" src="https://user-images.githubusercontent.com/3721204/146691358-82a6ff64-1942-4351-ac53-e710a3e48700.png">
+
+_Historical screenshot (December 2021); the current UI and plugin defaults differ._
 
 ## 🚀 Stellar Features
 
@@ -60,6 +62,17 @@ experience with any LSP supported language._
 - [Node.js](https://nodejs.org/en/) with npm for JS/TS tooling
 - External formatters for the languages you use, listed below
 
+For the corresponding features, also install:
+
+- Tree-sitter CLI and a C compiler (`cc`, `gcc` or `clang`) for parser installation and syntax highlighting
+- `make` and a C compiler for LuaSnip's regex transformations
+- `ripgrep` (`rg`) for picker text searches
+- `fd` 8.4+ (`fd` or `fdfind`) for file explorer searches; it also speeds up file pickers
+- `curl` and `tar` for parser/package downloads and extraction
+- A [Nerd Font](https://www.nerdfonts.com/) in your terminal to display icons correctly
+
+These support specific features rather than core startup. `:checkhealth cosmic` checks external tools after installation.
+
 #### Install
 
 ```bash
@@ -75,9 +88,12 @@ fi
 git clone https://github.com/CosmicNvim/CosmicNvim.git nvim && nvim
 ```
 
-By default, this will assume the Cosmic git directory is placed at `vim.fn.stdpath('config')`, i.e. `~/.config/nvim`.
-If you are symlinking your pulled repo to `~/.config/nvim`, you must define the shell environment variable
-`COSMICNVIM_INSTALL_DIR` that points to your installation.
+By default, Cosmic uses the Git checkout at `vim.fn.stdpath('config')`, usually `~/.config/nvim`.
+A whole-directory symlink from that location to your checkout works without additional configuration.
+If you link individual files or otherwise keep the checkout elsewhere, set the shell environment variable
+`COSMICNVIM_INSTALL_DIR` to the checkout path so Cosmic can locate its lockfile and update the correct repository.
+For individual-file installations, include the `after/` directory as well as `init.lua` and `lua/` so built-in LSP
+settings are on Neovim's runtimepath.
 
 After plugins finish installing, run `:checkhealth cosmic` to check the installation and external tools.
 
@@ -85,20 +101,37 @@ After plugins finish installing, run `:checkhealth cosmic` to check the installa
 
 Conform formats on save with the tools configured in `lua/cosmic/plugins/conform/init.lua`.
 Install the tools for your filetypes and make sure Neovim can find their executables on `PATH`.
-LSP server installation through Mason does not install these formatters.
+Mason's LSP installation does not install every configured formatter. Some servers, such as oxlint and Ruff,
+share their executable with Conform's tools and may already provide it.
 
-JavaScript and web files follow each project's own tooling:
+JavaScript and web files follow each project's own tooling. Linters and formatters are selected independently.
+For JS/TS files, lint fixes run before formatting:
 
-| Project uses | Lint fixes on save | Formats JS/TS, CSS, SCSS, HTML, JSON, Markdown with | Diagnostics from |
-| --- | --- | --- | --- |
-| oxlint and/or oxfmt | `oxlint` | `oxfmt` | oxlint server |
-| ESLint and Prettier | `eslint_d` | `prettierd`, or the project's `prettier` | ESLint server |
-| ESLint only | `eslint_d` | nothing; ESLint enforces style | ESLint server |
-| none of these | `oxlint` | `oxfmt` | oxlint server |
+| Project's linter setup | Lint fixes on save | Linter diagnostics from |
+| --- | --- | --- |
+| oxlint present, no ESLint configured | `oxlint` | oxlint server |
+| oxlint present and ESLint configured | `oxlint`, then `eslint_d` | Both servers |
+| ESLint configured, no oxlint | `eslint_d` | ESLint server |
+| Neither linter configured | `oxlint` (default) | oxlint server |
 
-A project uses a tool when it has the tool's config file, such as `.prettierrc` or `eslint.config.js`, configures it in
-`package.json`, or lists oxlint, oxfmt or Prettier as a dependency. Binaries in the project's `node_modules/.bin` are
-preferred, so formatting matches the project's pinned versions.
+For JS/TS, CSS, SCSS, HTML, JSON and Markdown, the first matching rule selects the formatter:
+
+| Project's formatter setup | Formatter |
+| --- | --- |
+| oxfmt present | `oxfmt` |
+| Otherwise, Prettier present | `prettierd`; plain `prettier` is also enabled when `prettierd` is absent from `PATH` |
+| Otherwise, ESLint configured | No separate web formatter; only JS/TS ESLint fixes |
+| None of the above | `oxfmt` |
+
+For example, oxlint + Prettier uses oxlint fixes and Prettier formatting, while ESLint + oxfmt uses ESLint fixes and oxfmt.
+CSS, SCSS, HTML, JSON and Markdown use the formatter selection above, but do not run the JS/TS lint-fix commands.
+
+Detection searches the file's directory and its ancestors for supported config files, such as `.prettierrc` or
+`eslint.config.js`, and `package.json` settings (`eslintConfig` or `prettier`). An oxlint, oxfmt or Prettier dependency
+in `dependencies` or `devDependencies` also counts; an ESLint dependency alone does not.
+Conform prefers project-local binaries where supported by the tool's formatter definition.
+The Prettier fallback check only looks at `PATH`: a project-local-only `prettierd` can cause both Prettier commands to run.
+When no external formatter is available, Conform can fall back to an eligible LSP formatter.
 
 | Other filetypes | Formatters, in order |
 | --- | --- |
@@ -127,12 +160,6 @@ Restart your shell and Neovim after changing `PATH`.
 Open a source file and run `:ConformInfo` to see which formatters are available and inspect the formatter log.
 Use `:checkhealth cosmic` for broader setup checks.
 
-Additional CosmicNvim installation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Installation).
-
-Additional LSP server installation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Installing-LSP-servers).
-
-CosmicNvim uninstallation [details](https://github.com/CosmicNvim/CosmicNvim/wiki/Uninstalling-CosmicNvim).
-
 ## ⚙️ Configuration
 
 [General Info](./lua/cosmic/config/examples/readme.md)
@@ -153,8 +180,10 @@ Plugin customization in `lua/cosmic/config/config.lua` uses:
 Built-in LSP defaults come from `nvim-lspconfig` and are extended by `after/lsp/*.lua`. User config under
 `lsp.servers.NAME` is merged on top of those defaults when the server is enabled.
 
-Enabled servers are installed through Mason automatically.
-Enabled servers are enabled by Cosmic with `vim.lsp.enable()`.
+Enabled servers are installed through Mason automatically unless `lsp.servers.NAME.mason = false` is set.
+With `mason = false`, install the server yourself and ensure its command is available to Neovim.
+Cosmic enables configured servers with `vim.lsp.enable()` in either case.
+See [LSP config merging](./docs/lsp-config-merging.md) for server configuration and installation options.
 
 `disable_builtin_plugins`, `plugins.add`, `plugins.disable`, `plugins.opts`, `plugins.override`,
 and `lsp.servers.NAME.opts` have been removed.
@@ -179,10 +208,19 @@ After a successful update, restart Neovim to load the changes.
 
 ## 🧪 Contributing
 
-Run the test suite with `nvim -l tests/run.lua`. It installs plugins into an isolated `.tests/` directory, so your own
-setup is not touched. Format Lua with `stylua .` and lint Markdown with `markdownlint`; CI runs all three on pull
-requests. See [AGENTS.md](./AGENTS.md) for project conventions.
+Run these checks from the repository root:
+
+```bash
+nvim -l tests/run.lua
+stylua --check .
+npx --yes markdownlint-cli@0.49.1 '*.md' 'docs/*.md' 'lua/**/*.md'
+```
+
+The test runner installs plugins into an isolated `.tests/` directory, so your own setup is not touched.
+Use `stylua .` to apply Lua formatting. CI runs all three checks on pull requests and pushes to `main`.
+See [AGENTS.md](./AGENTS.md) for project conventions.
 
 ## 📷 Screenshots
 
-[See more](https://github.com/CosmicNvim/CosmicNvim/wiki/Screenshots)
+[Historical screenshots](https://github.com/CosmicNvim/CosmicNvim/wiki/Screenshots) show earlier versions,
+not the current UI.
